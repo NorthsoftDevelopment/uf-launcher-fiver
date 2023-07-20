@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Inhonia Launcher</title>
+	<link href="style.css" rel="stylesheet">
+	<link rel="icon" href="../img/inhstudioslogoweb.png">
+	<script src="main.js"></script>
+</head>
+
+<body>
+	<header>
+		<a href="../../index.html"><img src="https://www.dropbox.com/s/g9honm786dodpc0/inhstudioslogoweb.png?dl=1"
+				class="logo"></a>
+		<nav>
+			<ul>
+				<li class="servidores"><a href="minecraft:">Lanzar Bedrock</a></li>
+				<li><a href="./administradores/index.html">Administrador</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section class="zona1">
+		<div class="texto">
+			<h3 class="titulo">Gamership Network</h3>
+			<h6 class="autor">Inhonia Studios • Network • Gamership</h6>
+			<h4 class="instrucciones">Requiere de Java 19 Adoptium</h4>
+			<button class="jugar" onClick="nopremiun()">Jugar</button>
+			<label id="status"></label>
+			<div class="descargatext" id="download-screen">
+				<h1 class="descargando">Descargando:</h1>
+				<label id="descarga"></label>
+				<h3 class="consejo">Por favor no cierres el launcher mientras la descarga esta en curso.</h3>
+			</div>
+		</div>
+	</section>
+	<section class="zona2">
+		<div class="text2">
+				<img src="https://www.dropbox.com/s/5lnerrcxuk14gvf/gsnetbackground.png?dl=1" alt="Image 1"></img>
+				<div class="desc5">
+					<h2 class="titledesc">Descripcion</h2>
+					<p class="descdesc">Gamership Network es un proyecto de ecosistemas de torneos de Gamership dentro de un servidor
+						de Minecraft, aplicando todas las funcionalidades, incluyendo membresias al ecosistema principal la Gamership Network,
+						este ecosistema cuenta con varios tipos de modalidades las cuales amplian el contenido principal y la innovacion
+						respecto a el contenido que pueda ofrecer
+					</p>
+				</div>
+				<div class="desc5">
+					<h2 class="titledesc">Distribuido por:</h2>
+					<p>Inhonia Studios - Powered by Gamership</p>
+				</div>
+		</div>
+	</section>
+	<script type="text/javascript">
+		window.addEventListener("scroll", function () {
+			var header = document.querySelector("header");
+			header.classList.toggle("abajo", window.scrollY > 0);
+		})
+	</script>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script>
+		AOS.init();
+	</script>
+</body>
+
+</html>

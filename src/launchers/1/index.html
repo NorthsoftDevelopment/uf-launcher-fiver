@@ -8,61 +8,153 @@
 	<title>Inhonia Launcher</title>
 	<link href="style.css" rel="stylesheet">
 	<link rel="icon" href="../img/inhstudioslogoweb.png">
-	<script src="main.js"></script>
+	<link rel="stylesheet" href="../../css/_tooltip.scss"/>
+	<link rel="stylesheet" href="../css/configs.css"/>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.min.css">
 </head>
 
 <body>
 	<header>
-		<a href="../../index.html"><img src="https://www.dropbox.com/s/g9honm786dodpc0/inhstudioslogoweb.png?dl=1"
+		<a href="http://localhost:5173/"><img src="../../assets/launcherweb.png"
 				class="logo"></a>
 		<nav>
 			<ul>
-				<li class="servidores"><a href="minecraft:">Lanzar Bedrock</a></li>
-				<li><a href="./administradores/index.html">Administrador</a></li>
+				<li class="servidores"><a href="minecraft:">¿Como jugar?</a></li>
+				<li><a href="../../../java/jdk-17.0.7.7-hotspot/bin/javaw.exe">{token}</a></li>
 			</ul>
 		</nav>
 	</header>
-	<section class="zona1">
+	<div class="zona1">
 		<div class="texto">
-			<h3 class="titulo">Gamership Network</h3>
-			<h6 class="autor">Inhonia Studios • Network • Gamership</h6>
-			<h4 class="instrucciones">Requiere de Java 19 Adoptium</h4>
-			<button class="jugar" onClick="nopremiun()">Jugar</button>
-			<label id="status"></label>
-			<div class="descargatext" id="download-screen">
-				<h1 class="descargando">Descargando:</h1>
-				<label id="descarga"></label>
-				<h3 class="consejo">Por favor no cierres el launcher mientras la descarga esta en curso.</h3>
+			<h3 class="titulo">Minecraft Vanilla</h3>
+			<h6 class="autor">Xbox Game Studios • Microsoft • Mojang</h6>
+			<h4 class="instrucciones">Juega con Xbox Game Pass</h4>
+			<h4 class="instrucciones">Producto protegido por compra o renta con Microsoft</h4>
+			<div class="botones">
+				<button class="jugar" onClick="premiun()">Jugar (Premiun)</button>
+				<button class="jugar-terceros" onClick="nopremiun()">+</button>
 			</div>
 		</div>
-	</section>
-	<section class="zona2">
-		<div class="text2">
+	</div>
+	<div class="descargatext" id="download-screen">
+		<div class="loader"></div>
+		<div class="barra-de-carga">
+			<div class="barra" id="progress-bar">
+			</div>
+			<div class="porcentaje" id="progress-text">0%</div>
+		  </div>
+		  <label class="text-descarga" id="descarga"></label>
+		  <a class="cancel-launch" href="./index.html">Cancelar</a>
+	</div>
+	<div class="zone2">
+		<div class="text-config">
+		<h3 class="titulo-config">Configuracion de lanzamiento</h3>
+		<div class="configs">
+			<div class="config">
+				<p class="tooltipped config-text" data-position="top" data-tooltip="Esto modifica la version de Minecraft Vanilla que vas a lanzar">Version de Minecraft</p>
+				<select id="seleccionVersion" class="select-general">
+					<option value="1.20">1.20</option>
+					<option value="1.19">1.19</option>
+					<option value="1.18">1.18</option>
+					<option value="1.16">1.16</option>
+					<option value="1.15">1.15</option>
+					<option value="1.12">1.12</option>
+					<option value="1.8">1.8</option>
+				  </select>
+				  
+			</div>
+			<div class="config">
+				<p class="tooltipped config-text" data-position="top" data-tooltip="Esto modifica la RAM maxima de tu PC que se usara para lanzar. Recomendamos que uses no mas de 4GB para la versiones inferiores a la 1.18.2">Memoria Ram</p>
+				<select id="seleccionRam" class="select-general">
+					<option value="8G">8GB</option>
+					<option value="6G">6GB</option>
+					<option value="4G">4GB</option>
+					<option value="2G">2GB</option>
+				  </select>
+			</div>
+			<div class="config">
+				<p class="tooltipped config-text" data-position="top" data-tooltip="Esto modifica la ruta de lanzamiento/instalacion que usara el launcher. La ruta de lanzamiento es el lugar de almacenamiento de archivos necesarios de Minecraft. Recomendamos dejarla por defecto">Ruta de lanzamiento</p>
+				<input class="input-general" type="text" id="seleccionRoute" value="C:\\InhoniaStudios\\MinecraftVanilla"></input>
+			</div>
+			<div class="config">
+				<p class="tooltipped config-text" data-position="top" data-tooltip="Este es el usuario que aparecera en tu perfil de Minecraft, cuando uses solo el lanzador de terceros. Este no tiene efecto cuando lo lanzas con tu cuenta de Microsoft">
+					Usuario (Solo modo de terceros)</p>
+				<input type="text" id="user" value="Usuario" class="input-general"></input>
+			</div>
+		</div>
+		<button class="savebutton" onclick="guardarConfiguraciones()">Guardar configuraciones</button>
+	</div>
+
+	<div class="status-content" id="status-content">
+		<h3 class="titulo-config">Consola de Debug</h3>
+		<label id="status"></label>
+	</div>
+
+	<div class="zone-dangerous">
+		<h3 class="titulo-config">Zona roja</h3>
+		<p class="p-general">En caso de errores al momento de realizar tu lanzamiento con la instancia, puedes probar reiniciar la carpeta de tu Minecraft.</p>
+		<ul>
+			<li class="tooltipped" data-position="top" data-tooltip="El ejecutar esta funcion eliminara todos los archivos presentes en la carpeta de esta instalacion, la cual se encuentra en la ruta que seleccionaste o por defecto.">Perderas los archivos dentro de la instalacion</li>
+		</ul>
+		<button class="cancelbutton" onclick="eliminarCarpeta()">Borrar Instancia</button>
+	</div>
+
+	</div>
+	<section class="zona3">
+		<h3 class="titledesc">Descripcion</h3>
+		<div class="text3">
 				<img src="https://www.dropbox.com/s/5lnerrcxuk14gvf/gsnetbackground.png?dl=1" alt="Image 1"></img>
 				<div class="desc5">
-					<h2 class="titledesc">Descripcion</h2>
-					<p class="descdesc">Gamership Network es un proyecto de ecosistemas de torneos de Gamership dentro de un servidor
-						de Minecraft, aplicando todas las funcionalidades, incluyendo membresias al ecosistema principal la Gamership Network,
-						este ecosistema cuenta con varios tipos de modalidades las cuales amplian el contenido principal y la innovacion
-						respecto a el contenido que pueda ofrecer
+					<p class="descdesc">Minecraft es un juego de mundo abierto, y no tiene un fin claramente definido. Esto permite una gran libertad en cuanto a la elección de su forma de jugar. A pesar de ello, el juego posee un sistema que otorga logros por completar ciertas acciones.28​29​ La cámara es en primera persona, aunque los jugadores tienen la posibilidad de cambiarla a una perspectiva de tercera persona en cualquier momento.30​ El juego se centra en la colocación y destrucción de bloques, siendo que este se compone de objetos tridimensionales cúbicos, colocados sobre un patrón de rejilla fija.
 					</p>
 				</div>
 				<div class="desc5">
-					<h2 class="titledesc">Distribuido por:</h2>
-					<p>Inhonia Studios - Powered by Gamership</p>
+					<p>Distrubido por:</p>
+					<p>Xbox Game Studio</p>
+				</div>
+				<div class="desc5">
+					<p>Desarrollado por:</p>
+					<p>Mojang</p>
 				</div>
 		</div>
 	</section>
+
+
+
+
 	<script type="text/javascript">
 		window.addEventListener("scroll", function () {
 			var header = document.querySelector("header");
 			header.classList.toggle("abajo", window.scrollY > 0);
 		})
 	</script>
+
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 	<script>
 		AOS.init();
 	</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    // Inicializa los tooltips
+    document.addEventListener('DOMContentLoaded', function() {
+      var tooltips = document.querySelectorAll('.tooltipped');
+      var options = {
+        html: true, // Habilita la opción "html" para mostrar el contenido del atributo data-tooltip
+		margin: -7
+      };
+
+      M.Tooltip.init(tooltips, options);
+    });
+  </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.7/dist/sweetalert2.all.min.js"></script>
+
+	<script src="main.js"></script>
+	<script src="../javascript/options.js"></script>
+
 </body>
 
 </html>

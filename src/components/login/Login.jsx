@@ -1,28 +1,27 @@
 import React from 'react'
 import '../static/css/layout.css'
-import axios from 'axios';
+import axios from 'axios'
 
-export const Login = () => {
+export const Login = (user) => {
 
-    const apiUrl = 'http://localhost:3000/test';
+    function Logeate () {
+      const user = {
+        name: 'Korita'
+      }
+    }
 
-    const data = { "test": "test" };
+    function Test () {
+      axios.get('http://localhost:3000/auth/microsoft/callback')
+      
 
-    const fetchDataFromApi = async () => {
 
-      axios.put(apiUrl, data)
-      .then(response => {
-        console.log(response.data);
-      })
-      .catch(error => {
-        console.error(error);
-      });
     }
 
   return (
     <div className='test'>
         <a href='http://localhost:3000/auth/microsoft'>logeate</a>
-        <button onClick={fetchDataFromApi}>test</button>
+        <a href='/auth/complete'>test</a>
+        <button onClick={Logeate}>Logeate</button>
     </div>
   )
 }

@@ -98,7 +98,15 @@ header nav a.activo {
 }
 
 .zona1 {
-    background: url(https://www.dropbox.com/s/5lnerrcxuk14gvf/gsnetbackground.png?dl=1);
+    background: url(https://www.dropbox.com/s/bt0wg7gtb5o8chp/backgroundvanilla.png?dl=1);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+}
+
+.zona1_forge {
+    background: url(https://www.dropbox.com/s/u3ocot6vzh8jst2/backgroundforge.png?dl=1);
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
@@ -228,6 +236,8 @@ header nav a.activo {
     font-weight: 100;
     letter-spacing: 0.4px;
 }
+
+
 
 
 

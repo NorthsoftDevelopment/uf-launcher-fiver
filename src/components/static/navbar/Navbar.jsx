@@ -116,7 +116,7 @@ export const Navbar = () => {
 
     return (
         <header>
-            <a href="/"><img src={logo} className="logo" alt='logo' /></a>
+            <a><Link to='/'><img src={logo} className="logo" alt='logo' /> </Link></a>
             <nav>
                 <ul>
                     <div className="search-container">
@@ -144,9 +144,9 @@ export const Navbar = () => {
                             </ul>
                         )}
                     </div>
-                        <Link to="/login">
-                            <img className="usericon"src={usericon}></img>
-                        </Link>
+                    <Link to="/login">
+                        <img className="usericon" src={usericon}></img>
+                    </Link>
 
                 </ul>
             </nav>

@@ -26,13 +26,15 @@ export const Login = () => {
   }
   return (
     <div className="test">
-      {isAuthenticated && (
-        <div>
-          <img src={user.picture} alt={user.name} />
-          <h2>{user.name}</h2>
-          <p>{user.email}</p>
-        </div>
-      )}
+      {
+        isAuthenticated && (
+          <div>
+            <img src={user.picture} alt={user.name} />
+            <h2>{user.name}</h2>
+            <p>{user.email}</p>
+          </div>
+        )
+      }
       <button onClick={() => loginWithRedirect()}>logeate</button>
       <button
         onClick={() =>

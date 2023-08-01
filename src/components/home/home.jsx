@@ -18,7 +18,7 @@ export const HomePage = () => {
                                     <p className='text-card'>Minecraft Vanilla</p>
                                 </div>
                             </a>
-                            <a href='src/launchers/1/index.html' className='no-color'>
+                            <a href='src/launchers/2/index.html' className='no-color'>
                             <div className='card' >
                                 <img className='img-card' src={background1}></img>
                                 <p className='text-card'>Minecraft Forge</p>

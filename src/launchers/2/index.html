@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Inhonia Launcher</title>
-	<link href="style.css" rel="stylesheet">
+	<link href="../1/style.css" rel="stylesheet">
 	<link rel="icon" href="../img/inhstudioslogoweb.png">
 	<link rel="stylesheet" href="../../css/_tooltip.scss" />
 	<link rel="stylesheet" href="../configs/css/configs.css" />
@@ -14,7 +14,6 @@
 </head>
 
 <body>
-
 	<header>
 		<a href="http://localhost:5173/"><img src="../../assets/launcherweb.png" class="logo"></a>
 		<nav>
@@ -24,20 +23,18 @@
 			</ul>
 		</nav>
 	</header>
-
-	<div class="zona1">
+	<div class="zona1_forge">
 		<div class="texto">
-			<h3 class="titulo">Minecraft Vanilla</h3>
-			<h6 class="autor">Xbox Game Studios • Microsoft • Mojang</h6>
+			<h3 class="titulo">Minecraft Forge</h3>
+			<h6 class="autor">Forge • Comunidad • Mods</h6>
 			<h4 class="instrucciones">Juega con Xbox Game Pass</h4>
-			<h4 class="instrucciones">Producto protegido por compra o renta con Microsoft</h4>
+			<h4 class="instrucciones">Producto creado por la comunidad para Minecraft con Mods</h4>
 			<div class="botones">
 				<button class="jugar" onClick="premiun()">Jugar (Premiun)</button>
 				<button class="jugar-terceros" onClick="nopremiun()">+</button>
 			</div>
 		</div>
 	</div>
-
 	<div class="descargatext" id="download-screen">
 		<div class="loader"></div>
 		<div class="barra-de-carga">
@@ -48,12 +45,10 @@
 		<label class="text-descarga" id="descarga"></label>
 		<a class="cancel-launch" href="./index.html">Cancelar</a>
 	</div>
-
 	<div class="zone2">
 		<div class="text-config">
 			<h3 class="titulo-config">Configuracion de lanzamiento</h3>
 			<div class="configs">
-
 				<div class="config">
 					<p class="tooltipped config-text" data-position="top"
 						data-tooltip="Esto modifica la version de Minecraft Vanilla que vas a lanzar">Version de
@@ -72,6 +67,18 @@
 						<option value="1.12">1.12</option>
 						<option value="1.8">1.8</option>
 					</select>
+
+				</div>
+				<div class="config">
+					<p class="tooltipped config-text" data-position="top"
+						data-tooltip="Esto modifica la version de Minecraft Forge que vas a lanzar, recuerda que sea la misma version de Minecraft">Version de Forge</p>
+					<select id="seleccionForge" class="select-general">
+						<option value="1.19.2">1.19.2</option>
+						<option value="1.18.2">1.18.2</option>
+						<option value="1.16.5">1.16.5</option>
+						<option value="1.12.2">1.12.2</option>
+					</select>
+
 				</div>
 
 				<div class="config">
@@ -85,7 +92,6 @@
 						<option value="2G">2GB</option>
 					</select>
 				</div>
-
 				<div class="config">
 					<p class="tooltipped config-text" data-position="top"
 						data-tooltip="Esto modifica la ruta de lanzamiento/instalacion que usara el launcher. La ruta de lanzamiento es el lugar de almacenamiento de archivos necesarios de Minecraft. Recomendamos dejarla por defecto">
@@ -93,18 +99,14 @@
 					<input class="input-general" type="text" id="seleccionRoute"
 						value="C:\\InhoniaStudios\\MinecraftVanilla"></input>
 				</div>
-
 				<div class="config">
 					<p class="tooltipped config-text" data-position="top"
 						data-tooltip="Este es el usuario que aparecera en tu perfil de Minecraft, cuando uses solo el lanzador de terceros. Este no tiene efecto cuando lo lanzas con tu cuenta de Microsoft">
 						Usuario (Solo modo de terceros)</p>
 					<input type="text" id="user" value="Usuario" class="input-general"></input>
 				</div>
-
 			</div>
-
 			<button class="savebutton" onclick="guardarConfiguraciones()">Guardar configuraciones</button>
-
 		</div>
 
 		<div class="status-content" id="status-content">
@@ -150,6 +152,9 @@
 		</div>
 	</section>
 
+
+
+
 	<script type="text/javascript">
 		window.addEventListener("scroll", function () {
 			var header = document.querySelector("header");
@@ -166,7 +171,6 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script>
-
 		document.addEventListener('DOMContentLoaded', function () {
 			var tooltips = document.querySelectorAll('.tooltipped');
 			var options = {

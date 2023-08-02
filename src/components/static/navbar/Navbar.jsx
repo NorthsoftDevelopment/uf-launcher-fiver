@@ -2,7 +2,7 @@ import { useState } from 'react'
 import logo from '../../../assets/launcherweb.png'
 import test from '../../../assets/icon/icon.png'
 import usericon from '../../../assets/icon/usericon.png'
-import '../css/Layout.css'
+import '../css/layout.css'
 import '../css/search-bar.css'
 import { useEffect } from 'react'
 import AOS from 'aos';

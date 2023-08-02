@@ -3,11 +3,10 @@ import './App.css'
 import { HomePage } from './components/home/home'
 import { Navbar } from "./components/static/navbar/Navbar";
 import { Login } from "./components/login/Login";
-import { Profile } from "./components/login/Profile";
-import { LoginComplete } from "./components/login/Complete";
 import { ProtectedRoute } from "./private/PrivateRoutes";
 
 function App() {
+
 
   const user = null
 

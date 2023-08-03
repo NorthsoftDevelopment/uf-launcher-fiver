@@ -1,4 +1,3 @@
-import React from 'react'
 import './home.css'
 import background1 from '../../assets/backgrounds/background-home.png'
 

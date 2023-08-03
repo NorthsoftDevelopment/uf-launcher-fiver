@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Fakeland Launcher</title>
+	<link href="style.css" rel="stylesheet">
+	<link rel="icon" href="../img/inhstudioslogoweb.png">
+	<script src="main.js"></script>
+</head>
+
+<body>
+	<header>
+		<a href="/"><img src="https://www.dropbox.com/s/g9honm786dodpc0/inhstudioslogoweb.png?dl=1"
+				class="logo"></a>
+
+	</header>
+	<section class="zona1">
+		<div class="texto">
+			<h3 class="titulo">Fakeland</h3>
+			<h6 class="autor">Exploracion y Aventura</h6>
+			<h4 class="instrucciones">Requiere de Java 19 Adoptium</h4>
+			<button class="jugar2" onClick="nopremiun()">Actualizar</button>
+			<button class="jugar" onClick="noupdate()">Jugar</button>
+			<label id="status"></label>
+			<div class="descargatext" id="download-screen">
+				<h1 class="descargando">Iniciando..</h1>
+				<label id="descarga"></label>
+				<h3 class="consejo">No cierres el launcher</h3>
+			</div>
+		</div>
+	</section>
+	<script type="text/javascript">
+		window.addEventListener("scroll", function () {
+			var header = document.querySelector("header");
+			header.classList.toggle("abajo", window.scrollY > 0);
+		})
+	</script>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script>
+		AOS.init();
+	</script>
+</body>
+
+</html>

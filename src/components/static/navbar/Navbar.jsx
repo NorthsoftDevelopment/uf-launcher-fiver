@@ -1,13 +1,13 @@
-import { useState } from "react";
-import logo from "../../../assets/launcherweb.png";
-import test from "../../../assets/icon/icon.png";
-import usericon from "../../../assets/icon/usericon.png";
-import "../css/Layout.css";
-import "../css/search-bar.css";
-import { useEffect } from "react";
-import AOS from "aos";
-import { Link } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useState } from 'react'
+import logo from '../../../assets/launcherweb.png'
+import test from '../../../assets/icon/icon.png'
+import usericon from '../../../assets/icon/usericon.png'
+import '../css/Layout.css'
+import '../css/search-bar.css'
+import { useEffect } from 'react'
+import AOS from 'aos';
+import { Link } from 'react-router-dom'
+import { useAuth0 } from '@auth0/auth0-react'
 
 const testData = [
   {

@@ -1,0 +1,38 @@
+.zone-mid {
+    position: relative;
+}
+
+.user-profile {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 60px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 20px;
+}
+
+.img-profile {
+    width: 160px;
+    border-radius: 100px;
+}
+
+.text-profile {
+    flex-direction: column;
+}
+
+.user-text {
+    padding: 60px;
+    font-size: 19px;
+}
+
+.title-profile {
+    font-size: 20px;
+    width: max-content;
+    padding-bottom: 5px;
+    border-bottom: 1px solid white;
+    margin-bottom: 16px;
+}
+
+

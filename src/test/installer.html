@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Descarga con barra de progreso</title>
+</head>
+<body>
+    <h1>Descarga con barra de progreso</h1>
+    <progress id="progressBar" value="0" max="100"></progress>
+    <button onclick="descargarArchivo()">Descargar Archivo</button>
+
+    <script>
+        function descargarArchivo() {
+            const url = 'http://node.inhonia.online/java17.zip'; // Reemplaza 'URL_DEL_ARCHIVO' con la ruta de descarga del archivo
+            const progressBar = document.getElementById('progressBar');
+
+            // Crea un elemento <a> temporal para descargar el archivo
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'nombre_del_archivo'; // Reemplaza 'nombre_del_archivo' con el nombre que deseas para el archivo
+
+            // Oculta el enlace y agrega el evento para eliminarlo después de la descarga
+            link.style.display = 'none';
+            document.body.appendChild(link);
+
+            // Descarga el archivo y muestra la barra de progreso
+            fetch(url)
+                .then(response => {
+                    const contentLength = response.headers.get('Content-Length');
+                    progressBar.max = contentLength;
+
+                    const reader = response.body.getReader();
+                    let receivedLength = 0;
+                    let chunks = [];
+
+                    function pump() {
+                        reader.read().then(({ done, value }) => {
+                            if (done) {
+                                const blob = new Blob(chunks);
+                                chunks = null;
+                                link.href = URL.createObjectURL(blob);
+                                link.click();
+                                document.body.removeChild(link);
+                            } else {
+                                chunks.push(value);
+                                receivedLength += value.length;
+                                progressBar.value = receivedLength;
+                                pump();
+                            }
+                        });
+                    }
+
+                    pump();
+                })
+                .catch(error => {
+                    console.error('Error al descargar el archivo:', error);
+                });
+        }
+    </script>
+</body>
+</html>

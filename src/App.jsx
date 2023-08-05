@@ -4,6 +4,7 @@ import { HomePage } from './components/home/home'
 import { Navbar } from "./components/static/navbar/Navbar";
 import { Login } from "./components/login/Login";
 import { ProtectedRoute } from "./private/PrivateRoutes";
+import { Profile } from "./components/Profile/Profile";
 
 function App() {
 
@@ -17,6 +18,11 @@ function App() {
         <Route path="/" element={
           <ProtectedRoute user={user}>
             <HomePage />
+          </ProtectedRoute>} />
+
+        <Route path="/profile" element={
+          <ProtectedRoute user={user}>
+            <Profile />
           </ProtectedRoute>} />
 
         <Route path="/login" element={<Login user={user} />} />

@@ -35,10 +35,10 @@ const testData = [
     link: "src/launchers/4/index.html",
   },
   {
-    title: "Mi cuenta",
+    title: "Logout",
     image: test,
     desc: "Mi cuenta",
-    link: "/account",
+    link: "/login",
   },
   {
     title: "¿Como jugar?",
@@ -126,7 +126,7 @@ export const Navbar = () => {
             <input
               className="input-search"
               type="text"
-              placeholder="🔍 Escribe para buscar"
+              placeholder="🔍 Buscar juegos"
               value={searchTerm}
               onChange={handleSearch}
               onFocus={() => setShowDropdown(true)}
@@ -148,10 +148,10 @@ export const Navbar = () => {
             )}
           </div>
           {isAuthenticated ? (
-            <div>
+            <Link to="/profile" className='nav-user-profile'>
               <p>{user.name}</p>
               <img className="usericon" src={user.picture} alt={user.name} />
-            </div>
+            </Link>
           ) : (
             <Link to="/login">
               <img className="usericon" src={usericon} />

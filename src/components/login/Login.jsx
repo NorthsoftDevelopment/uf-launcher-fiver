@@ -1,6 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import "../static/css/layout.css";
 import axios from "axios";
+import { Loader } from "../loader/Loader";
 
 export const Login = () => {
   const apiUrl = "http://localhost:3000/test";
@@ -22,7 +23,7 @@ export const Login = () => {
   };
 
   if (isLoading) {
-    return <div>Loading ...</div>;
+    return <Loader />;
   }
   return (
     <div className="test">

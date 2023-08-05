@@ -25,6 +25,8 @@ function App() {
             <Profile />
           </ProtectedRoute>} />
 
+          
+
         <Route path="/login" element={<Login user={user} />} />
         
       </Routes>

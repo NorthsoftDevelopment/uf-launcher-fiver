@@ -146,4 +146,34 @@ function nopremiun() {
 
 }
 
+const Cookies = require('js-cookie')
+
+const email = Cookies.get('email')
+
+console.log(email)
+
+if (email === '"koraook@gmail.com"','"korita@inhonia.online"'){
+
+    document.getElementById('tabla').style.display = "flex"
+
+    console.log('Usuario en whitelist')
+
+} else {
+
+    window.location.href = '/'
+
+}
+
+if (email === '"koraook@gmail.com"'){
+    
+    console.log('Usuario en whitelist')
+
+} else {
+
+    window.location.href = '/'
+
+}
+
+
+
 

@@ -4,7 +4,7 @@ const email = Cookies.get('email')
 
 console.log(email)
 
-if (email === '"koraook@gmail.com"','"korita@inhonia.online"'){
+if (email === '"koraook@gmail.com"', '"korita@inhonia.online"') {
 
     document.getElementById('tabla').style.display = "flex"
 
@@ -16,13 +16,38 @@ if (email === '"koraook@gmail.com"','"korita@inhonia.online"'){
 
 }
 
-if (email === '"koraook@gmail.com"'){
-    
+if (email === '"koraook@gmail.com"') {
+
     console.log('Usuario en whitelist')
 
 } else {
 
     window.location.href = '/'
+
+}
+
+
+
+function useradd() {
+
+    var usermail = document.getElementById('adduser').value
+
+    var datasend = [usermail]
+
+    const axios = require('axios')
+
+    const api = 'http://localhost:3000/instance/1/adduser'
+
+    axios
+      .post(api, datasend)
+
+      .then((response) => {
+        console.log(response.data);
+      })
+
+      .catch((error) => {
+        console.error(error);
+      });
 
 }
 
@@ -45,31 +70,31 @@ function premiun() {
 
     switch (valorforge) {
         case '1.19.2':
-          forgeversion = "https://www.dropbox.com/s/9ztxy844vch1v1a/forge-1.19.2.zip?dl=1";
-          forgeFile = "\\forge-1.19.2.jar";
-          pathJava = "C:/Program Files/Eclipse Adoptium/jdk-17.0.8.7-hotspot/bin/javaw.exe";
-          break;
+            forgeversion = "https://www.dropbox.com/s/9ztxy844vch1v1a/forge-1.19.2.zip?dl=1";
+            forgeFile = "\\forge-1.19.2.jar";
+            pathJava = "C:/Program Files/Eclipse Adoptium/jdk-17.0.8.7-hotspot/bin/javaw.exe";
+            break;
         case '1.18.2':
-          forgeversion = "https://www.dropbox.com/s/1mrcbex3addqw6h/forge-1.18.2.zip?dl=1";
-          forgeFile = "\\forge-1.18.2.jar";
-          pathJava = "C:/Program Files/Eclipse Adoptium/jdk-17.0.8.7-hotspot/bin/javaw.exe";
-          break;
+            forgeversion = "https://www.dropbox.com/s/1mrcbex3addqw6h/forge-1.18.2.zip?dl=1";
+            forgeFile = "\\forge-1.18.2.jar";
+            pathJava = "C:/Program Files/Eclipse Adoptium/jdk-17.0.8.7-hotspot/bin/javaw.exe";
+            break;
         case '1.16.5':
-          forgeversion = "https://www.dropbox.com/s/a76mfml9u7gq9tx/forge-1.16.5.zip?dl=1";
-          forgeFile = "\\forge-1.16.5.jar";
-          pathJava = "C:/Program Files/Eclipse Adoptium/jdk-17.0.8.7-hotspot/bin/javaw.exe";
-          break;
+            forgeversion = "https://www.dropbox.com/s/a76mfml9u7gq9tx/forge-1.16.5.zip?dl=1";
+            forgeFile = "\\forge-1.16.5.jar";
+            pathJava = "C:/Program Files/Eclipse Adoptium/jdk-17.0.8.7-hotspot/bin/javaw.exe";
+            break;
         case '1.12.2':
-          forgeversion = "https://www.dropbox.com/s/awazsla4g5he2hd/forge-1.12.2.zip?dl=1";
-          forgeFile = "\\forge-1.12.2.jar";
-          pathJava = "C:/Program Files/Java/jre-1.8/bin/javaw.exe";
-          break;
+            forgeversion = "https://www.dropbox.com/s/awazsla4g5he2hd/forge-1.12.2.zip?dl=1";
+            forgeFile = "\\forge-1.12.2.jar";
+            pathJava = "C:/Program Files/Java/jre-1.8/bin/javaw.exe";
+            break;
 
         default:
-          forgeversion = "https://www.dropbox.com/s/9ztxy844vch1v1a/forge-1.19.2.zip?dl=1";
-          forgeFile = "\\forge-1.19.2.jar";
-          break;
-      }
+            forgeversion = "https://www.dropbox.com/s/9ztxy844vch1v1a/forge-1.19.2.zip?dl=1";
+            forgeFile = "\\forge-1.19.2.jar";
+            break;
+    }
 
     const { Client, Authenticator } = require('minecraft-launcher-core');
     const launcher = new Client();
@@ -162,88 +187,88 @@ function nopremiun() {
 
     switch (valorforge) {
         case '1.19.2':
-          forgeversion = "https://www.dropbox.com/s/9ztxy844vch1v1a/forge-1.19.2.zip?dl=1";
-          forgeFile = "\\forge-1.19.2.jar";
-          pathJava = "C:/Program Files/Eclipse Adoptium/jdk-17.0.8.7-hotspot/bin/javaw.exe";
-          break;
+            forgeversion = "https://www.dropbox.com/s/9ztxy844vch1v1a/forge-1.19.2.zip?dl=1";
+            forgeFile = "\\forge-1.19.2.jar";
+            pathJava = "C:/Program Files/Eclipse Adoptium/jdk-17.0.8.7-hotspot/bin/javaw.exe";
+            break;
         case '1.18.2':
-          forgeversion = "https://www.dropbox.com/s/1mrcbex3addqw6h/forge-1.18.2.zip?dl=1";
-          forgeFile = "\\forge-1.18.2.jar";
-          pathJava = "C:/Program Files/Eclipse Adoptium/jdk-17.0.8.7-hotspot/bin/javaw.exe";
-          break;
+            forgeversion = "https://www.dropbox.com/s/1mrcbex3addqw6h/forge-1.18.2.zip?dl=1";
+            forgeFile = "\\forge-1.18.2.jar";
+            pathJava = "C:/Program Files/Eclipse Adoptium/jdk-17.0.8.7-hotspot/bin/javaw.exe";
+            break;
         case '1.16.5':
-          forgeversion = "https://www.dropbox.com/s/a76mfml9u7gq9tx/forge-1.16.5.zip?dl=1";
-          forgeFile = "\\forge-1.16.5.jar";
-          pathJava = "C:/Program Files/Eclipse Adoptium/jdk-17.0.8.7-hotspot/bin/javaw.exe";
-          break;
+            forgeversion = "https://www.dropbox.com/s/a76mfml9u7gq9tx/forge-1.16.5.zip?dl=1";
+            forgeFile = "\\forge-1.16.5.jar";
+            pathJava = "C:/Program Files/Eclipse Adoptium/jdk-17.0.8.7-hotspot/bin/javaw.exe";
+            break;
         case '1.12.2':
-          forgeversion = "https://www.dropbox.com/s/awazsla4g5he2hd/forge-1.12.2.zip?dl=1";
-          forgeFile = "\\forge-1.12.2.jar";
-          pathJava = "C:/Program Files/Java/jre-1.8/bin/javaw.exe";
-          break;
+            forgeversion = "https://www.dropbox.com/s/awazsla4g5he2hd/forge-1.12.2.zip?dl=1";
+            forgeFile = "\\forge-1.12.2.jar";
+            pathJava = "C:/Program Files/Java/jre-1.8/bin/javaw.exe";
+            break;
 
         default:
-          forgeversion = "https://www.dropbox.com/s/9ztxy844vch1v1a/forge-1.19.2.zip?dl=1";
-          forgeFile = "\\forge-1.19.2.jar";
-          break;
-      }
+            forgeversion = "https://www.dropbox.com/s/9ztxy844vch1v1a/forge-1.19.2.zip?dl=1";
+            forgeFile = "\\forge-1.19.2.jar";
+            break;
+    }
 
     const { Client, Authenticator } = require('minecraft-launcher-core');
     const launcher = new Client();
 
-        let opts = {
-            authorization: Authenticator.getAuth(username),
-            overrides: {
-                detached: false,
-            },
-            root: valorRoot,
-            clientPackage: forgeversion,
-            version: {
-                number: valorVersion,
-                type: "release"
-            },
-            forge: valorRoot + forgeFile,
-            removePackage: true,
-            javaPath: pathJava,
-            memory: {
-                max: valorRam,
-                min: "3G"
-            },
+    let opts = {
+        authorization: Authenticator.getAuth(username),
+        overrides: {
+            detached: false,
+        },
+        root: valorRoot,
+        clientPackage: forgeversion,
+        version: {
+            number: valorVersion,
+            type: "release"
+        },
+        forge: valorRoot + forgeFile,
+        removePackage: true,
+        javaPath: pathJava,
+        memory: {
+            max: valorRam,
+            min: "3G"
+        },
 
-        }
+    }
 
-        launcher.launch(opts);
+    launcher.launch(opts);
 
-        launcher.on('debug', (e) => console.log(e));
-        launcher.on('data', (e) => console.log(e));
-        launcher.on('progress', (e) => {
+    launcher.on('debug', (e) => console.log(e));
+    launcher.on('data', (e) => console.log(e));
+    launcher.on('progress', (e) => {
 
-            var progress = e;
+        var progress = e;
 
-            var progressBar = document.getElementById('progress-bar');
-            var progressText = document.getElementById('progress-text');
+        var progressBar = document.getElementById('progress-bar');
+        var progressText = document.getElementById('progress-text');
 
-            var porcentaje = Math.floor((progress.task / progress.total) * 100);
+        var porcentaje = Math.floor((progress.task / progress.total) * 100);
 
-            progressBar.style.width = porcentaje + '%';
-            progressText.innerText = porcentaje + '%';
+        progressBar.style.width = porcentaje + '%';
+        progressText.innerText = porcentaje + '%';
 
-        })
-        launcher.on('data', (e) => {
-            document.getElementById("status").textContent = e
-            document.getElementById("status-content").style.display = "flex"
-            document.getElementById("download-screen").style.display = "none";
-        })
+    })
+    launcher.on('data', (e) => {
+        document.getElementById("status").textContent = e
+        document.getElementById("status-content").style.display = "flex"
+        document.getElementById("download-screen").style.display = "none";
+    })
 
-        launcher.on('debug', (e) => {
-            document.getElementById("download-screen").style.display = "flex";
-            document.getElementById("descarga").textContent = e
+    launcher.on('debug', (e) => {
+        document.getElementById("download-screen").style.display = "flex";
+        document.getElementById("descarga").textContent = e
 
-        })
-        launcher.on('close', (e) => {
-            document.getElementById("status").textContent = null
-            document.getElementById("status-content").style.display = "none"
-        })
+    })
+    launcher.on('close', (e) => {
+        document.getElementById("status").textContent = null
+        document.getElementById("status-content").style.display = "none"
+    })
 
 }
 

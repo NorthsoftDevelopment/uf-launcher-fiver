@@ -255,6 +255,7 @@ header nav a.activo {
 .tabla {
     display: none;
     padding: 50px;
+    flex-direction: column;
 }
 
 

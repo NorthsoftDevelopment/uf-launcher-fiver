@@ -253,8 +253,8 @@ header nav a.activo {
 
 
 .tabla {
-    color: white;
     display: none;
+    padding: 50px;
 }
 
 

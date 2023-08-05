@@ -1,7 +1,27 @@
 import './home.css'
 import background1 from '../../assets/backgrounds/background-home.png'
+import { useAuth0 } from '@auth0/auth0-react';
+import Cookies from 'js-cookie';
+import { Loader } from '../loader/Loader';
 
 export const HomePage = () => {
+
+    const { user, isAuthenticated, isLoading } = useAuth0();
+
+    if (isLoading) return <Loader />
+
+    if (isAuthenticated) {
+    
+        const email = JSON.stringify(user.email)
+    
+        Cookies.set('email', email, { expires: 365, sameSite: 'strict' });
+
+        console.log('email actualizado')
+      } else {
+        Cookies.set('email', null, { expires: 365, sameSite: 'strict' });
+
+        console.log('no estas loegado')
+      }
 
     return (
         <div className='page'>
@@ -23,7 +43,7 @@ export const HomePage = () => {
                                 <p className='text-card'>Minecraft Forge</p>
                             </div>
                             </a>
-                            <a href='src/java/installer.html' className='no-color'>
+                            <a href='src/launchers/3/index.html' className='no-color'>
                             <div className='card'>
                                 <img className='img-card' src={background1}></img>
                                 <p className='text-card'>Minecraft Optifine</p>

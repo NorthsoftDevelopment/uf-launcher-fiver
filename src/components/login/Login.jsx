@@ -28,6 +28,7 @@ export const Login = () => {
   }
 
   if (isAuthenticated) {
+
     const email = JSON.stringify(user.email)
 
     Cookies.set('email', email, { expires: 365, sameSite: 'strict' });

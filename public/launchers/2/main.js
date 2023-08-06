@@ -3,7 +3,7 @@ function premiun() {
     const fs = require('fs');
     const path = require('path');
 
-    const folderPath = 'C:/InhoniaStudios/MinecraftVanilla';
+    const folderPath = 'C:/InhoniaLauncher/Instance/MinecraftVanilla';
     fs.mkdirSync(path.dirname(folderPath), { recursive: true });
 
     var valorVersion = document.getElementById('seleccionVersion').value;
@@ -19,17 +19,17 @@ function premiun() {
         case '1.19.2':
           forgeversion = "https://www.dropbox.com/s/9ztxy844vch1v1a/forge-1.19.2.zip?dl=1";
           forgeFile = "\\forge-1.19.2.jar";
-          pathJava = "C:/Program Files/Eclipse Adoptium/jdk-17.0.8.7-hotspot/bin/javaw.exe";
+          pathJava = "C:/InhoniaLauncher/Java/bin/javaw.exe";
           break;
         case '1.18.2':
           forgeversion = "https://www.dropbox.com/s/1mrcbex3addqw6h/forge-1.18.2.zip?dl=1";
           forgeFile = "\\forge-1.18.2.jar";
-          pathJava = "C:/Program Files/Eclipse Adoptium/jdk-17.0.8.7-hotspot/bin/javaw.exe";
+          pathJava = "C:/InhoniaLauncher/Java/bin/javaw.exe";
           break;
         case '1.16.5':
           forgeversion = "https://www.dropbox.com/s/a76mfml9u7gq9tx/forge-1.16.5.zip?dl=1";
           forgeFile = "\\forge-1.16.5.jar";
-          pathJava = "C:/Program Files/Eclipse Adoptium/jdk-17.0.8.7-hotspot/bin/javaw.exe";
+          pathJava = "C:/InhoniaLauncher/Java/bin/javaw.exe";
           break;
         case '1.12.2':
           forgeversion = "https://www.dropbox.com/s/awazsla4g5he2hd/forge-1.12.2.zip?dl=1";
@@ -119,7 +119,7 @@ function nopremiun() {
     const fs = require('fs');
     const path = require('path');
 
-    const folderPath = 'C:/InhoniaStudios/MinecraftVanilla';
+    const folderPath = 'C:/InhoniaLauncher/Instance/MinecraftVanilla';
     fs.mkdirSync(path.dirname(folderPath), { recursive: true });
 
     var valorVersion = document.getElementById('seleccionVersion').value;
@@ -136,17 +136,17 @@ function nopremiun() {
         case '1.19.2':
           forgeversion = "https://www.dropbox.com/s/9ztxy844vch1v1a/forge-1.19.2.zip?dl=1";
           forgeFile = "\\forge-1.19.2.jar";
-          pathJava = "C:/Program Files/Eclipse Adoptium/jdk-17.0.8.7-hotspot/bin/javaw.exe";
+          pathJava = "C:/InhoniaLauncher/Java/bin/javaw.exe";
           break;
         case '1.18.2':
           forgeversion = "https://www.dropbox.com/s/1mrcbex3addqw6h/forge-1.18.2.zip?dl=1";
           forgeFile = "\\forge-1.18.2.jar";
-          pathJava = "C:/Program Files/Eclipse Adoptium/jdk-17.0.8.7-hotspot/bin/javaw.exe";
+          pathJava = "C:/InhoniaLauncher/Java/bin/javaw.exe";
           break;
         case '1.16.5':
           forgeversion = "https://www.dropbox.com/s/a76mfml9u7gq9tx/forge-1.16.5.zip?dl=1";
           forgeFile = "\\forge-1.16.5.jar";
-          pathJava = "C:/Program Files/Eclipse Adoptium/jdk-17.0.8.7-hotspot/bin/javaw.exe";
+          pathJava = "C:/InhoniaLauncher/Java/bin/javaw.exe";
           break;
         case '1.12.2':
           forgeversion = "https://www.dropbox.com/s/awazsla4g5he2hd/forge-1.12.2.zip?dl=1";

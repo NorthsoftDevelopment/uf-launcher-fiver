@@ -34,32 +34,6 @@ export const Profile = () => {
           <p className='title-profile'>Mis instalacion</p>
           <button className='button-general'>Crear Instalacion</button>
         </div>
-        <div className='cards'>
-          <a href='src/launchers/1/index.html' className='no-color'>
-            <div className='card'>
-              <img className='img-card' src={background}></img>
-              <p className='text-card'>Minecraft Vanilla</p>
-            </div>
-          </a>
-          <a href='src/launchers/1/index.html' className='no-color'>
-            <div className='card'>
-              <img className='img-card' src={background}></img>
-              <p className='text-card'>Minecraft Vanilla</p>
-            </div>
-          </a>
-          <a href='src/launchers/1/index.html' className='no-color'>
-            <div className='card'>
-              <img className='img-card' src={background}></img>
-              <p className='text-card'>Minecraft Vanilla</p>
-            </div>
-          </a>
-          <a href='src/launchers/1/index.html' className='no-color'>
-            <div className='card'>
-              <img className='img-card' src={background}></img>
-              <p className='text-card'>Minecraft Vanilla</p>
-            </div>
-          </a>
-        </div>
       </div>
     </div>
   )

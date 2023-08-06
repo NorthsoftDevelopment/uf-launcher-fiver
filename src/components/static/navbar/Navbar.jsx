@@ -9,61 +9,36 @@ import AOS from 'aos';
 import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 
+//backgrounds de barra de busqueda
+import background1 from '../../../assets/backgrounds/background-home.png'
+import backgroundvanilla from '../../../assets/backgrounds/cards/vanilla-background.png'
+import backgroundforge from '../../../assets/backgrounds/cards/forge-background.png'
+
 const testData = [
   {
     title: "Minecraft Vanilla",
-    image: test,
+    image: backgroundvanilla,
     desc: "Microsoft",
     link: "src/launchers/1/index.html",
   },
   {
     title: "Minecraft Forge",
-    image: test,
+    image: backgroundforge,
     desc: "Forge - Mojang",
     link: "src/launchers/2/index.html",
   },
   {
-    title: "Minecraft Optifine",
-    image: test,
-    desc: "Optifine - Microsoft",
-    link: "src/launchers/3/index.html",
+    title: "Fakeland",
+    image: background1,
+    desc: "Korita - Friends",
+    link: "src/launchers/2/index.html",
   },
   {
-    title: "Minecraft Custom",
-    image: test,
-    desc: "Jar Personalizado",
-    link: "src/launchers/4/index.html",
-  },
-  {
-    title: "Logout",
+    title: "Pagina de Login",
     image: test,
     desc: "Mi cuenta",
     link: "/login",
-  },
-  {
-    title: "¿Como jugar?",
-    image: test,
-    desc: "Lee un documento",
-    link: "https://beta.inhonia.online/products/launcher/quick-start",
-  },
-  {
-    title: "Noticias",
-    image: test,
-    desc: "InhoniaStudios",
-    link: "/notices",
-  },
-  {
-    title: "Documentacion",
-    image: test,
-    desc: "Dirijite a tu pagina web",
-    link: "https://beta.inhonia.online/products/launcher/documentation",
-  },
-  {
-    title: "Soporte",
-    image: test,
-    desc: "Support",
-    link: "https://beta.inhonia.online/support",
-  },
+  }
 ];
 
 export const Navbar = () => {

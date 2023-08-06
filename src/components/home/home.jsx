@@ -40,13 +40,13 @@ export const HomePage = () => {
                                 image={backgroundvanilla}
                                 />
                             </a>
-                            <a href='src/launchers/2/index.html' className='no-color'>
+                            <a href='/launchers/2/index.html' className='no-color'>
                             <Card
                                 title='Minecraft Forge'
                                 image={backgroundforge}
                                 />
                             </a>
-                            <a href='src/launchers/3/index.html' className='no-color'>
+                            <a href='/launchers/3/index.html' className='no-color'>
                             <Card
                                 title='Fakeland'
                                 image={background1}

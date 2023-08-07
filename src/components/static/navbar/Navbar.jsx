@@ -38,6 +38,12 @@ const testData = [
     image: test,
     desc: "Mi cuenta",
     link: "/login",
+  },
+  {
+    title: "Test",
+    image: test,
+    desc: "Mi cuenta",
+    link: "/test",
   }
 ];
 

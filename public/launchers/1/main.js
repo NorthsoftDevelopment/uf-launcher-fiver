@@ -3,7 +3,7 @@ function premiun() {
     const fs = require('fs');
     const path = require('path');
 
-    const folderPath = 'C:/InhoniaStudios/MinecraftVanilla';
+    const folderPath = 'C:/InhoniaLauncher/Instance/MinecraftVanilla';
     fs.mkdirSync(path.dirname(folderPath), { recursive: true });
 
     var valorVersion = document.getElementById('seleccionVersion').value;
@@ -82,7 +82,7 @@ function nopremiun() {
     const fs = require('fs');
     const path = require('path');
 
-    const folderPath = 'C:/InhoniaStudios/MinecraftVanilla';
+    const folderPath = 'C:/InhoniaLauncher/Instance/MinecraftVanilla';
     fs.mkdirSync(path.dirname(folderPath), { recursive: true });
 
     var valorVersion = document.getElementById('seleccionVersion').value;
@@ -145,5 +145,9 @@ function nopremiun() {
         })
 
 }
+
+
+
+
 
 

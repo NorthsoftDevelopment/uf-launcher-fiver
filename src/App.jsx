@@ -4,6 +4,9 @@ import { HomePage } from './components/home/home'
 import { Navbar } from "./components/static/navbar/Navbar";
 import { Login } from "./components/login/Login";
 import { ProtectedRoute } from "./private/PrivateRoutes";
+import { Profile } from "./components/Profile/Profile";
+import { LauncherDesigned } from "./components/Launcher/Designed/LauncherDesigned";
+import { LaunchVanilla } from "./components/Launcher/Instances/Vanilla/LaunchVanilla";
 
 function App() {
 
@@ -18,6 +21,18 @@ function App() {
           <ProtectedRoute user={user}>
             <HomePage />
           </ProtectedRoute>} />
+
+        <Route path="/profile" element={
+          <ProtectedRoute user={user}>
+            <Profile />
+          </ProtectedRoute>} />
+
+          <Route path="/test" element={
+          <ProtectedRoute user={user}>
+           <LaunchVanilla />
+          </ProtectedRoute>} /> 
+
+          
 
         <Route path="/login" element={<Login user={user} />} />
         

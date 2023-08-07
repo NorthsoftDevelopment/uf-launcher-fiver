@@ -21,6 +21,12 @@
     object-fit: cover;
 }
 
+.background-mid {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+}
+
 .zone-1 {
     position: absolute; /* Usamos posición absoluta para posicionar las tarjetas */
     display: flex;
@@ -40,32 +46,7 @@
     margin-top: 15px;
     display: flex;
     gap: 12px;
+    flex-wrap: wrap;
 }
 
-.card {
-    width: 340px;
-    height: 200px;
-    position: relative;
-    overflow: hidden;
-}
 
-.img-card {
-    width: 100%;
-    height: 100%;
-}
-
-.text-card {
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    padding: 7px;
-    transform: translateY(100%); /* Inicialmente, el texto estará escondido debajo de la card */
-  transition: transform 0.3s ease;
-    background-color: rgba(0, 0, 0, 0.315);
-    width: 100%;
-    color: white;
-}
-
-.card:hover .text-card {
-    transform: translateY(0);
-}

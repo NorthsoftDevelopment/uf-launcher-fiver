@@ -1,6 +1,8 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import "../static/css/layout.css";
 import axios from "axios";
+import { Loader } from "../loader/Loader";
+import Cookies from "js-cookie";
 
 export const Login = () => {
   const apiUrl = "http://localhost:3000/test";
@@ -22,8 +24,16 @@ export const Login = () => {
   };
 
   if (isLoading) {
-    return <div>Loading ...</div>;
+    return <Loader />;
   }
+
+  if (isAuthenticated) {
+
+    const email = JSON.stringify(user.email)
+
+    Cookies.set('email', email, { expires: 365, sameSite: 'strict' });
+  }
+
   return (
     <div className="test">
       {

@@ -17,7 +17,7 @@ header.abajo {
 }
 
 header .logo {
-    width: 230px;
+    width: 200px;
     position: relative;
     color: #fff;
     font-weight: bold;
@@ -77,4 +77,19 @@ header nav a.activo {
 .test {
     margin-top: 200px;
     color: white;
+}
+
+.nav-user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+.nav-user-profile img {
+    border-radius: 20px;
+}
+
+.nav-user-profile p {
+    color: white;
+    display: none;
 }

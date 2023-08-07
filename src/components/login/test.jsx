@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 import { Loader } from '../loader/Loader';
 import './login.css'
 
-export const Profile = () => {
+export const Test = () => {
   const [profileImageUrl, setProfileImageUrl] = useState(null);
 
   useEffect(() => {

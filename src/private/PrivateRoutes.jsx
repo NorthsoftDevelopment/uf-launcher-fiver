@@ -1,8 +1,8 @@
 import { Navigate } from "react-router-dom"
 
-export const ProtectedRoute = ({ user, children }) => {
+export const ProtectedRoute = ({ username, children }) => {
 
-    if (user) {
+    if (username === undefined) {
         return <Navigate to="/login" />;
       } else {
         return children;

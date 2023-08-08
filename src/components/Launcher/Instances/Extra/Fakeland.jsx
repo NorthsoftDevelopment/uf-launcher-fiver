@@ -1,6 +1,5 @@
-import React from 'react'
 import { LauncherDesigned } from '../../Designed/LauncherDesigned'
-import { OptionsLaunch } from '../../Options/Options'
+import { OptionsLaunchPrivate } from "../../Options/OptionsPrivate";
 
 export const LaunchFakeland = () => {
 
@@ -22,7 +21,7 @@ export const LaunchFakeland = () => {
 
       />
 
-      <OptionsLaunch />
+      <OptionsLaunchPrivate />
 
     </div>
   )

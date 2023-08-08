@@ -18,7 +18,7 @@ axios.post(api, docRef)
 
         const whitelist = response.data
 
-        if (email === 'koraook@gmail.com') {
+        if (email === 'matiascorallodev@gmail.com') {
 
             document.getElementById('tabla').style.display = "flex"
             
@@ -54,6 +54,7 @@ axios.post(api, docRef)
 
 
 
+// eslint-disable-next-line no-unused-vars
 function useradd() {
 
     var usermail = document.getElementById('adduser').value

@@ -1,37 +1,38 @@
-import { useState } from 'react'
-import logo from '../../../assets/launcherweb.png'
-import test from '../../../assets/icon/icon.png'
-import usericon from '../../../assets/icon/usericon.png'
-import '../css/layout.css'
-import '../css/search-bar.css'
-import { useEffect } from 'react'
-import AOS from 'aos';
-import { Link } from 'react-router-dom'
-import { useAuth0 } from '@auth0/auth0-react'
-
-//backgrounds de barra de busqueda
-import background1 from '../../../assets/backgrounds/background-home.png'
-import backgroundvanilla from '../../../assets/backgrounds/cards/vanilla-background.png'
-import backgroundforge from '../../../assets/backgrounds/cards/forge-background.png'
+import { useState } from "react";
+import logo from "../../../assets/launcherweb.png";
+import test from "../../../assets/icon/icon.png";
+import usericon from "../../../assets/icon/usericon.png";
+import "../css/Layout.css";
+import "../css/search-bar.css";
+import { useEffect } from "react";
+import AOS from "aos";
+import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const testData = [
   {
     title: "Minecraft Vanilla",
-    image: backgroundvanilla,
+    image: test,
     desc: "Microsoft",
     link: "src/launchers/1/index.html",
   },
   {
     title: "Minecraft Forge",
-    image: backgroundforge,
+    image: test,
     desc: "Forge - Mojang",
     link: "src/launchers/2/index.html",
   },
   {
-    title: "Fakeland",
-    image: background1,
-    desc: "Korita - Friends",
-    link: "src/launchers/2/index.html",
+    title: "Minecraft Optifine",
+    image: test,
+    desc: "Optifine - Microsoft",
+    link: "src/launchers/3/index.html",
+  },
+  {
+    title: "Minecraft Custom",
+    image: test,
+    desc: "Jar Personalizado",
+    link: "src/launchers/4/index.html",
   },
   {
     title: "Pagina de Login",
@@ -40,11 +41,29 @@ const testData = [
     link: "/login",
   },
   {
-    title: "Test",
+    title: "¿Como jugar?",
     image: test,
-    desc: "Mi cuenta",
-    link: "/test",
-  }
+    desc: "Lee un documento",
+    link: "https://beta.inhonia.online/products/launcher/quick-start",
+  },
+  {
+    title: "Noticias",
+    image: test,
+    desc: "InhoniaStudios",
+    link: "/notices",
+  },
+  {
+    title: "Documentacion",
+    image: test,
+    desc: "Dirijite a tu pagina web",
+    link: "https://beta.inhonia.online/products/launcher/documentation",
+  },
+  {
+    title: "Soporte",
+    image: test,
+    desc: "Support",
+    link: "https://beta.inhonia.online/support",
+  },
 ];
 
 export const Navbar = () => {
@@ -107,7 +126,7 @@ export const Navbar = () => {
             <input
               className="input-search"
               type="text"
-              placeholder="🔍 Buscar juegos"
+              placeholder="🔍 Escribe para buscar"
               value={searchTerm}
               onChange={handleSearch}
               onFocus={() => setShowDropdown(true)}
@@ -129,10 +148,11 @@ export const Navbar = () => {
             )}
           </div>
           {isAuthenticated ? (
-            <Link to="/profile" className='nav-user-profile'>
-              <p>{user.name}</p>
-              <img className="usericon" src={user.picture} alt={user.name} />
+            <div>
+              <Link to="/profile" className="nav-user-profile">
+              <img className="usericon" src={user.picture} />
             </Link>
+            </div>
           ) : (
             <Link to="/login">
               <img className="usericon" src={usericon} />

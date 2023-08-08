@@ -1,0 +1,22 @@
+/* Estilo para el input */
+#tabla {
+    color: white;
+    background-color: #252525;
+    border-style: none;
+    padding: 7px;
+    padding-inline: 15px;
+    font-size: 16px;
+    min-width: 350px;
+  }
+  
+  /* Estilo para el botón */
+  #boton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

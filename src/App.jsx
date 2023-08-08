@@ -9,44 +9,45 @@ import { LauncherDesigned } from "./components/Launcher/Designed/LauncherDesigne
 import { LaunchVanilla } from "./components/Launcher/Instances/Vanilla/LaunchVanilla";
 import { LaunchForge } from "./components/Launcher/Instances/Forge/LaunchForge";
 import { LaunchFakeland } from "./components/Launcher/Instances/Extra/Fakeland";
+import { useAuth0 } from "@auth0/auth0-react";
+import Cookies from "js-cookie";
 
 function App() {
 
-
-  const user = null
+  const username = null
 
   return (
     <Router>
       <Navbar />
       <Routes>
         <Route path="/" element={
-          <ProtectedRoute user={user}>
+          <ProtectedRoute user={username}>
             <HomePage />
           </ProtectedRoute>} />
 
         <Route path="/profile" element={
-          <ProtectedRoute user={user}>
+          <ProtectedRoute user={username}>
             <Profile />
           </ProtectedRoute>} />
 
           <Route path="/launch/vanilla" element={
-          <ProtectedRoute user={user}>
+          <ProtectedRoute user={username}>
            <LaunchVanilla />
           </ProtectedRoute>} /> 
 
           <Route path="/launch/forge" element={
-          <ProtectedRoute user={user}>
+          <ProtectedRoute user={username}>
            <LaunchForge />
           </ProtectedRoute>} /> 
 
           <Route path="/launch/extra1" element={
-          <ProtectedRoute user={user}>
+          <ProtectedRoute user={username}>
            <LaunchFakeland />
           </ProtectedRoute>} /> 
 
           
 
-        <Route path="/login" element={<Login user={user} />} />
+        <Route path="/login" element={<Login user={username} />} />
         
       </Routes>
     </Router>

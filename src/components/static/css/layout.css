@@ -75,8 +75,8 @@ header nav a.activo {
 }
 
 .test {
-    margin-top: 200px;
     color: white;
+    display:felx;
 }
 
 .nav-user-profile {

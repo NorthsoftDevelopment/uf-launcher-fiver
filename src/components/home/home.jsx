@@ -34,19 +34,19 @@ export const HomePage = () => {
                     <div className='zone-1'>
                         <h3 className='title-general'>Lo mas visto</h3>
                         <div className='cards'>
-                            <a href='/launchers/1/index.html' className='no-color'>
+                            <a href='/launch/vanilla' className='no-color'>
                                 <Card
                                 title='Minecraft Vanilla'
                                 image={backgroundvanilla}
                                 />
                             </a>
-                            <a href='/launchers/2/index.html' className='no-color'>
+                            <a href='/launch/forge' className='no-color'>
                             <Card
                                 title='Minecraft Forge'
                                 image={backgroundforge}
                                 />
                             </a>
-                            <a href='/launchers/3/index.html' className='no-color'>
+                            <a href='/launch/extra1' className='no-color'>
                             <Card
                                 title='Fakeland'
                                 image={background1}

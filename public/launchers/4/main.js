@@ -21,6 +21,7 @@ axios.post(api, docRef)
         if (email === 'koraook@gmail.com') {
 
             document.getElementById('tabla').style.display = "flex"
+            
             console.log('Usuario Administrador')
         
         } else {

@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 import React, { useState, useEffect } from 'react';
 
-export const OptionsLaunch = () => {
+export const OptionsLaunch = ({ extraFunctions }) => {
     const [version, setVersion] = useState('');
     const [ram, setRam] = useState('');
     const [route, setRoute] = useState('');
@@ -31,10 +31,10 @@ export const OptionsLaunch = () => {
     }, []);
 
     const handleSaveConfig = () => {
-        Cookies.set('versionSeleccionada', version);
-        Cookies.set('memoriaRam', ram);
-        Cookies.set('rutaPersonalizada', route);
-        Cookies.set('username', username);
+        Cookies.set('versionSeleccionada', version, { expires: 7, sameSite: 'strict' });
+        Cookies.set('memoriaRam', ram, { expires: 7, sameSite: 'strict' });
+        Cookies.set('rutaPersonalizada', route, { expires: 7, sameSite: 'strict' });
+        Cookies.set('username', username, { expires: 7, sameSite: 'strict' });
 
         console.log('Save New Setting.... Complete')
     };
@@ -83,6 +83,10 @@ export const OptionsLaunch = () => {
                                 <option value="1.12">1.12</option>
                                 <option value="1.8">1.8</option>
                             </select>
+                        </div>
+
+                        <div>
+                            {extraFunctions}
                         </div>
 
                         <div className="config">

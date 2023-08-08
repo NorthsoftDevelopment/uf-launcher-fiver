@@ -1,6 +1,4 @@
-import React from 'react'
 import './profile.css'
-import background from '../../assets/backgrounds/background-home.png'
 import { useAuth0 } from "@auth0/auth0-react";
 import { Loader } from '../loader/Loader';
 

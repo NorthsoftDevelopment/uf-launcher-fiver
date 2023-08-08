@@ -1,6 +1,5 @@
 import './launcher.css'
 import './config.css'
-import { OptionsLaunch } from '../Options/Options'
 
 export const LauncherDesigned = ({background, title, autor, launch}) => {
 
@@ -28,14 +27,10 @@ export const LauncherDesigned = ({background, title, autor, launch}) => {
                         <div className="porcentaje" id="progress-text">0%</div>
                     </div>
                     <label className="text-descarga" id="descarga"></label>
-                    <a className="cancel-launch" href="./index.html">Cancelar</a>
+                    <a className="cancel-launch" href="/">Cancelar</a>
                 </div>
 
             </div>
-
-            <OptionsLaunch />
-               
-        
             
             <section className="zona3">
                 <h3 className="titledesc">Descripcion</h3>

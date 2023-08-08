@@ -6,6 +6,8 @@ import { Login } from "./components/login/Login";
 import { ProtectedRoute } from "./private/PrivateRoutes";
 import { Profile } from "./components/Profile/Profile";
 import { LaunchVanilla } from "./components/Launcher/Instances/Vanilla/LaunchVanilla";
+import { LaunchForge } from "./components/Launcher/Instances/Forge/LaunchForge";
+import { LaunchFakeland } from "./components/Launcher/Instances/Extra/Fakeland";
 
 function App() {
 
@@ -26,9 +28,19 @@ function App() {
             <Profile />
           </ProtectedRoute>} />
 
-          <Route path="/test" element={
+          <Route path="/launch/vanilla" element={
           <ProtectedRoute user={user}>
            <LaunchVanilla />
+          </ProtectedRoute>} /> 
+
+          <Route path="/launch/forge" element={
+          <ProtectedRoute user={user}>
+           <LaunchForge />
+          </ProtectedRoute>} /> 
+
+          <Route path="/launch/extra1" element={
+          <ProtectedRoute user={user}>
+           <LaunchFakeland />
           </ProtectedRoute>} /> 
 
           

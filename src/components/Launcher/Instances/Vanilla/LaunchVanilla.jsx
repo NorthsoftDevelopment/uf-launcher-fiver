@@ -1,25 +1,24 @@
-import React from 'react'
 import { LauncherDesigned } from '../../Designed/LauncherDesigned'
-import background from '../../../../assets/backgrounds/background-home.png'
+import { OptionsLaunch } from '../../Options/Options'
+import { runVanillaPremiun } from '../../Options/Launch'
 
 export const LaunchVanilla = () => {
 
-    const test = () => {
-
-        console.log('test ready')
-
-    }
-
   return (
+
     <div>
         <LauncherDesigned 
         
         title='Minecraft Vanilla'
-        background={background}
-        autor='Korita'
-        launch={test}
-        
-        />
+        background='https://www.dropbox.com/s/bt0wg7gtb5o8chp/backgroundvanilla.png?dl=1'
+        autor='Xbox Game Studios • Microsoft • Mojang'
+        launch={runVanillaPremiun}
+
+      />
+
+      <OptionsLaunch />
+
     </div>
   )
 }
+

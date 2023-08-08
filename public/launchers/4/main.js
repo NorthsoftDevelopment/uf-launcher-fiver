@@ -18,9 +18,10 @@ axios.post(api, docRef)
 
         const whitelist = response.data
 
-        if (email === 'koraook@gmail.com') {
+        if (email === 'matiascorallodev@gmail.com') {
 
             document.getElementById('tabla').style.display = "flex"
+            
             console.log('Usuario Administrador')
         
         } else {

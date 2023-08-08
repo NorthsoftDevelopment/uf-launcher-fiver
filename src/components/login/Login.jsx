@@ -1,59 +1,46 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import "../static/css/layout.css";
-import axios from "axios";
 import { Loader } from "../loader/Loader";
 import Cookies from "js-cookie";
 
 export const Login = () => {
-  const apiUrl = "http://localhost:3000/test";
   const { user, isAuthenticated, isLoading } = useAuth0();
   const { loginWithRedirect } = useAuth0();
   const { logout } = useAuth0();
-
-  const data = { test: "test" };
-
-  const fetchDataFromApi = async () => {
-    axios
-      .put(apiUrl, data)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
 
   if (isLoading) {
     return <Loader />;
   }
 
   if (isAuthenticated) {
+    const email = JSON.stringify(user.email);
 
-    const email = JSON.stringify(user.email)
-
-    Cookies.set('email', email, { expires: 365, sameSite: 'strict' });
+    Cookies.set("email", email, { expires: 365, sameSite: "strict" });
   }
 
   return (
-    <div className="test">
-      {
-        isAuthenticated && (
-          <div>
-            <img src={user.picture} alt={user.name} />
-            <h2>{user.name}</h2>
-            <p>{user.email}</p>
-          </div>
-        )
-      }
-      <button onClick={() => loginWithRedirect()}>logeate</button>
-      <button
-        onClick={() =>
-          logout({ logoutParams: { returnTo: window.location.origin } })
-        }
-      >
-        Log Out
-      </button>
-      <button onClick={fetchDataFromApi}>test</button>
+    <div className="">
+      <img
+        className="background-all"
+        src="https://newsonline.com.ar/wp-content/uploads/2022/12/lionel-messi-copa-del-mundo.png"
+        alt=""
+      />
+      <div className="left-side">
+        <button
+          className="button-general-log"
+          onClick={() => loginWithRedirect()}
+        >
+          logeate
+        </button>
+        <button
+          className="button-general-log"
+          onClick={() =>
+            logout({ logoutParams: { returnTo: window.location.origin } })
+          }
+        >
+          Log Out
+        </button>
+      </div>
     </div>
   );
 };

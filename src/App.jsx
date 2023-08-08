@@ -9,44 +9,45 @@ import { LaunchVanilla } from "./components/Launcher/Instances/Vanilla/LaunchVan
 import { LaunchForge } from "./components/Launcher/Instances/Forge/LaunchForge";
 import { LaunchFakeland } from "./components/Launcher/Instances/Extra/Fakeland";
 import { useAuth0 } from "@auth0/auth0-react";
-import Cookies from "js-cookie";
+import { Loader } from "./components/loader/Loader";
 
 function App() {
+  const { isAuthenticated, isLoading } = useAuth0();
 
-  const username = null
+  if (isLoading) return <Loader />
 
   return (
     <Router>
       <Navbar />
       <Routes>
         <Route path="/" element={
-          <ProtectedRoute user={username}>
+          <ProtectedRoute isAuthenticated={isAuthenticated}>
             <HomePage />
           </ProtectedRoute>} />
 
         <Route path="/profile" element={
-          <ProtectedRoute user={username}>
+          <ProtectedRoute isAuthenticated={isAuthenticated}>
             <Profile />
           </ProtectedRoute>} />
 
           <Route path="/launch/vanilla" element={
-          <ProtectedRoute user={username}>
+          <ProtectedRoute isAuthenticated={isAuthenticated}>
            <LaunchVanilla />
           </ProtectedRoute>} /> 
 
           <Route path="/launch/forge" element={
-          <ProtectedRoute user={username}>
+          <ProtectedRoute isAuthenticated={isAuthenticated}>
            <LaunchForge />
           </ProtectedRoute>} /> 
 
           <Route path="/launch/extra1" element={
-          <ProtectedRoute user={username}>
+          <ProtectedRoute isAuthenticated={isAuthenticated}>
            <LaunchFakeland />
           </ProtectedRoute>} /> 
 
           
 
-        <Route path="/login" element={<Login user={username} />} />
+        <Route path="/login" element={<Login />} />
         
       </Routes>
     </Router>

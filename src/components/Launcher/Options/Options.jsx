@@ -117,19 +117,6 @@ export const OptionsLaunch = () => {
                 </div>
             </div>
 
-            <div id="tabla" className="tabla">
-                <h2 className="titulo-config">Administrador</h2>
-                <div className="configs">
-                    <div className="config">
-                        <p className="tooltipped config-text" data-position="top"
-                            data-tooltip="Esto modifica la RAM maxima de tu PC que se usara para lanzar. Recomendamos que uses no mas de 4GB para la versiones inferiores a la 1.18.2">
-                            Agregar usaurio</p>
-                        <input type="text" placeholder="Email" id="adduser"></input>
-                        <button onClick={null}>Agregar Usuario</button>
-                    </div>
-                </div>
-            </div>
-
             <div className="status-content" id="status-content">
                 <h3 className="titulo-config">Consola de Debug</h3>
                 <label id="status"></label>

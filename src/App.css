@@ -97,3 +97,13 @@ html::-webkit-scrollbar-thumb {
 :focus {
   outline: none;
 }
+
+.no-list {
+  list-style: none;
+  margin-top: 5px;
+}
+
+.no-list li {
+  background-color: #252525;
+  padding: 20px;
+}

@@ -6,7 +6,7 @@ import "./options.css";
 import "../../Launcher/Designed/config.css";
 import axios from "axios";
 
-export const OptionsLaunchPrivate = ({ extraFunctions }) => {
+export const OptionsLaunchPrivate = ({ extraFunctions, admin }) => {
   const [version, setVersion] = useState("");
   const [ram, setRam] = useState("");
   const [route, setRoute] = useState("");
@@ -48,8 +48,8 @@ export const OptionsLaunchPrivate = ({ extraFunctions }) => {
       setWhitelist(response.data);
       console.log(response.data);
 
-      if (email === "matiascorallodev@gmail.com") {
-        document.getElementById("tabla").style.display = "flex";
+      if (email === admin) {
+        document.getElementById("admin").style.display = "flex";
         console.log("Usuario Administrador");
       } else {
         console.log("not admin user");
@@ -122,7 +122,7 @@ export const OptionsLaunchPrivate = ({ extraFunctions }) => {
   };
 
   return (
-    <div>
+    <div className="private-launch" id="admin">
       <div className="zone2">
         <div className="text-config">
           <h3 className="titulo-config">Configuracion de lanzamiento</h3>
@@ -219,7 +219,7 @@ export const OptionsLaunchPrivate = ({ extraFunctions }) => {
         </div>
       </div>
 
-      <div id="tabla" className="tabla">
+      <div className="tabla">
         <h2 className="titulo-config">Administrador</h2>
         <div className="configs">
           <div className="config">
@@ -233,8 +233,9 @@ export const OptionsLaunchPrivate = ({ extraFunctions }) => {
             <input type="text" placeholder="Email" id="adduser"></input>
             <button onClick={null}>Agregar Usuario</button>
             <div>
+              <h3>Usuarios Agregados</h3>
               {whitelist.map((item, index) => (
-                <ul key={index + 1}>
+                <ul key={index + 1} className="no-list">
                   <li>{item}</li>
                 </ul>
               ))}

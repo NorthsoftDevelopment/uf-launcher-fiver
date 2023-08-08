@@ -1,10 +1,19 @@
-import { Navigate } from "react-router-dom"
+import { Navigate } from "react-router-dom";
 
-export const ProtectedRoute = ({ username, children }) => {
+export const ProtectedRoute = ({ isAuthenticated, children }) => {
 
-    if (username === undefined) {
-        return <Navigate to="/login" />;
-      } else {
-        return children;
-      }
+  if (!isAuthenticated) {
+
+    console.log('no estas logeado')
+
+    return <Navigate to='/login' />
+
+
+
+  } else {
+
+    console.log('Estas logeado')
+
+    return children;
+  }
 }

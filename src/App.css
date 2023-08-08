@@ -26,6 +26,17 @@ html {
   filter:brightness(0.4);
 }
 
+.left-side {
+  background-color: #141414;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 40%;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .full {
   height: 100vh;

@@ -1,13 +1,18 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-undef */
 import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
 import "./options.css";
 import "../../Launcher/Designed/config.css";
+import axios from "axios";
 
 export const OptionsLaunchPrivate = ({ extraFunctions }) => {
   const [version, setVersion] = useState("");
   const [ram, setRam] = useState("");
   const [route, setRoute] = useState("");
   const [username, setUsername] = useState("");
+  const [whitelist, setWhitelist] = useState([]);
+  const email = Cookies.get("email");
 
   useEffect(() => {
     const versionGuardada = Cookies.get("versionSeleccionada");
@@ -30,7 +35,38 @@ export const OptionsLaunchPrivate = ({ extraFunctions }) => {
     if (usernameGuardada) {
       setUsername(usernameGuardada);
     }
+
+    fetchData();
   }, []);
+
+  const fetchData = async () => {
+    try {
+      const api = "https://inhonia-launcher-api.vercel.app/instance/whitelist";
+      const docUbi = "oEFiPXiavEfQlfHQ0mgC";
+      const docRef = [docUbi];
+      const response = await axios.post(api, docRef);
+      setWhitelist(response.data);
+      console.log(response.data);
+
+      if (email === "matiascorallodev@gmail.com") {
+        document.getElementById("tabla").style.display = "flex";
+        console.log("Usuario Administrador");
+      } else {
+        console.log("not admin user");
+      }
+
+      if (response.data.includes(email)) {
+        console.log("Usuario en whitelist");
+      } else {
+        window.location.href = "/";
+      }
+
+      console.log("Successfully Get");
+    } catch (error) {
+      console.error(error);
+      window.location.href = "/";
+    }
+  };
 
   const handleSaveConfig = () => {
     Cookies.set("versionSeleccionada", version, {
@@ -50,6 +86,7 @@ export const OptionsLaunchPrivate = ({ extraFunctions }) => {
     const folderPath = valorRoot;
 
     const fs = require("fs");
+    // eslint-disable-next-line no-unused-vars
     const path = require("path");
 
     fs.rmdir(folderPath, { recursive: true }, (err) => {
@@ -61,50 +98,8 @@ export const OptionsLaunchPrivate = ({ extraFunctions }) => {
     });
   };
 
-  const Cookies = require("js-cookie");
-  const axios = require("axios");
-
-  const email = Cookies.get("email");
-
-  console.log(email);
-
-  const api = "https://inhonia-launcher-api.vercel.app/instance/whitelist";
-  const docUbi = "oEFiPXiavEfQlfHQ0mgC";
-
-  const docRef = [docUbi];
-
-  axios
-    .post(api, docRef)
-
-    .then((response) => {
-      console.log(response.data);
-
-      const whitelist = response.data;
-
-      if (email === "matiascorallodev@gmail.com") {
-        document.getElementById("tabla").style.display = "flex";
-        console.log("Usuario Administrador");
-      } else {
-        console.log("not admin user");
-      }
-
-      if (whitelist.includes(email)) {
-        console.log("Usuario en whitelist");
-      } else {
-        window.location.href = "/";
-      }
-
-      console.log("Sucessfully Get");
-    })
-
-    .catch((error) => {
-      console.error(error);
-
-      window.location.href = "/";
-    });
-
   // eslint-disable-next-line no-unused-vars
-  function useradd() {
+  const handleUserAdd = () => {
     var usermail = document.getElementById("adduser").value;
     var email = [usermail];
 
@@ -117,17 +112,14 @@ export const OptionsLaunchPrivate = ({ extraFunctions }) => {
 
     axios
       .post(api, datasend)
-
       .then((response) => {
         console.log(response.data);
-
-        console.log("Send Sucessfully");
+        console.log("Send Successfully");
       })
-
       .catch((error) => {
         console.error(error);
       });
-  }
+  };
 
   return (
     <div>
@@ -240,13 +232,13 @@ export const OptionsLaunchPrivate = ({ extraFunctions }) => {
             </p>
             <input type="text" placeholder="Email" id="adduser"></input>
             <button onClick={null}>Agregar Usuario</button>
-          </div>
-          <div>
-            {whitelist.map((email, index) => {
-              <ul>
-                <li key={index + 1}>{email}</li>
-              </ul>;
-            })}
+            <div>
+              {whitelist.map((item, index) => (
+                <ul key={index + 1}>
+                  <li>{item}</li>
+                </ul>
+              ))}
+            </div>
           </div>
         </div>
       </div>

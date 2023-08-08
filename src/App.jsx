@@ -5,7 +5,6 @@ import { Navbar } from "./components/static/navbar/Navbar";
 import { Login } from "./components/login/Login";
 import { ProtectedRoute } from "./private/PrivateRoutes";
 import { Profile } from "./components/Profile/Profile";
-import { LauncherDesigned } from "./components/Launcher/Designed/LauncherDesigned";
 import { LaunchVanilla } from "./components/Launcher/Instances/Vanilla/LaunchVanilla";
 import { LaunchForge } from "./components/Launcher/Instances/Forge/LaunchForge";
 import { LaunchFakeland } from "./components/Launcher/Instances/Extra/Fakeland";

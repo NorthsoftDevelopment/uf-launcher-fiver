@@ -6,7 +6,7 @@ import "./options.css";
 import "../../Launcher/Designed/config.css";
 import axios from "axios";
 
-export const OptionsLaunchPrivate = ({ extraFunctions, admin }) => {
+export const OptionsLaunchPrivate = ({ extraFunctions, admin, documento }) => {
   const [version, setVersion] = useState("");
   const [ram, setRam] = useState("");
   const [route, setRoute] = useState("");
@@ -42,7 +42,7 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin }) => {
   const fetchData = async () => {
     try {
       const api = "https://inhonia-launcher-api.vercel.app/instance/whitelist";
-      const docUbi = "oEFiPXiavEfQlfHQ0mgC";
+      const docUbi = {documento};
       const docRef = [docUbi];
       const response = await axios.post(api, docRef);
       setWhitelist(response.data);
@@ -105,7 +105,7 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin }) => {
 
     const datasend = {
       email: email,
-      ubicacion: "oEFiPXiavEfQlfHQ0mgC",
+      ubicacion: {documento},
     };
 
     const api = "https://inhonia-launcher-api.vercel.app/instance/adduser";

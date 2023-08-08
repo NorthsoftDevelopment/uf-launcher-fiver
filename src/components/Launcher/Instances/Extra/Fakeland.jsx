@@ -24,7 +24,8 @@ export const LaunchFakeland = () => {
       <OptionsLaunchPrivate
 
       admin='koraook@gmail.com'
-           
+      documento='oEFiPXiavEfQlfHQ0mgC'
+
       />
 
     </div>

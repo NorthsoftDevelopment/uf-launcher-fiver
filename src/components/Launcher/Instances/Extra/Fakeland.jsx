@@ -1,4 +1,6 @@
+import { Loader } from '../../../loader/Loader';
 import { LauncherDesigned } from '../../Designed/LauncherDesigned'
+import { PrivateInstance } from '../../Options/Extra/PrivateInstance';
 import { OptionsLaunchPrivate } from "../../Options/OptionsPrivate";
 
 export const LaunchFakeland = () => {
@@ -9,24 +11,22 @@ export const LaunchFakeland = () => {
 
   }
 
+
   return (
     <div>
 
-      <LauncherDesigned
+      <PrivateInstance>
 
-        title='Fakeland'
-        background='https://www.dropbox.com/s/bt0wg7gtb5o8chp/backgroundvanilla.png?dl=1'
-        autor='Korita • Amigos • Serie'
-        launch={test}
+        <LauncherDesigned
 
-      />
+          title='Fakeland'
+          background='https://www.dropbox.com/s/bt0wg7gtb5o8chp/backgroundvanilla.png?dl=1'
+          autor='Korita • Amigos • Serie'
+          launch={test}
 
-      <OptionsLaunchPrivate
+        />
 
-      admin='koraook@gmail.com'
-      documento='oEFiPXiavEfQlfHQ0mgC'
-
-      />
+      </PrivateInstance>
 
     </div>
   )

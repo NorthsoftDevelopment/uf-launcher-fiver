@@ -5,8 +5,11 @@ import { useState, useEffect } from "react";
 import "./options.css";
 import "../../Launcher/Designed/config.css";
 import axios from "axios";
+import toast from "react-hot-toast";
 
-export const OptionsLaunchPrivate = ({ extraFunctions, admin, documento }) => {
+
+export const OptionsLaunchPrivate = ({ extraFunctions, admin }) => {
+
   const [version, setVersion] = useState("");
   const [ram, setRam] = useState("");
   const [route, setRoute] = useState("");
@@ -36,37 +39,8 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin, documento }) => {
       setUsername(usernameGuardada);
     }
 
-    fetchData();
+
   }, []);
-
-  const fetchData = async () => {
-    try {
-      const api = "https://inhonia-launcher-api.vercel.app/instance/whitelist";
-      const docUbi = {documento};
-      const docRef = [docUbi];
-      const response = await axios.post(api, docRef);
-      setWhitelist(response.data);
-      console.log(response.data);
-
-      if (email === admin) {
-        document.getElementById("admin").style.display = "flex";
-        console.log("Usuario Administrador");
-      } else {
-        console.log("not admin user");
-      }
-
-      if (response.data.includes(email)) {
-        console.log("Usuario en whitelist");
-      } else {
-        window.location.href = "/";
-      }
-
-      console.log("Successfully Get");
-    } catch (error) {
-      console.error(error);
-      window.location.href = "/";
-    }
-  };
 
   const handleSaveConfig = () => {
     Cookies.set("versionSeleccionada", version, {
@@ -76,11 +50,12 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin, documento }) => {
     Cookies.set("memoriaRam", ram, { expires: 7, sameSite: "strict" });
     Cookies.set("rutaPersonalizada", route, { expires: 7, sameSite: "strict" });
     Cookies.set("username", username, { expires: 7, sameSite: "strict" });
-
+    toast.success("instacia guradada con exito");
     console.log("Save New Setting.... Complete");
   };
 
   const removeInstance = () => {
+    toast.success("Instacia Borrada con Exito");
     var valorRoot = Cookies.get("rutaPersonalizada");
 
     const folderPath = valorRoot;
@@ -98,14 +73,14 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin, documento }) => {
     });
   };
 
-  // eslint-disable-next-line no-unused-vars
   const handleUserAdd = () => {
-    var usermail = document.getElementById("adduser").value;
-    var email = [usermail];
+    const usermail = document.getElementById("adduser").value;
+    const email = [usermail];
 
+    setWhitelist((prevWhitelist) => [...prevWhitelist, usermail]);
     const datasend = {
       email: email,
-      ubicacion: {documento},
+      ubicacion: { documento },
     };
 
     const api = "https://inhonia-launcher-api.vercel.app/instance/adduser";
@@ -121,6 +96,8 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin, documento }) => {
       });
   };
 
+  
+
   return (
     <div className="private-launch" id="admin">
       <div className="zone2">
@@ -130,8 +107,6 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin, documento }) => {
             <div className="config">
               <p
                 className="tooltipped config-text"
-                data-position="top"
-                data-tooltip="Esto modifica la version de Minecraft Vanilla que vas a lanzar"
               >
                 Version de Minecraft
               </p>
@@ -161,8 +136,6 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin, documento }) => {
             <div className="config">
               <p
                 className="tooltipped config-text"
-                data-position="top"
-                data-tooltip="Esto modifica la RAM maxima de tu PC que se usara para lanzar. Recomendamos que uses no mas de 4GB para la versiones inferiores a la 1.18.2"
               >
                 Memoria Ram
               </p>
@@ -182,8 +155,6 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin, documento }) => {
             <div className="config">
               <p
                 className="tooltipped config-text"
-                data-position="top"
-                data-tooltip="Esto modifica la ruta de lanzamiento/instalacion que usara el launcher. La ruta de lanzamiento es el lugar de almacenamiento de archivos necesarios de Minecraft. Recomendamos dejarla por defecto"
               >
                 Ruta de lanzamiento
               </p>
@@ -199,8 +170,6 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin, documento }) => {
             <div className="config">
               <p
                 className="tooltipped config-text"
-                data-position="top"
-                data-tooltip="Este es el usuario que aparecera en tu perfil de Minecraft, cuando uses solo el lanzador de terceros. Este no tiene efecto cuando lo lanzas con tu cuenta de Microsoft"
               >
                 Usuario (Solo modo de terceros)
               </p>
@@ -225,20 +194,25 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin, documento }) => {
           <div className="config">
             <p
               className="tooltipped config-text"
-              data-position="top"
-              data-tooltip="Esto modifica la RAM maxima de tu PC que se usara para lanzar. Recomendamos que uses no mas de 4GB para la versiones inferiores a la 1.18.2"
             >
               Agregar usaurio
             </p>
             <input type="text" placeholder="Email" id="adduser"></input>
             <button onClick={null}>Agregar Usuario</button>
+
             <div>
               <h3>Usuarios Agregados</h3>
-              {whitelist.map((item, index) => (
-                <ul key={index + 1} className="no-list">
-                  <li>{item}</li>
-                </ul>
-              ))}
+              {whitelist.includes(email) ? (
+                <div>
+                  {whitelist.map((item, index) => (
+                    <ul className="lista" key={index + 1}>
+                      <li className="lista-item">{item}</li>
+                    </ul>
+                  ))}
+                </div>
+              ) : (
+                <p>lpm</p>
+              )}
             </div>
           </div>
         </div>
@@ -258,7 +232,7 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin, documento }) => {
         <ul>
           <li
             className="tooltipped"
-            data-position="top"
+
             data-tooltip="El ejecutar esta funcion eliminara todos los archivos presentes en la carpeta de esta instalacion, la cual se encuentra en la ruta que seleccionaste o por defecto."
           >
             Perderas los archivos dentro de la instalacion

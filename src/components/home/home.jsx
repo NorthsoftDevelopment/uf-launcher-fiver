@@ -40,16 +40,10 @@ export const HomePage = () => {
                                 image={backgroundvanilla}
                                 />
                             </a>
-                            <a className='no-color'>
-                            <Card
-                                title='Minecraft Forge'
-                                image={backgroundforge}
-                                />
-                            </a>
                             <a href='/launch/gamership/net' className='no-color'>
                             <Card
                                 title='Gamership Network'
-                                image={background1}
+                                image='https://cdn.discordapp.com/attachments/1075189121783443588/1141878076402315304/background-mrpolar_1.png'
                                 />
                             </a>
                         </div>

@@ -40,7 +40,7 @@ export const HomePage = () => {
                                 image={backgroundvanilla}
                                 />
                             </a>
-                            <a href='/launch/forge' className='no-color'>
+                            <a className='no-color'>
                             <Card
                                 title='Minecraft Forge'
                                 image={backgroundforge}

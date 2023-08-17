@@ -14,56 +14,14 @@ const testData = [
     title: "Minecraft Vanilla",
     image: test,
     desc: "Microsoft",
-    link: "src/launchers/1/index.html",
-  },
-  {
-    title: "Minecraft Forge",
-    image: test,
-    desc: "Forge - Mojang",
-    link: "src/launchers/2/index.html",
-  },
-  {
-    title: "Minecraft Optifine",
-    image: test,
-    desc: "Optifine - Microsoft",
-    link: "src/launchers/3/index.html",
-  },
-  {
-    title: "Minecraft Custom",
-    image: test,
-    desc: "Jar Personalizado",
-    link: "src/launchers/4/index.html",
+    link: "/",
   },
   {
     title: "Pagina de Login",
     image: test,
     desc: "Mi cuenta",
     link: "/login",
-  },
-  {
-    title: "¿Como jugar?",
-    image: test,
-    desc: "Lee un documento",
-    link: "https://beta.inhonia.online/products/launcher/quick-start",
-  },
-  {
-    title: "Noticias",
-    image: test,
-    desc: "InhoniaStudios",
-    link: "/notices",
-  },
-  {
-    title: "Documentacion",
-    image: test,
-    desc: "Dirijite a tu pagina web",
-    link: "https://beta.inhonia.online/products/launcher/documentation",
-  },
-  {
-    title: "Soporte",
-    image: test,
-    desc: "Support",
-    link: "https://beta.inhonia.online/support",
-  },
+  }
 ];
 
 export const Navbar = () => {

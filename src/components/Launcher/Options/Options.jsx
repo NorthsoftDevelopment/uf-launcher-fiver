@@ -25,7 +25,7 @@ export const OptionsLaunch = ({extraFunctions}) => {
         if (rutaGuardada) {
             setRoute(rutaGuardada);
         } else {
-            
+
             setRoute('C:/InhoniaLauncher/Instance/MinecraftVanilla')
         }
 
@@ -35,10 +35,10 @@ export const OptionsLaunch = ({extraFunctions}) => {
     }, []);
 
     const handleSaveConfig = () => {
-        Cookies.set('versionSeleccionada', version);
-        Cookies.set('memoriaRam', ram);
-        Cookies.set('rutaPersonalizada', route);
-        Cookies.set('username', username);
+        Cookies.set('versionSeleccionada', version, { expires: 7, sameSite: 'strict' });
+        Cookies.set('memoriaRam', ram, { expires: 7, sameSite: 'strict' });
+        Cookies.set('rutaPersonalizada', route), { expires: 7, sameSite: 'strict' };
+        Cookies.set('username', username, { expires: 7, sameSite: 'strict' });
 
         console.log('Save New Setting.... Complete')
     };

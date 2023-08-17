@@ -14,7 +14,13 @@ const testData = [
     title: "Minecraft Vanilla",
     image: test,
     desc: "Microsoft",
-    link: "/",
+    link: "/launch/vanilla",
+  },
+  {
+    title: "Gamership Network",
+    image: test,
+    desc: "Gamership",
+    link: "/launch/gamership/net",
   },
   {
     title: "Pagina de Login",

@@ -77,10 +77,12 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin }) => {
     const usermail = document.getElementById("adduser").value;
     const email = [usermail];
 
+    console.log('send something')
+
     setWhitelist((prevWhitelist) => [...prevWhitelist, usermail]);
     const datasend = {
       email: email,
-      ubicacion: { documento },
+      ubicacion: 'oEFiPXiavEfQlfHQ0mgC',
     };
 
     const api = "https://inhonia-launcher-api.vercel.app/instance/adduser";
@@ -198,7 +200,7 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin }) => {
               Agregar usaurio
             </p>
             <input type="text" placeholder="Email" id="adduser"></input>
-            <button onClick={null}>Agregar Usuario</button>
+            <button onClick={handleUserAdd}>Agregar Usuario</button>
 
             <div>
               <h3>Usuarios Agregados</h3>

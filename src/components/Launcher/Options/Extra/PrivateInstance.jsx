@@ -23,6 +23,8 @@ export const PrivateInstance = ({ children }) => {
 
             setWhitelist(whitelistData);
 
+            console.log(whitelistData)
+
             if (isAdmin) {
                 console.log("Usuario Administrador");
 
@@ -37,7 +39,7 @@ export const PrivateInstance = ({ children }) => {
     };
 
 
-    if (isAdmin || whitelist.includes(email)) {
+    if (whitelist.includes(email)) {
         return <div>
             <div>{children}</div>
             <OptionsLaunchPrivate />

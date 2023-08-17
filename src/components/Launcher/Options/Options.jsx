@@ -7,6 +7,7 @@ export const OptionsLaunch = ({extraFunctions}) => {
     const [route, setRoute] = useState('');
     const [username, setUsername] = useState('');
 
+
     useEffect(() => {
         const versionGuardada = Cookies.get('versionSeleccionada');
         const ramGuardada = Cookies.get('memoriaRam');
@@ -23,6 +24,9 @@ export const OptionsLaunch = ({extraFunctions}) => {
 
         if (rutaGuardada) {
             setRoute(rutaGuardada);
+        } else {
+            
+            setRoute('C:/InhoniaLauncher/Instance/MinecraftVanilla')
         }
 
         if (usernameGuardada) {

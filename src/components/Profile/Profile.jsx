@@ -30,7 +30,7 @@ export const Profile = () => {
       <div className='user-text'>
         <div>
           <p className='title-profile'>Mis instalacion</p>
-          <button className='button-general'>Crear Instalacion</button>
+          <button className='button-general'>No disponible en beta</button>
         </div>
       </div>
     </div>

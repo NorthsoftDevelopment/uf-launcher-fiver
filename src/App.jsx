@@ -10,6 +10,7 @@ import { LaunchForge } from "./components/Launcher/Instances/Forge/LaunchForge";
 import { LaunchFakeland } from "./components/Launcher/Instances/Extra/Fakeland";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Loader } from "./components/loader/Loader";
+import { GamershipInstanceNetworkBeta } from "./components/Launcher/Instances/Extra/Gamership/GamershipInstance";
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -43,6 +44,11 @@ function App() {
           <Route path="/launch/extra1" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
            <LaunchFakeland />
+          </ProtectedRoute>} /> 
+
+          <Route path="/launch/gamership/net" element={
+          <ProtectedRoute isAuthenticated={isAuthenticated}>
+           <GamershipInstanceNetworkBeta />
           </ProtectedRoute>} /> 
 
           

@@ -46,9 +46,9 @@ export const HomePage = () => {
                                 image={backgroundforge}
                                 />
                             </a>
-                            <a href='/launch/extra1' className='no-color'>
+                            <a href='/launch/gamership/net' className='no-color'>
                             <Card
-                                title='Fakeland'
+                                title='Gamership Network'
                                 image={background1}
                                 />
                             </a>

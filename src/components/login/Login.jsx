@@ -30,6 +30,17 @@ export const Login = () => {
         <p>Gracias por ser miembro de la version Beta. Porfavor inicia sesion para continuar</p>
 
         {isAuthenticated ? (
+          <button
+            className="button-general-log"
+            onClick={() =>
+              logout({ logoutParams: { returnTo: window.location.origin } })
+            }
+          >
+            Log Out
+          </button>
+        ) : (
+
+
           <div>
 
             <button
@@ -39,15 +50,6 @@ export const Login = () => {
               Iniciar Sesion
             </button>
           </div>
-        ) : (
-          <button
-            className="button-general-log"
-            onClick={() =>
-              logout({ logoutParams: { returnTo: window.location.origin } })
-            }
-          >
-            Log Out
-          </button>
         )}
 
       </div>

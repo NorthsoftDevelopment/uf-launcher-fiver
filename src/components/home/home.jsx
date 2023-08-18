@@ -46,6 +46,18 @@ export const HomePage = () => {
                                 image='https://cdn.discordapp.com/attachments/1075189121783443588/1141878076402315304/background-mrpolar_1.png'
                                 />
                             </a>
+                            <a className='no-color'>
+                            <Card
+                                title='Minecraft Forge'
+                                image={backgroundforge}
+                                />
+                            </a>
+                            <a className='no-color'>
+                            <Card
+                                title='Fakeland'
+                                image='https://cdn.discordapp.com/attachments/975766486222266368/1141912870792200212/2022-05-21_10.02.03.png'
+                                />
+                            </a>
                         </div>
                     </div>
                 </div>

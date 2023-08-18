@@ -27,27 +27,33 @@ html {
 }
 
 .left-side {
+  position: absolute;
   background-color: #141414;
   right: 0;
   bottom: 0;
   height: 100%;
-  width: 40%;
+  width: 30%;
   gap: 30px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+.left-side p {
+  max-width: 300px;
+  text-align: center;
+}
+
+
+
+
 
 
 .full {
   height: 100vh;
 }
 
-.left-side {
-  position: absolute;
-  top: 0;
-  right: 50%;
-  padding-top: 80px;
-}
 
 .button-general {
   background: rgb(0, 55, 255);

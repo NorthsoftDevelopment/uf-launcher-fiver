@@ -22,24 +22,34 @@ export const Login = () => {
     <div className="">
       <img
         className="background-all"
-        src="https://newsonline.com.ar/wp-content/uploads/2022/12/lionel-messi-copa-del-mundo.png"
+        src="https://cdn.discordapp.com/attachments/1075189121783443588/1141878076402315304/background-mrpolar_1.png"
         alt=""
       />
       <div className="left-side">
-        <button
-          className="button-general-log"
-          onClick={() => loginWithRedirect()}
-        >
-          logeate
-        </button>
-        <button
-          className="button-general-log"
-          onClick={() =>
-            logout({ logoutParams: { returnTo: window.location.origin } })
-          }
-        >
-          Log Out
-        </button>
+        <h1>Bienvenido de vuelta!</h1>
+        <p>Gracias por ser miembro de la version Beta. Porfavor inicia sesion para continuar</p>
+
+        {isAuthenticated ? (
+          <div>
+
+            <button
+              className="button-general-log"
+              onClick={() => loginWithRedirect()}
+            >
+              Iniciar Sesion
+            </button>
+          </div>
+        ) : (
+          <button
+            className="button-general-log"
+            onClick={() =>
+              logout({ logoutParams: { returnTo: window.location.origin } })
+            }
+          >
+            Log Out
+          </button>
+        )}
+
       </div>
     </div>
   );

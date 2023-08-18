@@ -8,7 +8,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 
-export const OptionsLaunchPrivate = ({ extraFunctions, admin }) => {
+export const OptionsLaunchPrivate = ({ extraFunctions, admin}) => {
 
   const [version, setVersion] = useState("");
   const [ram, setRam] = useState("");
@@ -39,6 +39,9 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin }) => {
       setUsername(usernameGuardada);
     }
 
+    if (email === admin) {
+
+    }
 
   }, []);
 
@@ -52,25 +55,6 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin }) => {
     Cookies.set("username", username, { expires: 7, sameSite: "strict" });
     toast.success("instacia guradada con exito");
     console.log("Save New Setting.... Complete");
-  };
-
-  const removeInstance = () => {
-    toast.success("Instacia Borrada con Exito");
-    var valorRoot = Cookies.get("rutaPersonalizada");
-
-    const folderPath = valorRoot;
-
-    const fs = require("fs");
-    // eslint-disable-next-line no-unused-vars
-    const path = require("path");
-
-    fs.rmdir(folderPath, { recursive: true }, (err) => {
-      if (err) {
-        console.error("Error al eliminar la carpeta:", err);
-      } else {
-        console.log("Carpeta eliminada correctamente.");
-      }
-    });
   };
 
   const handleUserAdd = () => {
@@ -213,7 +197,7 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin }) => {
                   ))}
                 </div>
               ) : (
-                <p>lpm</p>
+                <p>Error al obtener la informacion</p>
               )}
             </div>
           </div>
@@ -225,25 +209,6 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin }) => {
         <label id="status"></label>
       </div>
 
-      <div className="zone-dangerous">
-        <h3 className="titulo-config">Zona roja</h3>
-        <p className="p-general">
-          En caso de errores al momento de realizar tu lanzamiento con la
-          instancia, puedes probar reiniciar la carpeta de tu Minecraft.
-        </p>
-        <ul>
-          <li
-            className="tooltipped"
-
-            data-tooltip="El ejecutar esta funcion eliminara todos los archivos presentes en la carpeta de esta instalacion, la cual se encuentra en la ruta que seleccionaste o por defecto."
-          >
-            Perderas los archivos dentro de la instalacion
-          </li>
-        </ul>
-        <button className="cancelbutton" onClick={removeInstance}>
-          Borrar Instancia
-        </button>
-      </div>
     </div>
   );
 };

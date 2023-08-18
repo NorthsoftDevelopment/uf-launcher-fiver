@@ -40,7 +40,8 @@ export const GamershipInstanceNetworkBeta = () => {
                     min: "2G"
                 },
                 server: {
-                    host: "",
+                    host: '45.166.100.40',
+                    port: '25026'
                 }
 
             }

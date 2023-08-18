@@ -43,25 +43,6 @@ export const OptionsLaunch = ({extraFunctions}) => {
         console.log('Save New Setting.... Complete')
     };
 
-    const removeInstance = () => {
-
-        var valorRoot = Cookies.get('rutaPersonalizada');
-
-        const folderPath = valorRoot;
-  
-        const fs = require('fs');
-        const path = require('path');
-  
-        fs.rmdir(folderPath, { recursive: true }, (err) => {
-          if (err) {
-
-            console.error('Error al eliminar la carpeta:', err);
-          } else {
-            
-            console.log('Carpeta eliminada correctamente.');
-
-            }})
-    }
 
     return (
         <div>
@@ -130,16 +111,6 @@ export const OptionsLaunch = ({extraFunctions}) => {
                 <label id="status"></label>
             </div>
 
-            <div className="zone-dangerous">
-                <h3 className="titulo-config">Zona roja</h3>
-                <p className="p-general">En caso de errores al momento de realizar tu lanzamiento con la instancia, puedes
-                    probar reiniciar la carpeta de tu Minecraft.</p>
-                <ul>
-                    <li className="tooltipped" data-position="top"
-                        data-tooltip="El ejecutar esta funcion eliminara todos los archivos presentes en la carpeta de esta instalacion, la cual se encuentra en la ruta que seleccionaste o por defecto.">
-                        Perderas los archivos dentro de la instalacion</li>
-                </ul>
-                <button className="cancelbutton" onClick={removeInstance}>Borrar Instancia</button>
-            </div></div>
+            </div>
     )
 }

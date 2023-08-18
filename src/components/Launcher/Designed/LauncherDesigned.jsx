@@ -1,7 +1,26 @@
 import './launcher.css'
 import './config.css'
 
-export const LauncherDesigned = ({background, title, autor, launch}) => {
+export const LauncherDesigned = ({ background, title, autor, launch }) => {
+
+    const removeInstance = () => {
+        toast.success("Instacia Borrada con Exito");
+        var valorRoot = Cookies.get("rutaPersonalizada");
+
+        const folderPath = valorRoot;
+
+        const fs = require("fs");
+        // eslint-disable-next-line no-unused-vars
+        const path = require("path");
+
+        fs.rmdir(folderPath, { recursive: true }, (err) => {
+            if (err) {
+                console.error("Error al eliminar la carpeta:", err);
+            } else {
+                console.log("Carpeta eliminada correctamente.");
+            }
+        });
+    };
 
     return (
         <div>
@@ -31,7 +50,7 @@ export const LauncherDesigned = ({background, title, autor, launch}) => {
                 </div>
 
             </div>
-            
+
             <section className="zona3">
                 <h3 className="titledesc">Descripcion</h3>
                 <div className="text3">
@@ -55,7 +74,27 @@ export const LauncherDesigned = ({background, title, autor, launch}) => {
                         <p>Mojang</p>
                     </div>
                 </div>
+
             </section>
+            <div className="zone-dangerous">
+                <h3 className="titulo-config">Zona roja</h3>
+                <p className="p-general">
+                    En caso de errores al momento de realizar tu lanzamiento con la
+                    instancia, puedes probar reiniciar la carpeta de tu Minecraft.
+                </p>
+                <ul>
+                    <li
+                        className="tooltipped"
+
+                        data-tooltip="El ejecutar esta funcion eliminara todos los archivos presentes en la carpeta de esta instalacion, la cual se encuentra en la ruta que seleccionaste o por defecto."
+                    >
+                        Perderas los archivos dentro de la instalacion
+                    </li>
+                </ul>
+                <button className="cancelbutton" onClick={removeInstance}>
+                    Borrar Instancia
+                </button>
+            </div>
         </div>
     )
 }

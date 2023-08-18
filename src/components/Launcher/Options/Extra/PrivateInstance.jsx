@@ -3,11 +3,14 @@ import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { OptionsLaunchPrivate } from '../OptionsPrivate';
+import { Loader } from '../../../loader/Loader';
 
 export const PrivateInstance = ({ children }) => {
     const [whitelist, setWhitelist] = useState([]);
+    const [isLoading, setIsLoading] = useState(true); // New state for loading
     const email = Cookies.get('email');
     const isAdmin = email === 'koraook@gmail.com';
+
 
     useEffect(() => {
         fetchData();
@@ -22,8 +25,7 @@ export const PrivateInstance = ({ children }) => {
             const whitelistData = response.data;
 
             setWhitelist(whitelistData);
-
-            console.log(whitelistData)
+            setIsLoading(false);
 
             if (isAdmin) {
                 console.log("Usuario Administrador");
@@ -38,15 +40,28 @@ export const PrivateInstance = ({ children }) => {
         }
     };
 
+    if (isAdmin) {
 
-    if (whitelist.includes(email)) {
         return <div>
             <div>{children}</div>
             <OptionsLaunchPrivate />
         </div>;
 
-    } else {
+    }
 
+
+    if (isLoading) {
+
+        return <Loader />;
+
+    } else if (whitelist.includes(email)) {
+        return (
+            <div>
+                <div>{children}</div>
+            </div>
+        );
+
+    } else {
         return <Navigate to='/' />;
     }
 };

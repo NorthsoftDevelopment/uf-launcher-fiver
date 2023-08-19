@@ -97,7 +97,7 @@ export const GamershipInstanceNetworkBeta = () => {
 
                 <PrivateInstance 
                 documentReference='oEFiPXiavEfQlfHQ0mgC'
-                admin='koraook@gmail.com'>
+                admin='justnotsebas@outlook.com'>
 
                     <LauncherDesigned
 

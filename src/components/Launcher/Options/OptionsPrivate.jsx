@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import "./options.css";
 import "../../Launcher/Designed/config.css";
 import axios from "axios";
-import toast from "react-hot-toast";
 
 
 export const OptionsLaunchPrivate = ({ extraFunctions, admin}) => {
@@ -33,6 +32,8 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin}) => {
 
     if (rutaGuardada) {
       setRoute(rutaGuardada);
+    } else {
+      setRoute('C:/InhoniaLauncher/Instance/MinecraftVanilla')
     }
 
     if (usernameGuardada) {
@@ -53,7 +54,6 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin}) => {
     Cookies.set("memoriaRam", ram, { expires: 7, sameSite: "strict" });
     Cookies.set("rutaPersonalizada", route, { expires: 7, sameSite: "strict" });
     Cookies.set("username", username, { expires: 7, sameSite: "strict" });
-    toast.success("instacia guradada con exito");
     console.log("Save New Setting.... Complete");
   };
 

@@ -4,7 +4,6 @@ import './config.css'
 export const LauncherDesigned = ({ background, title, autor, launch }) => {
 
     const removeInstance = () => {
-        toast.success("Instacia Borrada con Exito");
         var valorRoot = Cookies.get("rutaPersonalizada");
 
         const folderPath = valorRoot;

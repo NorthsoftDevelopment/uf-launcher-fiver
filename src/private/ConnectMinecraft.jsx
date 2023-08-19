@@ -39,9 +39,9 @@ export const ConnectMinecraft = ({ children }) => {
               setIsLoading(false);
               Swal.close();
               //window.location.href = '/'
-              const tokenLaunch = token.mclc
-              console.log(tokenLaunch)
-              Cookies.set("tokenMC", 'complete', { expires: 7, sameSite: "strict" });
+              const mcprofile = JSON.stringify(token.profile)
+      
+              Cookies.set("tokenMC", mcprofile, { expires: 30, sameSite: "strict" });
 
             } else {
               showError('Ocurrió un error');
@@ -70,6 +70,23 @@ export const ConnectMinecraft = ({ children }) => {
       },
       text: message,
       footer: error ? error.toString() : '',
+
+      didClose: () => {
+
+        Swal.fire({
+          title: 'Porfavor visita este sitio y crea un perfil de Minecraft',
+          text: 'https://www.minecraft.net/en-us/msaprofile/mygames/editprofile',
+          background: '#141414',
+          customClass: {
+            container: 'title-loader',
+            popup: 'title-loader',
+            header: 'title-loader',
+            title: 'title-loader',
+          },
+        })
+
+
+      }
     });
   };
 
@@ -86,7 +103,7 @@ export const ConnectMinecraft = ({ children }) => {
             <p>- Accederemos a tu información</p>
           </div>
         </div>
-        <button onClick={login}>Logeate</button>
+        <button onClick={login} className='button-general'>Logeate</button>
       </div>
     );
   } else {

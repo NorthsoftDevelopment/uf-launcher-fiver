@@ -38,30 +38,33 @@ export const HomePage = () => {
                         <div className='zone-1'>
                             <h3 className='title-general'>Instancias Beta</h3>
                             <div className='cards'>
-                                <a href='/launch/vanilla' className='no-color'>
-                                    <Card
-                                        title='Minecraft Vanilla'
-                                        image={backgroundvanilla}
-                                    />
-                                </a>
-                                <a href='/launch/gamership/net' className='no-color'>
-                                    <Card
-                                        title='Gamership Network'
-                                        image='https://cdn.discordapp.com/attachments/1075189121783443588/1141878076402315304/background-mrpolar_1.png'
-                                    />
-                                </a>
-                                <a className='no-color'>
-                                    <Card
-                                        title='Minecraft Forge'
-                                        image={backgroundforge}
-                                    />
-                                </a>
-                                <a className='no-color'>
-                                    <Card
-                                        title='Fakeland'
-                                        image='https://cdn.discordapp.com/attachments/975766486222266368/1141912870792200212/2022-05-21_10.02.03.png'
-                                    />
-                                </a>
+                                <Card
+                                    title='Minecraft Vanilla'
+                                    image={backgroundvanilla}
+                                    link='/launch/vanilla'
+                                />
+
+
+                                <Card
+                                    title='Gamership Network'
+                                    image='https://cdn.discordapp.com/attachments/1075189121783443588/1141878076402315304/background-mrpolar_1.png'
+                                    link='/launch/gamership/net'
+                                />
+
+
+                                <Card
+                                    title='Minecraft Forge'
+                                    image={backgroundforge}
+                                    link='/launch/forge'
+                                />
+
+
+                                <Card
+                                    title='Fakeland'
+                                    image='https://cdn.discordapp.com/attachments/975766486222266368/1141912870792200212/2022-05-21_10.02.03.png'
+                                    link='/launch/extra1'
+                                />
+
                             </div>
                         </div>
                     </div>

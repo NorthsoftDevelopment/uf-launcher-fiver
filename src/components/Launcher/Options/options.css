@@ -7,7 +7,7 @@
   /* Estilo para el botón */
   #boton {
     font-size: 16px;
-    background-color: #007bff;
+    background-color: #48b6ff;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -16,5 +16,11 @@
 
   .private-launch {
     flex-direction: column;
+  }
+
+  .no-list  {
+    list-style: none;
+    margin-top: 20px;
+
   }
   

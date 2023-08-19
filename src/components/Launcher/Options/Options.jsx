@@ -1,7 +1,8 @@
 import Cookies from 'js-cookie';
 import React, { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 
-export const OptionsLaunch = ({extraFunctions}) => {
+export const OptionsLaunch = ({ extraFunctions }) => {
     const [version, setVersion] = useState('');
     const [ram, setRam] = useState('');
     const [route, setRoute] = useState('');
@@ -35,12 +36,39 @@ export const OptionsLaunch = ({extraFunctions}) => {
     }, []);
 
     const handleSaveConfig = () => {
+
+
         Cookies.set('versionSeleccionada', version, { expires: 7, sameSite: 'strict' });
         Cookies.set('memoriaRam', ram, { expires: 7, sameSite: 'strict' });
         Cookies.set('rutaPersonalizada', route), { expires: 7, sameSite: 'strict' };
         Cookies.set('username', username, { expires: 7, sameSite: 'strict' });
 
-        console.log('Save New Setting.... Complete')
+        Swal.fire({
+            title: '',
+            html: 'Espere un momento...',
+            allowOutsideClick: false,
+            timer: 3000,
+            timerProgressBar: false,
+            background: 'transparent',
+            showConfirmButton: false,
+            showCancelButton: true,
+            cancelButtonColor: "rgb(0, 55, 255)",
+            cancelButtonText: 'Cancelar',
+            customClass: {
+                container: 'title-loader',
+                popup: 'title-loader',
+                header: 'title-loader',
+                title: 'title-loader',
+            },
+            willOpen: () => {
+                Swal.showLoading();
+            },
+            willClose: () => {
+
+            console.log('Guardado completado');
+            }
+        });
+
     };
 
 
@@ -57,14 +85,22 @@ export const OptionsLaunch = ({extraFunctions}) => {
                             <select id="seleccionVersion" className="select-general" value={version} onChange={(e) => setVersion(e.target.value)}>
                                 <option value="1.20">1.20</option>
                                 <option value="1.19.4">1.19.4</option>
+                                <option value="1.19.2">1.19.3</option>
                                 <option value="1.19.2">1.19.2</option>
+                                <option value="1.19">1.19.1</option>
                                 <option value="1.19">1.19</option>
                                 <option value="1.18.2">1.18.2</option>
+                                <option value="1.19.2">1.18.1</option>
                                 <option value="1.18">1.18</option>
                                 <option value="1.16.5">1.16.5</option>
+                                <option value="1.19.2">1.16.4</option>
+                                <option value="1.19.2">1.16.3</option>
+                                <option value="1.19.2">1.16.2</option>
+                                <option value="1.19.2">1.16.1</option>
                                 <option value="1.16">1.16</option>
                                 <option value="1.15">1.15</option>
                                 <option value="1.12.2">1.12.2</option>
+                                <option value="1.19.2">1.12.1</option>
                                 <option value="1.12">1.12</option>
                                 <option value="1.8">1.8</option>
                             </select>
@@ -111,6 +147,6 @@ export const OptionsLaunch = ({extraFunctions}) => {
                 <label id="status"></label>
             </div>
 
-            </div>
+        </div>
     )
 }

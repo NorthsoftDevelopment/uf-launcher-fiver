@@ -79,8 +79,10 @@ export const Navbar = () => {
 
   return (
     <header>
+      
       <a>
-        <Link to="/">
+    
+        <Link to={window.location.origin}>
           <img src={logo} className="logo" alt="logo" />{" "}
         </Link>
       </a>

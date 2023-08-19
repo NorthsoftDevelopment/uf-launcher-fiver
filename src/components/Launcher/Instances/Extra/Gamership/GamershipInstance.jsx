@@ -1,9 +1,13 @@
 import React from 'react'
 import { LauncherDesigned } from '../../../Designed/LauncherDesigned'
 import { PrivateInstance } from '../../../Options/Extra/PrivateInstance';
+import { ConnectMinecraft } from '../../../../../private/ConnectMinecraft';
 
 export const GamershipInstanceNetworkBeta = () => {
+
+
     const launch = () => {
+
 
         const fs = require('fs');
         const path = require('path');
@@ -88,20 +92,25 @@ export const GamershipInstanceNetworkBeta = () => {
     }
 
     return (
-        <div>
-            <PrivateInstance>
+        <ConnectMinecraft>
+            <div>
 
-                <LauncherDesigned
+                <PrivateInstance 
+                documentReference='oEFiPXiavEfQlfHQ0mgC'
+                admin='koraook@gmail.com'>
 
-                    title='Gamership Network'
-                    background='https://cdn.discordapp.com/attachments/1075189121783443588/1141860533956526230/gamership-background.png'
-                    autor='Servidor • Network • Beta'
-                    launch={launch}
+                    <LauncherDesigned
 
-                />
+                        title='Gamership Network'
+                        background='https://cdn.discordapp.com/attachments/1075189121783443588/1141860533956526230/gamership-background.png'
+                        autor='Servidor • Network • Beta'
+                        launch={launch} 
 
-            </PrivateInstance>
+                    />
 
-        </div>
+                </PrivateInstance>
+
+            </div>
+        </ConnectMinecraft>
     )
 }

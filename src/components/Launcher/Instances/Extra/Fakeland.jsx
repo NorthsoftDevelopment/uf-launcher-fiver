@@ -1,33 +1,116 @@
-import { Loader } from '../../../loader/Loader';
+import React from 'react'
 import { LauncherDesigned } from '../../Designed/LauncherDesigned'
 import { PrivateInstance } from '../../Options/Extra/PrivateInstance';
-import { OptionsLaunchPrivate } from "../../Options/OptionsPrivate";
+import { ConnectMinecraft } from '../../../../private/ConnectMinecraft';
 
 export const LaunchFakeland = () => {
 
-  const test = () => {
 
-    console.log('test ready')
-
-  }
+    const launch = () => {
 
 
-  return (
-    <div>
+        const fs = require('fs');
+        const path = require('path');
 
-      <PrivateInstance>
+        const folderPath = 'C:/InhoniaLauncher/Instance/MinecraftVanilla';
+        fs.mkdirSync(path.dirname(folderPath), { recursive: true });
 
-        <LauncherDesigned
+        const { Client, Authenticator } = require('minecraft-launcher-core');
+        const launcher = new Client();
 
-          title='Fakeland'
-          background='https://www.dropbox.com/s/bt0wg7gtb5o8chp/backgroundvanilla.png?dl=1'
-          autor='Korita • Amigos • Serie'
-          launch={test}
+        const { Auth } = require("msmc");
 
-        />
+        const authManager = new Auth("select_account");
 
-      </PrivateInstance>
+        authManager.launch("raw").then(async xboxManager => {
 
-    </div>
-  )
+            const token = await xboxManager.getMinecraft();
+
+            let opts = {
+
+                authorization: token.mclc(),
+                overrides: {
+                    detached: false,
+                },
+                clientPackage: 'https://www.dropbox.com/scl/fi/e7xu0hwfxdupldh6myjra/gamership.zip?rlkey=wz676yhx38fld2a48f1b3uioa&dl=1',
+                root: 'C:/InhoniaLauncher/Instance/GamershipNetwork',
+                version: {
+                    number: '1.19.4',
+                    type: "release"
+                },
+                removePackage: true,
+                memory: {
+                    max: '3G',
+                    min: "2G"
+                },
+                server: {
+                    host: '45.166.100.40',
+                    port: '25026'
+                }
+
+            }
+
+            launcher.launch(opts);
+
+            launcher.on('debug', (e) => console.log(e));
+            launcher.on('data', (e) => console.log(e));
+            launcher.on('progress', (e) => {
+
+                var progress = e;
+
+                var progressBar = document.getElementById('progress-bar');
+                var progressText = document.getElementById('progress-text');
+
+                var porcentaje = Math.floor((progress.task / progress.total) * 100);
+
+                progressBar.style.width = porcentaje + '%';
+                progressText.innerText = porcentaje + '%';
+
+                if (porcentaje === 100) {
+                    var barraDeCarga = document.querySelector('.barra-de-carga');
+                    barraDeCarga.style.display = 'none';
+                }
+
+            })
+            launcher.on('data', (e) => {
+                document.getElementById("status").textContent = e
+                document.getElementById("status-content").style.display = "flex"
+                document.getElementById("download-screen").style.display = "none";
+            })
+
+            launcher.on('debug', (e) => {
+                document.getElementById("download-screen").style.display = "flex";
+                document.getElementById("descarga").textContent = e
+
+            })
+
+
+        })
+
+
+
+    }
+
+    return (
+        <ConnectMinecraft>
+            <div>
+
+                <PrivateInstance 
+                documentReference='fakeland'
+                admin='koraook@gmail.com'>
+
+                    <LauncherDesigned
+
+                        title='Fakeland'
+                        background='https://cdn.discordapp.com/attachments/1075189121783443588/1141860533956526230/gamership-background.png'
+                        autor='Servidor • Network • Beta'
+                        launch={launch} 
+
+                    />
+
+                </PrivateInstance>
+
+            </div>
+        </ConnectMinecraft>
+    )
 }

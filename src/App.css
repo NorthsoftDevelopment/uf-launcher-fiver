@@ -2,7 +2,7 @@
 
 html {
   font-family: "Inter", sans-serif;
-  background: #141414;
+  background: #1A1B1E;
   color: white;
 }
 
@@ -20,15 +20,15 @@ html {
 
 .background-effect {
   width: 100%;
-  height: 35vh;
+  height: 50vh;
   background-size: cover;
   object-fit: cover;
-  filter: brightness(0.4);
+  filter: brightness(0.7);
 }
 
 .left-side {
+  background-color: #202020;
   position: absolute;
-  background-color: #141414;
   right: 0;
   bottom: 0;
   height: 100%;
@@ -56,7 +56,7 @@ html {
 
 
 .button-general {
-  background: rgb(0, 55, 255);
+  background: #48b6ff;
   color: white;
   border: none;
   font-weight: 100;
@@ -110,6 +110,27 @@ html::-webkit-scrollbar-thumb {
 }
 
 .no-list li {
-  background-color: #252525;
+  font-size: 16px;
+  background-color: #2D3036;;
   padding: 20px;
+}
+
+.button-little {
+  background-color: transparent;
+  padding: 0;
+  color: white;
+  border: none;
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+.flex {
+  display: flex;
+  gap: 60px;
+}
+
+.column-gap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

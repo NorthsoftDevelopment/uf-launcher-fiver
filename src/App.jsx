@@ -12,6 +12,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Loader } from "./components/loader/Loader";
 import { GamershipInstanceNetworkBeta } from "./components/Launcher/Instances/Extra/Gamership/GamershipInstance";
 import { ConnectMinecraft } from "./private/ConnectMinecraft";
+import { Footer } from "./components/static/Footer/footer";
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -21,7 +22,7 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <ConnectMinecraft>
+      
       <Routes>
         <Route path="/" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
@@ -53,12 +54,11 @@ function App() {
            <GamershipInstanceNetworkBeta />
           </ProtectedRoute>} /> 
 
-          
 
         <Route path="/login" element={<Login />} />
         
       </Routes>
-      </ConnectMinecraft>
+      
     </Router>
   )
 }

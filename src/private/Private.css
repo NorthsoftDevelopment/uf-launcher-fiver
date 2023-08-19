@@ -13,26 +13,31 @@
     background-color: #141414;
     justify-content: center;
     align-items: center;
+    gap: 30px;
     
 }
 .content-advertence {
     max-width: 600px;
     text-align: center;
+    gap: 2550px;
     
 }
 
 .displayAdvertence h1 {
     font-size: 25px;
     margin-bottom: 20px;
+    color: #AAD0FF;
+
 }
 
 .displayAdvertence img {
-    width: 100px;
+    width: 80px;
     margin-bottom: 20px;
 }
 
 .displayAdvertence p {
     font-size: 18px;
+    margin-top: 20px;
 }
 .displayAdvertence h2 {
     font-weight: 100;

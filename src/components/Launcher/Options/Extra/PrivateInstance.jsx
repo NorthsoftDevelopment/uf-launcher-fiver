@@ -5,22 +5,23 @@ import Cookies from 'js-cookie';
 import { OptionsLaunchPrivate } from '../OptionsPrivate';
 import { Loader } from '../../../loader/Loader';
 
-export const PrivateInstance = ({ children }) => {
+export const PrivateInstance = ({ children, documentReference, admin}) => {
     const [whitelist, setWhitelist] = useState([]);
     const [isLoading, setIsLoading] = useState(true); // New state for loading
     const email = Cookies.get('email');
-    const isAdmin = email === 'koraook@gmail.com';
+    const isAdmin = email === admin;
 
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [documentReference]);
+
+    //const docUbi = 'oEFiPXiavEfQlfHQ0mgC'
 
     const fetchData = async () => {
         try {
             const api = "https://inhonia-launcher-api.vercel.app/instance/whitelist";
-            const docUbi = "oEFiPXiavEfQlfHQ0mgC";
-            const docRef = [docUbi];
+            const docRef = [documentReference];
             const response = await axios.post(api, docRef);
             const whitelistData = response.data;
 
@@ -36,18 +37,12 @@ export const PrivateInstance = ({ children }) => {
 
             console.log("Successfully Get");
         } catch (error) {
+
             console.error(error);
+
+            window.location.origin
         }
     };
-
-    if (isAdmin) {
-
-        return <div>
-            <div>{children}</div>
-            <OptionsLaunchPrivate />
-        </div>;
-
-    }
 
 
     if (isLoading) {
@@ -55,11 +50,25 @@ export const PrivateInstance = ({ children }) => {
         return <Loader />;
 
     } else if (whitelist.includes(email)) {
-        return (
-            <div>
+
+
+        if (isAdmin) {
+
+            return <div>
                 <div>{children}</div>
-            </div>
-        );
+                <OptionsLaunchPrivate whitelist={whitelist}/>
+            </div>;
+    
+        } else {
+
+            return (
+
+                <div>
+                    <div>{children}</div>
+                </div>
+            );
+
+        }
 
     } else {
         return <Navigate to='/' />;

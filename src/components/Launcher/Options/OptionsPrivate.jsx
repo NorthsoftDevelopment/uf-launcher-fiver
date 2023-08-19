@@ -7,14 +7,15 @@ import "../../Launcher/Designed/config.css";
 import axios from "axios";
 
 
-export const OptionsLaunchPrivate = ({ extraFunctions, admin}) => {
+export const OptionsLaunchPrivate = ({ extraFunctions, admin, whitelist, documentRef}) => {
 
   const [version, setVersion] = useState("");
   const [ram, setRam] = useState("");
   const [route, setRoute] = useState("");
   const [username, setUsername] = useState("");
-  const [whitelist, setWhitelist] = useState([]);
   const email = Cookies.get("email");
+
+ 
 
   useEffect(() => {
     const versionGuardada = Cookies.get("versionSeleccionada");
@@ -63,7 +64,7 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin}) => {
 
     console.log('send something')
 
-    setWhitelist((prevWhitelist) => [...prevWhitelist, usermail]);
+
     const datasend = {
       email: email,
       ubicacion: 'oEFiPXiavEfQlfHQ0mgC',
@@ -189,7 +190,7 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin}) => {
             <div>
               <h3>Usuarios Agregados</h3>
               {whitelist.includes(email) ? (
-                <div>
+                <div className="no-list">
                   {whitelist.map((item, index) => (
                     <ul className="lista" key={index + 1}>
                       <li className="lista-item">{item}</li>

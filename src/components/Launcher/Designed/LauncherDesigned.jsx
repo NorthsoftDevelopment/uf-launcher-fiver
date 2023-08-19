@@ -1,22 +1,51 @@
 import './launcher.css'
 import './config.css'
+import Swal from 'sweetalert2';
 
 export const LauncherDesigned = ({ background, title, autor, launch }) => {
 
     const removeInstance = () => {
-        var valorRoot = Cookies.get("rutaPersonalizada");
+        Swal.fire({
+            text: "Esta accion es permanente",
+            icon: 'warning',
+            showCancelButton: true,
+            background: '#252525',
+            confirmButtonColor: 'rgb(0, 55, 255)',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, eliminar',
+            cancelButtonText: 'Cancelar',
+            customClass: {
+                title: 'title-loader',
+                titleText: 'title-loader',
+                text: 'title-loader',
+                target: 'title-loader',
+                htmlContainer: 'container-loader',
+            },
+        }).then((result) => {
+            if (result.isConfirmed) {
 
-        const folderPath = valorRoot;
+                const folderPath = valorRoot;
 
-        const fs = require("fs");
-        // eslint-disable-next-line no-unused-vars
-        const path = require("path");
+                const fs = require('fs');
+                const path = require('path');
 
-        fs.rmdir(folderPath, { recursive: true }, (err) => {
-            if (err) {
-                console.error("Error al eliminar la carpeta:", err);
-            } else {
-                console.log("Carpeta eliminada correctamente.");
+                fs.rmdir(folderPath, { recursive: true }, (err) => {
+                    if (err) {
+                        console.error('Error al eliminar la carpeta:', err);
+                        Swal.fire(
+                            'Error',
+                            'Hubo un error al eliminar la carpeta.',
+                            'error'
+                        );
+                    } else {
+                        console.log('Carpeta eliminada correctamente.');
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        );
+                    }
+                });
             }
         });
     };
@@ -33,7 +62,6 @@ export const LauncherDesigned = ({ background, title, autor, launch }) => {
                         <h4 className="instrucciones">Producto creado por la comunidad para Minecraft con Mods</h4>
                         <div className="botones">
                             <button className="jugar" onClick={launch}>Jugar (Premiun)</button>
-                            <button className="jugar-terceros" onClick={launch}>+</button>
                         </div>
                     </div>
                 </div>

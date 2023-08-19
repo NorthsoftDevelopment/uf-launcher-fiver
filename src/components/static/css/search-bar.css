@@ -8,7 +8,12 @@
     width: 410px;
     height: 37px;
     border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
     color: white;
+}
+
+.input-search:hover {
+  border: 1px solid white;
 }
 
 
@@ -16,7 +21,7 @@
 .search-container .input-search::placeholder {
     font-family: 'Inter', sans-serif;
     font-size: 14px;
-    color: rgb(182, 182, 182);
+    color: #AAD0FF;
 }
 
 .logo-search {
@@ -41,6 +46,7 @@
     padding: 15px;
     color: rgb(255, 255, 255);
     text-decoration: none;
+    transition: all 0.10s;
   }
   
   .search-item-2:hover {

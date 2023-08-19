@@ -73,7 +73,7 @@ export const LauncherDesigned = ({ background, title, autor, launch }) => {
                         <div className="porcentaje" id="progress-text">0%</div>
                     </div>
                     <label className="text-descarga" id="descarga"></label>
-                    <a className="cancel-launch" href="/">Cancelar</a>
+                    <a className="cancel-launch" href={window.location.origin}>Cancelar</a>
                 </div>
 
             </div>

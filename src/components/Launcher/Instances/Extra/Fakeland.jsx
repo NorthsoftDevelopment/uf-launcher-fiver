@@ -83,6 +83,11 @@ export const LaunchFakeland = () => {
                 document.getElementById("descarga").textContent = e
 
             })
+            launcher.on('close', (e) => {
+              document.getElementById("status").textContent = null
+              document.getElementById("status-content").style.display = "none"
+          })
+  
 
 
         })

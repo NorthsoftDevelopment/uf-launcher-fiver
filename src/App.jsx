@@ -45,12 +45,12 @@ function App() {
            <LaunchForge />
           </ProtectedRoute>} /> 
 
-          <Route path="/launch/extra1" element={
+          <Route path="/launch/1" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
            <LaunchFakeland />
           </ProtectedRoute>} /> 
 
-          <Route path="/launch/gamership/net" element={
+          <Route path="/launch/gamership/1" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
            <GamershipInstanceNetworkBeta />
           </ProtectedRoute>} /> 

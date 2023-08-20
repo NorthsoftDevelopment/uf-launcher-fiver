@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie';
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
+import { Tooltip } from '../../ExtraComponents/Tooltips/Tooltip';
 
 export const OptionsLaunch = ({ extraFunctions }) => {
     const [version, setVersion] = useState('');
@@ -79,9 +80,10 @@ export const OptionsLaunch = ({ extraFunctions }) => {
                     <h3 className="titulo-config">Configuracion de lanzamiento</h3>
                     <div className="configs">
                         <div className="config">
-                            <p className="tooltipped config-text" data-position="top" data-tooltip="Esto modifica la version de Minecraft Vanilla que vas a lanzar">
-                                Version de Minecraft
-                            </p>
+                        <Tooltip 
+                           title='Version de
+                           Minecraft'
+                           tooltip='Esto modifica la version de Minecraft Vanilla que vas a lanzar'/>
                             <select id="seleccionVersion" className="select-general" value={version} onChange={(e) => setVersion(e.target.value)}>
                                 <option value="1.20">1.20</option>
                                 <option value="1.19.4">1.19.4</option>
@@ -111,9 +113,9 @@ export const OptionsLaunch = ({ extraFunctions }) => {
                         </div>
 
                         <div className="config">
-                            <p className="tooltipped config-text" data-position="top" data-tooltip="Esto modifica la RAM maxima de tu PC que se usara para lanzar. Recomendamos que uses no mas de 4GB para la versiones inferiores a la 1.18.2">
-                                Memoria Ram
-                            </p>
+                           <Tooltip 
+                           title='Memoria Ram'
+                           tooltip='Esto modifica la RAM maxima de tu PC que se usara para lanzar. Recomendamos que uses no mas de 4GB para la versiones inferiores a la 1.18.2'/>
                             <select id="seleccionRam" className="select-general" value={ram} onChange={(e) => setRam(e.target.value)}>
                                 <option value="8G">8GB</option>
                                 <option value="6G">6GB</option>
@@ -123,9 +125,10 @@ export const OptionsLaunch = ({ extraFunctions }) => {
                         </div>
 
                         <div className="config">
-                            <p className="tooltipped config-text" data-position="top" data-tooltip="Esto modifica la ruta de lanzamiento/instalacion que usara el launcher. La ruta de lanzamiento es el lugar de almacenamiento de archivos necesarios de Minecraft. Recomendamos dejarla por defecto">
-                                Ruta de lanzamiento
-                            </p>
+                            <Tooltip 
+                            tooltip="Esto modifica la ruta de lanzamiento/instalacion que usara el launcher. La ruta de lanzamiento es el lugar de almacenamiento de archivos necesarios de Minecraft. Recomendamos dejarla por defecto"
+                            title='Ruta de lanzamiento'
+                            />
                             <input className="input-general" type="text" id="seleccionRoute" value={route} onChange={(e) => setRoute(e.target.value)} />
                         </div>
 

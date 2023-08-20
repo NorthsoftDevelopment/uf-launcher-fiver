@@ -4,20 +4,24 @@ import { Loader } from "../loader/Loader";
 import Cookies from "js-cookie";
 
 export const Login = () => {
+
+  //Auht imports and loader
   const { user, isAuthenticated, isLoading } = useAuth0();
   const { loginWithRedirect } = useAuth0();
   const { logout } = useAuth0();
-
   if (isLoading) {
     return <Loader />;
   }
 
+  //Email add to cookie
   if (isAuthenticated) {
     const email = JSON.stringify(user.email);
 
     Cookies.set("email", email, { expires: 365, sameSite: "strict" });
   }
 
+
+//Login button
   const Login = () => {
 
     try {

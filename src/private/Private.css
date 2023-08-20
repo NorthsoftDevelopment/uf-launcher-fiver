@@ -10,7 +10,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #141414;
+    background: url('https://www.dropbox.com/scl/fi/4hvw05dk7ean2mbfs9ir5/backgroundauhtorize.png?rlkey=a2o41gl4ezhhuaedu02wb1bo7&dl=1');
     justify-content: center;
     align-items: center;
     gap: 30px;
@@ -19,8 +19,23 @@
 .content-advertence {
     max-width: 600px;
     text-align: center;
-    gap: 2550px;
+    border-radius: 20px;
+    padding: 50px;
+    border: 1px solid rgb(83, 83, 83);
+    background: #1A1B1E;
     
+}
+
+.content-advertence ul {
+    text-align: left;
+    margin-top: 20px;
+    font-size: 19px;
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.content-advertence ul li {
+    margin-top: 6px;
 }
 
 .displayAdvertence h1 {
@@ -31,7 +46,7 @@
 }
 
 .displayAdvertence img {
-    width: 80px;
+    width: 300px;
     margin-bottom: 20px;
 }
 

@@ -7,23 +7,23 @@ import Cookies from 'js-cookie';
 import { Loader } from '../loader/Loader';
 import { Card } from '../Cards/Card/Card';
 import { ConnectMinecraft } from '../../private/ConnectMinecraft';
+import { Tooltip } from '../ExtraComponents/Tooltips/Tooltip';
 
 export const HomePage = () => {
 
+    //Auth imports and loader
     const { user, isAuthenticated, isLoading } = useAuth0();
-
     if (isLoading) return <Loader />
 
+
+    //Actualizacion del email del usuario
     if (isAuthenticated) {
-
         const email = [user.email]
-
         Cookies.set('email', email, { expires: 365, sameSite: 'strict' });
-
         console.log('email actualizado')
+        
     } else {
         Cookies.set('email', null, { expires: 365, sameSite: 'strict' });
-
         console.log('no estas loegado')
     }
 
@@ -44,25 +44,10 @@ export const HomePage = () => {
                                     link='/launch/vanilla'
                                 />
 
-
-                                <Card
-                                    title='Gamership Network'
-                                    image='https://cdn.discordapp.com/attachments/1075189121783443588/1141878076402315304/background-mrpolar_1.png'
-                                    link='/launch/gamership/net'
-                                />
-
-
                                 <Card
                                     title='Minecraft Forge'
                                     image={backgroundforge}
                                     link='/launch/forge'
-                                />
-
-
-                                <Card
-                                    title='Fakeland'
-                                    image='https://cdn.discordapp.com/attachments/975766486222266368/1141912870792200212/2022-05-21_10.02.03.png'
-                                    link='/launch/extra1'
                                 />
 
                             </div>

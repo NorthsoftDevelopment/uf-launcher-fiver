@@ -109,7 +109,7 @@ export const GamershipInstanceNetworkBeta = () => {
                         launch={launch} 
                         sponsorTitle='Gamership Network'
                         sponsorDesc='Network oficial de Gamership Network - Construcciones por MrPolar'
-                        sponsorIMG='https://media.discordapp.net/attachments/1075189121783443588/1141540749368897627/lobby4.png?width=854&height=683'
+                        sponsorIMG='https://codigoesports.com/wp-content/uploads/2022/11/Gamership-2048x1365.jpg'
                     
                     />
 

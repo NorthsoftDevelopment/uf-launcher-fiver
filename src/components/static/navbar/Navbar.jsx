@@ -11,18 +11,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const testData = [
   {
-    title: "Minecraft Vanilla",
-    image: test,
-    desc: "Microsoft",
-    link: "/launch/vanilla",
-  },
-  {
-    title: "Gamership Network",
-    image: test,
-    desc: "Gamership",
-    link: "/launch/gamership/net",
-  },
-  {
     title: "Pagina de Login",
     image: test,
     desc: "Mi cuenta",

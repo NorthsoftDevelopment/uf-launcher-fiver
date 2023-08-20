@@ -35,7 +35,7 @@ export const GamershipInstanceNetworkBeta = () => {
                 clientPackage: 'https://www.dropbox.com/scl/fi/e7xu0hwfxdupldh6myjra/gamership.zip?rlkey=wz676yhx38fld2a48f1b3uioa&dl=1',
                 root: 'C:/InhoniaLauncher/Instance/GamershipNetwork',
                 version: {
-                    number: '1.19.4',
+                    number: '1.20',
                     type: "release"
                 },
                 removePackage: true,

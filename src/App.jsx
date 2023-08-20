@@ -13,6 +13,7 @@ import { Loader } from "./components/loader/Loader";
 import { GamershipInstanceNetworkBeta } from "./components/Launcher/Instances/Extra/Gamership/GamershipInstance";
 import { ConnectMinecraft } from "./private/ConnectMinecraft";
 import { Footer } from "./components/static/Footer/footer";
+import { CompleteLogin } from "./components/login/Complete";
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -55,7 +56,14 @@ function App() {
           </ProtectedRoute>} /> 
 
 
+
+
         <Route path="/login" element={<Login />} />
+
+        <Route path="/auth/complete" element={
+          <ProtectedRoute isAuthenticated={isAuthenticated}>
+           <CompleteLogin />
+          </ProtectedRoute>} /> 
         
       </Routes>
       

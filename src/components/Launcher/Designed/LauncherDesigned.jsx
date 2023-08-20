@@ -76,8 +76,6 @@ export const LauncherDesigned = ({ background, title, autor, launch, sponsorDesc
 
                         <label className="text-descarga" id="descarga"></label>
                         
-                        <div className="loader"></div>
-                        
                         <div className="barra-de-carga">
                             <div className="barra" id="progress-bar">
                             </div>

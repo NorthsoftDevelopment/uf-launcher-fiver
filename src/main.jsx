@@ -9,7 +9,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       domain="dev-efoclx3oif6amatk.us.auth0.com"
       clientId="LuMaEkoKnJ0OPfVRoUfNclpRA0BzhpRm"
       authorizationParams={{
-        redirect_uri: window.location.origin,
+        redirect_uri: 'http://localhost:5173/auth/complete',
       }}
     >
       <App />

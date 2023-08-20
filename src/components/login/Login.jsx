@@ -18,6 +18,17 @@ export const Login = () => {
     Cookies.set("email", email, { expires: 365, sameSite: "strict" });
   }
 
+  const Login = () => {
+
+    try {
+
+    loginWithRedirect()
+      
+    } catch (error) {
+      
+    }
+  }
+
   return (
     <div className="">
       <img
@@ -45,7 +56,7 @@ export const Login = () => {
 
             <button
               className="button-general-log"
-              onClick={() => loginWithRedirect()}
+              onClick={Login}
             >
               Iniciar Sesion
             </button>

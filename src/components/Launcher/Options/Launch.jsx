@@ -55,11 +55,6 @@ export const runVanillaPremiun = () => {
             progressBar.style.width = porcentaje + '%';
             progressText.innerText = porcentaje + '%';
 
-            if (porcentaje === 100) {
-                var barraDeCarga = document.querySelector('.barra-de-carga');
-                barraDeCarga.style.display = 'none';
-            }
-
         })
         launcher.on('data', (e) => {
             document.getElementById("status").textContent = e
@@ -73,7 +68,7 @@ export const runVanillaPremiun = () => {
 
         })
         launcher.on('close', (e) => {
-            document.getElementById("status").textContent = null
+            document.getElementById("status").textContent = ""
             document.getElementById("status-content").style.display = "none"
         })
 

@@ -2,7 +2,7 @@ import './launcher.css'
 import './config.css'
 import Swal from 'sweetalert2';
 
-export const LauncherDesigned = ({ background, title, autor, launch }) => {
+export const LauncherDesigned = ({ background, title, autor, launch, sponsorDesc, sponsorIMG, sponsorTitle }) => {
 
     const removeInstance = () => {
         Swal.fire({
@@ -66,14 +66,24 @@ export const LauncherDesigned = ({ background, title, autor, launch }) => {
                     </div>
                 </div>
                 <div className="descargatext" id="download-screen">
-                    <div className="loader"></div>
-                    <div className="barra-de-carga">
-                        <div className="barra" id="progress-bar">
+                    <img className='img-loader' src={sponsorIMG}></img>
+                    <div className='descarga-content'>
+                        <div className='sponsor-loader'>
+                            <h1>{sponsorTitle}</h1>
+                        <p>{sponsorDesc}</p>
+                        <a href={window.location.origin} className='cancel-launch'>Cancelar</a>
                         </div>
-                        <div className="porcentaje" id="progress-text">0%</div>
+
+                        <label className="text-descarga" id="descarga"></label>
+                        
+                        <div className="loader"></div>
+                        
+                        <div className="barra-de-carga">
+                            <div className="barra" id="progress-bar">
+                            </div>
+                            <div className="porcentaje" id="progress-text">0%</div>
+                        </div>
                     </div>
-                    <label className="text-descarga" id="descarga"></label>
-                    <a className="cancel-launch" href={window.location.origin}>Cancelar</a>
                 </div>
 
             </div>
@@ -121,6 +131,10 @@ export const LauncherDesigned = ({ background, title, autor, launch }) => {
                 <button className="cancelbutton" onClick={removeInstance}>
                     Borrar Instancia
                 </button>
+            </div>
+            <div className="status-content" id="status-content">
+                <h3 className="titulo-config">Consola de Debug</h3>
+                <label id="status"></label>
             </div>
         </div>
     )

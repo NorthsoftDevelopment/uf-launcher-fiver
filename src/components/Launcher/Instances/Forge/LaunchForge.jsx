@@ -15,6 +15,9 @@ export const LaunchForge = () => {
                 background='https://www.dropbox.com/s/u3ocot6vzh8jst2/backgroundforge.png?dl=1'
                 autor='Forge • Comunidad • Mods'
                 launch={runForgePremiun}
+                sponsorTitle='Minecraft Con Mods'
+                sponsorDesc='Powered by: Inhonia Launcher'
+                sponsorIMG='https://www.dropbox.com/s/u3ocot6vzh8jst2/backgroundforge.png?dl=1'
             />
 
             <OptionsLaunch

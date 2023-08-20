@@ -66,10 +66,7 @@ export const GamershipInstanceNetworkBeta = () => {
                 progressBar.style.width = porcentaje + '%';
                 progressText.innerText = porcentaje + '%';
 
-                if (porcentaje === 100) {
-                    var barraDeCarga = document.querySelector('.barra-de-carga');
-                    barraDeCarga.style.display = 'none';
-                }
+
 
             })
             launcher.on('data', (e) => {
@@ -84,7 +81,7 @@ export const GamershipInstanceNetworkBeta = () => {
 
             })
             launcher.on('close', (e) => {
-                document.getElementById("status").textContent = null
+                document.getElementById("status").textContent = ""
                 document.getElementById("status-content").style.display = "none"
             })
     
@@ -102,7 +99,7 @@ export const GamershipInstanceNetworkBeta = () => {
 
                 <PrivateInstance 
                 documentReference='oEFiPXiavEfQlfHQ0mgC'
-                admin='justnotsebas@outlook.com'>
+                admin='koraook@gmail.com'>
 
                     <LauncherDesigned
 
@@ -110,7 +107,10 @@ export const GamershipInstanceNetworkBeta = () => {
                         background='https://cdn.discordapp.com/attachments/1075189121783443588/1141860533956526230/gamership-background.png'
                         autor='Servidor • Network • Beta'
                         launch={launch} 
-
+                        sponsorTitle='Gamership Network'
+                        sponsorDesc='Network oficial de Gamership Network - Construcciones por MrPolar'
+                        sponsorIMG='https://media.discordapp.net/attachments/1075189121783443588/1141540749368897627/lobby4.png?width=854&height=683'
+                    
                     />
 
                 </PrivateInstance>

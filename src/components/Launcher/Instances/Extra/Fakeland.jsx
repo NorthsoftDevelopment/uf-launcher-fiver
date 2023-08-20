@@ -66,10 +66,7 @@ export const LaunchFakeland = () => {
                 progressBar.style.width = porcentaje + '%';
                 progressText.innerText = porcentaje + '%';
 
-                if (porcentaje === 100) {
-                    var barraDeCarga = document.querySelector('.barra-de-carga');
-                    barraDeCarga.style.display = 'none';
-                }
+
 
             })
             launcher.on('data', (e) => {
@@ -109,6 +106,9 @@ export const LaunchFakeland = () => {
                         title='Fakeland'
                         background='https://cdn.discordapp.com/attachments/1075189121783443588/1141860533956526230/gamership-background.png'
                         autor='Servidor • Network • Beta'
+                        sponsorDesc='Serie de amigos con Korita'
+                        sponsorIMG='https://cdn.discordapp.com/attachments/1075189121783443588/1141860533956526230/gamership-background.png'
+                        sponsorTitle='Fakeland'
                         launch={launch} 
 
                     />

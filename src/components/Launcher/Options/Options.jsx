@@ -142,11 +142,6 @@ export const OptionsLaunch = ({ extraFunctions }) => {
                 </div>
             </div>
 
-            <div className="status-content" id="status-content">
-                <h3 className="titulo-config">Consola de Debug</h3>
-                <label id="status"></label>
-            </div>
-
         </div>
     )
 }

@@ -213,7 +213,7 @@ function nopremiun() {
 
     })
     launcher.on('close', (e) => {
-        document.getElementById("status").textContent = null
+        document.getElementById("status").textContent = "none"
         document.getElementById("status-content").style.display = "none"
     })
 

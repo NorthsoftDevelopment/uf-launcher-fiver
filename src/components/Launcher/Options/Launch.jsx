@@ -93,17 +93,17 @@ export const runForgePremiun = () => {
         case '1.19.2':
             forgeversion = "https://www.dropbox.com/s/9ztxy844vch1v1a/forge-1.19.2.zip?dl=1";
             forgeFile = "\\forge-1.19.2.jar";
-           
+
             break;
         case '1.18.2':
             forgeversion = "https://www.dropbox.com/s/1mrcbex3addqw6h/forge-1.18.2.zip?dl=1";
             forgeFile = "\\forge-1.18.2.jar";
-           
+
             break;
         case '1.16.5':
             forgeversion = "https://www.dropbox.com/s/a76mfml9u7gq9tx/forge-1.16.5.zip?dl=1";
             forgeFile = "\\forge-1.16.5.jar";
-           
+
             break;
         case '1.12.2':
             forgeversion = "https://www.dropbox.com/s/awazsla4g5he2hd/forge-1.12.2.zip?dl=1";
@@ -191,7 +191,5 @@ export const runForgePremiun = () => {
 
     })
 
-
-
-
 }
+

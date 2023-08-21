@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 import { OptionsLaunchPrivate } from '../OptionsPrivate';
 import { Loader } from '../../../loader/Loader';
 
-export const PrivateInstance = ({ children, documentReference, admin}) => {
+export const PrivateInstance = ({ children, documentReference, admin, id}) => {
     const [whitelist, setWhitelist] = useState([]);
     const [isLoading, setIsLoading] = useState(true); // New state for loading
     const email = Cookies.get('email');
@@ -56,7 +56,7 @@ export const PrivateInstance = ({ children, documentReference, admin}) => {
 
             return <div>
                 <div>{children}</div>
-                <OptionsLaunchPrivate whitelist={whitelist}/>
+                <OptionsLaunchPrivate whitelist={whitelist} id={id}/>
             </div>;
     
         } else {

@@ -58,7 +58,7 @@ export const Profile = () => {
 
       if (isAuthenticated) {
         const email = user.email
-        const api = 'https://inhonia-launcher-api.vercel.app/instance/profile'
+        const api = 'http://localhost:3000/instance/profile'
 
         const data = {
           user: email
@@ -67,6 +67,8 @@ export const Profile = () => {
         const response = await axios.post(api, data);
 
         const instances = response.data
+
+        console.log(instances[0].datos[0].title)
 
         setInstances(instances)
 
@@ -132,9 +134,9 @@ export const Profile = () => {
               {instances.map((instance, index) => (
                 <div key={index}>
                   <Card
-                    title={instance.title}
-                    link={`/launch/${instance.link}`}
-                    image={instance.img}
+                    title={instance.datos[0].title}
+                    link={`/launch/${instance.datos.link}`}
+                    image={instance.datos.img}
                   />
                 </div>
               ))}

@@ -99,7 +99,9 @@ export const LaunchFakeland = () => {
 
                 <PrivateInstance 
                 documentReference='fakeland'
-                admin='koraook@gmail.com'>
+                admin='koraook@gmail.com'
+                id="fakeland">
+                    
 
                     <LauncherDesigned
 

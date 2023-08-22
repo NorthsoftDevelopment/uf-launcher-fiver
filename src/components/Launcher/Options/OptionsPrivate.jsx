@@ -1,5 +1,4 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-undef */
+import { Tooltip } from "../../ExtraComponents/Tooltips/Tooltip";
 import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
 import "./options.css";
@@ -7,56 +6,14 @@ import "../../Launcher/Designed/config.css";
 import axios from "axios";
 
 
-export const OptionsLaunchPrivate = ({ extraFunctions, admin, whitelist, documentRef}) => {
+export const OptionsLaunchPrivate = ({ whitelist, id }) => {
 
-  const [version, setVersion] = useState("");
-  const [ram, setRam] = useState("");
-  const [route, setRoute] = useState("");
-  const [username, setUsername] = useState("");
   const email = Cookies.get("email");
-
- 
-
   useEffect(() => {
-    const versionGuardada = Cookies.get("versionSeleccionada");
-    const ramGuardada = Cookies.get("memoriaRam");
-    const rutaGuardada = Cookies.get("rutaPersonalizada");
-    const usernameGuardada = Cookies.get("username");
-
-    if (versionGuardada) {
-      setVersion(versionGuardada);
-    }
-
-    if (ramGuardada) {
-      setRam(ramGuardada);
-    }
-
-    if (rutaGuardada) {
-      setRoute(rutaGuardada);
-    } else {
-      setRoute('C:/InhoniaLauncher/Instance/MinecraftVanilla')
-    }
-
-    if (usernameGuardada) {
-      setUsername(usernameGuardada);
-    }
-
-    if (email === admin) {
-
-    }
 
   }, []);
 
-  const handleSaveConfig = () => {
-    Cookies.set("versionSeleccionada", version, {
-      expires: 7,
-      sameSite: "strict",
-    });
-    Cookies.set("memoriaRam", ram, { expires: 7, sameSite: "strict" });
-    Cookies.set("rutaPersonalizada", route, { expires: 7, sameSite: "strict" });
-    Cookies.set("username", username, { expires: 7, sameSite: "strict" });
-    console.log("Save New Setting.... Complete");
-  };
+
 
   const handleUserAdd = () => {
     const usermail = document.getElementById("adduser").value;
@@ -83,7 +40,37 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin, whitelist, documen
       });
   };
 
-  
+
+
+  const changesLaunch = async() => {
+
+    const data = {
+
+      minecraftVer: document.getElementById('minecraftVer').value,
+      maxRam: document.getElementById('maxRam').value,
+      minRam: document.getElementById('minRam').value,
+      modsLink: document.getElementById('modsLink').value,
+      id: id
+      
+    }
+
+    try {
+      const api = "https://inhonia-launcher-api.vercel.app/instance/options/add";
+      const response = await axios.post(api, data);
+
+
+    console.log(response)
+
+      console.log("Successfully Get");
+  } catch (error) {
+
+      console.error(error);
+
+  }
+
+  }
+
+
 
   return (
     <div className="private-launch" id="admin">
@@ -91,87 +78,41 @@ export const OptionsLaunchPrivate = ({ extraFunctions, admin, whitelist, documen
         <div className="text-config">
           <h3 className="titulo-config">Configuracion de lanzamiento</h3>
           <div className="configs">
-            <div className="config">
-              <p
-                className="tooltipped config-text"
-              >
-                Version de Minecraft
-              </p>
-              <select
-                id="seleccionVersion"
-                className="select-general"
-                value={version}
-                onChange={(e) => setVersion(e.target.value)}
-              >
-                <option value="1.20">1.20</option>
-                <option value="1.19.4">1.19.4</option>
-                <option value="1.19.2">1.19.2</option>
-                <option value="1.19">1.19</option>
-                <option value="1.18.2">1.18.2</option>
-                <option value="1.18">1.18</option>
-                <option value="1.16.5">1.16.5</option>
-                <option value="1.16">1.16</option>
-                <option value="1.15">1.15</option>
-                <option value="1.12.2">1.12.2</option>
-                <option value="1.12">1.12</option>
-                <option value="1.8">1.8</option>
-              </select>
-            </div>
-
-            <div>{extraFunctions}</div>
 
             <div className="config">
-              <p
-                className="tooltipped config-text"
-              >
-                Memoria Ram
-              </p>
-              <select
-                id="seleccionRam"
-                className="select-general"
-                value={ram}
-                onChange={(e) => setRam(e.target.value)}
-              >
-                <option value="8G">8GB</option>
-                <option value="6G">6GB</option>
-                <option value="4G">4GB</option>
-                <option value="2G">2GB</option>
-              </select>
+              <Tooltip
+                title='Version de Minecraft'
+                tooltip='Test' />
+
+              <input className="input-general-short" id="minecraftVer" value='1.18.2'></input>
             </div>
 
             <div className="config">
-              <p
-                className="tooltipped config-text"
-              >
-                Ruta de lanzamiento
-              </p>
-              <input
-                className="input-general"
-                type="text"
-                id="seleccionRoute"
-                value={route}
-                onChange={(e) => setRoute(e.target.value)}
-              />
+              <Tooltip
+                title='Maxima Ram'
+                tooltip='Test' />
+                <input className="input-general-short" id='maxRam' value='{dataLaunch.maxRam}'></input>
             </div>
 
             <div className="config">
-              <p
-                className="tooltipped config-text"
-              >
-                Usuario (Solo modo de terceros)
-              </p>
-              <input
-                type="text"
-                id="user"
-                className="input-general"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
+              <Tooltip
+                title='Minima Ram'
+                tooltip='Test' />
+                <input className="input-general-short" id='minRam' value='{dataLaunch.minRam}'></input>
+            </div>
+
+            <div className="config">
+              <Tooltip
+                title='Link de descarga de Archivos'
+                tooltip='Test' />
+                <input className="input-general" id='modsLink' value='{dataLaunch.modsLink}'></input>
             </div>
           </div>
-          <button className="savebutton" onClick={handleSaveConfig}>
-            Guardar configuraciones
-          </button>
+
+          <button className="button-general" onClick={changesLaunch}>Subir cambios</button>
+
+
+
         </div>
       </div>
 

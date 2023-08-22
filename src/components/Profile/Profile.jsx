@@ -58,7 +58,7 @@ export const Profile = () => {
 
       if (isAuthenticated) {
         const email = user.email
-        const api = 'http://localhost:3000/instance/profile'
+        const api = 'https://inhonia-launcher-api.vercel.app/profile'
 
         const data = {
           user: email
@@ -105,7 +105,24 @@ export const Profile = () => {
             </div>
           )
         }
-        <div className='content-flex'>
+        <div className=''>
+        <div className='user-text content'>
+
+<p className='title-profile'>Mis Instancias</p>
+
+<div className='cards'>
+
+  {instances.map((instance, index) => (
+    <div key={index}>
+      <Card
+        title={instance.datos[0].title}
+        link={`/launch/${instance.datos[0].id}`}
+        image={instance.datos[0].img}
+      />
+    </div>
+  ))}
+</div>
+</div>
           {profileMC ? (
             <div className='user-text content'>
               <div>
@@ -125,23 +142,6 @@ export const Profile = () => {
               <p>No existe cuenta de Minecraft vinculada.</p>
             </div>
           )}
-          <div className='user-text content'>
-
-            <p className='title-profile'>Mis Instancias</p>
-
-            <div className='cards'>
-
-              {instances.map((instance, index) => (
-                <div key={index}>
-                  <Card
-                    title={instance.datos[0].title}
-                    link={`/launch/${instance.datos.link}`}
-                    image={instance.datos.img}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
 
       </div>

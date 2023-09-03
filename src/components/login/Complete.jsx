@@ -7,7 +7,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 export const CompleteLogin = () => {
 
     //Imports af auth and declaration API
-    const api = 'https://inhonia-launcher.vercel.app/auth/user'
+    const api = 'https://inhonia-launcher-api.vercel.app/auth/user'
     const { user, isAuthenticated, isLoading } = useAuth0();
     const { logout } = useAuth0();
     if (isLoading) {

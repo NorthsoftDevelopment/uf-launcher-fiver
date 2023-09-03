@@ -94,7 +94,6 @@ export const GamershipInstanceNetworkBeta = () => {
     }
 
     return (
-        <ConnectMinecraft>
             <div>
 
                 <PrivateInstance 
@@ -117,6 +116,5 @@ export const GamershipInstanceNetworkBeta = () => {
                 </PrivateInstance>
 
             </div>
-        </ConnectMinecraft>
     )
 }

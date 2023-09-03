@@ -50,7 +50,7 @@ function App() {
            <LaunchFakeland />
           </ProtectedRoute>} /> 
 
-          <Route path="/launch/gamership/1" element={
+          <Route path="/launch/3" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
            <GamershipInstanceNetworkBeta />
           </ProtectedRoute>} /> 

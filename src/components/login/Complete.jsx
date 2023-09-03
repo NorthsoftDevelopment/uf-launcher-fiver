@@ -51,7 +51,7 @@ export const CompleteLogin = () => {
 
         } catch (error) {
 
-            logout()
+            logout({ logoutParams: { returnTo: window.location.origin } })
 
             window.location.href = '/login'
 

@@ -63,6 +63,7 @@ export const LauncherDesigned = ({ background, title, autor, launch, sponsorDesc
                         <div className="botones">
                             <button className="jugar" onClick={launch}>Jugar (Premiun)</button>
                         </div>
+
                     </div>
                 </div>
                 <div className="descargatext" id="download-screen">
@@ -70,12 +71,12 @@ export const LauncherDesigned = ({ background, title, autor, launch, sponsorDesc
                     <div className='descarga-content'>
                         <div className='sponsor-loader'>
                             <h1>{sponsorTitle}</h1>
-                        <p>{sponsorDesc}</p>
-                        <a href={window.location.origin} className='cancel-launch'>Cancelar</a>
+                            <p>{sponsorDesc}</p>
+                            <a href={window.location.reload} className='cancel-launch'>Cancelar</a>
                         </div>
 
                         <label className="text-descarga" id="descarga"></label>
-                        
+
                         <div className="barra-de-carga">
                             <div className="barra" id="progress-bar">
                             </div>
@@ -110,6 +111,12 @@ export const LauncherDesigned = ({ background, title, autor, launch, sponsorDesc
                     </div>
                 </div>
 
+                <div className='configs'>
+                    <div className='config'>
+                        <input className='input-general' placeholder='Usuario (SOLO INSTANCIAS ESPECIFICAS)' id='username'></input>
+                    </div>
+                </div>
+
             </section>
             <div className="zone-dangerous">
                 <h3 className="titulo-config">Zona roja</h3>
@@ -134,6 +141,8 @@ export const LauncherDesigned = ({ background, title, autor, launch, sponsorDesc
                 <h3 className="titulo-config">Consola de Debug</h3>
                 <label id="status"></label>
             </div>
+
+
         </div>
     )
 }

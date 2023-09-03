@@ -14,6 +14,7 @@ import { GamershipInstanceNetworkBeta } from "./components/Launcher/Instances/Ex
 import { ConnectMinecraft } from "./private/ConnectMinecraft";
 import { Footer } from "./components/static/Footer/footer";
 import { CompleteLogin } from "./components/login/Complete";
+import { Instance2 } from "./components/Launcher/Instances/Extra/Instance2";
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -50,11 +51,18 @@ function App() {
            <LaunchFakeland />
           </ProtectedRoute>} /> 
 
+          <Route path="/launch/2" element={
+          <ProtectedRoute isAuthenticated={isAuthenticated}>
+           <Instance2 />
+          </ProtectedRoute>} /> 
+
+
           <Route path="/launch/3" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
            <GamershipInstanceNetworkBeta />
           </ProtectedRoute>} /> 
 
+          
 
 
 

@@ -113,7 +113,7 @@ export const LauncherDesigned = ({ background, title, autor, launch, sponsorDesc
 
                 <div className='configs'>
                     <div className='config'>
-                        <input id='username' className='input-general' placeholder='Usuario (SOLO INSTANCIAS ESPECIFICAS)' value='user'></input>
+                        <input id='username' className='input-general' placeholder='Usuario (SOLO INSTANCIAS ESPECIFICAS)'></input>
                     </div>
                 </div>
 

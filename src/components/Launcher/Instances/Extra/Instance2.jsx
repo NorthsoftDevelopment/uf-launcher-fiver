@@ -15,7 +15,7 @@ export const Instance2 = () => {
 
         console.log(username)
 
-        const folderPath = 'C:/InhoniaLauncher/Instance/';
+        const folderPath = 'C:/InhoniaLauncher/Instance/2';
 
         fs.mkdirSync(path.dirname(folderPath), { recursive: true });
 
@@ -30,12 +30,12 @@ export const Instance2 = () => {
             },
             clientPackage: 'https://assets.inhonia.com/inhonia-launcher/instances/2.zip',
             removePackage: true,
-            root: folderPath + id,
+            root: 'C:/InhoniaLauncher/Instance/2',
             version: {
                 number: '1.18.2',
                 type: "release"
             },
-            forge: folderPath + id + '/forge-1.18.2-40.2.10-installer.jar',
+            forge: 'C:/InhoniaLauncher/Instance/2/forge-1.18.2-40.2.10-installer.jar',
             memory: {
                 max: '7G',
                 min: "4G"

@@ -48,7 +48,7 @@ export const OptionsLaunchPrivate = ({ whitelist, id }) => {
       willOpen: async () => {
         Swal.showLoading();
         try {
-          const api = "https://inhonia-launcher.vercel.app/instance/adduser";
+          const api = "https://inhonia-launcher-api.vercel.app/instance/adduser";
           const response = await axios.post(api, data);
 
 

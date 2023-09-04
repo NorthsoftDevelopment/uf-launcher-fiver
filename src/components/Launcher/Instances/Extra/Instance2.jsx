@@ -85,7 +85,7 @@ export const Instance2 = () => {
 
             <PrivateInstance
                 documentReference={id}
-                admin='koraook@gmail.com'
+                admin='pamelarivera0997@gmail.com'
                 id={id}>
 
 

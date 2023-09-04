@@ -72,7 +72,7 @@ export const LauncherDesigned = ({ background, title, autor, launch, sponsorDesc
                         <div className='sponsor-loader'>
                             <h1>{sponsorTitle}</h1>
                             <p>{sponsorDesc}</p>
-                            <a href={window.location.reload} className='cancel-launch'>Cancelar</a>
+                            <a href={window.location.origin} className='cancel-launch'>Cancelar</a>
                         </div>
 
                         <label className="text-descarga" id="descarga"></label>
@@ -113,7 +113,7 @@ export const LauncherDesigned = ({ background, title, autor, launch, sponsorDesc
 
                 <div className='configs'>
                     <div className='config'>
-                        <input className='input-general' placeholder='Usuario (SOLO INSTANCIAS ESPECIFICAS)' id='username'></input>
+                        <input id='username' className='input-general' placeholder='Usuario (SOLO INSTANCIAS ESPECIFICAS)' value='user'></input>
                     </div>
                 </div>
 
@@ -139,6 +139,7 @@ export const LauncherDesigned = ({ background, title, autor, launch, sponsorDesc
             </div>
             <div className="status-content" id="status-content">
                 <h3 className="titulo-config">Consola de Debug</h3>
+                <label>Juego lanzado correctamente</label>
                 <label id="status"></label>
             </div>
 

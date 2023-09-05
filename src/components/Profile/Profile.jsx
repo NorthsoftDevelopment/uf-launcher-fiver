@@ -58,7 +58,7 @@ export const Profile = () => {
 
       if (isAuthenticated) {
         const email = user.email
-        const api = 'https://inhonia-launcher-api.vercel.app/profile'
+        const api = 'https://inhonia-launcher-api.vercel.app/instance/profile'
 
         const data = {
           user: email

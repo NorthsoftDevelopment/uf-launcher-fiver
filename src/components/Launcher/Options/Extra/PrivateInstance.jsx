@@ -71,6 +71,6 @@ export const PrivateInstance = ({ children, documentReference, admin, id}) => {
         }
 
     } else {
-        return <Navigate to='/' />;
+        return <div>{children}</div>;
     }
 };

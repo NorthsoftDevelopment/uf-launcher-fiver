@@ -110,11 +110,6 @@ html::-webkit-scrollbar-thumb {
   margin-top: 5px;
 }
 
-.no-list li {
-  font-size: 16px;
-  background-color: #2D3036;;
-  padding: 20px;
-}
 
 .button-little {
   background-color: transparent;

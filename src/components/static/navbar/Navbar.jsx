@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import searchIcon from '../../../assets/icon/Extra/search.png'
 
 const testData = [
   {
@@ -77,14 +78,21 @@ export const Navbar = () => {
       <nav>
         <ul>
           <div className="search-container">
+            <div className="input-search">
+            <img className="search-img" src={searchIcon}></img>
             <input
-              className="input-search"
+              className="input-search-2"
               type="text"
-              placeholder="🔍 Escribe para buscar"
+              placeholder="Escribe para buscar"
               value={searchTerm}
               onChange={handleSearch}
               onFocus={() => setShowDropdown(true)}
+              
             />
+
+            </div>
+        
+            
             {showDropdown && searchTerm.trim() !== "" && (
               <ul className="dropdown">
                 {searchResults.map((item, index) => (

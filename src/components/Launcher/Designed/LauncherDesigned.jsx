@@ -1,10 +1,13 @@
 import './launcher.css'
 import './config.css'
 import Swal from 'sweetalert2';
+import { Notification } from '../../ExtraComponents/Notification/Notification';
 
 export const LauncherDesigned = ({ background, title, autor, launch, sponsorDesc, sponsorIMG, sponsorTitle }) => {
 
     const removeInstance = () => {
+
+        
         Swal.fire({
             text: "Esta accion es permanente",
             icon: 'warning',
@@ -46,7 +49,7 @@ export const LauncherDesigned = ({ background, title, autor, launch, sponsorDesc
                         );
                     }
                 });
-            }
+            } 
         });
     };
 

@@ -1,6 +1,7 @@
 import { Tooltip } from "../../ExtraComponents/Tooltips/Tooltip";
 import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
+import { reloadScreen } from "../../ExtraComponents/ReloadScreen";
 import "./options.css";
 import "../../Launcher/Designed/config.css";
 import axios from "axios";
@@ -13,8 +14,11 @@ export const OptionsLaunchPrivate = ({ whitelist, id }) => {
 
   useEffect(() => {
 
-  }, []);
 
+
+    document.body.classList.add('no-scroll');
+
+  }, []);
 
 
   const handleUserAdd = async () => {
@@ -80,6 +84,7 @@ export const OptionsLaunchPrivate = ({ whitelist, id }) => {
 
         console.log('Guardado completado');
         window.location.reload();
+
       }
     });
 
@@ -127,8 +132,9 @@ export const OptionsLaunchPrivate = ({ whitelist, id }) => {
               <h2 className="">Opciones de lanzamiento</h2>
             </div>
             <div>
-              <p>Administrador: {email}</p>
+              <button onClick={reloadScreen} className="transparent"><h2>X</h2></button>
             </div>
+            
 
           </div>
 
@@ -195,9 +201,11 @@ export const OptionsLaunchPrivate = ({ whitelist, id }) => {
           </div>
         </div>
 
-        <div className="">
+        <div className="text-private-launch">
 
         <button onClick={handleUserAdd} className="button-general">Guardar cambios</button>
+
+
         </div>
 
       </div>

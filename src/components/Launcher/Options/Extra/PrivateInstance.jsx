@@ -66,7 +66,7 @@ export const PrivateInstance = ({ children, documentReference, admin, id }) => {
 
                 <div>{children}</div>
 
-                <button className='button-general-opt' onClick={openConfig}>Configuraciones</button>
+                <button className='button-general-opt' id='ocultar' onClick={openConfig}>Configuraciones</button>
 
                 {config && <OptionsLaunchPrivate whitelist={whitelist} id={id} />}
 

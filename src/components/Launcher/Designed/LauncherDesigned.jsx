@@ -1,10 +1,13 @@
 import './launcher.css'
 import './config.css'
 import Swal from 'sweetalert2';
+import { Notification } from '../../ExtraComponents/Notification/Notification';
 
-export const LauncherDesigned = ({ background, title, autor, launch, sponsorDesc, sponsorIMG, sponsorTitle }) => {
+export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorDesc, sponsorIMG, sponsorTitle }) => {
 
     const removeInstance = () => {
+
+
         Swal.fire({
             text: "Esta accion es permanente",
             icon: 'warning',
@@ -50,6 +53,210 @@ export const LauncherDesigned = ({ background, title, autor, launch, sponsorDesc
         });
     };
 
+
+
+
+
+    const launch = () => {
+
+        Swal.fire({
+            title: '',
+            html: 'Espere un momento...',
+            allowOutsideClick: false,
+            timer: 3000,
+            timerProgressBar: false,
+            background: 'transparent',
+            showConfirmButton: false,
+            showCancelButton: true,
+            cancelButtonColor: "rgb(0, 55, 255)",
+            cancelButtonText: 'Cancelar',
+            customClass: {
+              container: 'title-loader',
+              popup: 'title-loader',
+              header: 'title-loader',
+              title: 'title-loader',
+            },
+      
+      
+            willOpen: async () => {
+              Swal.showLoading();
+
+              const fs = require('fs');
+        const path = require('path');
+
+        const folderPath = 'C:/InhoniaLauncher/Instance/1';
+        fs.mkdirSync(path.dirname(folderPath), { recursive: true });
+
+        const { Client, Authenticator } = require('minecraft-launcher-core');
+        const launcher = new Client();
+
+        const { Auth } = require("msmc");
+
+        const authManager = new Auth("select_account");
+
+        authManager.launch("raw").then(async xboxManager => {
+
+            const token = await xboxManager.getMinecraft();
+
+            let optsAuth = {
+
+                authorization: token.mclc(),
+                overrides: {
+                    detached: false,
+                },
+
+            }
+
+            let opts = { ...optsAuth, ...otherOpts };
+
+
+            launcher.launch(opts);
+
+            launcher.on('debug', (e) => console.log(e));
+            launcher.on('data', (e) => console.log(e));
+            launcher.on('progress', (e) => {
+
+                var progress = e;
+
+                var progressBar = document.getElementById('progress-bar');
+                var progressText = document.getElementById('progress-text');
+
+                var porcentaje = Math.floor((progress.task / progress.total) * 100);
+
+                progressBar.style.width = porcentaje + '%';
+                progressText.innerText = porcentaje + '%';
+
+
+
+            })
+            launcher.on('data', (e) => {
+                document.getElementById("status").textContent = e
+                document.getElementById("status-content").style.display = "flex"
+                document.getElementById("download-screen").style.display = "none";
+            })
+
+            launcher.on('debug', (e) => {
+                document.getElementById("download-screen").style.display = "flex";
+                document.getElementById("descarga").textContent = e
+
+            })
+            launcher.on('close', (e) => {
+                document.getElementById("status").textContent = null
+                document.getElementById("status-content").style.display = "none"
+
+            })
+
+
+
+        })
+      
+            },
+            willClose: () => {
+    
+      
+            }
+          });
+
+
+    }
+
+
+    const launch2 = () => {
+
+        Swal.fire({
+            title: '',
+            html: 'Espere un momento...',
+            allowOutsideClick: false,
+            timer: 3000,
+            timerProgressBar: false,
+            background: 'transparent',
+            showConfirmButton: false,
+            showCancelButton: true,
+            cancelButtonColor: "rgb(0, 55, 255)",
+            cancelButtonText: 'Cancelar',
+            customClass: {
+              container: 'title-loader',
+              popup: 'title-loader',
+              header: 'title-loader',
+              title: 'title-loader',
+            },
+      
+      
+            willOpen: async () => {
+              Swal.showLoading();
+
+              const fs = require('fs');
+        const path = require('path');
+
+        console.log(otherOpts.root)
+
+        const folderPath = otherOpts.root;
+        fs.mkdirSync(path.dirname(folderPath), { recursive: true });
+
+        const { Client, Authenticator } = require('minecraft-launcher-core');
+
+        const username = document.getElementById('username').value
+        const launcher = new Client();
+
+            let optsAuth = {
+
+                authorization: Authenticator.getAuth(username),
+                overrides: {
+                    detached: false,
+                },
+
+            }
+
+            let opts = { ...optsAuth, ...otherOpts };
+
+
+            launcher.launch(opts);
+
+            launcher.on('debug', (e) => console.log(e));
+            launcher.on('data', (e) => console.log(e));
+            launcher.on('progress', (e) => {
+
+                var progress = e;
+
+                var progressBar = document.getElementById('progress-bar');
+                var progressText = document.getElementById('progress-text');
+
+                var porcentaje = Math.floor((progress.task / progress.total) * 100);
+
+                progressBar.style.width = porcentaje + '%';
+                progressText.innerText = porcentaje + '%';
+
+
+
+            })
+            launcher.on('data', (e) => {
+                document.getElementById("status").textContent = e
+                document.getElementById("status-content").style.display = "flex"
+                document.getElementById("download-screen").style.display = "none";
+            })
+
+            launcher.on('debug', (e) => {
+                document.getElementById("download-screen").style.display = "flex";
+                document.getElementById("descarga").textContent = e
+
+            })
+            launcher.on('close', (e) => {
+                document.getElementById("status").textContent = null
+                document.getElementById("status-content").style.display = "none"
+
+            })
+
+      
+            },
+            willClose: () => {
+    
+      
+            }
+          });
+
+
+    }
+
     return (
         <div>
             <div>
@@ -62,6 +269,7 @@ export const LauncherDesigned = ({ background, title, autor, launch, sponsorDesc
                         <h4 className="instrucciones">Producto creado por la comunidad para Minecraft con Mods</h4>
                         <div className="botones">
                             <button className="jugar" onClick={launch}>Jugar (Premiun)</button>
+                            <button className="jugar-terceros" onClick={launch2}>+</button>
                         </div>
 
                     </div>

@@ -16,6 +16,20 @@ export const ConnectMinecraft = ({ children }) => {
 
 
 //When button action login take login and bugs 
+
+const saltarLogin = () => {
+
+  const Skip = {
+    data: 'null'
+  }
+
+  const SkipJSON = JSON.stringify(Skip)
+
+  Cookies.set("tokenMC", SkipJSON, { expires: 30, sameSite: "strict" });
+
+  window.location.href = '/'
+
+}
   const login = async () => {
     setIsLoading(true);
 
@@ -118,6 +132,7 @@ export const ConnectMinecraft = ({ children }) => {
             </ul>
           </div>
           <button onClick={login} className='button-general'>Logeate</button>
+          <button onClick={saltarLogin} className='button-general-short'>Saltar logeo</button>
         </div>
   
       </div>

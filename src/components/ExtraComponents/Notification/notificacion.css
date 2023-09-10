@@ -1,0 +1,32 @@
+.notification {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    opacity: 0;
+    height: 0;
+  
+    /* Agrega una transición suave para la opacidad y la altura */
+    transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out;
+  }
+  
+  .notification.show {
+    /* Cuando la notificación se muestra, establece la opacidad en 1 y la altura en su valor original */
+    opacity: 1;
+    height: auto;
+  }
+  
+.notification-content {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background-color: #2D3036;
+    margin-block: 25px;
+    padding-right: 70px;
+    padding-block: 10px;
+    padding-left: 10px;
+}

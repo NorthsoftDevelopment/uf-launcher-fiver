@@ -12,19 +12,7 @@
 
 
 
-html::-webkit-scrollbar {
-  width: 14px; /* width of the entire scrollbar */
-}
 
-html::-webkit-scrollbar-track {
-  background: rgb(255, 255, 255); /* color of the tracking area */
-}
-
-html::-webkit-scrollbar-thumb {
-  background-color: rgb(99, 99, 99); /* color of the scroll thumb */
-  border-radius: 20px; /* roundness of the scroll thumb */
-  border: 3px solid rgb(255, 255, 255); /* creates padding around scroll thumb */
-}
 
 :focus {
   outline: none;
@@ -84,15 +72,16 @@ html::-webkit-scrollbar-thumb {
   margin-top: 50px;
   width: 50px;
   height: 45px;
-  background: rgb(0, 55, 255);
+  background: #48b6ff;;
   color: white;
   border: none;
   border-radius: 5px;
   transition: all 0.4s;
+  margin-left: 10px;
 }
 
 .jugar-terceros:hover {
-  background: rgb(46, 65, 133);
+  background: #194766;;
 }
 
 .zona3 {

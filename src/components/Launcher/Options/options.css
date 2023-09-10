@@ -18,8 +18,8 @@
     background: #48b6ff;
     position: fixed;
     display: flex;
-    bottom: 0;
     right: 0;
+    bottom: 0;
     color: white;
     border: none;
     font-weight: 100;
@@ -43,6 +43,9 @@
     background-color: rgba(0, 0, 0, 0.541);
   } 
 
+  body.no-scroll {
+    overflow: hidden;
+  }
 
 
 
@@ -51,9 +54,9 @@
     background-color: #1A1B1E;
     flex-direction: column;
     text-align: left;
-    width: 55%;
+    width: 60%;
     height: 600px;
-    padding: 50px;
+    padding: 40px;
     justify-content: space-between;
   }
 
@@ -87,6 +90,20 @@
     max-height: 200px;
     flex-wrap: wrap;
     overflow: auto;
+  }
+
+  .no-list::-webkit-scrollbar {
+    width: 14px; /* width of the entire scrollbar */
+  }
+  
+  .no-list::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255); /* color of the tracking area */
+  }
+  
+  .no-list::-webkit-scrollbar-thumb {
+    background-color: rgb(99, 99, 99); /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+    border: 3px solid rgb(255, 255, 255); /* creates padding around scroll thumb */
   }
   
   .lista {

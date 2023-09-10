@@ -36,7 +36,7 @@ export const HomePage = () => {
                     <div className='zone-full'>
                         <img className='background-all' src={background1} />
                         <div className='zone-1'>
-                            <h3 className='title-general'>Instancias Beta</h3>
+                            <h3 className='title-general'>Instancias Vanilla</h3>
                             <div className='cards'>
                                 <Card
                                     title='Minecraft Vanilla'

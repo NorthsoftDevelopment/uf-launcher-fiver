@@ -24,15 +24,11 @@ export const OptionsLaunchPrivate = ({ whitelist, id }) => {
   const handleUserAdd = async () => {
     const usermail = document.getElementById("adduser").value;
 
-<<<<<<< HEAD
     const email = [usermail];
     console.log('send something')
 
 
     const datasend = {
-=======
-    const data = {
->>>>>>> 30b892c9312fc5e9f2261eaad5fb56364b50c446
       email: email,
       ubicacion: id,
     };

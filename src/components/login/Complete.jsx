@@ -9,6 +9,7 @@ export const CompleteLogin = () => {
     //Imports af auth and declaration API
     const api = 'https://inhonia-launcher-api.vercel.app/auth/user'
     const { user, isAuthenticated, isLoading } = useAuth0();
+    const { logout } = useAuth0();
     if (isLoading) {
         return <Loader />;
     }
@@ -49,6 +50,8 @@ export const CompleteLogin = () => {
             }
 
         } catch (error) {
+
+            logout({ logoutParams: { returnTo: window.location.origin } })
 
             window.location.href = '/login'
 

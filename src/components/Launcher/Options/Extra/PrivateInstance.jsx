@@ -5,9 +5,11 @@ import Cookies from 'js-cookie';
 import { OptionsLaunchPrivate } from '../OptionsPrivate';
 import { Loader } from '../../../loader/Loader';
 
-export const PrivateInstance = ({ children, documentReference, admin, id}) => {
+export const PrivateInstance = ({ children, documentReference, admin, id }) => {
     const [whitelist, setWhitelist] = useState([]);
     const [isLoading, setIsLoading] = useState(true); // New state for loading
+    const [config, setConfig] = useState(false);
+
     const email = Cookies.get('email');
     const isAdmin = email === admin;
 
@@ -17,6 +19,12 @@ export const PrivateInstance = ({ children, documentReference, admin, id}) => {
     }, [documentReference]);
 
     //const docUbi = 'oEFiPXiavEfQlfHQ0mgC'
+
+    const openConfig = () => {
+
+        setConfig(!config);
+
+    }
 
     const fetchData = async () => {
         try {
@@ -55,10 +63,15 @@ export const PrivateInstance = ({ children, documentReference, admin, id}) => {
         if (isAdmin) {
 
             return <div>
+
                 <div>{children}</div>
-                <OptionsLaunchPrivate whitelist={whitelist} id={id}/>
+
+                <button className='button-general-opt' onClick={openConfig}>Configuraciones</button>
+
+                {config && <OptionsLaunchPrivate whitelist={whitelist} id={id} />}
+
             </div>;
-    
+
         } else {
 
             return (

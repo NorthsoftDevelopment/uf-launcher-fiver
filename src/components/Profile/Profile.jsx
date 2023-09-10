@@ -27,7 +27,7 @@ export const Profile = () => {
   }
 
 
-//Renderizado de funciones
+  //Renderizado de funciones
   useEffect(() => {
 
     //Take user mc profile
@@ -68,6 +68,7 @@ export const Profile = () => {
 
         const instances = response.data
 
+
         console.log(instances[0].datos[0].title)
 
         setInstances(instances)
@@ -106,23 +107,23 @@ export const Profile = () => {
           )
         }
         <div className=''>
-        <div className='user-text content'>
+          <div className='user-text content'>
 
-<p className='title-profile'>Mis Instancias</p>
+            <p className='title-profile'>Mis Instancias</p>
 
-<div className='cards'>
+            <div className='cards'>
 
-  {instances.map((instance, index) => (
-    <div key={index}>
-      <Card
-        title={instance.datos[0].title}
-        link={`/launch/${instance.datos[0].id}`}
-        image={instance.datos[0].img}
-      />
-    </div>
-  ))}
-</div>
-</div>
+              {instances.map((instance, index) => (
+                <div key={index}>
+                  <Card
+                    title={instance.datos[0].title}
+                    link={`/launch/${instance.datos[0].id}`}
+                    image={instance.datos[0].img}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
           {profileMC ? (
             <div className='user-text content'>
               <div>

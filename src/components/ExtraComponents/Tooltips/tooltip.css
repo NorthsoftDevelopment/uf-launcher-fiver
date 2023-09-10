@@ -5,8 +5,7 @@
   .tooltip {
     padding-bottom: 5px;
     color: #aad0ff;
-    font-size: 20px;
-    position: relative; 
+    font-size: 17px;
     transition: all 1.0s;
   }
   
@@ -20,10 +19,5 @@
     font-size: 16px;
     transition: all 1.0s;
     width: 200px;
-  }
-  
-  .tooltip:hover .tooltip-text {
-    transition: all 1.0s;
-    display: flex; 
   }
   

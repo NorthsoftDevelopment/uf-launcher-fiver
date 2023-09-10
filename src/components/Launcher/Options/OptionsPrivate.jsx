@@ -4,45 +4,98 @@ import { useState, useEffect } from "react";
 import "./options.css";
 import "../../Launcher/Designed/config.css";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 
 export const OptionsLaunchPrivate = ({ whitelist, id }) => {
 
   const email = Cookies.get("email");
+
   useEffect(() => {
 
   }, []);
 
 
 
-  const handleUserAdd = () => {
+  const handleUserAdd = async () => {
     const usermail = document.getElementById("adduser").value;
 
+<<<<<<< HEAD
     const email = [usermail];
     console.log('send something')
 
 
     const datasend = {
+=======
+    const data = {
+>>>>>>> 30b892c9312fc5e9f2261eaad5fb56364b50c446
       email: email,
-      ubicacion: 'oEFiPXiavEfQlfHQ0mgC',
+      ubicacion: id,
     };
 
-    const api = "https://inhonia-launcher-api.vercel.app/instance/adduser";
+    Swal.fire({
+      title: '',
+      html: 'Espere un momento...',
+      allowOutsideClick: false,
+      timer: 3000,
+      timerProgressBar: false,
+      background: 'transparent',
+      showConfirmButton: false,
+      showCancelButton: true,
+      cancelButtonColor: "rgb(0, 55, 255)",
+      cancelButtonText: 'Cancelar',
+      customClass: {
+        container: 'title-loader',
+        popup: 'title-loader',
+        header: 'title-loader',
+        title: 'title-loader',
+      },
 
-    axios
-      .post(api, datasend)
-      .then((response) => {
-        console.log(response.data);
-        console.log("Send Successfully");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+
+      willOpen: async () => {
+        Swal.showLoading();
+        try {
+          const api = "https://inhonia-launcher-api.vercel.app/instance/adduser";
+          const response = await axios.post(api, data);
+
+
+          console.log(response)
+
+          console.log("Successfully Get");
+        } catch (error) {
+
+          console.error(error);
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Error al intentar agregar usuario',
+            background: '#1A1B1E',
+            customClass: {
+              container: 'title-loader',
+              popup: 'title-loader',
+              header: 'title-loader',
+              title: 'title-loader',
+            },
+            footer: error.response.data.error
+
+          })
+
+        }
+
+      },
+      willClose: () => {
+
+        console.log('Guardado completado');
+        window.location.reload();
+      }
+    });
+
+
   };
 
 
 
-  const changesLaunch = async() => {
+  const changesLaunch = async () => {
 
     const data = {
 
@@ -51,7 +104,7 @@ export const OptionsLaunchPrivate = ({ whitelist, id }) => {
       minRam: document.getElementById('minRam').value,
       modsLink: document.getElementById('modsLink').value,
       id: id
-      
+
     }
 
     try {
@@ -59,14 +112,14 @@ export const OptionsLaunchPrivate = ({ whitelist, id }) => {
       const response = await axios.post(api, data);
 
 
-    console.log(response)
+      console.log(response)
 
       console.log("Successfully Get");
-  } catch (error) {
+    } catch (error) {
 
       console.error(error);
 
-  }
+    }
 
   }
 
@@ -74,78 +127,87 @@ export const OptionsLaunchPrivate = ({ whitelist, id }) => {
 
   return (
     <div className="private-launch" id="admin">
-      <div className="zone2">
-        <div className="text-config">
-          <h3 className="titulo-config">Configuracion de lanzamiento</h3>
-          <div className="configs">
-
-            <div className="config">
-              <Tooltip
-                title='Version de Minecraft'
-                tooltip='Test' />
-
-              <input className="input-general-short" id="minecraftVer" value='1.18.2'></input>
-            </div>
-
-            <div className="config">
-              <Tooltip
-                title='Maxima Ram'
-                tooltip='Test' />
-                <input className="input-general-short" id='maxRam' value='{dataLaunch.maxRam}'></input>
-            </div>
-
-            <div className="config">
-              <Tooltip
-                title='Minima Ram'
-                tooltip='Test' />
-                <input className="input-general-short" id='minRam' value='{dataLaunch.minRam}'></input>
-            </div>
-
-            <div className="config">
-              <Tooltip
-                title='Link de descarga de Archivos'
-                tooltip='Test' />
-                <input className="input-general" id='modsLink' value='{dataLaunch.modsLink}'></input>
-            </div>
-          </div>
-
-          <button className="button-general" onClick={changesLaunch}>Subir cambios</button>
-
-
-
-        </div>
-      </div>
-
-      <div className="tabla">
-        <h2 className="titulo-config">Administrador</h2>
-        <div className="configs">
-          <div className="config">
-            <p
-              className="tooltipped config-text"
-            >
-              Agregar usaurio
-            </p>
-            <input type="text" placeholder="Email" id="adduser"></input>
-            <button onClick={handleUserAdd}>Agregar Usuario</button>
-
+      <div className="content-private-config">
+        <div>
+          <div className="text-private-launch">
             <div>
-              <h3>Usuarios Agregados</h3>
-              {whitelist.includes(email) ? (
-                <div className="no-list">
-                  {whitelist.map((item, index) => (
-                    <ul className="lista" key={index + 1}>
-                      <li className="lista-item">{item}</li>
-                    </ul>
-                  ))}
+              <h2 className="">Opciones de lanzamiento</h2>
+            </div>
+            <div>
+              <p>Administrador: {email}</p>
+            </div>
+
+          </div>
+
+          <div className="">
+            <h3 className="title-config">Configuracion de lanzamiento</h3>
+            <div className="configs">
+
+              <div className="config">
+                <Tooltip
+                  title='Version de Minecraft'
+                  tooltip='Test' />
+
+                <input className="input-general-short" id="minecraftVer"></input>
+              </div>
+
+              <div className="config">
+                <Tooltip
+                  title='Maxima Ram'
+                  tooltip='Test' />
+                <input className="input-general-short" id='maxRam' ></input>
+              </div>
+
+              <div className="config">
+                <Tooltip
+                  title='Minima Ram'
+                  tooltip='Test' />
+                <input className="input-general-short" id='minRam' ></input>
+              </div>
+
+              <div className="config">
+                <Tooltip
+                  title='Link de descarga de Archivos'
+                  tooltip='Test' />
+                <input className="input-general-short" id='modsLink'></input>
+              </div>
+            </div>
+
+            <h3 className="title-config">Usuarios permitidos</h3>
+            <div className="configs">
+
+              <div className="config">
+                <p
+                  className="tooltipped config-text"
+                >
+                  Agregar usaurio
+                </p>
+                <input type="text" placeholder="Email" id="adduser" className="input-general-config"></input>
+
+                <div>
+                  {whitelist.includes(email) ? (
+                    <div className="no-list">
+                      {whitelist.map((item, index) => (
+                        <ul className="lista" key={index + 1}>
+                          <li className="lista-item">{item}</li>
+                        </ul>
+                      ))}
+                    </div>
+                  ) : (
+                    <p>Error al obtener la informacion</p>
+                  )}
                 </div>
-              ) : (
-                <p>Error al obtener la informacion</p>
-              )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
+        <div className="">
+
+        <button onClick={handleUserAdd} className="button-general">Guardar cambios</button>
+        </div>
+
+      </div>
     </div>
   );
 };

@@ -28,7 +28,7 @@ export const OptionsLaunchPrivate = ({ whitelist, id }) => {
     console.log('send something')
 
 
-    const datasend = {
+    const data = {
       email: email,
       ubicacion: id,
     };

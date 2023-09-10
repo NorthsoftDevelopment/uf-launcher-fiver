@@ -8,7 +8,7 @@ export const GamershipInstanceNetworkBeta = () => {
 
     let opts = {
 
-        root: 'C:/InhoniaLauncher/Instance/GamershipNetwork',
+        root: 'C:/InhoniaLauncher/Instance/3',
         clientPackage: 'https://www.dropbox.com/scl/fi/e7xu0hwfxdupldh6myjra/gamership.zip?rlkey=wz676yhx38fld2a48f1b3uioa&dl=1',
         version: {
             number: '1.20',

@@ -15,6 +15,7 @@ import { ConnectMinecraft } from "./private/ConnectMinecraft";
 import { Footer } from "./components/static/Footer/footer";
 import { CompleteLogin } from "./components/login/Complete";
 import { InstanceID2 } from "./components/Launcher/Instances/Extra/2";
+import { Instance2 } from "./components/Launcher/Instances/Extra/Instance2";
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -53,7 +54,7 @@ function App() {
 
           <Route path="/launch/2" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
-           <InstanceID2 />
+           <Instance2 />
           </ProtectedRoute>} /> 
 
           <Route path="/launch/3" element={

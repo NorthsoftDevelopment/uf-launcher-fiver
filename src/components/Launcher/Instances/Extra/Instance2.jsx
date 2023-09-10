@@ -9,7 +9,7 @@ export const Instance2 = () => {
         let opts = {
 
             root: 'C:/InhoniaLauncher/Instance/2',
-            clientPackage: 'https://assets.inhonia.com/inhonia-launcher/instances/2.zip',
+            //clientPackage: 'https://assets.inhonia.com/inhonia-launcher/instances/2.zip',
             removePackage: true,
             version: {
                 number: '1.18.2',
@@ -36,12 +36,12 @@ export const Instance2 = () => {
 
                 <LauncherDesigned
 
-                    title='Eladina'
-                    background='https://cdn.discordapp.com/attachments/1107684864506998824/1144483633139286056/mc_launcher_2_.png'
+                    title='Lalaland Servidor'
+                    background='https://cdn.discordapp.com/attachments/1107684864506998824/1144483631964880917/mc_launcher_photo_3.png'
                     autor='Eladina • Comunidad • Servidor'
-                    sponsorDesc='Serie de amigos con Eladina'
+                    sponsorDesc='Sevidor oficial de la DINASTIA'
                     sponsorIMG='https://cdn.discordapp.com/attachments/1107684864506998824/1144483632757624862/mc_launcher_photo_6.png'
-                    sponsorTitle='Eladina Community Server'
+                    sponsorTitle='Lalaland Server'
                     otherOpts={opts}
 
                 />

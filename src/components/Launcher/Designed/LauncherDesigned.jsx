@@ -63,7 +63,6 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
             title: '',
             html: 'Espere un momento...',
             allowOutsideClick: false,
-            timer: 3000,
             timerProgressBar: false,
             background: 'transparent',
             showConfirmButton: false,
@@ -138,6 +137,7 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
             launcher.on('debug', (e) => {
                 document.getElementById("download-screen").style.display = "flex";
                 document.getElementById("descarga").textContent = e
+                Swal.close(); 
 
             })
             launcher.on('close', (e) => {
@@ -167,7 +167,7 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
             title: '',
             html: 'Espere un momento...',
             allowOutsideClick: false,
-            timer: 3000,
+            timer: 2000,
             timerProgressBar: false,
             background: 'transparent',
             showConfirmButton: false,
@@ -243,7 +243,6 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
             launcher.on('close', (e) => {
                 document.getElementById("status").textContent = null
                 document.getElementById("status-content").style.display = "none"
-
             })
 
       

@@ -19,10 +19,10 @@ export const InstanceID2 = () => {
 
                     <LauncherDesigned
 
-                        title='Eladina Servidor'
+                        title='Lalaland Servidor'
                         background='https://cdn.discordapp.com/attachments/1075189121783443588/1141860533956526230/gamership-background.png'
                         autor='Eladina • Creadora • Seguidores'
-                        sponsorDesc='Serie de seguidores de Eladina'
+                        sponsorDesc='Sevidor oficial de la DINASTIA'
                         sponsorIMG='https://cdn.discordapp.com/attachments/1075189121783443588/1141860533956526230/gamership-background.png'
                         sponsorTitle='Eladina'
                         launch={launch}

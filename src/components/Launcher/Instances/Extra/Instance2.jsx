@@ -9,7 +9,7 @@ export const Instance2 = () => {
         let opts = {
 
             root: 'C:/InhoniaLauncher/Instance/2',
-            //clientPackage: 'https://assets.inhonia.com/inhonia-launcher/instances/2.zip',
+            clientPackage: 'https://assets.inhonia.com/inhonia-launcher/instances/2.zip',
             removePackage: true,
             version: {
                 number: '1.18.2',

@@ -267,7 +267,7 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
                         <h4 className="instrucciones">Juega con Xbox Game Pass</h4>
                         <h4 className="instrucciones">Producto creado por la comunidad para Minecraft con Mods</h4>
                         <div className="botones">
-                            <button className="jugar" onClick={launch}>Jugar (Premiun)</button>
+                            <button className="jugar" onClick={launch}>Jugar (Premium)</button>
                             <button className="jugar-terceros" onClick={launch2}>+</button>
                         </div>
 

@@ -6,6 +6,24 @@ import { runForgePremiun } from '../../Options/Launch'
 export const LaunchForge = () => {
 
 
+    let opts = {
+
+        root: 'C:/InhoniaLauncher/Instance/Test',
+        clientPackage: 'https://www.dropbox.com/s/1mrcbex3addqw6h/forge-1.18.2.zip?dl=1',
+        version: {
+            number: '1.18.2',
+            type: "release"
+        },
+        forge: 'C:/InhoniaLauncher/Instance/Test/forge-1.18.2.jar',
+        removePackage: true,
+        memory: {
+            max: '4G',
+            min: "3G"
+        },
+
+    }
+
+
     return (
         <div>
 
@@ -14,7 +32,7 @@ export const LaunchForge = () => {
                 title='Minecraft Forge'
                 background='https://www.dropbox.com/s/u3ocot6vzh8jst2/backgroundforge.png?dl=1'
                 autor='Forge • Comunidad • Mods'
-                launch={runForgePremiun}
+                otherOpts={opts}
                 sponsorTitle='Minecraft Con Mods'
                 sponsorDesc='Powered by: Inhonia Launcher'
                 sponsorIMG='https://www.dropbox.com/s/u3ocot6vzh8jst2/backgroundforge.png?dl=1'
@@ -37,7 +55,7 @@ export const LaunchForge = () => {
 
                 }
             />
-            
+
         </div>
     )
 }

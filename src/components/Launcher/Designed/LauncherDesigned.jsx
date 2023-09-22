@@ -59,6 +59,8 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
 
     const launch = () => {
 
+        
+
         Swal.fire({
             title: '',
             html: 'Espere un momento...',

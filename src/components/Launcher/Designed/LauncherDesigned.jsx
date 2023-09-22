@@ -3,9 +3,11 @@ import './config.css'
 import Swal from 'sweetalert2';
 import { Notification } from '../../ExtraComponents/Notification/Notification';
 
-export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorDesc, sponsorIMG, sponsorTitle }) => {
+export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorDesc, sponsorIMG, sponsorTitle, valorRoot }) => {
 
     const removeInstance = () => {
+
+        console.log(valorRoot)
 
 
         Swal.fire({
@@ -59,7 +61,7 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
 
     const launch = () => {
 
-        
+
 
         Swal.fire({
             title: '',
@@ -72,92 +74,92 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
             cancelButtonColor: "rgb(0, 55, 255)",
             cancelButtonText: 'Cancelar',
             customClass: {
-              container: 'title-loader',
-              popup: 'title-loader',
-              header: 'title-loader',
-              title: 'title-loader',
+                container: 'title-loader',
+                popup: 'title-loader',
+                header: 'title-loader',
+                title: 'title-loader',
             },
-      
-      
+
+
             willOpen: async () => {
-              Swal.showLoading();
+                Swal.showLoading();
 
-              const fs = require('fs');
-        const path = require('path');
+                const fs = require('fs');
+                const path = require('path');
 
-        const folderPath = 'C:/InhoniaLauncher/Instance/1';
-        fs.mkdirSync(path.dirname(folderPath), { recursive: true });
+                const folderPath = 'C:/InhoniaLauncher/Instance/1';
+                fs.mkdirSync(path.dirname(folderPath), { recursive: true });
 
-        const { Client, Authenticator } = require('minecraft-launcher-core');
-        const launcher = new Client();
+                const { Client, Authenticator } = require('minecraft-launcher-core');
+                const launcher = new Client();
 
-        const { Auth } = require("msmc");
+                const { Auth } = require("msmc");
 
-        const authManager = new Auth("select_account");
+                const authManager = new Auth("select_account");
 
-        authManager.launch("raw").then(async xboxManager => {
+                authManager.launch("raw").then(async xboxManager => {
 
-            const token = await xboxManager.getMinecraft();
+                    const token = await xboxManager.getMinecraft();
 
-            let optsAuth = {
+                    let optsAuth = {
 
-                authorization: token.mclc(),
-                overrides: {
-                    detached: false,
-                },
+                        authorization: token.mclc(),
+                        overrides: {
+                            detached: false,
+                        },
 
-            }
+                    }
 
-            let opts = { ...optsAuth, ...otherOpts };
-
-
-            launcher.launch(opts);
-
-            launcher.on('debug', (e) => console.log(e));
-            launcher.on('data', (e) => console.log(e));
-            launcher.on('progress', (e) => {
-
-                var progress = e;
-
-                var progressBar = document.getElementById('progress-bar');
-                var progressText = document.getElementById('progress-text');
-
-                var porcentaje = Math.floor((progress.task / progress.total) * 100);
-
-                progressBar.style.width = porcentaje + '%';
-                progressText.innerText = porcentaje + '%';
+                    let opts = { ...optsAuth, ...otherOpts };
 
 
+                    launcher.launch(opts);
 
-            })
-            launcher.on('data', (e) => {
-                document.getElementById("status").textContent = e
-                document.getElementById("status-content").style.display = "flex"
-                document.getElementById("download-screen").style.display = "none";
-            })
+                    launcher.on('debug', (e) => console.log(e));
+                    launcher.on('data', (e) => console.log(e));
+                    launcher.on('progress', (e) => {
 
-            launcher.on('debug', (e) => {
-                document.getElementById("download-screen").style.display = "flex";
-                document.getElementById("descarga").textContent = e
-                Swal.close(); 
+                        var progress = e;
 
-            })
-            launcher.on('close', (e) => {
-                document.getElementById("status").textContent = null
-                document.getElementById("status-content").style.display = "none"
+                        var progressBar = document.getElementById('progress-bar');
+                        var progressText = document.getElementById('progress-text');
 
-            })
+                        var porcentaje = Math.floor((progress.task / progress.total) * 100);
+
+                        progressBar.style.width = porcentaje + '%';
+                        progressText.innerText = porcentaje + '%';
 
 
 
-        })
-      
+                    })
+                    launcher.on('data', (e) => {
+                        document.getElementById("status").textContent = e
+                        document.getElementById("status-content").style.display = "flex"
+                        document.getElementById("download-screen").style.display = "none";
+                    })
+
+                    launcher.on('debug', (e) => {
+                        document.getElementById("download-screen").style.display = "flex";
+                        document.getElementById("descarga").textContent = e
+                        Swal.close();
+
+                    })
+                    launcher.on('close', (e) => {
+                        document.getElementById("status").textContent = null
+                        document.getElementById("status-content").style.display = "none"
+
+                    })
+
+
+
+                })
+
             },
             willClose: () => {
-    
-      
+
+
             }
-          });
+        });
 
 
     }
@@ -177,83 +179,83 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
             cancelButtonColor: "rgb(0, 55, 255)",
             cancelButtonText: 'Cancelar',
             customClass: {
-              container: 'title-loader',
-              popup: 'title-loader',
-              header: 'title-loader',
-              title: 'title-loader',
+                container: 'title-loader',
+                popup: 'title-loader',
+                header: 'title-loader',
+                title: 'title-loader',
             },
-      
-      
+
+
             willOpen: async () => {
-              Swal.showLoading();
+                Swal.showLoading();
 
-              const fs = require('fs');
-        const path = require('path');
+                const fs = require('fs');
+                const path = require('path');
 
-        console.log(otherOpts.root)
+                console.log(otherOpts.root)
 
-        const folderPath = otherOpts.root;
-        fs.mkdirSync(path.dirname(folderPath), { recursive: true });
+                const folderPath = otherOpts.root;
+                fs.mkdirSync(path.dirname(folderPath), { recursive: true });
 
-        const { Client, Authenticator } = require('minecraft-launcher-core');
+                const { Client, Authenticator } = require('minecraft-launcher-core');
 
-        const username = document.getElementById('username').value
-        const launcher = new Client();
+                const username = document.getElementById('username').value
+                const launcher = new Client();
 
-            let optsAuth = {
+                let optsAuth = {
 
-                authorization: Authenticator.getAuth(username),
-                overrides: {
-                    detached: false,
-                },
+                    authorization: Authenticator.getAuth(username),
+                    overrides: {
+                        detached: false,
+                    },
 
-            }
+                }
 
-            let opts = { ...optsAuth, ...otherOpts };
-
-
-            launcher.launch(opts);
-
-            launcher.on('debug', (e) => console.log(e));
-            launcher.on('data', (e) => console.log(e));
-            launcher.on('progress', (e) => {
-
-                var progress = e;
-
-                var progressBar = document.getElementById('progress-bar');
-                var progressText = document.getElementById('progress-text');
-
-                var porcentaje = Math.floor((progress.task / progress.total) * 100);
-
-                progressBar.style.width = porcentaje + '%';
-                progressText.innerText = porcentaje + '%';
+                let opts = { ...optsAuth, ...otherOpts };
 
 
+                launcher.launch(opts);
 
-            })
-            launcher.on('data', (e) => {
-                document.getElementById("status").textContent = e
-                document.getElementById("status-content").style.display = "flex"
-                document.getElementById("download-screen").style.display = "none";
-            })
+                launcher.on('debug', (e) => console.log(e));
+                launcher.on('data', (e) => console.log(e));
+                launcher.on('progress', (e) => {
 
-            launcher.on('debug', (e) => {
-                document.getElementById("download-screen").style.display = "flex";
-                document.getElementById("descarga").textContent = e
+                    var progress = e;
 
-            })
-            launcher.on('close', (e) => {
-                document.getElementById("status").textContent = null
-                document.getElementById("status-content").style.display = "none"
-            })
+                    var progressBar = document.getElementById('progress-bar');
+                    var progressText = document.getElementById('progress-text');
 
-      
+                    var porcentaje = Math.floor((progress.task / progress.total) * 100);
+
+                    progressBar.style.width = porcentaje + '%';
+                    progressText.innerText = porcentaje + '%';
+
+
+
+                })
+                launcher.on('data', (e) => {
+                    document.getElementById("status").textContent = e
+                    document.getElementById("status-content").style.display = "flex"
+                    document.getElementById("download-screen").style.display = "none";
+                })
+
+                launcher.on('debug', (e) => {
+                    document.getElementById("download-screen").style.display = "flex";
+                    document.getElementById("descarga").textContent = e
+
+                })
+                launcher.on('close', (e) => {
+                    document.getElementById("status").textContent = null
+                    document.getElementById("status-content").style.display = "none"
+                })
+
+
             },
             willClose: () => {
-    
-      
+
+
             }
-          });
+        });
 
 
     }

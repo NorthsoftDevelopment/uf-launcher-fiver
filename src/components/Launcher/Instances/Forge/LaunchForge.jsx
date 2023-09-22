@@ -36,6 +36,7 @@ export const LaunchForge = () => {
                 sponsorTitle='Minecraft Con Mods'
                 sponsorDesc='Powered by: Inhonia Launcher'
                 sponsorIMG='https://www.dropbox.com/s/u3ocot6vzh8jst2/backgroundforge.png?dl=1'
+                valorRoot='C:/InhoniaLauncher/Instance/Test'
             />
 
             <OptionsLaunch

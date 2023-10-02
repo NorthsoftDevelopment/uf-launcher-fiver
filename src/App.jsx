@@ -14,7 +14,6 @@ import { GamershipInstanceNetworkBeta } from "./components/Launcher/Instances/Ex
 import { ConnectMinecraft } from "./private/ConnectMinecraft";
 import { Footer } from "./components/static/Footer/footer";
 import { CompleteLogin } from "./components/login/Complete";
-import { InstanceID2 } from "./components/Launcher/Instances/Extra/2";
 import { Instance2 } from "./components/Launcher/Instances/Extra/Instance2";
 
 function App() {

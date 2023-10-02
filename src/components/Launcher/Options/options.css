@@ -70,6 +70,10 @@
     margin-bottom: 15px;
   }
 
+  .configs-div {
+    display: flex;
+  }
+
   .button-general-short {
     background: #48b6ff;
     color: white;

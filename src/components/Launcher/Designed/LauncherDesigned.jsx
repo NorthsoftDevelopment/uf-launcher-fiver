@@ -1,13 +1,47 @@
 import './launcher.css'
 import './config.css'
 import Swal from 'sweetalert2';
-import { Notification } from '../../ExtraComponents/Notification/Notification';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorDesc, sponsorIMG, sponsorTitle, valorRoot }) => {
+export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorDesc, sponsorIMG, sponsorTitle, documentRef }) => {
+
+    const [InfoInstance, setInfoInstance] = useState([]);
+
+    useEffect(() => {
+        takeInfo()
+    }, [])
+
+    const takeInfo = async () => {
+
+
+        try {
+            const api = 'https://inhonia-launcher-api.vercel.app/instance/data'
+
+            const data = {
+                location: documentRef
+            }
+
+            const response = await axios.post(api, data);
+
+            const instances = response.data
+
+            setInfoInstance(instances.datos)
+
+
+        } catch (error) {
+
+            console.log('error')
+
+        }
+
+    }
+
+
 
     const removeInstance = () => {
 
-        console.log(valorRoot)
+        console.log('Preparing to delete:', otherOpts.root)
 
 
         Swal.fire({
@@ -260,6 +294,7 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
 
     }
 
+
     return (
         <div>
             <div>
@@ -298,6 +333,38 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
 
             </div>
 
+            <div className='zone-general-instance'>
+                <h3 className='titulo-config'>Notas de Version</h3>
+                <p className='p-general-short'>
+                   {InfoInstance.notes}
+                </p>
+            </div>
+
+            <div className="zone-general-instance">
+                <h3 className="titulo-config">Zona roja</h3>
+                <p className="p-general">
+                    En caso de errores al momento de realizar tu lanzamiento con la
+                    instancia, puedes probar reiniciar la carpeta de tu Minecraft.
+                </p>
+                <ul>
+                    <li
+                        className="tooltipped"
+
+                        data-tooltip="El ejecutar esta funcion eliminara todos los archivos presentes en la carpeta de esta instalacion, la cual se encuentra en la ruta que seleccionaste o por defecto."
+                    >
+                        Perderas los archivos dentro de la instalacion
+                    </li>
+                </ul>
+                <button className="cancelbutton" onClick={removeInstance}>
+                    Borrar Instancia
+                </button>
+            </div>
+            <div className="status-content" id="status-content">
+                <h3 className="titulo-config">Consola de Debug</h3>
+                <label>Juego lanzado correctamente</label>
+                <label id="status"></label>
+            </div>
+
             <section className="zona3">
                 <h3 className="titledesc">Descripcion</h3>
                 <div className="text3">
@@ -329,30 +396,6 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
                 </div>
 
             </section>
-            <div className="zone-dangerous">
-                <h3 className="titulo-config">Zona roja</h3>
-                <p className="p-general">
-                    En caso de errores al momento de realizar tu lanzamiento con la
-                    instancia, puedes probar reiniciar la carpeta de tu Minecraft.
-                </p>
-                <ul>
-                    <li
-                        className="tooltipped"
-
-                        data-tooltip="El ejecutar esta funcion eliminara todos los archivos presentes en la carpeta de esta instalacion, la cual se encuentra en la ruta que seleccionaste o por defecto."
-                    >
-                        Perderas los archivos dentro de la instalacion
-                    </li>
-                </ul>
-                <button className="cancelbutton" onClick={removeInstance}>
-                    Borrar Instancia
-                </button>
-            </div>
-            <div className="status-content" id="status-content">
-                <h3 className="titulo-config">Consola de Debug</h3>
-                <label>Juego lanzado correctamente</label>
-                <label id="status"></label>
-            </div>
 
 
         </div>

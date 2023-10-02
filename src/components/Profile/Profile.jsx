@@ -69,7 +69,7 @@ export const Profile = () => {
         const instances = response.data
 
 
-        console.log(instances[0].datos[0].title)
+        console.log(instances)
 
         setInstances(instances)
 
@@ -116,9 +116,9 @@ export const Profile = () => {
               {instances.map((instance, index) => (
                 <div key={index}>
                   <Card
-                    title={instance.datos[0].title}
-                    link={`/launch/${instance.datos[0].id}`}
-                    image={instance.datos[0].img}
+                    title={instance.datos.title}
+                    link={`/launch/${instance.datos.id}`}
+                    image={instance.datos.img}
                   />
                 </div>
               ))}

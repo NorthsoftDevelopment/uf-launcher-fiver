@@ -43,7 +43,8 @@ export const LaunchFakeland = () => {
                         sponsorIMG='https://cdn.discordapp.com/attachments/1098296460786806866/1140029691865083914/background-color.png'
                         sponsorTitle='Fakeland'
                         otherOpts={opts}
-                        valorRoot='C:/InhoniaLauncher/Instance/1'
+
+                        documentRef='fakeland'
 
                     />
 

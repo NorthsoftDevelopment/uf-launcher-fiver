@@ -7,6 +7,7 @@ import { Loader } from '../../../loader/Loader';
 
 export const PrivateInstance = ({ children, documentReference, admin, id }) => {
     const [whitelist, setWhitelist] = useState([]);
+    const [info, setInfo] = useState([]);
     const [isLoading, setIsLoading] = useState(true); // New state for loading
     const [config, setConfig] = useState(false);
 
@@ -28,12 +29,17 @@ export const PrivateInstance = ({ children, documentReference, admin, id }) => {
 
     const fetchData = async () => {
         try {
-            const api = "https://inhonia-launcher-api.vercel.app/instance/whitelist";
-            const docRef = [documentReference];
-            const response = await axios.post(api, docRef);
-            const whitelistData = response.data;
+            const api = "https://inhonia-launcher-api.vercel.app/instance/data";
+            const data = {
+                location: documentReference
+            }
+            const response = await axios.post(api, data);
+            const information = response.data;
 
-            setWhitelist(whitelistData);
+
+
+            setInfo(information)
+            setWhitelist(information.emails);
             setIsLoading(false);
 
             if (isAdmin) {
@@ -68,7 +74,7 @@ export const PrivateInstance = ({ children, documentReference, admin, id }) => {
 
                 <button className='button-general-opt' id='ocultar' onClick={openConfig}>Configuraciones</button>
 
-                {config && <OptionsLaunchPrivate whitelist={whitelist} id={id} />}
+                {config && <OptionsLaunchPrivate whitelist={whitelist} id={id} info={info} />}
 
             </div>;
 

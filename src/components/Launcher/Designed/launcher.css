@@ -91,20 +91,30 @@
   padding: 50px;
 }
 
-.zone-dangerous {
+.zone-general-instance {
+  font-size: 18.5px;
   padding: 50px;
-  font-size: 20px;
 }
 
 .p-general {
   margin-top: 10px;
 }
-.zone-dangerous ul {
+
+.p-general-short {
+  margin-top: 10px;
+  font-size: 18px;
+  max-width: 1000px;
+  background-color:#2D3036;
+  padding: 15px;
+  line-height: 1.3em;
+  border-radius: 10px;
+}
+.zone-general-instance ul {
   margin-top: 5px;
   width: 40%;
 }
 
-.zone-dangerous ul li {
+.zone-general-instance ul li {
   margin-left: 20px;
 }
 
@@ -132,7 +142,7 @@
   text-align: left;
   margin-bottom: 15px;
   color: white;
-  font-size: 23.4px;
+  font-size: 22px;
 }
 
 .descdesc {

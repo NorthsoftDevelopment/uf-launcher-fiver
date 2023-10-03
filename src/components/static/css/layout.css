@@ -12,8 +12,12 @@ header {
     align-items: center;
 }
 
-header.abajo {
+header-test.abajo {
     background: #1A1B1E;
+}
+
+header.abajo {
+    background: #1c251c;
 }
 
 header .logo {

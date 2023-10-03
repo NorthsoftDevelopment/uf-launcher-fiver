@@ -16,7 +16,8 @@ const testData = [
     image: test,
     desc: "Mi cuenta",
     link: "/login",
-  }
+  },
+  
 ];
 
 export const Navbar = () => {

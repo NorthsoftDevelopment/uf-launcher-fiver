@@ -37,7 +37,7 @@ export const Login = () => {
     <div className="">
       <img
         className="background-all"
-        src="https://cdn.discordapp.com/attachments/1075189121783443588/1141878076402315304/background-mrpolar_1.png"
+        src="https://i.ytimg.com/vi/r42hYbMhNUo/maxresdefault.jpg"
         alt=""
       />
       <div className="left-side">

@@ -92,6 +92,11 @@ export const OptionsLaunchPrivate = ({ whitelist, id, info }) => {
 
   };
 
+  const uploadChanges = async() => {
+    changesLaunch()
+    handleUserAdd()
+  }
+
 
 
   const changesLaunch = async () => {
@@ -108,7 +113,7 @@ export const OptionsLaunchPrivate = ({ whitelist, id, info }) => {
     const data = {
       id: id,
       launch: dataLaunch,
-      email: email
+      info: document.getElementById('notes').value
     }
 
     Swal.fire({
@@ -133,7 +138,7 @@ export const OptionsLaunchPrivate = ({ whitelist, id, info }) => {
         Swal.showLoading();
 
         try {
-          const api = "https://inhonia-launcher-api.vercel.app/instance/options/add";
+          const api = "https://inhonia-launcher-api.vercel.app/instance/add";
           const response = await axios.post(api, data);
 
 
@@ -269,7 +274,7 @@ return (
                     Notas de version
                   </p>
                   <textarea type="text" rows="15"
-                    cols="40" id="" className="input-general-config" placeholder={info.datos.notes}></textarea>
+                    cols="40" id="notes" className="input-general-config" placeholder={info.datos.notes}></textarea>
 
 
                 </div>
@@ -287,7 +292,7 @@ return (
 
       <div className="text-private-launch">
 
-        <button onClick={handleUserAdd} className="button-general">Guardar cambios</button>
+        <button onClick={uploadChanges} className="button-general">Guardar cambios</button>
 
 
       </div>

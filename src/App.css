@@ -2,8 +2,12 @@
 
 html {
   font-family: "Inter", sans-serif;
-  background: #1A1B1E;
+  background: #0f0100;
   color: white;
+}
+
+.saveOld{
+  background: #1A1B1E;
 }
 
 .zone-full {
@@ -12,15 +16,11 @@ html {
   position: relative;
 }
 
-.background-all {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-}
+
 
 .background-effect {
   width: 100%;
-  height: 30vh;
+  height: 50vh;
   background-size: cover;
   object-fit: cover;
   filter: brightness(0.7);
@@ -32,7 +32,7 @@ html {
   right: 0;
   bottom: 0;
   height: 100%;
-  width: 30%;
+  width: 25%;
   gap: 30px;
   display: flex;
   flex-direction: column;

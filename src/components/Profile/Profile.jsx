@@ -87,7 +87,7 @@ export const Profile = () => {
         {
           isAuthenticated && (
             <div className='zone-mid'>
-              <img className='background-effect' src='https://i.redd.it/tx5hl42bmc751.jpg' />
+              <img className='background-effect' src='https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/30bfebab-c0ec-4941-b67c-7b4b6d875419/d66hy4u-877bf75b-1e82-4568-a7af-153325b0e55a.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzMwYmZlYmFiLWMwZWMtNDk0MS1iNjdjLTdiNGI2ZDg3NTQxOVwvZDY2aHk0dS04NzdiZjc1Yi0xZTgyLTQ1NjgtYTdhZi0xNTMzMjViMGU1NWEuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.2qB7xKyWxXh98SXAXTUjF7CPLNAi2zBWf6nDenRhkto' />
               <div className='user-profile'>
                 <img className="img-profile" src={user.picture} alt={user.name} />
                 <div className='text-profile'>
@@ -109,7 +109,7 @@ export const Profile = () => {
         <div className=''>
           <div className='user-text content'>
 
-            <p className='title-profile'>Mis Instancias</p>
+            <p className='title-profile'>Mis Tenebrosas Instancias</p>
 
             <div className='cards'>
 

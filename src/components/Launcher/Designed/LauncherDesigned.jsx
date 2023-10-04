@@ -3,6 +3,7 @@ import './config.css'
 import Swal from 'sweetalert2';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { SeparateShort } from '../../ExtraComponents/Separate/Separate';
 
 export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorDesc, sponsorIMG, sponsorTitle, documentRef }) => {
 
@@ -63,7 +64,7 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
         }).then((result) => {
             if (result.isConfirmed) {
 
-                const folderPath = valorRoot;
+                const folderPath = otherOpts.root;
 
                 const fs = require('fs');
                 const path = require('path');
@@ -169,12 +170,18 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
                     launcher.on('data', (e) => {
                         document.getElementById("status").textContent = e
                         document.getElementById("status-content").style.display = "flex"
-                        document.getElementById("download-screen").style.display = "none";
                     })
 
                     launcher.on('debug', (e) => {
+                        const descargaLabel = document.getElementById('descarga');
+
                         document.getElementById("download-screen").style.display = "flex";
-                        document.getElementById("descarga").textContent = e
+
+                        const currentContent = descargaLabel.textContent;
+
+                        // Agrega el nuevo log al contenido existente con una nueva línea
+                        descargaLabel.textContent = currentContent + (currentContent ? "\n" : "") + e;
+
                         Swal.close();
 
                     })
@@ -270,17 +277,25 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
                 launcher.on('data', (e) => {
                     document.getElementById("status").textContent = e
                     document.getElementById("status-content").style.display = "flex"
-                    document.getElementById("download-screen").style.display = "none";
                 })
 
                 launcher.on('debug', (e) => {
+                    const descargaLabel = document.getElementById('descarga');
+
                     document.getElementById("download-screen").style.display = "flex";
-                    document.getElementById("descarga").textContent = e
+
+                    const currentContent = descargaLabel.textContent;
+
+                    // Agrega el nuevo log al contenido existente con una nueva línea
+                    descargaLabel.textContent = currentContent + (currentContent ? "\n" : "") + e;
+
+                    Swal.close();
 
                 })
                 launcher.on('close', (e) => {
                     document.getElementById("status").textContent = null
                     document.getElementById("status-content").style.display = "none"
+
                 })
 
 
@@ -318,17 +333,33 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
                         <div className='sponsor-loader'>
                             <h1>{sponsorTitle}</h1>
                             <p>{sponsorDesc}</p>
+
                             <a href={window.location.origin} className='cancel-launch'>Cancelar</a>
                         </div>
 
-                        <label className="text-descarga" id="descarga"></label>
+                        <SeparateShort />
+
+                        <div className="porcentaje" id="progress-text">0%</div>
+
+                        <div className='console'>
+                            <label className="text-descarga" id="descarga"></label>
+                        </div>
+
+                        <SeparateShort />
+
+                        <div className="status-content" id="status-content">
+                            <h3 className='title-config'>Juego lanzado correctamente</h3>
+                            <label id="status"></label>
+                        </div>
+
+
 
                         <div className="barra-de-carga">
                             <div className="barra" id="progress-bar">
                             </div>
-                            <div className="porcentaje" id="progress-text">0%</div>
                         </div>
                     </div>
+
                 </div>
 
             </div>
@@ -336,7 +367,7 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
             <div className='zone-general-instance'>
                 <h3 className='titulo-config'>Notas de Version</h3>
                 <p className='p-general-short'>
-                   {InfoInstance.notes}
+                    {InfoInstance.notes}
                 </p>
             </div>
 
@@ -359,11 +390,7 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
                     Borrar Instancia
                 </button>
             </div>
-            <div className="status-content" id="status-content">
-                <h3 className="titulo-config">Consola de Debug</h3>
-                <label>Juego lanzado correctamente</label>
-                <label id="status"></label>
-            </div>
+
 
             <section className="zona3">
                 <h3 className="titledesc">Descripcion</h3>

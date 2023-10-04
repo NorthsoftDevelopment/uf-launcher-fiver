@@ -145,3 +145,10 @@ html::-webkit-scrollbar-thumb {
   color: white;
   background: transparent;
 }
+
+.title-little {
+  font-weight: 100;
+  color: white;
+  font-size: 18px;
+  margin-right: 5px;
+}

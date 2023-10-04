@@ -12,11 +12,9 @@
   }
   
   .porcentaje {
-    position: absolute;
-    transform: translateX(-50%);
-    line-height: 30px;
-    color: #fff;
+    position: relative;
     display: none;
+    color: #fff;
   }
   
 
@@ -27,8 +25,10 @@
     right: 0;
     bottom: 0;
     display: none;
+    z-index: 9999;
     flex-direction: column; /* Cambia la dirección del flex a columna */
     color: white;
+    width: 100%;
 }
 
 .img-loader{
@@ -36,11 +36,12 @@
     height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
+    filter: brightness(0.3);
 }
 
 .sponsor-loader {
-    padding: 50px;
     font-size: 20px;
+    margin: 50px;
 }
 
 .descarga-content {
@@ -50,12 +51,47 @@
     align-items: left;
     position: absolute;
     bottom: 0; /* Pega el contenido a la parte inferior del fondo */
+    
 
+}
+
+
+
+.console {
+    height: 200px;
+    width: 60%;
+    background-color: #2D3036;
+    border-radius: 10px;
+    margin: 50px;
+    
 }
 
 .text-descarga {
     font-size: 17px;
-}
+    height: 200px;
+    width: 60%;
+    position: fixed;
+    overflow-y: scroll; 
+    overflow-x: hidden;
+    white-space: pre-line; 
+    color: white;
+    padding-inline: 10px;
+  }
+
+  .text-descarga::-webkit-scrollbar {
+    width: 14px; /* width of the entire scrollbar */
+  }
+  
+  .text-descarga::-webkit-scrollbar-track {
+    background: #1A1B1E; /* color of the tracking area */
+  }
+  
+  .text-descarga::-webkit-scrollbar-thumb {
+    background-color: rgb(255, 255, 255); /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+    border: 3px solid #1A1B1E; /* creates padding around scroll thumb */
+  }
+  
 
 .cancel-launch {
     text-decoration: underline;
@@ -217,7 +253,9 @@ select option {
 .status-content {
     display: none;
     flex-direction: column;
-    padding: 50px;
-    max-width: 400px;
-    max-height: 400px;
+    width: 60%;
+    height: 200px;
+    background-color: #2D3036;
+    border-radius: 10px;
+    margin: 50px;
 }

@@ -113,6 +113,7 @@ export const Navbar = () => {
           {isAuthenticated ? (
             <div>
               <Link to="/profile" className="nav-user-profile">
+              <h3 className="title-little no-decoration">{user.nickname}</h3>
               <img className="usericon" src={user.picture} />
             </Link>
             </div>

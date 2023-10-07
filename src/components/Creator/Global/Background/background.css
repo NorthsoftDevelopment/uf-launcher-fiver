@@ -1,0 +1,12 @@
+.background-create {
+    width: 100%;
+    height: 350px;
+    position: relative;
+    display: flex;
+    background-color: blue;
+}
+
+.background-create h1 {
+    position: absolute;
+    bottom: 0;
+}

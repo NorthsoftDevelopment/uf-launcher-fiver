@@ -15,6 +15,9 @@ import { ConnectMinecraft } from "./private/ConnectMinecraft";
 import { Footer } from "./components/static/Footer/footer";
 import { CompleteLogin } from "./components/login/Complete";
 import { Instance2 } from "./components/Launcher/Instances/Extra/Instance2";
+import { LoaderCreator } from "./components/Creator/Loader";
+import { Layout } from "./components/Creator/Layout/Layout";
+import { HomeCreator } from "./components/Creator/Home/Home";
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -34,6 +37,11 @@ function App() {
         <Route path="/profile" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
             <Profile />
+          </ProtectedRoute>} />
+
+          <Route path="/creator" element={
+          <ProtectedRoute isAuthenticated={isAuthenticated}>
+            <HomeCreator />
           </ProtectedRoute>} />
 
           <Route path="/launch/vanilla" element={

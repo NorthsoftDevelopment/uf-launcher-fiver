@@ -7,7 +7,7 @@ export const LaunchFakeland = () => {
 
     let opts = {
 
-        clientPackage: 'https://www.dropbox.com/s/neprjegbvybobm9/test.zip?dl=1',
+        //clientPackage: 'https://www.dropbox.com/s/neprjegbvybobm9/test.zip?dl=1',
         root: 'C:/InhoniaLauncher/Instance/1',
         forge: 'C:/InhoniaLauncher/Instance/1/forge-1.18.2-40.1.54-installer.jar',
         version: {

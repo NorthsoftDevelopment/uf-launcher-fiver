@@ -15,6 +15,7 @@ import { ConnectMinecraft } from "./private/ConnectMinecraft";
 import { Footer } from "./components/static/Footer/footer";
 import { CompleteLogin } from "./components/login/Complete";
 import { Instance2 } from "./components/Launcher/Instances/Extra/Instance2";
+import { Instance4 } from "./components/Launcher/Instances/Extra/Instance4";
 import { LoaderCreator } from "./components/Creator/Loader";
 import { Layout } from "./components/Creator/Layout/Layout";
 import { HomeCreator } from "./components/Creator/Home/Home";
@@ -69,9 +70,12 @@ function App() {
            <GamershipInstanceNetworkBeta />
           </ProtectedRoute>} /> 
 
+        <Route path="/launch/4" element={
+          <ProtectedRoute isAuthenticated={isAuthenticated}>
+           <Instance4 />
+          </ProtectedRoute>} /> 
+
           
-
-
 
         <Route path="/login" element={<Login />} />
 

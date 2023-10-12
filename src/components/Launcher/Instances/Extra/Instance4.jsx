@@ -7,9 +7,9 @@ export const Instance4 = () => {
 
     let opts = {
 
-        clientPackage: 'https://www.dropbox.com/s/neprjegbvybobm9/test.zip?dl=1',
+        //clientPackage: 'https://www.dropbox.com/s/neprjegbvybobm9/test.zip?dl=1',
         root: 'C:/InhoniaLauncher/Instance/4',
-        forge: 'C:/InhoniaLauncher/Instance/4/forge-1.18.2-40.1.54-installer.jar',
+        forge: 'C:/InhoniaLauncher/Instance/4/forge.jar',
         version: {
             number: '1.18.2',
             type: "release"

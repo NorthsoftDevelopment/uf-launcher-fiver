@@ -7,7 +7,7 @@ export const Instance4 = () => {
 
     let opts = {
 
-        //clientPackage: 'https://www.dropbox.com/s/neprjegbvybobm9/test.zip?dl=1',
+        clientPackage: 'https://www.dropbox.com/scl/fi/60vh4xt5c7sreyc50zxu3/4.zip?rlkey=c5tfjv0ipisb5naui9zez88aj&dl=1',
         root: 'C:/InhoniaLauncher/Instance/4',
         forge: 'C:/InhoniaLauncher/Instance/4/forge.jar',
         version: {
@@ -37,10 +37,10 @@ export const Instance4 = () => {
                     <LauncherDesigned
 
                         title='Joary Instance'
-                        background='https://cdn.discordapp.com/attachments/1098296460786806866/1140160774107566100/background-test.png'
+                        background='https://wallpaperaccess.com/full/307557.jpg'
                         autor='Joary • Nothing • Nothing'
                         sponsorDesc='Servidor de Joary'
-                        sponsorIMG='https://cdn.discordapp.com/attachments/1098296460786806866/1140029691865083914/background-color.png'
+                        sponsorIMG='https://cdn.discordapp.com/attachments/935022273969139722/1087974508859764736/Valleys-and-Villages-of-Transylvania-e1546887737705.png?ex=6538aab8&is=652635b8&hm=8368469da6aba45711407ce8e4b5c85ffb0d129c77604af7eff586ebfe91d73e&'
                         sponsorTitle='Joary Instance'
                         otherOpts={opts}
                         documentRef='4'

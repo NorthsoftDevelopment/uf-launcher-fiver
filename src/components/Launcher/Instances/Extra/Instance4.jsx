@@ -36,12 +36,12 @@ export const Instance4 = () => {
 
                     <LauncherDesigned
 
-                        title='Joary Instance'
-                        background='https://wallpaperaccess.com/full/307557.jpg'
-                        autor='Joary • Nothing • Nothing'
-                        sponsorDesc='Servidor de Joary'
-                        sponsorIMG='https://cdn.discordapp.com/attachments/935022273969139722/1087974508859764736/Valleys-and-Villages-of-Transylvania-e1546887737705.png?ex=6538aab8&is=652635b8&hm=8368469da6aba45711407ce8e4b5c85ffb0d129c77604af7eff586ebfe91d73e&'
-                        sponsorTitle='Joary Instance'
+                        title='Sopresita para mi Yahir'
+                        background='https://media.discordapp.net/attachments/935022273969139722/1162802932664770651/IMG_7681.png?ex=653d439e&is=652ace9e&hm=d677d352ffe99e3bd11098a40e61487de035bb93fed93645b03b4d8c5ab196da&=&width=1213&height=683'
+                        autor='Amisita'
+                        sponsorDesc='Amisita'
+                        sponsorIMG='https://cdn.discordapp.com/attachments/935022273969139722/1162802934631895060/image.png?ex=653d439f&is=652ace9f&hm=aaf2b274072855b10225052215ab10f8de35fa525a1dbbaa8c4c226437a60501&'
+                        sponsorTitle='Feliz Cumpleaños'
                         otherOpts={opts}
                         documentRef='4'
 

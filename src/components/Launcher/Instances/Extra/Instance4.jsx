@@ -7,7 +7,7 @@ export const Instance4 = () => {
 
     let opts = {
 
-        clientPackage: 'https://www.dropbox.com/scl/fi/60vh4xt5c7sreyc50zxu3/4.zip?rlkey=c5tfjv0ipisb5naui9zez88aj&dl=1',
+        //clientPackage: 'https://www.dropbox.com/scl/fi/60vh4xt5c7sreyc50zxu3/4.zip?rlkey=c5tfjv0ipisb5naui9zez88aj&dl=1',
         root: 'C:/InhoniaLauncher/Instance/4',
         forge: 'C:/InhoniaLauncher/Instance/4/forge.jar',
         version: {

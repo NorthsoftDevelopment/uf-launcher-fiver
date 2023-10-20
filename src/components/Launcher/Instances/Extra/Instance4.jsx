@@ -7,7 +7,7 @@ export const Instance4 = () => {
 
     let opts = {
 
-        //clientPackage: 'https://www.dropbox.com/scl/fi/60vh4xt5c7sreyc50zxu3/4.zip?rlkey=c5tfjv0ipisb5naui9zez88aj&dl=1',
+        clientPackage: 'https://www.dropbox.com/scl/fi/60vh4xt5c7sreyc50zxu3/4.zip?rlkey=c5tfjv0ipisb5naui9zez88aj&dl=1',
         root: 'C:/InhoniaLauncher/Instance/4',
         forge: 'C:/InhoniaLauncher/Instance/4/forge.jar',
         version: {
@@ -30,13 +30,13 @@ export const Instance4 = () => {
 
                 <PrivateInstance
                     documentReference='4'
-                    admin='koraook@gmail.com'
+                    admin='amisiitamamasiita@outlook.com'
                     id="4">
 
 
                     <LauncherDesigned
 
-                        title='Sopresita para mi Yahir'
+                        title='Sorpresita para mi Yahir'
                         background='https://media.discordapp.net/attachments/935022273969139722/1162802932664770651/IMG_7681.png?ex=653d439e&is=652ace9e&hm=d677d352ffe99e3bd11098a40e61487de035bb93fed93645b03b4d8c5ab196da&=&width=1213&height=683'
                         autor='Amisita'
                         sponsorDesc='Amisita'

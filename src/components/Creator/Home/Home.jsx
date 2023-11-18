@@ -8,7 +8,7 @@ export const HomeCreator = () => {
     <Layout>
       <div>
         <Background
-          title='Review' />
+          title='Inicio' />
 
       </div>
       <h1>Hola</h1>

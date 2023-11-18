@@ -1,0 +1,30 @@
+.instance {
+    width: 800px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    background-color: #2D3036;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.datos-instance h1{
+    font-size: 17px;
+}
+.datos-instance p {
+    font-size: 14px;
+}
+
+.final-instance {
+    height: 100%;
+    background-color: red;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.button-instance {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

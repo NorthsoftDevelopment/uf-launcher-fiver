@@ -78,7 +78,7 @@ export const HomePage = () => {
                         <Card
                             title='Minecraft Forge y Vanilla No funcionan'
                             image={backgroundforge}
-                            link='/creator'
+                            link='/creator/instances'
                         />
 
                     </div>

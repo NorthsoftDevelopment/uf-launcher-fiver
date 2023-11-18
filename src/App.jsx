@@ -11,13 +11,10 @@ import { LaunchFakeland } from "./components/Launcher/Instances/Extra/Fakeland";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Loader } from "./components/loader/Loader";
 import { GamershipInstanceNetworkBeta } from "./components/Launcher/Instances/Extra/Gamership/GamershipInstance";
-import { ConnectMinecraft } from "./private/ConnectMinecraft";
 import { Footer } from "./components/static/Footer/footer";
 import { CompleteLogin } from "./components/login/Complete";
 import { Instance2 } from "./components/Launcher/Instances/Extra/Instance2";
-import { LoaderCreator } from "./components/Creator/Loader";
-import { Layout } from "./components/Creator/Layout/Layout";
-import { HomeCreator } from "./components/Creator/Home/Home";
+import { ConfigCreatorInstance } from "./components/Creator/Config/Config";
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -39,9 +36,9 @@ function App() {
             <Profile />
           </ProtectedRoute>} />
 
-          <Route path="/creator" element={
+          <Route path="/creator/instances" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
-            <HomeCreator />
+            <ConfigCreatorInstance />
           </ProtectedRoute>} />
 
           <Route path="/launch/vanilla" element={

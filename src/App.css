@@ -1,8 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
 
+
+
+/* Open Sans Font */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+
 html {
-  font-family: "Inter", sans-serif;
-  background: #0f0100;
+  font-family: 'Open Sans', sans-serif;
+  background: #1A1B1E;
   color: white;
 }
 
@@ -45,7 +51,17 @@ html {
   text-align: center;
 }
 
+.titles {
+  display: flex;
+  justify-content: space-between;
+}
 
+.x-button {
+  background-color: transparent;
+  border-style: none;
+  color: white;
+  margin-right: 10px;
+}
 
 
 

@@ -175,13 +175,13 @@ select option {
 
 .input-general {
     color: white;
-    background-color: #2D3036;
+    background-color: #1a1b1e9f;
+    border-radius: 10px;
     border-style: none;
-    border: 1px solid rgba(255, 255, 255, 0.5) ;
     padding: 7px;
     padding-inline: 15px;
     font-size: 16px;
-    min-width: 350px;
+    min-width: 50px;
 }
 
 .input-general-config {

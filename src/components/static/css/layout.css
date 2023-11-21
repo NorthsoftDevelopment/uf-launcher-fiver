@@ -1,15 +1,22 @@
 header {
     font-family: 'Inter', sans-serif;
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
     transition: 0.7s;
-    padding: 0px 0px;
-    z-index: 10;
+    z-index: 5;
+    background: #1A1B1E;
     align-items: center;
+
+}
+
+.navbar {
+width: 100%;
+    padding-inline: 40px;
+    display: flex;
+    justify-content: space-between;
+
 }
 
 header-test.abajo {
@@ -17,50 +24,84 @@ header-test.abajo {
 }
 
 header.abajo {
-    background: #1c251c;
+    background: #1A1B1E;
 }
 
-header .logo {
+.navbar .logo {
     width: 200px;
-    position: relative;
+
     color: #fff;
     font-weight: bold;
     font-size: 2em;
     letter-spacing: 2px;
     transition: 1.5s;
     text-decoration: none;
-    margin-left: 1.4em;
 }
 
 nav {
+    min-width: 200px;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
-    margin-right: 1.4em;
+
 }
 
-header ul {
+.interactive-bar {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 400px;
+    gap: 10px;
+}
+
+.title-interactivebar {
+
+    width: 90px;
+    text-align: center;
+    font-size: 17px;
+    color: white;
+    font-weight: 100;
+    transition: all 0.2s;
+    padding: 10px;
+    border-radius: 5px;
+    padding-inline: 20px;
+}
+
+.title-interactivebar:hover {
+    background-color: #2D3036;
+
+}
+
+.active {
+    width: 90px;
+    text-align: center;
+    font-size: 17px;
+    color: white;
+    font-weight: 100;
+    background-color: #2D3036;
+    padding: 10px;
+    border-radius: 5px;
+    padding-inline: 20px;
+  }
+
+.profile-navbar {
+
     position: relative;
-    display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 20px;
-    margin-left: 10px;
 }
 
-header ul li {
+.profile-navbar  li {
     list-style: none;
 }
 
-header ul li a {
+.profile-navbar li a {
     position: relative;
-    margin: 0 10px;
     text-decoration: none;
     color: #ffffff;
     letter-spacing: 1px;
     font-weight: 600;
     transition: 0.7s;
-    margin-top: 0.3em;
 }
 
 header.abajo .logo,

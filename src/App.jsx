@@ -7,14 +7,15 @@ import { ProtectedRoute } from "./private/PrivateRoutes";
 import { Profile } from "./components/Profile/Profile";
 import { LaunchVanilla } from "./components/Launcher/Instances/Vanilla/LaunchVanilla";
 import { LaunchForge } from "./components/Launcher/Instances/Forge/LaunchForge";
-import { LaunchFakeland } from "./components/Launcher/Instances/Extra/Fakeland";
+
 import { useAuth0 } from "@auth0/auth0-react";
 import { Loader } from "./components/loader/Loader";
-import { GamershipInstanceNetworkBeta } from "./components/Launcher/Instances/Extra/Gamership/GamershipInstance";
+
 import { Footer } from "./components/static/Footer/footer";
 import { CompleteLogin } from "./components/login/Complete";
-import { Instance2 } from "./components/Launcher/Instances/Extra/Instance2";
+
 import { ConfigCreatorInstance } from "./components/Creator/Config/Config";
+import { LauncherDesigned } from "./components/Launcher/Designed/LauncherDesigned";
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
@@ -36,6 +37,11 @@ function App() {
             <Profile />
           </ProtectedRoute>} />
 
+          <Route path="/instance/:id" element={
+          <ProtectedRoute isAuthenticated={isAuthenticated}>
+            <LauncherDesigned />
+          </ProtectedRoute>} />
+
           <Route path="/creator/instances" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
             <ConfigCreatorInstance />
@@ -51,24 +57,9 @@ function App() {
            <LaunchForge />
           </ProtectedRoute>} /> 
 
-          <Route path="/launch/1" element={
-          <ProtectedRoute isAuthenticated={isAuthenticated}>
-           <LaunchFakeland />
-          </ProtectedRoute>} /> 
-
-          <Route path="/launch/2" element={
-          <ProtectedRoute isAuthenticated={isAuthenticated}>
-           <Instance2 />
-          </ProtectedRoute>} /> 
-
-          <Route path="/launch/3" element={
-          <ProtectedRoute isAuthenticated={isAuthenticated}>
-           <GamershipInstanceNetworkBeta />
-          </ProtectedRoute>} /> 
+         
 
           
-
-
 
         <Route path="/login" element={<Login />} />
 

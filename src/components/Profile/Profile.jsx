@@ -117,7 +117,7 @@ export const Profile = () => {
                 <div key={index}>
                   <Card
                     title={instance.datos.title}
-                    link={`/launch/${instance.datos.id}`}
+                    link={`/instance/${instance.datos.id}`}
                     image={instance.datos.img}
                   />
                 </div>

@@ -6,7 +6,7 @@ import usericon from "../../../assets/icon/usericon.png";
 import "../css/search-bar.css";
 import { useEffect } from "react";
 import AOS from "aos";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import searchIcon from '../../../assets/icon/Extra/search.png'
 
@@ -17,7 +17,7 @@ const testData = [
     desc: "Mi cuenta",
     link: "/login",
   },
-  
+
 ];
 
 export const Navbar = () => {
@@ -25,6 +25,7 @@ export const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
+  const location = useLocation();
 
   const handleSearch = (event) => {
     const term = event.target.value;
@@ -69,15 +70,32 @@ export const Navbar = () => {
 
   return (
     <header>
-      
-      <a>
-    
-        <Link to={window.location.origin}>
-          <img src={logo} className="logo" alt="logo" />{" "}
-        </Link>
-      </a>
-      <nav>
-        <ul>
+      <div className="navbar">
+        <nav>
+          <a>
+
+            <Link to={window.location.origin}>
+              <img src={logo} className="logo" alt="logo" />{" "}
+            </Link>
+          </a>
+        </nav>
+
+        <nav>
+          <div className="interactive-bar">
+            <Link className="no-decoration" to='/'>
+              <h1 className={location.pathname === '/' ? 'active' : 'title-interactivebar'}>Inicio</h1>
+            </Link>
+            <Link className="no-decoration" to={location.pathname.startsWith('/instance/') ? '/discover' : '/discover'}>
+              <h1 className={location.pathname.startsWith('/instance/') ? 'active' : 'title-interactivebar'}>Explora</h1>
+            </Link>
+            <Link className="no-decoration" to='/profile'>
+              <h1 className={location.pathname === '/profile' ? 'active' : 'title-interactivebar'}>Biblioteca</h1>
+            </Link>
+          </div>
+        </nav>
+        <nav>
+          <div className="profile-navbar">
+            {/*
           <div className="search-container">
             <div className="input-search">
             <img className="search-img" src={searchIcon}></img>
@@ -109,21 +127,22 @@ export const Navbar = () => {
                 ))}
               </ul>
             )}
+          </div> */}
+            {isAuthenticated ? (
+              <div>
+                <Link to="/profile" className="nav-user-profile">
+                  <h3 className="title-little no-decoration">{user.name}</h3>
+                  <img className="usericon" src={user.picture} />
+                </Link>
+              </div>
+            ) : (
+              <Link to="/login">
+                <img className="usericon" src={usericon} />
+              </Link>
+            )}
           </div>
-          {isAuthenticated ? (
-            <div>
-              <Link to="/profile" className="nav-user-profile">
-              <h3 className="title-little no-decoration">{user.nickname}</h3>
-              <img className="usericon" src={user.picture} />
-            </Link>
-            </div>
-          ) : (
-            <Link to="/login">
-              <img className="usericon" src={usericon} />
-            </Link>
-          )}
-        </ul>
-      </nav>
+        </nav>
+      </div>
     </header>
   );
 };

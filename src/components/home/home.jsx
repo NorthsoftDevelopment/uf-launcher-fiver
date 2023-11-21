@@ -1,23 +1,29 @@
 import './home.css'
-import background1 from '../../assets/backgrounds/background-home.png'
-import backgroundvanilla from '../../assets/backgrounds/cards/vanilla-background.png'
-import backgroundforge from '../../assets/backgrounds/cards/forge-background.png'
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
 import Cookies from 'js-cookie';
 import { Loader } from '../loader/Loader';
 import { Card } from '../Cards/Card/Card';
 import { ConnectMinecraft } from '../../private/ConnectMinecraft';
-import { Tooltip } from '../ExtraComponents/Tooltips/Tooltip';
 import { Separate, SeparateShort } from '../ExtraComponents/Separate/Separate';
+import { CardBig } from '../ExtraComponents/global/CardBig';
+import { CardLarge } from '../ExtraComponents/global/CardLarge';
+import { useEffect, useState } from 'react';
+
 
 export const HomePage = () => {
 
-    const changeSkin = () => {
-        const { shell } = require('electron');
-        shell.openExternal('https://discord.gg/nHUCkpqntj');
-      };
+    
 
-    //Auth imports and loader
+    useEffect(() => {
+        //Take instances
+        instancesGet()
+    
+      }, []);
+
+    //Auth AND INSTANCES STATE, imports and loader
+    const [instances, setInstances] = useState([]);
     const { user, isAuthenticated, isLoading } = useAuth0();
     if (isLoading) return <Loader />
 
@@ -34,64 +40,106 @@ export const HomePage = () => {
     }
 
 
+    const instancesGet = async () => {
+
+        try {
+
+
+            if (isAuthenticated) {
+                const email = user.email
+                const api = 'https://inhonia-launcher-api.vercel.app/instance/profile'
+
+                const data = {
+                    user: email
+                }
+
+                const response = await axios.post(api, data);
+
+                const instances = response.data
+
+
+                console.log(instances)
+
+                setInstances(instances)
+
+            }
+
+        } catch (error) {
+
+        }
+
+    }
+
+   
+
     return (
         <ConnectMinecraft>
             <div className='page'>
 
                 <div>
                     <div className='zone-full'>
-                        <img className='background-all' src='https://th.bing.com/th/id/R.85d080d1c31d978ed05b2dc467753447?rik=mDhFJliEg9ECpA&riu=http%3a%2f%2fwww.justpushstart.com%2fwp-content%2fuploads%2f2015%2f10%2fMinecraft-Halloween.png&ehk=Gq7FOiDef7LI33RXAcaCpPlv%2fr3pJTd%2fO7lUkzy52Cs%3d&risl=&pid=ImgRaw&r=0' />
+                        <div className='background-all-home' src='https://free4kwallpapers.com/uploads/originals/2016/11/29/edge-of-earth-from-space-4k-wallpaper.jpg' />
                         <div className='zone-1'>
-                            <h1 className=''>¡Feliz Halloween!</h1>
-                            <h3 className='title-general'>Instancias Vanilla</h3>
-                            <div className='cards'>
-                                <Card
-                                    title='Minecraft Vanilla'
-                                    image={backgroundvanilla}
-                                    link='/launch/vanilla'
-                                />
+                            <div className='sub-zone1'>
+                                <h3 className='title-general-bold'>Instancias Mas Populares</h3>
+                                <div className='cards-big'>
+                                    <CardBig
+                                        img='https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png'
+                                        title='Gamership Network'
+                                        desc='1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network' />
 
-                                <Card
-                                    title='Minecraft Forge'
-                                    image={backgroundforge}
-                                    link='/launch/forge'
-                                />
+                                    <CardBig
+                                        img='https://www.dropbox.com/scl/fi/qc7fyk8cj6x4pmhf897bt/notice-home-slider1.png?rlkey=rau5ktexs3y5m1wca7enhmn4n&dl=1'
+                                        title='Fakeland'
+                                        desc='1.18.2 Forge | Participa en el nuevo servidor de creadores de contenido de Gamership' />
 
+                                    <CardBig
+                                        img='https://cdn.discordapp.com/attachments/1075189121783443588/1166925811929059349/image.png?ex=6567f2d9&is=65557dd9&hm=64439ecf7a98d7d57ad9cf374dbae2a1555a463deeda9c38fc55be4cdfbe4fa0&'
+                                        title='Minecraft Vanilla'
+                                        desc='Todas las versiones | Prueba las instancias vanilla!' />
+                                </div>
+
+                                <SeparateShort />
+                                <h3 className='title-general-bold'>Noticias Recientes</h3>
+                                <div className='cards-big'>
+                                    <CardLarge
+                                        img='https://www.dropbox.com/scl/fi/fqzt1axo7tcgujbon3myi/notice-slide4.png?rlkey=pubah96fkyczhgxoq4cev2ar3&dl=1'
+                                        title='Nuevo Menu 2.0'
+                                        autor='Inhonia Studios'
+                                        desc='Presentamos el Home 2.0 para diciembre del Inhonia Launcher'
+                                    />
+                                    <CardLarge
+                                        img='https://cdn.discordapp.com/attachments/1075189121783443588/1166925811929059349/image.png?ex=6567f2d9&is=65557dd9&hm=64439ecf7a98d7d57ad9cf374dbae2a1555a463deeda9c38fc55be4cdfbe4fa0&'
+                                        autor='Team Eladina'
+                                        title='Lalalandia Servidor'
+                                        desc='Todo listo para la nueva temporada de diamante en el servidor de Lalandia'
+                                    />
+
+
+
+
+                                </div>
+                            </div>
+
+                            <div className='sub-zone2'>
+                                <h3 className='title-general'>Mi libreria</h3>
+                                <div className='cards'>
+
+                                    {instances.map((instance, index) => (
+                                        <div key={index}>
+                                            <Card
+                                                title={instance.datos.title}
+                                                link={`/instance/${instance.datos.id}`}
+                                                image={instance.datos.img}
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className='content'>
-                    <h3 className='title-general'>Algunas novedades...</h3>
-                    <div className='cards'>
-                        <Card
-                            title='Halloween en el launcher'
-                            image='https://static.planetminecraft.com/files/resource_media/screenshot/1802/2017-11-01-16-46-30-1515494419_lrg.png'
-                        />
 
-                        <Card
-                            title='Comparte el launcher desde nuestra pagina'
-                            image='https://www.dropbox.com/scl/fi/8ij9vokra7jwijajv0ppu/notice-slide1.png?rlkey=pgoh8y205t6porlgmolvvved2&dl=1'
-                            link='https://beta.inhonia.com/launcher'
-                        />
-
-                        <Card
-                            title='Minecraft Forge y Vanilla No funcionan'
-                            image={backgroundforge}
-                            link='/creator/instances'
-                        />
-
-                    </div>
-
-                    <Separate />
-
-                    <h3 className='title-general'>¿Necesitas una instancia?</h3>
-
-                    <p>Solicitala desde nuestro discord! Puedes llegar a tener una instancia privada para compartir con tus amigos/proyecto.</p>
-
-                    <SeparateShort />
-                    <button className='button-general' onClick={changeSkin}>Entrar ahora</button>
-                </div>
 
             </div >
         </ConnectMinecraft>

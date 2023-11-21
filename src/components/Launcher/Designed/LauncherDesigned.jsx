@@ -4,30 +4,64 @@ import Swal from 'sweetalert2';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { SeparateShort } from '../../ExtraComponents/Separate/Separate';
+import Cookies from 'js-cookie';
+import { useParams, useLocation } from 'react-router-dom';
+import teen from '../../../assets/copy/teen.png'
+import { OptionsClient } from '../Options/OptionsPrivate';
+import { OptionsAdmin } from '../Options/OptionsAdmin';
 
-export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorDesc, sponsorIMG, sponsorTitle, documentRef }) => {
+export const LauncherDesigned = ({ otherOpts }) => {
 
+
+    const { id } = useParams();
+    const documentRef = id
+
+    //const defines
     const [InfoInstance, setInfoInstance] = useState([]);
+    const [LaunchInstance, setLaunchInstance] = useState([]);
+    const [config, setConfig] = useState(false);
+    const [configAdmin, setConfigAdmin] = useState(false);
+    const [Admins, setAdmins] = useState([]);
 
+    const openConfig = () => {
+
+        setConfig(!config);
+
+    }
+
+    const openConfigAdmin = () => {
+
+        setConfigAdmin(!configAdmin);
+
+    }
+
+    //things who working when launcher is loaded
     useEffect(() => {
         takeInfo()
     }, [])
 
+    const email = Cookies.get('email')
+
+
+    // take info about instance from backend
     const takeInfo = async () => {
 
 
         try {
-            const api = 'https://inhonia-launcher-api.vercel.app/instance/data'
+            const api = 'http://localhost:3000/instance/data'
 
             const data = {
                 location: documentRef
             }
 
             const response = await axios.post(api, data);
-
             const instances = response.data
 
             setInfoInstance(instances.datos)
+
+            setLaunchInstance(instances.launch)
+
+            setAdmins(instances.admins)
 
 
         } catch (error) {
@@ -139,13 +173,14 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
                     let optsAuth = {
 
                         authorization: token.mclc(),
+                        removePackage: true,
                         overrides: {
                             detached: false,
                         },
 
                     }
 
-                    let opts = { ...optsAuth, ...otherOpts };
+                    let opts = { ...optsAuth, ...LaunchInstance };
 
 
                     launcher.launch(opts);
@@ -246,6 +281,7 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
                 let optsAuth = {
 
                     authorization: Authenticator.getAuth(username),
+                    removePackage: true,
                     overrides: {
                         detached: false,
                     },
@@ -309,30 +345,55 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
 
     }
 
+    const isAdminInArray = Admins.includes(email);
+
 
     return (
         <div>
             <div>
-                <div className="zona1_forge">
-                    <img src={background} className='background-all'></img>
+                {config && <OptionsClient />}
+                {configAdmin && <OptionsAdmin id={documentRef} data={InfoInstance}/>}
+                <div className="title-launch-zone">
+                    <img src={InfoInstance.img} className='background-all'></img>
                     <div className="texto">
-                        <h3 className="titulo">{title}</h3>
-                        <h6 className="autor">{autor}</h6>
-                        <h4 className="instrucciones">Juega con Xbox Game Pass</h4>
-                        <h4 className="instrucciones">Producto creado por la comunidad para Minecraft con Mods</h4>
-                        <div className="botones">
-                            <button className="jugar" onClick={launch}>Jugar (Premium)</button>
-                            <button className="jugar-terceros" onClick={launch2}>+</button>
+                        <img src={InfoInstance.banner}></img>
+                        <div>
+                            <h3 className="titulo">{InfoInstance.title}</h3>
+                            <h6 className="autor">{InfoInstance.autor}</h6>
+                            <div className="botones">
+                                <button className="jugar" onClick={launch}>Jugar</button>
+                                <button className="jugar-terceros" onClick={launch2}>+</button>
+                                <button className="jugar-terceros" onClick={openConfig}>+</button>
+                                {isAdminInArray && (
+                                    <button className="jugar-terceros" onClick={openConfigAdmin}>Admin</button>
+                                )}
+                            </div>
+                            <h6 className="warning-instance">Verifica que la instancia este verificada antes de instalarla o toma el riesgo</h6>
+                            <div className='line'></div>
+                            <div className='copy'>
+                                <img src={teen}></img>
+                                <div className='copy-text'>
+                                    <h3>TEEN</h3>
+                                    <h6>Fantasy Violence</h6>
+                                    <div className='line'></div>
+                                    <h6>Mojang Studios</h6>
+
+                                </div>
+
+
+                            </div>
                         </div>
 
+
                     </div>
+                    <div className="degradado"></div>
                 </div>
                 <div className="descargatext" id="download-screen">
-                    <img className='img-loader' src={sponsorIMG}></img>
+                    <img className='img-loader' src={InfoInstance.img}></img>
                     <div className='descarga-content'>
                         <div className='sponsor-loader'>
-                            <h1>{sponsorTitle}</h1>
-                            <p>{sponsorDesc}</p>
+                            <h1>{InfoInstance.title}</h1>
+                            <p>{InfoInstance.notes}</p>
 
                             <a href={window.location.origin} className='cancel-launch'>Cancelar</a>
                         </div>
@@ -365,13 +426,13 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
             </div>
 
             <div className='zone-general-instance'>
-                <h3 className='titulo-config'>Notas de Version</h3>
+                <h3 className='titulo-config'>Novedades Mas Recientes</h3>
                 <p className='p-general-short'>
                     {InfoInstance.notes}
                 </p>
             </div>
 
-            <div className="zone-general-instance">
+            {/*<div className="zone-general-instance">
                 <h3 className="titulo-config">Zona roja</h3>
                 <p className="p-general">
                     En caso de errores al momento de realizar tu lanzamiento con la
@@ -389,30 +450,28 @@ export const LauncherDesigned = ({ background, title, autor, otherOpts, sponsorD
                 <button className="cancelbutton" onClick={removeInstance}>
                     Borrar Instancia
                 </button>
-            </div>
+            </div> */}
 
 
             <section className="zona3">
                 <h3 className="titledesc">Descripcion</h3>
                 <div className="text3">
-                    <img src="https://www.dropbox.com/s/5lnerrcxuk14gvf/gsnetbackground.png?dl=1" alt="Image 1"></img>
+                    <img src={InfoInstance.banner} alt="Image 1"></img>
                     <div className="desc5">
-                        <p className="descdesc">Minecraft es un juego de mundo abierto, y no tiene un fin claramente definido. Esto
-                            permite una gran libertad en cuanto a la elección de su forma de jugar. A pesar de ello, el juego
-                            posee un sistema que otorga logros por completar ciertas acciones.28​29​ La cámara es en primera
-                            persona, aunque los jugadores tienen la posibilidad de cambiarla a una perspectiva de tercera
-                            persona en cualquier momento.30​ El juego se centra en la colocación y destrucción de bloques,
-                            siendo que este se compone de objetos tridimensionales cúbicos, colocados sobre un patrón de rejilla
-                            fija.
+                        <p className="descdesc">{InfoInstance.desc}
                         </p>
                     </div>
                     <div className="desc5">
-                        <p>Distrubido por:</p>
+                        <p>Minecraft de:</p>
                         <p>Xbox Game Studio</p>
                     </div>
                     <div className="desc5">
-                        <p>Desarrollado por:</p>
-                        <p>Mojang</p>
+                        <p>Minecraft Desarrollado por:</p>
+                        <p>Mojang Studios</p>
+                    </div>
+                    <div className="desc5">
+                        <p>Instancia publicada por:</p>
+                        <p>{InfoInstance.autor}</p>
                     </div>
                 </div>
 

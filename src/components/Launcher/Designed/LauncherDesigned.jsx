@@ -9,6 +9,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import teen from '../../../assets/copy/teen.png'
 import { OptionsClient } from '../Options/OptionsPrivate';
 import { OptionsAdmin } from '../Options/OptionsAdmin';
+import { Loader } from '../../loader/Loader';
 
 export const LauncherDesigned = ({ otherOpts }) => {
 
@@ -22,6 +23,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
     const [config, setConfig] = useState(false);
     const [configAdmin, setConfigAdmin] = useState(false);
     const [Admins, setAdmins] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const openConfig = () => {
 
@@ -62,6 +64,8 @@ export const LauncherDesigned = ({ otherOpts }) => {
             setLaunchInstance(instances.launch)
 
             setAdmins(instances.admins)
+
+            setLoading(false)
 
 
         } catch (error) {
@@ -350,89 +354,94 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
     return (
         <div>
-            <div>
-                {config && <OptionsClient />}
-                {configAdmin && <OptionsAdmin id={documentRef} data={InfoInstance}/>}
-                <div className="title-launch-zone">
-                    <img src={InfoInstance.img} className='background-all'></img>
-                    <div className="texto">
-                        <img src={InfoInstance.banner}></img>
-                        <div>
-                            <h3 className="titulo">{InfoInstance.title}</h3>
-                            <h6 className="autor">{InfoInstance.autor}</h6>
-                            <div className="botones">
-                                <button className="jugar" onClick={launch}>Jugar</button>
-                                <button className="jugar-terceros" onClick={launch2}>+</button>
-                                <button className="jugar-terceros" onClick={openConfig}>+</button>
-                                {isAdminInArray && (
-                                    <button className="jugar-terceros" onClick={openConfigAdmin}>Admin</button>
-                                )}
-                            </div>
-                            <h6 className="warning-instance">Verifica que la instancia este verificada antes de instalarla o toma el riesgo</h6>
-                            <div className='line'></div>
-                            <div className='copy'>
-                                <img src={teen}></img>
-                                <div className='copy-text'>
-                                    <h3>TEEN</h3>
-                                    <h6>Fantasy Violence</h6>
-                                    <div className='line'></div>
-                                    <h6>Mojang Studios</h6>
+            {loading ? (
+                <Loader reason='Obteniendo datos...'/>
+            ) : (
+                <div>
 
+                    <div>
+                        {config && <OptionsClient />}
+                        {configAdmin && <OptionsAdmin id={documentRef} data={InfoInstance} />}
+                        <div className="title-launch-zone">
+                            <img src={InfoInstance.img} className='background-all'></img>
+                            <div className="texto">
+                                <img src={InfoInstance.banner}></img>
+                                <div>
+                                    <h3 className="titulo">{InfoInstance.title}</h3>
+                                    <h6 className="autor">{InfoInstance.autor}</h6>
+                                    <div className="botones">
+                                        <button className="jugar" onClick={launch}>Jugar</button>
+                                        <button className="jugar-terceros" onClick={launch2}>+</button>
+                                        <button className="jugar-terceros" onClick={openConfig}>+</button>
+                                        {isAdminInArray && (
+                                            <button className="jugar-terceros" onClick={openConfigAdmin}>Admin</button>
+                                        )}
+                                    </div>
+                                    <h6 className="warning-instance">Verifica que la instancia este verificada antes de instalarla o toma el riesgo</h6>
+                                    <div className='line'></div>
+                                    <div className='copy'>
+                                        <img src={teen}></img>
+                                        <div className='copy-text'>
+                                            <h3>TEEN</h3>
+                                            <h6>Fantasy Violence</h6>
+                                            <div className='line'></div>
+                                            <h6>Mojang Studios</h6>
+
+                                        </div>
+
+
+                                    </div>
                                 </div>
 
 
                             </div>
+                            <div className="degradado"></div>
                         </div>
+                        <div className="descargatext" id="download-screen">
+                            <img className='img-loader' src={InfoInstance.img}></img>
+                            <div className='descarga-content'>
+                                <div className='sponsor-loader'>
+                                    <h1>{InfoInstance.title}</h1>
+                                    <p>{InfoInstance.notes}</p>
 
+                                    <a href={window.location.origin} className='cancel-launch'>Cancelar</a>
+                                </div>
 
-                    </div>
-                    <div className="degradado"></div>
-                </div>
-                <div className="descargatext" id="download-screen">
-                    <img className='img-loader' src={InfoInstance.img}></img>
-                    <div className='descarga-content'>
-                        <div className='sponsor-loader'>
-                            <h1>{InfoInstance.title}</h1>
-                            <p>{InfoInstance.notes}</p>
+                                <SeparateShort />
 
-                            <a href={window.location.origin} className='cancel-launch'>Cancelar</a>
-                        </div>
+                                <div className="porcentaje" id="progress-text">0%</div>
 
-                        <SeparateShort />
+                                <div className='console'>
+                                    <label className="text-descarga" id="descarga"></label>
+                                </div>
 
-                        <div className="porcentaje" id="progress-text">0%</div>
+                                <SeparateShort />
 
-                        <div className='console'>
-                            <label className="text-descarga" id="descarga"></label>
-                        </div>
-
-                        <SeparateShort />
-
-                        <div className="status-content" id="status-content">
-                            <h3 className='title-config'>Juego lanzado correctamente</h3>
-                            <label id="status"></label>
-                        </div>
+                                <div className="status-content" id="status-content">
+                                    <h3 className='title-config'>Juego lanzado correctamente</h3>
+                                    <label id="status"></label>
+                                </div>
 
 
 
-                        <div className="barra-de-carga">
-                            <div className="barra" id="progress-bar">
+                                <div className="barra-de-carga">
+                                    <div className="barra" id="progress-bar">
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
+
                     </div>
 
-                </div>
+                    <div className='zone-general-instance'>
+                        <h3 className='titulo-config'>Novedades Mas Recientes</h3>
+                        <p className='p-general-short'>
+                            {InfoInstance.notes}
+                        </p>
+                    </div>
 
-            </div>
-
-            <div className='zone-general-instance'>
-                <h3 className='titulo-config'>Novedades Mas Recientes</h3>
-                <p className='p-general-short'>
-                    {InfoInstance.notes}
-                </p>
-            </div>
-
-            {/*<div className="zone-general-instance">
+                    {/*<div className="zone-general-instance">
                 <h3 className="titulo-config">Zona roja</h3>
                 <p className="p-general">
                     En caso de errores al momento de realizar tu lanzamiento con la
@@ -453,36 +462,39 @@ export const LauncherDesigned = ({ otherOpts }) => {
             </div> */}
 
 
-            <section className="zona3">
-                <h3 className="titledesc">Descripcion</h3>
-                <div className="text3">
-                    <img src={InfoInstance.banner} alt="Image 1"></img>
-                    <div className="desc5">
-                        <p className="descdesc">{InfoInstance.desc}
-                        </p>
-                    </div>
-                    <div className="desc5">
-                        <p>Minecraft de:</p>
-                        <p>Xbox Game Studio</p>
-                    </div>
-                    <div className="desc5">
-                        <p>Minecraft Desarrollado por:</p>
-                        <p>Mojang Studios</p>
-                    </div>
-                    <div className="desc5">
-                        <p>Instancia publicada por:</p>
-                        <p>{InfoInstance.autor}</p>
-                    </div>
+                    <section className="zona3">
+                        <h3 className="titledesc">Descripcion</h3>
+                        <div className="text3">
+                            <img src={InfoInstance.banner} alt="Image 1"></img>
+                            <div className="desc5">
+                                <p className="descdesc">{InfoInstance.desc}
+                                </p>
+                            </div>
+                            <div className="desc5">
+                                <p>Minecraft de:</p>
+                                <p>Xbox Game Studio</p>
+                            </div>
+                            <div className="desc5">
+                                <p>Minecraft Desarrollado por:</p>
+                                <p>Mojang Studios</p>
+                            </div>
+                            <div className="desc5">
+                                <p>Instancia publicada por:</p>
+                                <p>{InfoInstance.autor}</p>
+                            </div>
+                        </div>
+
+                        <div className='configs'>
+                            <div className='config'>
+                                <input id='username' className='input-general' placeholder='Usuario (SOLO INSTANCIAS ESPECIFICAS)'></input>
+                            </div>
+                        </div>
+
+                    </section>
+
+
                 </div>
-
-                <div className='configs'>
-                    <div className='config'>
-                        <input id='username' className='input-general' placeholder='Usuario (SOLO INSTANCIAS ESPECIFICAS)'></input>
-                    </div>
-                </div>
-
-            </section>
-
+            )}
 
         </div>
     )

@@ -20,7 +20,7 @@ import { LauncherDesigned } from "./components/Launcher/Designed/LauncherDesigne
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
 
-  if (isLoading) return <Loader />
+  if (isLoading) return <Loader reason='Recuperando perfil'/>
 
   return (
     <Router>

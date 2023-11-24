@@ -11,7 +11,7 @@ export const CompleteLogin = () => {
     const { user, isAuthenticated, isLoading } = useAuth0();
     const { logout } = useAuth0();
     if (isLoading) {
-        return <Loader />;
+        return <Loader reason='Recuperando perfil' />;
     }
 
     //Send data function
@@ -62,7 +62,7 @@ export const CompleteLogin = () => {
 
     return (
 
-        <Loader />
+        <Loader reason='Iniciando Sesion...' />
 
     )
 }

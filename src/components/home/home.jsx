@@ -25,7 +25,7 @@ export const HomePage = () => {
     //Auth AND INSTANCES STATE, imports and loader
     const [instances, setInstances] = useState([]);
     const { user, isAuthenticated, isLoading } = useAuth0();
-    if (isLoading) return <Loader />
+    if (isLoading) return <Loader  reason='Recuperando Perfil'/>
 
 
     //Actualizacion del email del usuario

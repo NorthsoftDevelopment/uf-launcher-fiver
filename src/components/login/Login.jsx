@@ -10,7 +10,7 @@ export const Login = () => {
   const { loginWithRedirect } = useAuth0();
   const { logout } = useAuth0();
   if (isLoading) {
-    return <Loader />;
+    return <Loader reason='Recuperando perfil' />;
   }
 
   //Email add to cookie

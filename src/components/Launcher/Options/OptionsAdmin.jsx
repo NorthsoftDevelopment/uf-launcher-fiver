@@ -222,68 +222,7 @@ export const OptionsAdmin = ({ id, data }) => {
 
                     <div className='admin-user-acess'>
                         <h3 className='admin-user-acess-title'>Modificar Informacion</h3>
-                        <div className='config-admin'>
-                            <label>Titulo</label>
-                            <input
-                                type="text"
-                                name="edad"
-                                className='input-general'
-                                defaultValue={data.title}
-                                onChange={handleInputChange}
-                            />
-                        </div>
-                        <div className='config-admin'>
-                            <label>Fondo</label>
-                            <input
-                                type="text"
-                                name="edad"
-                                className='input-general'
-                                defaultValue={data.img}
-                                onChange={handleInputChange}
-                            />
-                        </div>
-                        <div className='config-admin'>
-                            <label>Portada</label>
-                            <input
-                                type="text"
-                                name="edad"
-                                className='input-general'
-                                defaultValue={data.banner}
-                                onChange={handleInputChange}
-                            />
-                        </div>
-                        <div className='config-admin'>
-                            <label>Autor</label>
-                            <input
-                                type="text"
-                                name="edad"
-                                className='input-general'
-                                defaultValue={data.autor}
-                                onChange={handleInputChange}
-                            />
-                        </div>
-                        <div className='config-admin'>
-                            <label>Descripcion</label>
-                            <textarea
-                                type="text"
-                                name="edad"
-                                className='input-general'
-                                defaultValue={data.desc}
-                                onChange={handleInputChange}
-                            />
-                        </div>
-                        <div className='config-admin'>
-                            <label>Notas</label>
-                            <textarea
-                                type="text"
-                                name="edad"
-                                className='input-general'
-                                defaultValue={data.notes}
-                                onChange={handleInputChange}
-                            />
-                        </div>
-
-
+                        
 
                     </div>
 

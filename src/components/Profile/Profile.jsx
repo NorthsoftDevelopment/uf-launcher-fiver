@@ -23,7 +23,7 @@ export const Profile = () => {
 
   //Auth loader
   if (isLoading) {
-    return <Loader />;
+    return <Loader reason='Recuperando perfil' />;
   }
 
 

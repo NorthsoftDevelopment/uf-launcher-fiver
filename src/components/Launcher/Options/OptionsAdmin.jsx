@@ -65,7 +65,7 @@ export const OptionsAdmin = ({ id, data }) => {
                     const response = await axios.post(api, data);
 
 
-                    console.log(response)
+                  
 
                     console.log("Successfully Get");
                 } catch (error) {
@@ -140,7 +140,7 @@ export const OptionsAdmin = ({ id, data }) => {
                     })
 
 
-                    console.log(response)
+                
 
                     console.log("Successfully Get");
                 } catch (error) {
@@ -190,7 +190,7 @@ export const OptionsAdmin = ({ id, data }) => {
                 setUsers(data.whitelistedUsers || []);
                 setLoading(false);
 
-                console.log(users)
+             
 
             } else {
                 console.error('Error al enviar datos');

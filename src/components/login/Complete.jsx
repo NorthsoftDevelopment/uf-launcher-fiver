@@ -7,7 +7,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 export const CompleteLogin = () => {
 
     //Imports af auth and declaration API
-    const api = 'https://inhonia-launcher-api.vercel.app/auth/user'
+    const api = 'http://localhost:3000/auth/user'
     const { user, isAuthenticated, isLoading } = useAuth0();
     const { logout } = useAuth0();
     if (isLoading) {
@@ -29,16 +29,18 @@ export const CompleteLogin = () => {
             if (isAuthenticated) {
                 const email = user.email
 
-                console.log(email)
+              
 
                 const data = {
-                    user: email
+                    user: email,
+                    name: user.name,
+                    img: user.picture
 
                 }
 
                 const response = await axios.post(api, data);
 
-                console.log(response)
+                
 
                 if (!response) {
 

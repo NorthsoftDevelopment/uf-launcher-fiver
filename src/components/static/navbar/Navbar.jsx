@@ -8,7 +8,10 @@ import { useEffect } from "react";
 import AOS from "aos";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import searchIcon from '../../../assets/icon/Extra/search.png'
+import searchIcon from '../../../assets/icon/Extra/search-white.png'
+import menuIcon from '../../../assets/icon/Extra/menu-icon.png'
+import settingsIcon from '../../../assets/icon/Extra/settings-icon.png'
+import Sidebar from "../../Profile/ProfileBar";
 
 const testData = [
   {
@@ -26,6 +29,11 @@ export const Navbar = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const location = useLocation();
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
 
   const handleSearch = (event) => {
     const term = event.target.value;
@@ -78,21 +86,28 @@ export const Navbar = () => {
               <img src={logo} className="logo" alt="logo" />{" "}
             </Link>
           </a>
+          <nav>
+            <div className="interactive-bar">
+              <div className="interactive-bar-left">
+                <img src={menuIcon}></img>
+          
+              </div>
+
+              <Link className="no-decoration" to='/'>
+                <h1 className={location.pathname === '/' ? 'active' : 'title-interactivebar'}>INICIO</h1>
+              </Link>
+              <Link className="no-decoration" to='/library'>
+                <h1 className={location.pathname === '/library' ? 'active' : 'title-interactivebar'}>BIBLIOETECA</h1>
+              </Link>
+              <Link className="no-decoration" to={location.pathname.startsWith('/instance/') ? '/discover' : '/discover'}>
+                <h1 className={location.pathname.startsWith('/instance/') ? 'active' : 'title-interactivebar'}>EXPLORA</h1>
+              </Link>
+
+            </div>
+          </nav>
         </nav>
 
-        <nav>
-          <div className="interactive-bar">
-            <Link className="no-decoration" to='/'>
-              <h1 className={location.pathname === '/' ? 'active' : 'title-interactivebar'}>Inicio</h1>
-            </Link>
-            <Link className="no-decoration" to={location.pathname.startsWith('/instance/') ? '/discover' : '/discover'}>
-              <h1 className={location.pathname.startsWith('/instance/') ? 'active' : 'title-interactivebar'}>Explora</h1>
-            </Link>
-            <Link className="no-decoration" to='/profile'>
-              <h1 className={location.pathname === '/profile' ? 'active' : 'title-interactivebar'}>Biblioteca</h1>
-            </Link>
-          </div>
-        </nav>
+
         <nav>
           <div className="profile-navbar">
             {/*
@@ -128,12 +143,18 @@ export const Navbar = () => {
               </ul>
             )}
           </div> */}
+
             {isAuthenticated ? (
-              <div>
-                <Link to="/profile" className="nav-user-profile">
+              <div className="right-navbar">
+                <Link to='/search'>
+                <img src={searchIcon} className={location.pathname.startsWith('/search') ? 'search-icon-active' : 'search-icon'} ></img>
+                </Link>
+                
+                <img src={settingsIcon} className="search-icon"></img>
+                <button onClick={toggleSidebar} className="nav-user-profile">
                   <h3 className="title-little no-decoration">{user.name}</h3>
                   <img className="usericon" src={user.picture} />
-                </Link>
+                </button>
               </div>
             ) : (
               <Link to="/login">
@@ -141,6 +162,7 @@ export const Navbar = () => {
               </Link>
             )}
           </div>
+          <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
         </nav>
       </div>
     </header>

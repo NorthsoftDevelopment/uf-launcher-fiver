@@ -149,7 +149,8 @@ html::-webkit-scrollbar-thumb {
 
 
 .content {
-  padding: 60px;
+  padding-block: 60px;
+  padding-inline: 45px;
   gap: 20px;
 }
 

@@ -7,20 +7,22 @@ import { ProtectedRoute } from "./private/PrivateRoutes";
 import { Profile } from "./components/Profile/Profile";
 import { LaunchVanilla } from "./components/Launcher/Instances/Vanilla/LaunchVanilla";
 import { LaunchForge } from "./components/Launcher/Instances/Forge/LaunchForge";
-
 import { useAuth0 } from "@auth0/auth0-react";
 import { Loader } from "./components/loader/Loader";
-
 import { Footer } from "./components/static/Footer/footer";
 import { CompleteLogin } from "./components/login/Complete";
-
 import { ConfigCreatorInstance } from "./components/Creator/Config/Config";
 import { LauncherDesigned } from "./components/Launcher/Designed/LauncherDesigned";
+import { Library } from "./components/Library/Library";
+import { Soon } from "./components/global/404/Soon";
+import { Search } from "./components/Search/Search";
+import { SkeletoMitad, Skeleton } from "./components/loader/Skeleton";
+
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
 
-  if (isLoading) return <Loader reason='Recuperando perfil'/>
+  if (isLoading) return <Skeleton/>
 
   return (
     <Router>
@@ -32,9 +34,19 @@ function App() {
             <HomePage />
           </ProtectedRoute>} />
 
+          <Route path="/search" element={
+          <ProtectedRoute isAuthenticated={isAuthenticated}>
+            <Search />
+          </ProtectedRoute>} />
+
         <Route path="/profile" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
-            <Profile />
+            <Profile /> 
+          </ProtectedRoute>} />
+
+          <Route path="/library" element={
+          <ProtectedRoute isAuthenticated={isAuthenticated}>
+            <Library />
           </ProtectedRoute>} />
 
           <Route path="/instance/:id" element={
@@ -67,6 +79,11 @@ function App() {
           <ProtectedRoute isAuthenticated={isAuthenticated}>
            <CompleteLogin />
           </ProtectedRoute>} /> 
+
+          <Route
+          path="*"
+          element={ <Soon/> }
+        />
         
       </Routes>
       

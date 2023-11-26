@@ -1,12 +1,4 @@
-.sidebar {
-    background-color: #2D3036;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 229px;
-    padding-top: 60px;
-}
+
 
 .contents-sidebar {
     display: flex;

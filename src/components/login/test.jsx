@@ -27,7 +27,7 @@ export const Test = () => {
             const displayname = profile.displayName
             const mail = profile._json.mail
 
-            console.log(profile.accessToken)
+           
 
             const user = {
               displayname: displayname,

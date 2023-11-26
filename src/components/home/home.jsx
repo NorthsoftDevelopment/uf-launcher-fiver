@@ -10,22 +10,18 @@ import { Separate, SeparateShort } from '../ExtraComponents/Separate/Separate';
 import { CardBig } from '../ExtraComponents/global/CardBig';
 import { CardLarge } from '../ExtraComponents/global/CardLarge';
 import { useEffect, useState } from 'react';
+import { InfoCard } from '../Cards/Card/InfoCard';
+import { RecentPlay } from '../global/Cards/RecentPlay';
+import { Skeleton } from '../loader/Skeleton';
 
 
 export const HomePage = () => {
 
-    
-
-    useEffect(() => {
-        //Take instances
-        instancesGet()
-    
-      }, []);
 
     //Auth AND INSTANCES STATE, imports and loader
-    const [instances, setInstances] = useState([]);
     const { user, isAuthenticated, isLoading } = useAuth0();
-    if (isLoading) return <Loader  reason='Recuperando Perfil'/>
+
+    if (isLoading) return <Skeleton />
 
 
     //Actualizacion del email del usuario
@@ -40,37 +36,6 @@ export const HomePage = () => {
     }
 
 
-    const instancesGet = async () => {
-
-        try {
-
-
-            if (isAuthenticated) {
-                const email = user.email
-                const api = 'https://inhonia-launcher-api.vercel.app/instance/profile'
-
-                const data = {
-                    user: email
-                }
-
-                const response = await axios.post(api, data);
-
-                const instances = response.data
-
-
-                console.log(instances)
-
-                setInstances(instances)
-
-            }
-
-        } catch (error) {
-
-        }
-
-    }
-
-   
 
     return (
         <ConnectMinecraft>
@@ -81,12 +46,13 @@ export const HomePage = () => {
                         <div className='background-all-home' src='https://free4kwallpapers.com/uploads/originals/2016/11/29/edge-of-earth-from-space-4k-wallpaper.jpg' />
                         <div className='zone-1'>
                             <div className='sub-zone1'>
-                                <h3 className='title-general-bold'>Instancias Mas Populares</h3>
                                 <div className='cards-big'>
                                     <CardBig
                                         img='https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png'
                                         title='Gamership Network'
-                                        desc='1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network' />
+                                        desc='1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network' 
+                                        id='oEFiPXiavEfQlfHQ0mgC'/>
+                                        
 
                                     <CardBig
                                         img='https://www.dropbox.com/scl/fi/qc7fyk8cj6x4pmhf897bt/notice-home-slider1.png?rlkey=rau5ktexs3y5m1wca7enhmn4n&dl=1'
@@ -96,11 +62,11 @@ export const HomePage = () => {
                                     <CardBig
                                         img='https://cdn.discordapp.com/attachments/1075189121783443588/1166925811929059349/image.png?ex=6567f2d9&is=65557dd9&hm=64439ecf7a98d7d57ad9cf374dbae2a1555a463deeda9c38fc55be4cdfbe4fa0&'
                                         title='Minecraft Vanilla'
-                                        desc='Todas las versiones | Prueba las instancias vanilla!' />
+                                        desc='Cerrado por ahora.' />
                                 </div>
 
                                 <SeparateShort />
-                                <h3 className='title-general-bold'>Noticias Recientes</h3>
+                                <h3 className='title-general-bold'>ULTIMAS NOVEDADES</h3>
                                 <div className='cards-big'>
                                     <CardLarge
                                         img='https://www.dropbox.com/scl/fi/fqzt1axo7tcgujbon3myi/notice-slide4.png?rlkey=pubah96fkyczhgxoq4cev2ar3&dl=1'
@@ -122,18 +88,10 @@ export const HomePage = () => {
                             </div>
 
                             <div className='sub-zone2'>
-                                <h3 className='title-general'>Mi libreria</h3>
+                                <h3 className='title-general'>Lanza Rapido</h3>
                                 <div className='cards'>
+                                    <RecentPlay />
 
-                                    {instances.map((instance, index) => (
-                                        <div key={index}>
-                                            <Card
-                                                title={instance.datos.title}
-                                                link={`/instance/${instance.datos.id}`}
-                                                image={instance.datos.img}
-                                            />
-                                        </div>
-                                    ))}
                                 </div>
                             </div>
                         </div>

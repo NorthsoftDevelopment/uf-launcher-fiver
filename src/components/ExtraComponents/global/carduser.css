@@ -1,0 +1,26 @@
+.card-user {
+    background-color: #2D3036;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.card-user:hover {
+    background-color: #595c61;
+}
+
+.card-user img {
+    width: 200px;
+    border-radius: 100px;
+}
+
+.card-user-text {
+    font-size: 15px;
+    text-align: left;
+}
+
+.card-user-text h1 {
+    font-size: 25px;
+}

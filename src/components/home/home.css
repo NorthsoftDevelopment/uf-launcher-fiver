@@ -61,7 +61,15 @@
 
 .title-general-bold {
     font-weight: 900;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 23px;
+
+}
+
+.title-general-bold-big {
+    font-weight: 900;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
 
 }
 

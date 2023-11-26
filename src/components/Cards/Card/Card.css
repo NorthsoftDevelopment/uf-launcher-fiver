@@ -1,6 +1,5 @@
 .card {
-    width: 310px;
-    height: 170px;
+    width: 200px;
     position: relative;
     overflow: hidden;
     border-radius: 15px;
@@ -16,7 +15,8 @@
     left: 0;
     position: absolute;
     padding: 7px;
-    transform: translateY(100%); /* Inicialmente, el texto estará escondido debajo de la card */
+    transform: translateY(100%);
+    /* Inicialmente, el texto estará escondido debajo de la card */
     transition: transform 0.3s ease;
     background-color: rgba(0, 0, 0, 0.315);
     width: 100%;
@@ -25,4 +25,60 @@
 
 .card:hover .text-card {
     transform: translateY(0);
+}
+
+
+.infocard-container {
+    position: relative;
+    width: auto;
+    height: 350px;
+    display: flex;
+}
+
+.infocard-data img {
+    filter: blur(10px);
+    width: 100%;
+    height: 100%;
+    
+}
+
+.infocard-data {
+    background-image: inherit;
+    overflow: hidden;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+
+.infocard-data-text {
+    position: absolute;
+    bottom: 0;
+    width: 220px;
+    padding: 20px;
+}
+
+.infocard-data-text p {
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.infocard-data-text h4 {
+    font-weight: 100;
+    color: #83b8df;
+}
+
+
+
+
+
+
+
+
+
+.infocard-background img {
+    width: 100%;
+    height: 100%;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+
 }

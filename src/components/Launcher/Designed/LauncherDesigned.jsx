@@ -10,6 +10,7 @@ import teen from '../../../assets/copy/teen.png'
 import { OptionsClient } from '../Options/OptionsPrivate';
 import { OptionsAdmin } from '../Options/OptionsAdmin';
 import { Loader } from '../../loader/Loader';
+import { Skeleton } from '../../loader/Skeleton';
 
 export const LauncherDesigned = ({ otherOpts }) => {
 
@@ -355,7 +356,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
     return (
         <div>
             {loading ? (
-                <Loader reason='Obteniendo datos...'/>
+                <Skeleton/>
             ) : (
                 <div>
 

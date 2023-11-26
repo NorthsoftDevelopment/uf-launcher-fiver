@@ -47,7 +47,7 @@ export const HomePage = () => {
                         <div className='background-all-home' src='https://free4kwallpapers.com/uploads/originals/2016/11/29/edge-of-earth-from-space-4k-wallpaper.jpg' />
                         <div className='zone-1'>
                             <div className='sub-zone1'>
-                                <button className='button-play-cards' style={ { fontSize: "1em" } } onClick={ () => toast('Esta es una notificacion') }>Mostrar notificacion</button>
+                              
                                 <div className='cards-big'>
                                     <CardBig
                                         img='https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png'

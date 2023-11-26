@@ -30,6 +30,8 @@ export const LauncherDesigned = ({ otherOpts }) => {
     const [Admins, setAdmins] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const [installing, setInstalling] = useState(false);
+
     const openConfig = () => {
 
         setConfig(!config);
@@ -359,9 +361,12 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
 
     function downloadInstance() {
+
+        setInstalling(true)
+
         toast.loading((t) => {
-            const DEFAULT_URL = 'https://assets.inhonia.com/InhoniaLauncher.exe';
-            const DEFAULT_PATH = 'C:\\InhoniaLauncher\\InhoniaLauncher.exe';
+            const DEFAULT_URL = LaunchInstance.clientPackage;
+            const DEFAULT_PATH = LaunchInstance.root + LaunchInstance.clientPackageName;
             const { download, progress } = useDownloadLauncher(DEFAULT_URL, DEFAULT_PATH);
 
             useEffect(() => {
@@ -370,13 +375,26 @@ export const LauncherDesigned = ({ otherOpts }) => {
             useEffect(() => {
                 if (progress === 100.0) {
                     toast.success("Descarga finalizada!", { id: t.id });
+
+                    const fs = require('fs');
+                    const path = require('path');
+                    const filePath = path.join(LaunchInstance.root, 'test.txt');
+
+                    // Contenido del archivo
+                    const fileContent = '¡Descarga finalizada!';
+
+                    // Crea y escribe en el archivo
+                    fs.writeFileSync(filePath, fileContent);
+
+                    console.log('Archivo creado en:', filePath);
+
                 }
             }, [progress]);
             const formattedProgress = Math.floor(progress);
 
             return (
                 <div>
-                    { formattedProgress }% Descargado
+                    {formattedProgress}% Descargando
                 </div>
             );
         });
@@ -384,34 +402,39 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
     return (
         <div>
-            { loading ? (
+            {loading ? (
                 <Skeleton />
             ) : (
                 <div>
 
                     <div>
-                        { config && <OptionsClient /> }
-                        { configAdmin && <OptionsAdmin id={ documentRef } data={ InfoInstance } /> }
+                        {config && <OptionsClient />}
+                        {configAdmin && <OptionsAdmin id={documentRef} data={InfoInstance} />}
                         <div className="title-launch-zone">
-                            <img src={ InfoInstance.img } className='background-all'></img>
+                            <img src={InfoInstance.img} className='background-all'></img>
                             <div className="texto">
-                                <img src={ InfoInstance.banner }></img>
+                                <img src={InfoInstance.banner}></img>
                                 <div>
-                                    <h3 className="titulo">{ InfoInstance.title }</h3>
-                                    <h6 className="autor">{ InfoInstance.autor }</h6>
+                                    <h3 className="titulo">{InfoInstance.title}</h3>
+                                    <h6 className="autor">{InfoInstance.autor}</h6>
                                     <div className="botones">
-                                        <button className="jugar" onClick={ launch }>Jugar</button>
-                                        <button className="jugar-terceros" onClick={ launch2 }>+</button>
-                                        <button className="jugar-terceros" onClick={ openConfig }>+</button>
-                                        { isAdminInArray && (
-                                            <button className="jugar-terceros" onClick={ openConfigAdmin }>Admin</button>
-                                        ) }
+                                        {installing ? (
+                                            // Contenido a mostrar si el estado es verdadero
+                                            <button className="jugar" >Instalando</button>
+                                        ) : (
+                                            // Contenido a mostrar si el estado es falso
+                                            <button className="jugar" onClick={() => downloadInstance()}>Instalar</button>
+                                        )}
+                                        <button className="jugar-terceros" onClick={launch2}>+</button>
+                                        <button className="jugar-terceros" onClick={openConfig}>+</button>
+                                        {isAdminInArray && (
+                                            <button className="jugar-terceros" onClick={openConfigAdmin}>Admin</button>
+                                        )}
                                     </div>
                                     <h6 className="warning-instance">Verifica que la instancia este verificada antes de instalarla o toma el riesgo</h6>
                                     <div className='line'></div>
                                     <div className='copy'>
-                                        <button onClick={ () => downloadInstance() } className='button-play-cards' style={ { fontSize: "1em" } }>Descargar</button>
-                                        <img src={ teen }></img>
+                                        <img src={teen}></img>
                                         <div className='copy-text'>
                                             <h3>TEEN</h3>
                                             <h6>Fantasy Violence</h6>
@@ -429,13 +452,13 @@ export const LauncherDesigned = ({ otherOpts }) => {
                             <div className="degradado"></div>
                         </div>
                         <div className="descargatext" id="download-screen">
-                            <img className='img-loader' src={ InfoInstance.img }></img>
+                            <img className='img-loader' src={InfoInstance.img}></img>
                             <div className='descarga-content'>
                                 <div className='sponsor-loader'>
-                                    <h1>{ InfoInstance.title }</h1>
-                                    <p>{ InfoInstance.notes }</p>
+                                    <h1>{InfoInstance.title}</h1>
+                                    <p>{InfoInstance.notes}</p>
 
-                                    <a href={ window.location.origin } className='cancel-launch'>Cancelar</a>
+                                    <a href={window.location.origin} className='cancel-launch'>Cancelar</a>
                                 </div>
 
                                 <SeparateShort />
@@ -468,7 +491,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
                     <div className='zone-general-instance'>
                         <h3 className='titulo-config'>Novedades Mas Recientes</h3>
                         <p className='p-general-short'>
-                            { InfoInstance.notes }
+                            {InfoInstance.notes}
                         </p>
                     </div>
 
@@ -496,9 +519,9 @@ export const LauncherDesigned = ({ otherOpts }) => {
                     <section className="zona3">
                         <h3 className="titledesc">Descripcion</h3>
                         <div className="text3">
-                            <img src={ InfoInstance.banner } alt="Image 1"></img>
+                            <img src={InfoInstance.banner} alt="Image 1"></img>
                             <div className="desc5">
-                                <p className="descdesc">{ InfoInstance.desc }
+                                <p className="descdesc">{InfoInstance.desc}
                                 </p>
                             </div>
                             <div className="desc5">
@@ -511,7 +534,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
                             </div>
                             <div className="desc5">
                                 <p>Instancia publicada por:</p>
-                                <p>{ InfoInstance.autor }</p>
+                                <p>{InfoInstance.autor}</p>
                             </div>
                         </div>
 
@@ -525,7 +548,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
 
                 </div>
-            ) }
+            )}
 
         </div>
     );

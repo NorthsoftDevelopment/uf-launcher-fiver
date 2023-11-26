@@ -13,6 +13,7 @@
     background: url('https://64.media.tumblr.com/5466c7a9b54fd34c55f3a876f22adf45/c119efe1e6b61576-a6/s1280x1920/1388c4b6938bde412c1d8ec6adc071a33b369109.png');
     justify-content: center;
     align-items: center;
+    background-size: cover;
     gap: 30px;
     
 }

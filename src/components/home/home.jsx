@@ -77,7 +77,6 @@ export const HomePage = () => {
                             
                             <div className='sub-zone1'>
                                 <div className='cards-big'>
-                                <button onClick={downloadInstance}>Descargar</button>
                                     <CardBig
                                         img='https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png'
                                         title='Gamership Network'

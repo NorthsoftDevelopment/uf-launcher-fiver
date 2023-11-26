@@ -21,7 +21,7 @@ export const RecentPlay = () => {
 
 
            {
-                const api = 'http://localhost:3000/instance/data'
+                const api = 'https://inhonia-launcher-api.vercel.app/instance/data'
 
                 var docRef = Cookies.get('recentPlayedID')
 

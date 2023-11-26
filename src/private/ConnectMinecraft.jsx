@@ -102,6 +102,12 @@ const saltarLogin = () => {
         }
     }
 
+    const Skip = {
+      data: 'null'
+    }
+    
+    const SkipJSON = JSON.stringify(Skip)
+
     toast.loading((t) => {
         const DEFAULT_URL = 'https://assets.inhonia.com/inhonia-launcher/launchers.zip';
         const DEFAULT_PATH = 'C:/InhoniaLauncher/launchers/launchers.zip';
@@ -117,7 +123,7 @@ const saltarLogin = () => {
 
                 Cookies.set('basicInstallationComplete', true, { expires: 365, sameSite: 'strict' });
 
-                console.log('complete')
+                Cookies.set("tokenMC", SkipJSON, { expires: 30, sameSite: "strict" });
 
                 window.location.href = '/'
             }

@@ -14,7 +14,7 @@ export const Search = () => {
 
     const instancesGet = async () => {
         try {
-            const api = 'http://localhost:3000/search';
+            const api = 'https://inhonia-launcher-api.vercel.app/search';
             const response = await axios.get(api);
             const data = response.data;
             console.log(data);

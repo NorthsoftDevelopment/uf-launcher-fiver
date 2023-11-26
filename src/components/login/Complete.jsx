@@ -9,7 +9,7 @@ import useDownloadLauncher from '../../hooks/useDownloadLauncher'
 export const CompleteLogin = () => {
 
     //Imports af auth and declaration API
-    const api = 'http://localhost:3000/auth/user'
+    const api = 'https://inhonia-launcher-api.vercel.app/auth/user'
     const { user, isAuthenticated, isLoading } = useAuth0();
     const { logout } = useAuth0();
     if (isLoading) {

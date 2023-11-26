@@ -61,7 +61,7 @@ export const OptionsAdmin = ({ id, data }) => {
             willOpen: async () => {
                 Swal.showLoading();
                 try {
-                    const api = "http://localhost:3000/instance/adduser";
+                    const api = "https://inhonia-launcher-api.vercel.app/instance/adduser";
                     const response = await axios.post(api, data);
 
 
@@ -131,7 +131,7 @@ export const OptionsAdmin = ({ id, data }) => {
             willOpen: async () => {
                 Swal.showLoading();
                 try {
-                    const api = "http://localhost:3000/instance/removeuser";
+                    const api = "https://inhonia-launcher-api.vercel.app/instance/removeuser";
                     const response = await axios.delete(api, {
                         data: {
                             email: email,
@@ -180,7 +180,7 @@ export const OptionsAdmin = ({ id, data }) => {
         const data = { id }
 
         try {
-            const response = await axios.post('http://localhost:3000/instance/whitelist', data);
+            const response = await axios.post('https://inhonia-launcher-api.vercel.app/instance/whitelist', data);
 
             if (response.status === 200) {
                 console.log('Datos enviados con éxito');

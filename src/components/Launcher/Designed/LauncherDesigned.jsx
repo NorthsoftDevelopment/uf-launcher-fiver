@@ -66,7 +66,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
 
         try {
-            const api = 'http://localhost:3000/instance/data';
+            const api = 'https://inhonia-launcher-api.vercel.app/instance/data';
 
             const data = {
                 location: documentRef
@@ -118,6 +118,22 @@ export const LauncherDesigned = ({ otherOpts }) => {
         const { execFile } = require('node:child_process');
 
         const child = execFile('C:/InhoniaLauncher/launchers/mc.exe', ['--workDir', LaunchInstance.root], (error, stdout, stderr) => {
+            if (error) {
+                throw error;
+            } else {
+                Cookies.set('recentPlayedID', InfoInstance.id, { expires: 365, sameSite: 'strict' });
+            }
+            console.log(stdout);
+        });
+
+
+    }
+
+    function launchSK() {
+
+        const { execFile } = require('node:child_process');
+
+        const child = execFile('C:/InhoniaLauncher/launchers/sk.exe', ['--workDir', LaunchInstance.root], (error, stdout, stderr) => {
             if (error) {
                 throw error;
             } else {
@@ -494,16 +510,19 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
                                                 <button className="jugar" onClick={() => downloadInstance()}>Instalar</button>
                                             ) : (
-
-                                                <button className="jugar" onClick={() => launchML()}>Jugar</button>
+                                                <div className='botones'>
+                                                    <button className="jugar" onClick={() => launchML()}>Jugar</button>
+                                                    <button className="jugar-terceros" onClick={launchSK}>+</button>
+                                                    <button className="jugar-terceros" onClick={openConfig}>+</button>
+                                                    {isAdminInArray && (
+                                                        <button className="jugar-terceros" onClick={openConfigAdmin}>Admin</button>
+                                                    )}
+                                                </div>
                                             )
 
                                         )}
-                                        <button className="jugar-terceros" onClick={launch2}>+</button>
-                                        <button className="jugar-terceros" onClick={openConfig}>+</button>
-                                        {isAdminInArray && (
-                                            <button className="jugar-terceros" onClick={openConfigAdmin}>Admin</button>
-                                        )}
+
+
                                     </div>
                                     <h6 className="warning-instance">Verifica que la instancia este verificada antes de instalarla o toma el riesgo</h6>
                                     <div className='line'></div>

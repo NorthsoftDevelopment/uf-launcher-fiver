@@ -1,22 +1,26 @@
-import './launcher.css'
-import './config.css'
+import './launcher.css';
+import './config.css';
 import Swal from 'sweetalert2';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { SeparateShort } from '../../ExtraComponents/Separate/Separate';
 import Cookies from 'js-cookie';
 import { useParams, useLocation } from 'react-router-dom';
-import teen from '../../../assets/copy/teen.png'
+import teen from '../../../assets/copy/teen.png';
 import { OptionsClient } from '../Options/OptionsPrivate';
 import { OptionsAdmin } from '../Options/OptionsAdmin';
 import { Loader } from '../../loader/Loader';
 import { Skeleton } from '../../loader/Skeleton';
+import useDownloadLauncher from '../../../hooks/useDownloadLauncher';
+import toast from 'react-hot-toast';
+
+
 
 export const LauncherDesigned = ({ otherOpts }) => {
 
 
     const { id } = useParams();
-    const documentRef = id
+    const documentRef = id;
 
     //const defines
     const [InfoInstance, setInfoInstance] = useState([]);
@@ -30,20 +34,20 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
         setConfig(!config);
 
-    }
+    };
 
     const openConfigAdmin = () => {
 
         setConfigAdmin(!configAdmin);
 
-    }
+    };
 
     //things who working when launcher is loaded
     useEffect(() => {
-        takeInfo()
-    }, [])
+        takeInfo();
+    }, []);
 
-    const email = Cookies.get('email')
+    const email = Cookies.get('email');
 
 
     // take info about instance from backend
@@ -51,37 +55,37 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
 
         try {
-            const api = 'http://localhost:3000/instance/data'
+            const api = 'http://localhost:3000/instance/data';
 
             const data = {
                 location: documentRef
-            }
+            };
 
             const response = await axios.post(api, data);
-            const instances = response.data
+            const instances = response.data;
 
-            setInfoInstance(instances.datos)
+            setInfoInstance(instances.datos);
 
-            setLaunchInstance(instances.launch)
+            setLaunchInstance(instances.launch);
 
-            setAdmins(instances.admins)
+            setAdmins(instances.admins);
 
-            setLoading(false)
+            setLoading(false);
 
 
         } catch (error) {
 
-            console.log('error')
+            console.log('error');
 
         }
 
-    }
+    };
 
 
 
     const removeInstance = () => {
 
-        console.log('Preparing to delete:', otherOpts.root)
+        console.log('Preparing to delete:', otherOpts.root);
 
 
         Swal.fire({
@@ -183,7 +187,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
                             detached: false,
                         },
 
-                    }
+                    };
 
                     let opts = { ...optsAuth, ...LaunchInstance };
 
@@ -206,11 +210,11 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
 
 
-                    })
+                    });
                     launcher.on('data', (e) => {
-                        document.getElementById("status").textContent = e
-                        document.getElementById("status-content").style.display = "flex"
-                    })
+                        document.getElementById("status").textContent = e;
+                        document.getElementById("status-content").style.display = "flex";
+                    });
 
                     launcher.on('debug', (e) => {
                         const descargaLabel = document.getElementById('descarga');
@@ -224,16 +228,16 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
                         Swal.close();
 
-                    })
+                    });
                     launcher.on('close', (e) => {
-                        document.getElementById("status").textContent = null
-                        document.getElementById("status-content").style.display = "none"
+                        document.getElementById("status").textContent = null;
+                        document.getElementById("status-content").style.display = "none";
 
-                    })
+                    });
 
 
 
-                })
+                });
 
             },
             willClose: () => {
@@ -243,7 +247,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
         });
 
 
-    }
+    };
 
 
     const launch2 = () => {
@@ -273,14 +277,14 @@ export const LauncherDesigned = ({ otherOpts }) => {
                 const fs = require('fs');
                 const path = require('path');
 
-                console.log(otherOpts.root)
+                console.log(otherOpts.root);
 
                 const folderPath = otherOpts.root;
                 fs.mkdirSync(path.dirname(folderPath), { recursive: true });
 
                 const { Client, Authenticator } = require('minecraft-launcher-core');
 
-                const username = document.getElementById('username').value
+                const username = document.getElementById('username').value;
                 const launcher = new Client();
 
                 let optsAuth = {
@@ -291,7 +295,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
                         detached: false,
                     },
 
-                }
+                };
 
                 let opts = { ...optsAuth, ...otherOpts };
 
@@ -314,11 +318,11 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
 
 
-                })
+                });
                 launcher.on('data', (e) => {
-                    document.getElementById("status").textContent = e
-                    document.getElementById("status-content").style.display = "flex"
-                })
+                    document.getElementById("status").textContent = e;
+                    document.getElementById("status-content").style.display = "flex";
+                });
 
                 launcher.on('debug', (e) => {
                     const descargaLabel = document.getElementById('descarga');
@@ -332,12 +336,12 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
                     Swal.close();
 
-                })
+                });
                 launcher.on('close', (e) => {
-                    document.getElementById("status").textContent = null
-                    document.getElementById("status-content").style.display = "none"
+                    document.getElementById("status").textContent = null;
+                    document.getElementById("status-content").style.display = "none";
 
-                })
+                });
 
 
             },
@@ -348,40 +352,66 @@ export const LauncherDesigned = ({ otherOpts }) => {
         });
 
 
-    }
+    };
 
     const isAdminInArray = Admins.includes(email);
 
 
+
+    function downloadInstance() {
+        toast.loading((t) => {
+            const DEFAULT_URL = 'https://assets.inhonia.com/InhoniaLauncher.exe';
+            const DEFAULT_PATH = 'C:\\InhoniaLauncher\\InhoniaLauncher.exe';
+            const { download, progress } = useDownloadLauncher(DEFAULT_URL, DEFAULT_PATH);
+
+            useEffect(() => {
+                download();
+            }, []);
+            useEffect(() => {
+                if (progress === 100.0) {
+                    toast.success("Descarga finalizada!", { id: t.id });
+                }
+            }, [progress]);
+            const formattedProgress = Math.floor(progress);
+
+            return (
+                <div>
+                    { formattedProgress }% Descargado
+                </div>
+            );
+        });
+    }
+
     return (
         <div>
-            {loading ? (
-                <Skeleton/>
+            { loading ? (
+                <Skeleton />
             ) : (
                 <div>
 
                     <div>
-                        {config && <OptionsClient />}
-                        {configAdmin && <OptionsAdmin id={documentRef} data={InfoInstance} />}
+                        { config && <OptionsClient /> }
+                        { configAdmin && <OptionsAdmin id={ documentRef } data={ InfoInstance } /> }
                         <div className="title-launch-zone">
-                            <img src={InfoInstance.img} className='background-all'></img>
+                            <img src={ InfoInstance.img } className='background-all'></img>
                             <div className="texto">
-                                <img src={InfoInstance.banner}></img>
+                                <img src={ InfoInstance.banner }></img>
                                 <div>
-                                    <h3 className="titulo">{InfoInstance.title}</h3>
-                                    <h6 className="autor">{InfoInstance.autor}</h6>
+                                    <h3 className="titulo">{ InfoInstance.title }</h3>
+                                    <h6 className="autor">{ InfoInstance.autor }</h6>
                                     <div className="botones">
-                                        <button className="jugar" onClick={launch}>Jugar</button>
-                                        <button className="jugar-terceros" onClick={launch2}>+</button>
-                                        <button className="jugar-terceros" onClick={openConfig}>+</button>
-                                        {isAdminInArray && (
-                                            <button className="jugar-terceros" onClick={openConfigAdmin}>Admin</button>
-                                        )}
+                                        <button className="jugar" onClick={ launch }>Jugar</button>
+                                        <button className="jugar-terceros" onClick={ launch2 }>+</button>
+                                        <button className="jugar-terceros" onClick={ openConfig }>+</button>
+                                        { isAdminInArray && (
+                                            <button className="jugar-terceros" onClick={ openConfigAdmin }>Admin</button>
+                                        ) }
                                     </div>
                                     <h6 className="warning-instance">Verifica que la instancia este verificada antes de instalarla o toma el riesgo</h6>
                                     <div className='line'></div>
                                     <div className='copy'>
-                                        <img src={teen}></img>
+                                        <button onClick={ () => downloadInstance() } className='button-play-cards' style={ { fontSize: "1em" } }>Descargar</button>
+                                        <img src={ teen }></img>
                                         <div className='copy-text'>
                                             <h3>TEEN</h3>
                                             <h6>Fantasy Violence</h6>
@@ -399,13 +429,13 @@ export const LauncherDesigned = ({ otherOpts }) => {
                             <div className="degradado"></div>
                         </div>
                         <div className="descargatext" id="download-screen">
-                            <img className='img-loader' src={InfoInstance.img}></img>
+                            <img className='img-loader' src={ InfoInstance.img }></img>
                             <div className='descarga-content'>
                                 <div className='sponsor-loader'>
-                                    <h1>{InfoInstance.title}</h1>
-                                    <p>{InfoInstance.notes}</p>
+                                    <h1>{ InfoInstance.title }</h1>
+                                    <p>{ InfoInstance.notes }</p>
 
-                                    <a href={window.location.origin} className='cancel-launch'>Cancelar</a>
+                                    <a href={ window.location.origin } className='cancel-launch'>Cancelar</a>
                                 </div>
 
                                 <SeparateShort />
@@ -438,7 +468,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
                     <div className='zone-general-instance'>
                         <h3 className='titulo-config'>Novedades Mas Recientes</h3>
                         <p className='p-general-short'>
-                            {InfoInstance.notes}
+                            { InfoInstance.notes }
                         </p>
                     </div>
 
@@ -466,9 +496,9 @@ export const LauncherDesigned = ({ otherOpts }) => {
                     <section className="zona3">
                         <h3 className="titledesc">Descripcion</h3>
                         <div className="text3">
-                            <img src={InfoInstance.banner} alt="Image 1"></img>
+                            <img src={ InfoInstance.banner } alt="Image 1"></img>
                             <div className="desc5">
-                                <p className="descdesc">{InfoInstance.desc}
+                                <p className="descdesc">{ InfoInstance.desc }
                                 </p>
                             </div>
                             <div className="desc5">
@@ -481,7 +511,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
                             </div>
                             <div className="desc5">
                                 <p>Instancia publicada por:</p>
-                                <p>{InfoInstance.autor}</p>
+                                <p>{ InfoInstance.autor }</p>
                             </div>
                         </div>
 
@@ -495,8 +525,8 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
 
                 </div>
-            )}
+            ) }
 
         </div>
-    )
-}
+    );
+};

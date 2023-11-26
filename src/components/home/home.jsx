@@ -1,4 +1,4 @@
-import './home.css'
+import './home.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react';
 import { InfoCard } from '../Cards/Card/InfoCard';
 import { RecentPlay } from '../global/Cards/RecentPlay';
 import { Skeleton } from '../loader/Skeleton';
+import toast from 'react-hot-toast';
 
 
 export const HomePage = () => {
@@ -21,18 +22,18 @@ export const HomePage = () => {
     //Auth AND INSTANCES STATE, imports and loader
     const { user, isAuthenticated, isLoading } = useAuth0();
 
-    if (isLoading) return <Skeleton />
+    if (isLoading) return <Skeleton />;
 
 
     //Actualizacion del email del usuario
     if (isAuthenticated) {
-        const email = [user.email]
+        const email = [user.email];
         Cookies.set('email', email, { expires: 365, sameSite: 'strict' });
-        console.log('email actualizado')
+        console.log('email actualizado');
 
     } else {
         Cookies.set('email', null, { expires: 365, sameSite: 'strict' });
-        console.log('no estas loegado')
+        console.log('no estas loegado');
     }
 
 
@@ -46,13 +47,14 @@ export const HomePage = () => {
                         <div className='background-all-home' src='https://free4kwallpapers.com/uploads/originals/2016/11/29/edge-of-earth-from-space-4k-wallpaper.jpg' />
                         <div className='zone-1'>
                             <div className='sub-zone1'>
+                                <button className='button-play-cards' style={ { fontSize: "1em" } } onClick={ () => toast('Esta es una notificacion') }>Mostrar notificacion</button>
                                 <div className='cards-big'>
                                     <CardBig
                                         img='https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png'
                                         title='Gamership Network'
-                                        desc='1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network' 
-                                        id='oEFiPXiavEfQlfHQ0mgC'/>
-                                        
+                                        desc='1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network'
+                                        id='oEFiPXiavEfQlfHQ0mgC' />
+
 
                                     <CardBig
                                         img='https://www.dropbox.com/scl/fi/qc7fyk8cj6x4pmhf897bt/notice-home-slider1.png?rlkey=rau5ktexs3y5m1wca7enhmn4n&dl=1'
@@ -101,5 +103,5 @@ export const HomePage = () => {
 
             </div >
         </ConnectMinecraft>
-    )
-}
+    );
+};

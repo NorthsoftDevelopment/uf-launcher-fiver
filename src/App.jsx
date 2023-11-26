@@ -17,6 +17,7 @@ import { Library } from "./components/Library/Library";
 import { Soon } from "./components/global/404/Soon";
 import { Search } from "./components/Search/Search";
 import { SkeletoMitad, Skeleton } from "./components/loader/Skeleton";
+import { Toaster } from "react-hot-toast";
 
 
 function App() {
@@ -86,7 +87,7 @@ function App() {
         />
         
       </Routes>
-      
+      <Toaster position="bottom-right" />
     </Router>
   )
 }

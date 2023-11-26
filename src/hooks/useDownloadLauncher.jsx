@@ -2,8 +2,9 @@ import { useState } from "react";
 const { remote } = require('electron');
 const fs = require('fs');
 const https = require('https');
+var AdmZip = require('adm-zip');
 
-export default function useDownloadLauncher(url, path) {
+export default function useDownloadLauncher(url, path, root) {
   const [progress, setProgress] = useState(0);
 
   async function download() {
@@ -11,30 +12,37 @@ export default function useDownloadLauncher(url, path) {
 
     // Ruta donde quieres guardar el archivo
 
-    // var progressBar = document.getElementById('progress-bar');
-    // var progress = document.getElementById('progress');
-
     // Realizar una solicitud HTTP para obtener el contenido del archivo
     https.get(url, (response) => {
       console.log("Respuesta de la descarga", response);
+      console.log(path)
       let data = '';
       let totalLength = parseInt(response.headers['content-length'], 10) || 0;
       let receivedLength = 0;
 
       // Acumular los datos recibidos
+      const fileStream = fs.createWriteStream(path, { encoding: 'binary' });
+
       response.on('data', (chunk) => {
-        data += chunk;
+        fileStream.write(chunk, 'binary');
         receivedLength += chunk.length;
 
-        // Actualizar la barra de progreso
         const progressValue = (receivedLength / totalLength) * 100;
         setProgress(progressValue);
       });
 
       // Al completarse la descarga, escribir el archivo en la ruta especificada
       response.on('end', () => {
-        fs.writeFileSync(path, data, 'utf-8');
-        console.log('Archivo guardado con Ã©xito en:', path);
+        fileStream.end();
+        console.log('Archivo guardado con éxito en:', path);
+
+        // Descomprimir el archivo
+        var zip = new AdmZip(path);
+        var zipEntries = zip.getEntries(); // an array of ZipEntry records
+        zip.extractAllTo(root);
+
+
+        console.log('Archivo descomprimido con éxito');
       });
     }).on('error', (error) => {
       console.error('Error al descargar y guardar el archivo:', error);

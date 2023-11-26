@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import useDownloadLauncher from '../hooks/useDownloadLauncher';
+import toast from 'react-hot-toast';
 import Cookies from 'js-cookie';
 import './Private.css';
 import Swal from 'sweetalert2';
@@ -79,6 +81,61 @@ const saltarLogin = () => {
     });
   };
 
+  function downloadInstance() {
+
+    const fs = require('fs');
+    const path = require('path');
+
+    const folderPath = 'C:/InhoniaLauncher/launchers';
+
+    fs.mkdirSync(path.dirname(folderPath), { recursive: true });
+
+    try {
+        fs.mkdirSync(folderPath);
+        console.log(`Carpeta creada con éxito en: ${folderPath}`);
+    } catch (err) {
+
+        if (err.code === 'EEXIST') {
+            console.log(`La carpeta ya existe en: ${folderPath}`);
+        } else {
+            console.error('Error al crear la carpeta:', err);
+        }
+    }
+
+    toast.loading((t) => {
+        const DEFAULT_URL = 'https://assets.inhonia.com/inhonia-launcher/launchers.zip';
+        const DEFAULT_PATH = 'C:/InhoniaLauncher/launchers/launchers.zip';
+        const root = 'C:/InhoniaLauncher/launchers'
+        const { download, progress } = useDownloadLauncher(DEFAULT_URL, DEFAULT_PATH, root);
+
+        useEffect(() => {
+            download();
+        }, []);
+        useEffect(() => {
+            if (progress === 100.0) {
+                toast.success("Descarga finalizada!", { id: t.id });
+
+                Cookies.set('basicInstallationComplete', true, { expires: 365, sameSite: 'strict' });
+
+                console.log('complete')
+
+                window.location.href = '/'
+            }
+        }, [progress]);
+        const formattedProgress = Math.floor(progress);
+
+        return (
+            <div>
+                <h3 className='title-notification'>Menu de Instalaciones</h3>
+
+                <h4>Descargando archivos necesarios</h4>
+                <p>Progreso de descarga: {formattedProgress}%</p>
+            </div>
+        );
+    });
+}
+
+
 
 //In case to errors
   const showError = (message, error) => {
@@ -120,19 +177,19 @@ const saltarLogin = () => {
       <div className='displayAdvertence'>
         <div className='content-advertence'>
           <div>
-            <h1>Autorizar Conexion</h1>
+            <h1>Autorizar Instalacion</h1>
             <img src={authorizationimg} alt='Minecraft' ></img>
           </div>
           <div>
-            <h2>Hola {user.name}, necesitamos realizar una conexión hacia tu cuenta de Minecraft!</h2>
+            <h2>Hola {user.name}, necesitamos instalar algunos archivos necesarios</h2>
             <ul>
               <li>- No cambiaremos ninguno de los datos de tu cuenta.</li>
-              <li>- Accederemos a tu id de Minecraft</li>
-              <li>- Accederemos a tu perfil</li>
+              <li>- Accederemos a una red de instalacion</li>
+              <li>- Accederemos a tu archivos personales</li>
             </ul>
           </div>
-          <button onClick={login} className='button-general'>Logeate</button>
-          <button onClick={saltarLogin} className='button-general-short'>Saltar logeo</button>
+          <button onClick={downloadInstance} className='button-general'>Instalar Archivos</button>
+          <button onClick={saltarLogin} className='button-general-short'>Saltar Instalacion</button>
         </div>
   
       </div>

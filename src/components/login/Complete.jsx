@@ -1,8 +1,10 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Loader } from '../loader/Loader'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { useAuth0 } from '@auth0/auth0-react'
+import toast from 'react-hot-toast'
+import useDownloadLauncher from '../../hooks/useDownloadLauncher'
 
 export const CompleteLogin = () => {
 
@@ -18,18 +20,18 @@ export const CompleteLogin = () => {
     useEffect(() => {
 
         sendata()
-   
+
     }, [])
-    
+
     //Send user data to backend and db
-    const sendata = async() => {
+    const sendata = async () => {
 
         try {
 
             if (isAuthenticated) {
                 const email = user.email
 
-              
+
 
                 const data = {
                     user: email,
@@ -40,7 +42,7 @@ export const CompleteLogin = () => {
 
                 const response = await axios.post(api, data);
 
-                
+
 
                 if (!response) {
 
@@ -61,6 +63,7 @@ export const CompleteLogin = () => {
 
     }
 
+    
 
     return (
 

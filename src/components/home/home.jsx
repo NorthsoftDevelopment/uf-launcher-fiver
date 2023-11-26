@@ -14,9 +14,15 @@ import { InfoCard } from '../Cards/Card/InfoCard';
 import { RecentPlay } from '../global/Cards/RecentPlay';
 import { Skeleton } from '../loader/Skeleton';
 import toast from 'react-hot-toast';
+import useDownloadLauncher from '../../hooks/useDownloadLauncher';
 
 
 export const HomePage = () => {
+
+    useEffect(() => {
+     
+    }, [])
+    
 
 
     //Auth AND INSTANCES STATE, imports and loader
@@ -36,6 +42,28 @@ export const HomePage = () => {
         console.log('no estas loegado');
     }
 
+    const handleButtonClick = () => {
+        // Configura el contenido de la notificación
+        const notificationContent = (
+            <div>
+                <h3 className='title-notification'>Menu de Instalaciones</h3>
+
+                <h4>Descargando Fakeland</h4>
+                <p>Progreso de descarga: 10%</p>
+            </div>
+        );
+
+        // Llama a react-hot-toast con la notificación
+        toast(notificationContent, {
+            duration: 40000000, // Duración en milisegundos (opcional)
+        });
+    };
+
+    
+
+
+    
+
 
 
     return (
@@ -46,9 +74,10 @@ export const HomePage = () => {
                     <div className='zone-full'>
                         <div className='background-all-home' src='https://free4kwallpapers.com/uploads/originals/2016/11/29/edge-of-earth-from-space-4k-wallpaper.jpg' />
                         <div className='zone-1'>
+                            
                             <div className='sub-zone1'>
-                              
                                 <div className='cards-big'>
+                                <button onClick={downloadInstance}>Descargar</button>
                                     <CardBig
                                         img='https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png'
                                         title='Gamership Network'

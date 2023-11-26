@@ -31,6 +31,8 @@ export const LauncherDesigned = ({ otherOpts }) => {
     const [loading, setLoading] = useState(true);
 
     const [installing, setInstalling] = useState(false);
+    const [update, setUpdate] = useState(false);
+    const [versionPath, setversionPath] = useState([]);
 
     const openConfig = () => {
 
@@ -44,12 +46,19 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
     };
 
+    const email = Cookies.get('email');
+
     //things who working when launcher is loaded
     useEffect(() => {
-        takeInfo();
+        takeInfo()
     }, []);
 
-    const email = Cookies.get('email');
+    useEffect(() => {
+        if (InfoInstance.title) {
+            checkInstallation();
+            setLoading(false);
+        }
+    }, [InfoInstance.title]);
 
 
     // take info about instance from backend
@@ -72,16 +81,53 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
             setAdmins(instances.admins);
 
-            setLoading(false);
+
 
 
         } catch (error) {
 
-            console.log('error');
+            console.log('error', error);
 
         }
 
     };
+
+    function checkInstallation() {
+        const fs = require('fs');
+        const path = require('path');
+
+        if (LaunchInstance && LaunchInstance.root && LaunchInstance.version) {
+
+            const filePath = path.join(LaunchInstance.root, `${LaunchInstance.version}.txt`);
+
+            fs.access(filePath, fs.constants.F_OK, (err) => {
+                if (err) {
+                    console.error(`El archivo ${filePath} no existe.`);
+                    setUpdate(true)
+                } else {
+                    console.log(`El archivo ${filePath} existe.`);
+                }
+            });
+        } else {
+            console.log('no date yet')
+        }
+    }
+
+    function launchML() {
+
+        const { execFile } = require('node:child_process');
+
+        const child = execFile('C:/InhoniaLauncher/launchers/mc.exe', ['--workDir', LaunchInstance.root], (error, stdout, stderr) => {
+            if (error) {
+                throw error;
+            } else {
+                Cookies.set('recentPlayedID', InfoInstance.id, { expires: 365, sameSite: 'strict' });
+            }
+            console.log(stdout);
+        });
+
+
+    }
 
 
 
@@ -358,16 +404,33 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
     const isAdminInArray = Admins.includes(email);
 
-
-
     function downloadInstance() {
 
         setInstalling(true)
 
+        const fs = require('fs');
+        const path = require('path');
+
+        const folderPath = LaunchInstance.root;
+
+        fs.mkdirSync(path.dirname(folderPath), { recursive: true });
+
+        try {
+            fs.mkdirSync(folderPath);
+            console.log(`Carpeta creada con éxito en: ${folderPath}`);
+        } catch (err) {
+            if (err.code === 'EEXIST') {
+                console.log(`La carpeta ya existe en: ${folderPath}`);
+            } else {
+                console.error('Error al crear la carpeta:', err);
+            }
+        }
+
         toast.loading((t) => {
             const DEFAULT_URL = LaunchInstance.clientPackage;
-            const DEFAULT_PATH = LaunchInstance.root + LaunchInstance.clientPackageName;
-            const { download, progress } = useDownloadLauncher(DEFAULT_URL, DEFAULT_PATH);
+            const DEFAULT_PATH = LaunchInstance.root + '/' + LaunchInstance.clientPackageName;
+            const root = LaunchInstance.root
+            const { download, progress } = useDownloadLauncher(DEFAULT_URL, DEFAULT_PATH, root);
 
             useEffect(() => {
                 download();
@@ -378,15 +441,15 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
                     const fs = require('fs');
                     const path = require('path');
-                    const filePath = path.join(LaunchInstance.root, 'test.txt');
+                    const filePath = path.join(LaunchInstance.root, `${LaunchInstance.version}.txt`);
 
-                    // Contenido del archivo
                     const fileContent = '¡Descarga finalizada!';
 
-                    // Crea y escribe en el archivo
                     fs.writeFileSync(filePath, fileContent);
 
                     console.log('Archivo creado en:', filePath);
+
+                    setInstalling(false)
 
                 }
             }, [progress]);
@@ -394,11 +457,15 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
             return (
                 <div>
-                    {formattedProgress}% Descargando
+                    <h3 className='title-notification'>Menu de Instalaciones</h3>
+
+                    <h4>Descargando {InfoInstance.title}</h4>
+                    <p>Progreso de descarga: {formattedProgress}%</p>
                 </div>
             );
         });
     }
+
 
     return (
         <div>
@@ -419,11 +486,18 @@ export const LauncherDesigned = ({ otherOpts }) => {
                                     <h6 className="autor">{InfoInstance.autor}</h6>
                                     <div className="botones">
                                         {installing ? (
-                                            // Contenido a mostrar si el estado es verdadero
+
                                             <button className="jugar" >Instalando</button>
                                         ) : (
-                                            // Contenido a mostrar si el estado es falso
-                                            <button className="jugar" onClick={() => downloadInstance()}>Instalar</button>
+
+                                            update ? (
+
+                                                <button className="jugar" onClick={() => downloadInstance()}>Instalar</button>
+                                            ) : (
+
+                                                <button className="jugar" onClick={() => launchML()}>Jugar</button>
+                                            )
+
                                         )}
                                         <button className="jugar-terceros" onClick={launch2}>+</button>
                                         <button className="jugar-terceros" onClick={openConfig}>+</button>

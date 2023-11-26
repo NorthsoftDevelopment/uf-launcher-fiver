@@ -23,71 +23,88 @@ import { Toaster } from "react-hot-toast";
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
 
-  if (isLoading) return <Skeleton/>
+  if (isLoading) return <Skeleton />
 
   return (
     <Router>
       <Navbar />
-      
+
       <Routes>
         <Route path="/" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
             <HomePage />
           </ProtectedRoute>} />
 
-          <Route path="/search" element={
+        <Route path="/search" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
             <Search />
           </ProtectedRoute>} />
 
         <Route path="/profile" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
-            <Profile /> 
+            <Profile />
           </ProtectedRoute>} />
 
-          <Route path="/library" element={
+        <Route path="/library" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
             <Library />
           </ProtectedRoute>} />
 
-          <Route path="/instance/:id" element={
+        <Route path="/instance/:id" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
             <LauncherDesigned />
           </ProtectedRoute>} />
 
-          <Route path="/creator/instances" element={
+        <Route path="/creator/instances" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
             <ConfigCreatorInstance />
           </ProtectedRoute>} />
 
-          <Route path="/launch/vanilla" element={
+        <Route path="/launch/vanilla" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
-           <LaunchVanilla />
-          </ProtectedRoute>} /> 
+            <LaunchVanilla />
+          </ProtectedRoute>} />
 
-          <Route path="/launch/forge" element={
+        <Route path="/launch/forge" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
-           <LaunchForge />
-          </ProtectedRoute>} /> 
+            <LaunchForge />
+          </ProtectedRoute>} />
 
-         
 
-          
+
+
 
         <Route path="/login" element={<Login />} />
 
         <Route path="/auth/complete" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
-           <CompleteLogin />
-          </ProtectedRoute>} /> 
+            <CompleteLogin />
+          </ProtectedRoute>} />
 
-          <Route
+        <Route
           path="*"
-          element={ <Soon/> }
+          element={<Soon />}
         />
-        
+
       </Routes>
-      <Toaster position="bottom-right" />
+      <Toaster position="bottom-right" containerClassName="notification" containerStyle={{
+      }}
+      
+      toastOptions={{
+        style: {
+          padding: '12px',
+          color: 'white',
+          background: 'black',
+          paddingRight: '150px',
+          borderRadius: 0,
+          justifyItems: 'left',
+          justifyContent: 'left',
+          textAlign: 'left',
+          alignItems: 'left',
+          alignContent: 'left',
+        },
+
+      }} />
     </Router>
   )
 }

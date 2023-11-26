@@ -169,3 +169,15 @@ html::-webkit-scrollbar-thumb {
   font-size: 18px;
   margin-right: 5px;
 }
+
+.title-notification {
+  margin-bottom: 10px;
+}
+
+.notification {
+font-family: 'Inter', sans-serif;
+border-radius: 0;
+justify-content: left;
+align-items: left;
+text-align: left;
+}

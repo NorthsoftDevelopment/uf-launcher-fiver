@@ -11,6 +11,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Loader } from "./components/loader/Loader";
 import { Footer } from "./components/static/Footer/footer";
 import { CompleteLogin } from "./components/login/Complete";
+
 import { ConfigCreatorInstance } from "./components/Creator/Config/Config";
 import { LauncherDesigned } from "./components/Launcher/Designed/LauncherDesigned";
 import { Library } from "./components/Library/Library";
@@ -70,10 +71,7 @@ function App() {
             <LaunchForge />
           </ProtectedRoute>} />
 
-
-
-
-
+          
         <Route path="/login" element={<Login />} />
 
         <Route path="/auth/complete" element={

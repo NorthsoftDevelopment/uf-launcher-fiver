@@ -6,6 +6,7 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Card } from '../Cards/Card/Card';
+import { Skeleton } from '../loader/Skeleton';
 
 export const Profile = () => {
   //Use auth imports
@@ -23,7 +24,7 @@ export const Profile = () => {
 
   //Auth loader
   if (isLoading) {
-    return <Loader />;
+    return <Loader reason='Recuperando perfil' />;
   }
 
 
@@ -35,7 +36,7 @@ export const Profile = () => {
 
     } else {
       setProfileMC(JSON.parse(ProfileMCJSON))
-      console.log(profileMC)
+      
     }
 
     //Take instances
@@ -69,7 +70,7 @@ export const Profile = () => {
         const instances = response.data
 
 
-        console.log(instances)
+   
 
         setInstances(instances)
 
@@ -81,6 +82,8 @@ export const Profile = () => {
 
   }
 
+
+ 
   return (
     <ConnectMinecraft>
       <div>
@@ -117,7 +120,7 @@ export const Profile = () => {
                 <div key={index}>
                   <Card
                     title={instance.datos.title}
-                    link={`/launch/${instance.datos.id}`}
+                    link={`/instance/${instance.datos.id}`}
                     image={instance.datos.img}
                   />
                 </div>

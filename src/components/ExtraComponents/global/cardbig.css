@@ -1,0 +1,130 @@
+.card-big {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.card-big img {
+    width: 100%;
+    height: 100%;
+    transition: all 0.2s;
+    filter: brightness(0.3);
+}
+
+.card-big-content {
+    justify-content: space-between;
+    display: flex;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    align-items: flex-end;
+    max-width: 100%;
+    min-width: 93%;
+    padding: 20px;
+
+}
+
+.card-big-content img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(1);
+}
+
+.button-play-cards img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(1);
+}
+
+.button-play-cards {
+    padding: 0;
+    margin: 0;
+    height: max-content;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: rgb(81, 165, 70);
+    padding-inline: 20px;
+    padding-block: 10px;
+    border-radius: 10px;
+    color: white;
+    font-size: 8px;
+    gap: 10px;
+    transition: all 0.3s;
+}
+
+.button-play-cards:hover {
+    background-color: rgb(49, 99, 42);
+
+}
+
+.button-play-cards h1 {
+    font-weight: 900;
+}
+
+.card-big img:hover {
+    filter: brightness(1);
+}
+
+
+
+.card-big-text {
+    color: white;
+}
+
+.card-big-text h1 {
+    font-size: 25px;
+}
+
+.card-big-text p {
+    font-size: 16px;
+    margin-top: 5px;
+    color: #83b8df;
+    font-weight: 500;
+}
+
+
+.card-large {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.card-large img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    object-fit: cover;
+    filter: brightness(0.6);
+}
+
+
+.card-large-text {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    padding: 20px;
+
+    width: 100%;
+    color: white;
+}
+
+.card-large-text h1 {
+    font-size: 23px;
+}
+
+
+
+.card-large-text h3 {
+    font-weight: 500;
+    color: #83b8df;
+    ;
+}
+
+.card-large-text p {
+    margin-top: 7px;
+    font-size: 16px;
+}

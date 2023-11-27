@@ -1,8 +1,10 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Loader } from '../loader/Loader'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { useAuth0 } from '@auth0/auth0-react'
+import toast from 'react-hot-toast'
+import useDownloadLauncher from '../../hooks/useDownloadLauncher'
 
 export const CompleteLogin = () => {
 
@@ -11,34 +13,36 @@ export const CompleteLogin = () => {
     const { user, isAuthenticated, isLoading } = useAuth0();
     const { logout } = useAuth0();
     if (isLoading) {
-        return <Loader />;
+        return <Loader reason='Recuperando perfil' />;
     }
 
     //Send data function
     useEffect(() => {
 
         sendata()
-   
+
     }, [])
-    
+
     //Send user data to backend and db
-    const sendata = async() => {
+    const sendata = async () => {
 
         try {
 
             if (isAuthenticated) {
                 const email = user.email
 
-                console.log(email)
+
 
                 const data = {
-                    user: email
+                    user: email,
+                    name: user.name,
+                    img: user.picture
 
                 }
 
                 const response = await axios.post(api, data);
 
-                console.log(response)
+
 
                 if (!response) {
 
@@ -59,10 +63,11 @@ export const CompleteLogin = () => {
 
     }
 
+    
 
     return (
 
-        <Loader />
+        <Loader reason='Iniciando Sesion...' />
 
     )
 }

@@ -1,8 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
 
+
+
+/* Open Sans Font */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+
 html {
-  font-family: "Inter", sans-serif;
-  background: #0f0100;
+  font-family: 'Open Sans', sans-serif;
+  background: #1A1B1E;
   color: white;
 }
 
@@ -45,7 +51,17 @@ html {
   text-align: center;
 }
 
+.titles {
+  display: flex;
+  justify-content: space-between;
+}
 
+.x-button {
+  background-color: transparent;
+  border-style: none;
+  color: white;
+  margin-right: 10px;
+}
 
 
 
@@ -116,7 +132,7 @@ html::-webkit-scrollbar-thumb {
   padding: 0;
   color: white;
   border: none;
-  font-size: 16px;
+  font-size: 14px;
   text-decoration: underline;
 }
 
@@ -133,7 +149,8 @@ html::-webkit-scrollbar-thumb {
 
 
 .content {
-  padding: 60px;
+  padding-block: 60px;
+  padding-inline: 45px;
   gap: 20px;
 }
 
@@ -151,4 +168,16 @@ html::-webkit-scrollbar-thumb {
   color: white;
   font-size: 18px;
   margin-right: 5px;
+}
+
+.title-notification {
+  margin-bottom: 10px;
+}
+
+.notification {
+font-family: 'Inter', sans-serif;
+border-radius: 0;
+justify-content: left;
+align-items: left;
+text-align: left;
 }

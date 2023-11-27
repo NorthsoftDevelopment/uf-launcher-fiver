@@ -14,12 +14,12 @@ export const Test = () => {
   }, []);
 
   const test = async () => {
-    axios.get('http://localhost:3000/profile')
+    axios.get('https://inhonia-launcher-api.vercel.app/profile')
       .then(response => {
         const data = response.data
         const id = data.docId._path.segments[1]
 
-        axios.put('http://localhost:3000/auth/profile', id)
+        axios.put('https://inhonia-launcher-api.vercel.app/auth/profile', id)
 
           .then(response => {
 
@@ -27,7 +27,7 @@ export const Test = () => {
             const displayname = profile.displayName
             const mail = profile._json.mail
 
-            console.log(profile.accessToken)
+           
 
             const user = {
               displayname: displayname,

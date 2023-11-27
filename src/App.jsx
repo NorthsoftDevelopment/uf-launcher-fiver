@@ -7,32 +7,38 @@ import { ProtectedRoute } from "./private/PrivateRoutes";
 import { Profile } from "./components/Profile/Profile";
 import { LaunchVanilla } from "./components/Launcher/Instances/Vanilla/LaunchVanilla";
 import { LaunchForge } from "./components/Launcher/Instances/Forge/LaunchForge";
-import { LaunchFakeland } from "./components/Launcher/Instances/Extra/Fakeland";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Loader } from "./components/loader/Loader";
-import { GamershipInstanceNetworkBeta } from "./components/Launcher/Instances/Extra/Gamership/GamershipInstance";
-import { ConnectMinecraft } from "./private/ConnectMinecraft";
 import { Footer } from "./components/static/Footer/footer";
 import { CompleteLogin } from "./components/login/Complete";
-import { Instance2 } from "./components/Launcher/Instances/Extra/Instance2";
-import { Instance4 } from "./components/Launcher/Instances/Extra/Instance4";
-import { LoaderCreator } from "./components/Creator/Loader";
-import { Layout } from "./components/Creator/Layout/Layout";
-import { HomeCreator } from "./components/Creator/Home/Home";
+
+import { ConfigCreatorInstance } from "./components/Creator/Config/Config";
+import { LauncherDesigned } from "./components/Launcher/Designed/LauncherDesigned";
+import { Library } from "./components/Library/Library";
+import { Soon } from "./components/global/404/Soon";
+import { Search } from "./components/Search/Search";
+import { SkeletoMitad, Skeleton } from "./components/loader/Skeleton";
+import { Toaster } from "react-hot-toast";
+
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
 
-  if (isLoading) return <Loader />
+  if (isLoading) return <Skeleton />
 
   return (
     <Router>
       <Navbar />
-      
+
       <Routes>
         <Route path="/" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
             <HomePage />
+          </ProtectedRoute>} />
+
+        <Route path="/search" element={
+          <ProtectedRoute isAuthenticated={isAuthenticated}>
+            <Search />
           </ProtectedRoute>} />
 
         <Route path="/profile" element={
@@ -40,52 +46,63 @@ function App() {
             <Profile />
           </ProtectedRoute>} />
 
-          <Route path="/creator" element={
+        <Route path="/library" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
-            <HomeCreator />
+            <Library />
           </ProtectedRoute>} />
 
-          <Route path="/launch/vanilla" element={
+        <Route path="/instance/:id" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
-           <LaunchVanilla />
-          </ProtectedRoute>} /> 
+            <LauncherDesigned />
+          </ProtectedRoute>} />
 
-          <Route path="/launch/forge" element={
+        <Route path="/creator/instances" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
-           <LaunchForge />
-          </ProtectedRoute>} /> 
+            <ConfigCreatorInstance />
+          </ProtectedRoute>} />
 
-          <Route path="/launch/1" element={
+        <Route path="/launch/vanilla" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
-           <LaunchFakeland />
-          </ProtectedRoute>} /> 
+            <LaunchVanilla />
+          </ProtectedRoute>} />
 
-          <Route path="/launch/2" element={
+        <Route path="/launch/forge" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
-           <Instance2 />
-          </ProtectedRoute>} /> 
-
-          <Route path="/launch/3" element={
-          <ProtectedRoute isAuthenticated={isAuthenticated}>
-           <GamershipInstanceNetworkBeta />
-          </ProtectedRoute>} /> 
-
-        <Route path="/launch/4" element={
-          <ProtectedRoute isAuthenticated={isAuthenticated}>
-           <Instance4 />
-          </ProtectedRoute>} /> 
+            <LaunchForge />
+          </ProtectedRoute>} />
 
           
-
         <Route path="/login" element={<Login />} />
 
         <Route path="/auth/complete" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
-           <CompleteLogin />
-          </ProtectedRoute>} /> 
-        
+            <CompleteLogin />
+          </ProtectedRoute>} />
+
+        <Route
+          path="*"
+          element={<Soon />}
+        />
+
       </Routes>
+      <Toaster position="bottom-right" containerClassName="notification" containerStyle={{
+      }}
       
+      toastOptions={{
+        style: {
+          padding: '12px',
+          color: 'white',
+          background: 'black',
+          paddingRight: '150px',
+          borderRadius: 0,
+          justifyItems: 'left',
+          justifyContent: 'left',
+          textAlign: 'left',
+          alignItems: 'left',
+          alignContent: 'left',
+        },
+
+      }} />
     </Router>
   )
 }

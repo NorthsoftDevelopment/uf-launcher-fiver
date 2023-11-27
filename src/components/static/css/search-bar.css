@@ -44,8 +44,35 @@
     color: #AAD0FF;
 }
 
-.logo-search {
+.search-icon {
+  background-color: #2D3036;
+  border-radius: 10px;
+  padding: 10px;
     display: flex;
+    width: 25px;
+    height: 25px;
+    transition: all 0.2s;
+}
+
+.search-icon:hover {
+  background-color: rgb(36, 117, 139);
+}
+
+.search-icon-active {
+  background-color: rgb(36, 117, 139);
+  border-radius: 10px;
+  padding: 10px;
+    display: flex;
+    width: 25px;
+    height: 25px;
+    transition: all 0.2s;
+}
+
+.right-navbar {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  gap: 10px;
 }
 
 .dropdown {

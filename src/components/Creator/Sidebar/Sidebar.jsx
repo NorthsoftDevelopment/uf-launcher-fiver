@@ -6,18 +6,14 @@ export const Sidebar = () => {
     return (
         <div className='sidebar'>
             <div className='contents-sidebar'>
-            <h3>Inicio</h3>
-                <Link className='sidebar-a'>
-                    <h3>Review</h3>
-                </Link>
-                <h3>Instancias</h3>
+                <h2>Configuraciones</h2>
                 <Link className='sidebar-a'>
                     <h3>Instancias</h3>
                 </Link>
             </div>
 
             <Link className='content-final-sidebar no-decoration'>
-                <h3>Salir del modo creador</h3>
+                <h3>Salir</h3>
             </Link>
         </div>
     )

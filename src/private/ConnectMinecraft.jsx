@@ -12,7 +12,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 export const ConnectMinecraft = ({ children }) => {
 
   //take tokenmc from cookies and set loading screen
-  const connectMinecraft = Cookies.get('tokenMC');
+  const connectMinecraft = Cookies.get('basicInstallationComplete');
   const { user, isAuthenticated } = useAuth0();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -123,8 +123,6 @@ const saltarLogin = () => {
 
                 Cookies.set('basicInstallationComplete', true, { expires: 365, sameSite: 'strict' });
 
-                Cookies.set("tokenMC", SkipJSON, { expires: 30, sameSite: "strict" });
-
                 window.location.href = '/'
             }
         }, [progress]);
@@ -195,7 +193,6 @@ const saltarLogin = () => {
             </ul>
           </div>
           <button onClick={downloadInstance} className='button-general'>Instalar Archivos</button>
-          <button onClick={saltarLogin} className='button-general-short'>Saltar Instalacion</button>
         </div>
   
       </div>

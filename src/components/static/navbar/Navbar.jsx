@@ -97,7 +97,7 @@ export const Navbar = () => {
                 <h1 className={location.pathname === '/' ? 'active' : 'title-interactivebar'}>INICIO</h1>
               </Link>
               <Link className="no-decoration" to='/library'>
-                <h1 className={location.pathname === '/library' ? 'active' : 'title-interactivebar'}>BIBLIOETECA</h1>
+                <h1 className={location.pathname === '/library' ? 'active' : 'title-interactivebar'}>BIBLIOTECA</h1>
               </Link>
               <Link className="no-decoration" to={location.pathname.startsWith('/instance/') ? '/discover' : '/discover'}>
                 <h1 className={location.pathname.startsWith('/instance/') ? 'active' : 'title-interactivebar'}>EXPLORA</h1>
@@ -149,8 +149,9 @@ export const Navbar = () => {
                 <Link to='/search'>
                 <img src={searchIcon} className={location.pathname.startsWith('/search') ? 'search-icon-active' : 'search-icon'} ></img>
                 </Link>
-                
-                <img src={settingsIcon} className="search-icon"></img>
+                <Link to='/settings'>
+                  <img src={settingsIcon} className={location.pathname.startsWith('/settings') ? 'search-icon-active' : 'search-icon'}></img>
+                </Link>
                 <button onClick={toggleSidebar} className="nav-user-profile">
                   <h3 className="title-little no-decoration">{user.name}</h3>
                   <img className="usericon" src={user.picture} />

@@ -1,4 +1,4 @@
-import classes from "../Config.module.css";
+import classes from "../Settings.module.css";
 
 /**
  * @param {{title: string, description: string, value: string, onValueChange: (key: string, value: string | number | boolean) => void }} props 

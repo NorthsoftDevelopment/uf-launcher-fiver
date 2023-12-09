@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import classes from "../Config.module.css";
+import classes from "../Settings.module.css";
 
 /**
  * @template ValueT

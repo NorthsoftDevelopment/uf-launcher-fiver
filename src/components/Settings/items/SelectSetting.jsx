@@ -1,4 +1,4 @@
-import classes from "../Config.module.css";
+import classes from "../Settings.module.css";
 
 /**
  * @template ValueT
@@ -12,7 +12,7 @@ export default function SelectSetting({ name, title, description, options, value
         <p className={ classes.itemDescription }>{ description }</p>
       </div>
       <div className={ classes.itemValue }>
-        <select name={ name } onChange={(e) => onValueChange(name, e.target.value)}>
+        <select className={classes.select} name={ name } onChange={(e) => onValueChange(name, e.target.value)}>
           { options.map(({ value, label }) => (<option key={value} value={ value }>{ label }</option>)) }
         </select>
       </div>

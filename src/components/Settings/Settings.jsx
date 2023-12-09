@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import classes from "./Config.module.css";
+import classes from "./Settings.module.css";
 import SelectSetting from "./items/SelectSetting";
 import Cookies from "js-cookie";
 import SliderSetting from "./items/SliderSetting";

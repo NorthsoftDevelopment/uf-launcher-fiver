@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import classes from "./Settings.module.css";
 import SelectSetting from "./items/SelectSetting";
+import DirectorySetting from "./items/FileSetting";
 import Cookies from "js-cookie";
 import SliderSetting from "./items/SliderSetting";
-import DirectorySetting from "./Items/FileSetting";
 import { SeparateShort } from "../ExtraComponents/Separate/Separate";
 
 const OPTIONS = {

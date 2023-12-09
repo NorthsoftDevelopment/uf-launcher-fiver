@@ -97,7 +97,7 @@ export const Navbar = () => {
                 <h1 className={location.pathname === '/' ? 'active' : 'title-interactivebar'}>INICIO</h1>
               </Link>
               <Link className="no-decoration" to='/library'>
-                <h1 className={location.pathname === '/library' ? 'active' : 'title-interactivebar'}>BIBLIOETECA</h1>
+                <h1 className={location.pathname === '/library' ? 'active' : 'title-interactivebar'}>BIBLIOTECA</h1>
               </Link>
               <Link className="no-decoration" to={location.pathname.startsWith('/instance/') ? '/discover' : '/discover'}>
                 <h1 className={location.pathname.startsWith('/instance/') ? 'active' : 'title-interactivebar'}>EXPLORA</h1>

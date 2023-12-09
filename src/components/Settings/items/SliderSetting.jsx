@@ -28,14 +28,14 @@ export default function SliderSetting({ name, title, description, options, value
     updateBgGradient(progress);
 
     return () => {
-      sliderEl.current.removeEventListener('input', inputHandler);
+      
     };
   }, []);
 
   return (
     <div className={ [classes.item, classes.itemColumn].join(" ") }>
       <div className={ classes.itemText }>
-        <h2>{ title }</h2>
+      <h3 className='title-general-bold'>{ title }</h3>
         <p>{ description }</p>
       </div>
       <div className={ classes.sliderContainer }>

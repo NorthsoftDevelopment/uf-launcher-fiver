@@ -158,6 +158,24 @@ html::-webkit-scrollbar-thumb {
   display: flex;
 }
 
+.content-70 {
+  justify-content: space-between;
+  display: flex;
+  padding-block: 60px;
+  padding-inline: 45px;
+  max-width: 100%;
+  gap: 60px;
+}
+
+.content-70-part-large {
+  width: 100%;
+  
+}
+
+.content-70-short-part {
+  min-width: 25%;
+}
+
 .transparent {
   color: white;
   background: transparent;

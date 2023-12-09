@@ -6,14 +6,9 @@
   display: flex;
   flex-direction: column;
   gap: 1em;
-  margin-top: 3em;
 }
 
-.item {
-  background-color: #2D3036;
-  padding: 1.5em;
-  border-radius: 10px;
-}
+.item {}
 
 .itemRow {
   display: flex;
@@ -54,18 +49,22 @@
   --slider-selected-bg: #1cba70;
   --slider-thumb-bg: #fff;
 
-  -webkit-appearance: none;  /* Override default CSS styles */
+  -webkit-appearance: none;
+  /* Override default CSS styles */
   appearance: none;
   margin-bottom: 1.5em;
-  width: 100%; /* Full-width */
-  height: 15px; /* Specified height */
-  outline: none; /* Remove outline */
+  width: 100%;
+  /* Full-width */
+  height: 12px;
+  /* Specified height */
+  outline: none;
+  /* Remove outline */
   border-radius: 100px;
 }
 
 .slider::-webkit-slider-runnable-track {
   -webkit-appearance: none;
-  appearance: none; 
+  appearance: none;
   margin: -5px;
 }
 
@@ -81,4 +80,69 @@
 .slider::-moz-range-track {
   height: 40px;
   background: var(--slider-selected-bg);
+}
+
+.infoapp div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.infoapp div h3 {
+  font-weight: 200;
+  font-size: 17px;
+}
+
+.infoapp div h4 {
+  font-weight: 100;
+  color: rgb(36, 117, 139);
+}
+
+.redzone {
+  margin-top: 10px;
+}
+
+.redzone button {
+  margin-top: 15px;
+  background-color: red;
+  width: 100%;
+}
+
+
+.resources {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.resources button {
+  width: 100%;
+  background: #2D3036;
+  color: white;
+  border: none;
+  padding-block: 16px;
+  border-radius: 10px;
+  margin-top: 10px;
+  font-size: 17px;
+  transition: all 0.2s;
+
+
+}
+
+.resources button:hover {
+  background: rgb(36, 117, 139);
+}
+
+.select {
+  background-color: rgb(36, 117, 139);
+  color: white;
+  padding: 12px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: none;
+  transition: all 0.2s;
+}
+
+.select:hover {
+  background-color: rgb(36, 117, 139);
 }

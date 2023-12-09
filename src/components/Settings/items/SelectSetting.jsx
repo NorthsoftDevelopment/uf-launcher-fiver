@@ -8,7 +8,7 @@ export default function SelectSetting({ name, title, description, options, value
   return (
     <div className={ [classes.item, classes.itemRow].join(" ") }>
       <div className={ classes.itemText }>
-        <h2 className={ classes.itemTitle }>{ title }</h2>
+        <h3 className='title-general-bold'>{ title }</h3>
         <p className={ classes.itemDescription }>{ description }</p>
       </div>
       <div className={ classes.itemValue }>

@@ -26,9 +26,13 @@ export const Login = () => {
 
     try {
 
+      console.log('login try')
+
     loginWithRedirect()
       
     } catch (error) {
+
+      console.log('test',error)
       
     }
   }

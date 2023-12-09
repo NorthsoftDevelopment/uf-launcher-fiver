@@ -193,7 +193,6 @@ const saltarLogin = () => {
             </ul>
           </div>
           <button onClick={downloadInstance} className='button-general'>Instalar Archivos</button>
-          <button onClick={saltarLogin} className='button-general-short'>Saltar Instalacion</button>
         </div>
   
       </div>

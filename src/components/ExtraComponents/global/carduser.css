@@ -1,6 +1,7 @@
 .card-user {
     background-color: #2D3036;
     padding: 20px;
+    width: 250px;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -23,4 +24,6 @@
 
 .card-user-text h1 {
     font-size: 25px;
+    max-height: 40px;
+    overflow: auto;
 }

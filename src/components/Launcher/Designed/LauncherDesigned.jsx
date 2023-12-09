@@ -113,18 +113,73 @@ export const LauncherDesigned = ({ otherOpts }) => {
         }
     }
 
-    function launchML() {
+    function launch() {
 
         const { execFile } = require('node:child_process');
 
-        const child = execFile('C:/InhoniaLauncher/launchers/mc.exe', ['--workDir', LaunchInstance.root], (error, stdout, stderr) => {
-            if (error) {
-                throw error;
-            } else {
-                Cookies.set('recentPlayedID', InfoInstance.id, { expires: 365, sameSite: 'strict' });
-            }
-            console.log(stdout);
-        });
+        const settingJSON = Cookies.get('launcher_settings')
+
+        const setting = JSON.parse(settingJSON)
+
+        console.log(setting)
+
+        if (setting.launcherType === 'sk') {
+
+            const child = execFile('C:/InhoniaLauncher/launchers/sk.exe', ['--workDir', LaunchInstance.root], (error, stdout, stderr) => {
+                if (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error al intentar lanzar',
+                        background: '#141414',
+                        customClass: {
+                            container: 'title-loader',
+                            popup: 'title-loader',
+                            header: 'title-loader',
+                            title: 'title-loader',
+                        },
+                        text: 'Tienes un error con la instalacion, porfavor reinstala',
+                        footer: error ? error.toString() : '',
+
+                        didClose: () => {
+
+                        }
+                    });
+                } else {
+                    Cookies.set('recentPlayedID', InfoInstance.id, { expires: 365, sameSite: 'strict' });
+                }
+                console.log(stdout);
+            });
+        } else {
+
+            const child = execFile('C:/InhoniaLauncher/launchers/mc.exe', ['--workDir', LaunchInstance.root], (error, stdout, stderr) => {
+                if (error) {
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error al intentar lanzar',
+                        background: '#141414',
+                        customClass: {
+                            container: 'title-loader',
+                            popup: 'title-loader',
+                            header: 'title-loader',
+                            title: 'title-loader',
+                        },
+                        text: 'Tienes un error con la instalacion, porfavor reinstala',
+                        footer: error ? error.toString() : '',
+
+                        didClose: () => {
+
+                        }
+                    });
+                } else {
+                    Cookies.set('recentPlayedID', InfoInstance.id, { expires: 365, sameSite: 'strict' });
+                }
+                console.log(stdout);
+            });
+
+        }
+
+
 
 
     }
@@ -201,7 +256,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
 
 
-    const launch = () => {
+    const launchOLD = () => {
 
 
 
@@ -511,9 +566,8 @@ export const LauncherDesigned = ({ otherOpts }) => {
                                                 <button className="jugar" onClick={() => downloadInstance()}>Instalar</button>
                                             ) : (
                                                 <div className='botones'>
-                                                    <button className="jugar" onClick={() => launchML()}>Jugar</button>
-                                                    <button className="jugar-terceros" onClick={launchSK}>+</button>
-                                                    <button className="jugar-terceros" onClick={openConfig}>+</button>
+                                                    <button className="jugar" onClick={() => launch()}>Jugar</button>
+                                                    <button className="jugar-terceros" onClick={launchSK}>X</button>
                                                     {isAdminInArray && (
                                                         <button className="jugar-terceros" onClick={openConfigAdmin}>Admin</button>
                                                     )}

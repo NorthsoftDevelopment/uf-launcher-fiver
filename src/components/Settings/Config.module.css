@@ -1,0 +1,84 @@
+.content * {
+  box-sizing: border-box;
+}
+
+.settingsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 3em;
+}
+
+.item {
+  background-color: #2D3036;
+  padding: 1.5em;
+  border-radius: 10px;
+}
+
+.itemRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.itemColumn {
+  display: flex;
+  gap: 2em;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.itemText {
+  flex-grow: 1;
+}
+
+.sliderContainer {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.sliderValue {
+  box-sizing: border-box;
+  width: 120px;
+  text-align: start;
+  align-self: flex-start;
+  text-wrap: nowrap;
+  font-size: 1em;
+}
+
+.slider {
+  --slider-bg: #ccc;
+  --slider-selected-bg: #1cba70;
+  --slider-thumb-bg: #fff;
+
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  margin-bottom: 1.5em;
+  width: 100%; /* Full-width */
+  height: 15px; /* Specified height */
+  outline: none; /* Remove outline */
+  border-radius: 100px;
+}
+
+.slider::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  appearance: none; 
+  margin: -5px;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--slider-thumb-bg);
+}
+
+.slider::-moz-range-track {
+  height: 40px;
+  background: var(--slider-selected-bg);
+}

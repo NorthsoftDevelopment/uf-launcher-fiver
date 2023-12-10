@@ -1,8 +1,22 @@
-.container {
-    margin-top: 70px;
-}
-
 .devuser-img {
     display: none;
 }
 
+
+.left-side {
+    background-color: #1A1B1E;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 35%;
+    gap: 30px;
+    display: flex;
+}
+
+
+
+.content-login {
+    margin-top: 50px;
+    padding: 40px;
+}

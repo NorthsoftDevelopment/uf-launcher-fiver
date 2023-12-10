@@ -1,5 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import "../static/css/layout.css";
+import './login.css'
 import { Loader } from "../loader/Loader";
 import Cookies from "js-cookie";
 
@@ -21,15 +22,15 @@ export const Login = () => {
   }
 
 
-//Login button
+  //Login button
   const Login = () => {
 
     try {
 
-    loginWithRedirect()
-      
+      loginWithRedirect()
+
     } catch (error) {
-      
+
     }
   }
 
@@ -37,35 +38,47 @@ export const Login = () => {
     <div className="">
       <img
         className="background-all"
-        src="https://i.ytimg.com/vi/r42hYbMhNUo/maxresdefault.jpg"
+        src="https://th.bing.com/th/id/R.31e874f69613d104ea7bc249cb51be32?rik=yQ%2f4G8AwkWwhQQ&pid=ImgRaw&r=0"
         alt=""
       />
       <div className="left-side">
-        <h1>Bienvenido de vuelta!</h1>
-        <p>Gracias por ser miembro de la version Beta. Porfavor inicia sesion para continuar</p>
+        <div className="content-login">
 
-        {isAuthenticated ? (
-          <button
-            className="button-general-log"
-            onClick={() =>
-              logout({ logoutParams: { returnTo: window.location.origin } })
-            }
-          >
-            Log Out
-          </button>
-        ) : (
+          <h1>Bienvenido</h1>
+          <div className="cards-login">
+            <div>
+              <img></img>
+              <div>
+                <h1></h1>
+                <p></p>
+              </div>
+            </div>
+          </div>
 
-
-          <div>
-
+          {isAuthenticated ? (
             <button
               className="button-general-log"
-              onClick={Login}
+              onClick={() =>
+                logout({ logoutParams: { returnTo: window.location.origin } })
+              }
             >
-              Iniciar Sesion
+              Log Out
             </button>
-          </div>
-        )}
+          ) : (
+
+
+            <div>
+
+              <button
+                className="button-general-log"
+                onClick={Login}
+              >
+                Iniciar Sesion
+              </button>
+            </div>
+          )}
+
+        </div>
 
       </div>
     </div>

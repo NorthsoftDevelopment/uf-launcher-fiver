@@ -32,24 +32,7 @@ html {
   filter: brightness(0.7);
 }
 
-.left-side {
-  background-color: #202020;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  height: 100%;
-  width: 25%;
-  gap: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
-.left-side p {
-  max-width: 300px;
-  text-align: center;
-}
 
 .titles {
   display: flex;

@@ -1,40 +1,54 @@
 .card-big {
-    width: 100%;
-    position: relative;
+    width: 550px;
+    height: 250px;
+    margin: 10px 5px;
     overflow: hidden;
+    transition: 0.3s ease box-shadow;
     border-radius: 10px;
+    position: relative;
 }
 
-.card-big img {
+.card-big:hover {
+    box-shadow: 0px 0px 0px 2px white;
+}
+
+.card-big::after {
+    content: "";
     width: 100%;
     height: 100%;
-    transition: all 0.2s;
-    filter: brightness(0.3);
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    position: absolute;
+    background: linear-gradient(-175deg,rgba(255, 255, 255, 0),rgba(0, 0, 0, 0.7) 80%);
+}
+
+.card-big > img {
+    width: 100%;
+    height: 100%;
+    transition: 0.2s ease filter;
+}
+
+.card-big:hover > img{
+    filter: blur(4px);
 }
 
 .card-big-content {
     justify-content: space-between;
     display: flex;
     bottom: 0;
+    right: 0;
     left: 0;
     position: absolute;
     align-items: flex-end;
-    max-width: 100%;
-    min-width: 93%;
+    z-index: 99;
     padding: 20px;
-
-}
-
-.card-big-content img {
-    width: 20px;
-    height: 20px;
-    filter: brightness(1);
 }
 
 .button-play-cards img {
     width: 20px;
-    height: 20px;
-    filter: brightness(1);
+    height: 20px; 
 }
 
 .button-play-cards {
@@ -63,15 +77,22 @@
     font-weight: 900;
 }
 
-.card-big img:hover {
-    filter: brightness(1);
-}
-
-
-
 .card-big-text {
+    width: 70%;
     color: white;
+    transition: 0.3s ease transform;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    cursor:default;
+    position: relative;
 }
+
+.card-big:hover .card-big-text {
+    transform: translateY(-6px);
+}
+
 
 .card-big-text h1 {
     font-size: 25px;
@@ -101,13 +122,11 @@
     filter: brightness(0.6);
 }
 
-
 .card-large-text {
     bottom: 0;
     left: 0;
     position: absolute;
     padding: 20px;
-
     width: 100%;
     color: white;
 }
@@ -116,15 +135,20 @@
     font-size: 23px;
 }
 
-
-
 .card-large-text h3 {
     font-weight: 500;
     color: #83b8df;
-    ;
 }
 
 .card-large-text p {
     margin-top: 7px;
     font-size: 16px;
+}
+
+/* Swiper */
+
+swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

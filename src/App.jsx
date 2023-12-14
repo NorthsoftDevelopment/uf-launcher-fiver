@@ -19,6 +19,7 @@ import { Soon } from "./components/global/404/Soon";
 import { Search } from "./components/Search/Search";
 import { SkeletoMitad, Skeleton } from "./components/loader/Skeleton";
 import { Toaster } from "react-hot-toast";
+import Settings from "./components/Settings/Settings";
 
 
 function App() {
@@ -39,6 +40,11 @@ function App() {
         <Route path="/search" element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
             <Search />
+          </ProtectedRoute>} />
+        
+        <Route path="/settings" element={
+          <ProtectedRoute isAuthenticated={isAuthenticated}>
+            <Settings />
           </ProtectedRoute>} />
 
         <Route path="/profile" element={

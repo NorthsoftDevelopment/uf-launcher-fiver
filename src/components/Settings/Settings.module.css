@@ -1,0 +1,171 @@
+.content * {
+  box-sizing: border-box;
+}
+
+.settingsList {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.itemTitle {
+  display: flex;
+  align-items: center;
+}
+
+.disableconfig {
+  background-color: red;
+  margin-left: 15px;
+  padding-inline: 10px;
+  padding-block: 2px;
+  border-radius: 10px;
+  font-size: 15px;
+
+}
+
+.perfomanceconfig {
+  background-color: rgb(2, 153, 2);
+  margin-left: 15px;
+  padding-inline: 10px;
+  padding-block: 2px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.itemRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.itemColumn {
+  display: flex;
+  gap: 2em;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.itemText {
+  flex-grow: 1;
+}
+
+.sliderContainer {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.sliderValue {
+  box-sizing: border-box;
+  width: 120px;
+  text-align: start;
+  align-self: flex-start;
+  text-wrap: nowrap;
+  font-size: 1em;
+}
+
+.slider {
+  --slider-bg: #ccc;
+  --slider-selected-bg: #1cba70;
+  --slider-thumb-bg: #fff;
+
+  -webkit-appearance: none;
+  /* Override default CSS styles */
+  appearance: none;
+  margin-bottom: 1.5em;
+  width: 100%;
+  /* Full-width */
+  height: 12px;
+  /* Specified height */
+  outline: none;
+  /* Remove outline */
+  border-radius: 100px;
+}
+
+.slider::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: -5px;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--slider-thumb-bg);
+}
+
+.slider::-moz-range-track {
+  height: 40px;
+  background: var(--slider-selected-bg);
+}
+
+.infoapp div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.infoapp div h3 {
+  font-weight: 200;
+  font-size: 17px;
+}
+
+.infoapp div h4 {
+  font-weight: 100;
+  color: rgb(36, 117, 139);
+}
+
+.redzone {
+  margin-top: 10px;
+}
+
+.redzone button {
+  margin-top: 15px;
+  background-color: red;
+  width: 100%;
+}
+
+
+.resources {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.resources button {
+  width: 100%;
+  background: #2D3036;
+  color: white;
+  border: none;
+  padding-block: 13px;
+  border-radius: 10px;
+  margin-top: 10px;
+  font-size: 17px;
+  transition: all 0.2s;
+
+
+}
+
+.resources button:hover {
+  background: rgb(36, 117, 139);
+}
+
+.select {
+  background-color: rgb(36, 117, 139);
+  color: white;
+  padding: 12px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: none;
+  transition: all 0.2s;
+}
+
+.select:hover {
+  background-color: rgb(36, 117, 139);
+}

@@ -12,6 +12,7 @@ import searchIcon from '../../../assets/icon/Extra/search-white.png'
 import menuIcon from '../../../assets/icon/Extra/menu-icon.png'
 import settingsIcon from '../../../assets/icon/Extra/settings-icon.png'
 import Sidebar from "../../Profile/ProfileBar";
+import { SeparateShort } from "../../ExtraComponents/Separate/Separate";
 
 const testData = [
   {
@@ -24,7 +25,8 @@ const testData = [
 ];
 
 export const Navbar = () => {
-  const { user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { logout } = useAuth0();
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -90,14 +92,14 @@ export const Navbar = () => {
             <div className="interactive-bar">
               <div className="interactive-bar-left">
                 <img src={menuIcon}></img>
-          
+
               </div>
 
               <Link className="no-decoration" to='/'>
                 <h1 className={location.pathname === '/' ? 'active' : 'title-interactivebar'}>INICIO</h1>
               </Link>
               <Link className="no-decoration" to='/library'>
-                <h1 className={location.pathname === '/library' ? 'active' : 'title-interactivebar'}>BIBLIOETECA</h1>
+                <h1 className={location.pathname === '/library' ? 'active' : 'title-interactivebar'}>BIBLIOTECA</h1>
               </Link>
               <Link className="no-decoration" to={location.pathname.startsWith('/instance/') ? '/discover' : '/discover'}>
                 <h1 className={location.pathname.startsWith('/instance/') ? 'active' : 'title-interactivebar'}>EXPLORA</h1>
@@ -147,10 +149,11 @@ export const Navbar = () => {
             {isAuthenticated ? (
               <div className="right-navbar">
                 <Link to='/search'>
-                <img src={searchIcon} className={location.pathname.startsWith('/search') ? 'search-icon-active' : 'search-icon'} ></img>
+                  <img src={searchIcon} className={location.pathname.startsWith('/search') ? 'search-icon-active' : 'search-icon'} ></img>
                 </Link>
-                
-                <img src={settingsIcon} className="search-icon"></img>
+                <Link to='/settings'>
+                  <img src={settingsIcon} className={location.pathname.startsWith('/settings') ? 'search-icon-active' : 'search-icon'}></img>
+                </Link>
                 <button onClick={toggleSidebar} className="nav-user-profile">
                   <h3 className="title-little no-decoration">{user.name}</h3>
                   <img className="usericon" src={user.picture} />
@@ -162,7 +165,41 @@ export const Navbar = () => {
               </Link>
             )}
           </div>
-          <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
+          <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} content={<div>
+            {
+              isAuthenticated && (
+                <div>
+                  <div className='sidebar-zone1'>
+                    <div className='sidebar-picture'>
+                      <img src={user.picture}></img>
+                    </div>
+                  </div>
+                  <img src='https://cdn.discordapp.com/attachments/910002249651077150/1178107004745682944/Merry-Christmas6_6838525_lrg.jpg?ex=6574f0a6&is=65627ba6&hm=c437a99f08f83a7840cfe7f2e99ccf57adea3942de5f67a35558be962b4524ca&'></img>
+                  <SeparateShort />
+
+
+                  <div>
+                    <div className='sidebar-profile'>
+
+
+
+                      <h1>{user.name}</h1>
+                      <p>{user.email}</p>
+                      <button
+                        className="button-little"
+                        onClick={() =>
+                          logout({ logoutParams: { returnTo: window.location.origin } })
+                        }
+                      >
+                        Cerrar Sesion
+                      </button>
+                    </div>
+
+                  </div>
+
+                </div>
+              )}
+          </div>} />
         </nav>
       </div>
     </header>

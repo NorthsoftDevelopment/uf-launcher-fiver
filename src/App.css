@@ -46,6 +46,13 @@ html {
   margin-right: 10px;
 }
 
+.button-free {
+  font-family: 'Open Sans', sans-serif;
+  border: none;
+  border-radius: 15px;
+  color: white;
+}
+
 
 
 
@@ -67,19 +74,7 @@ html {
   padding-bottom: 10px;
 }
 
-.button-general-log {
-  background: rgb(0, 55, 255);
-  color: white;
-  border: none;
-  margin: 5px;
-  font-weight: 100;
-  border-radius: 5px;
-  transition: all 0.4s;
-  padding-inline: 50px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  cursor: pointer;
-}
+
 
 html::-webkit-scrollbar {
   width: 14px; /* width of the entire scrollbar */
@@ -139,6 +134,24 @@ html::-webkit-scrollbar-thumb {
 
 .content-flex {
   display: flex;
+}
+
+.content-70 {
+  justify-content: space-between;
+  display: flex;
+  padding-block: 60px;
+  padding-inline: 45px;
+  max-width: 100%;
+  gap: 60px;
+}
+
+.content-70-part-large {
+  width: 100%;
+  
+}
+
+.content-70-short-part {
+  min-width: 25%;
 }
 
 .transparent {

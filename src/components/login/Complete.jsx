@@ -35,9 +35,8 @@ export const CompleteLogin = () => {
 
                 const data = {
                     user: email,
-                    name: user.name,
+                    name: user.nickname,
                     img: user.picture
-
                 }
 
                 const response = await axios.post(api, data);
@@ -55,9 +54,11 @@ export const CompleteLogin = () => {
 
         } catch (error) {
 
-            logout({ logoutParams: { returnTo: window.location.origin } })
+            //logout({ logoutParams: { returnTo: window.location.origin } })
 
-            window.location.href = '/login'
+            //window.location.href = '/login'
+
+            console.log(error)
 
         }
 

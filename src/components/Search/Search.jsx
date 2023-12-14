@@ -2,11 +2,35 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { CardUser } from '../ExtraComponents/global/CardUser';
 import { SeparateShort } from '../ExtraComponents/Separate/Separate';
+import Sidebar from '../Profile/ProfileBar';
 
 export const Search = () => {
     const [users, setUsers] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredUsers, setFilteredUsers] = useState([]);
+    const [sidebarContent, setSidebarContent] = useState({});
+    const [isSidebarOpen, setSidebarOpen] = useState(false);
+
+    const toggleSidebar = async (doc) => {
+
+
+        const datasend = {
+            type: 'users',
+            doc: doc
+        }
+        try {
+            const api = 'http://localhost:3000/search/information';
+            const response = await axios.post(api, datasend);
+            const data = response.data;
+            console.log(data);
+
+            setSidebarContent(data.datos)
+            setSidebarOpen(!isSidebarOpen);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+
+    };
 
     useEffect(() => {
         instancesGet();
@@ -19,7 +43,7 @@ export const Search = () => {
             const data = response.data;
             console.log(data);
             setUsers(data);
-            setFilteredUsers(data); // Inicialmente, los usuarios filtrados son iguales a todos los usuarios.
+            setFilteredUsers(data); 
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -29,7 +53,7 @@ export const Search = () => {
         const searchTerm = event.target.value.toLowerCase();
         setSearchTerm(searchTerm);
 
-        // Filtrar usuarios basándose en el término de búsqueda
+      
         const filteredUsers = users.filter((user) =>
             user.name.toLowerCase().includes(searchTerm)
         );
@@ -40,11 +64,11 @@ export const Search = () => {
         <div className='content'>
             <div className='titles'>
                 <div>
-                <h1 className='title-general-bold-big'>BUSCAR</h1>
-                <h3>Busca Instancias, Usuarios Y Blogs</h3>
+                    <h1 className='title-general-bold-big'>BUSCAR</h1>
+                    <h3>Busca Instancias, Usuarios Y Blogs</h3>
                 </div>
-                
-                
+
+
                 <input
                     type='text'
                     placeholder='Buscar Usuarios'
@@ -60,11 +84,44 @@ export const Search = () => {
             <div className='cards'>
                 {Array.isArray(filteredUsers) &&
                     filteredUsers.map((user, index) => (
-                        <div key={index}>
-                            <CardUser name={user.name} img={user.img} />
+                        <div key={index} >
+                            <button  onClick={() => toggleSidebar(user.user)} className='button-free'>
+
+                                <CardUser name={user.name} img={user.img} />
+                            </button>
+
                         </div>
                     ))}
             </div>
+
+            <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} content={<div>
+
+
+                <div>
+                    <div className='sidebar-zone1'>
+                        <div className='sidebar-picture'>
+                            <img src={sidebarContent.img}></img>
+                        </div>
+                    </div>
+                    <img src='https://cdn.discordapp.com/attachments/910002249651077150/1178107004745682944/Merry-Christmas6_6838525_lrg.jpg?ex=6574f0a6&is=65627ba6&hm=c437a99f08f83a7840cfe7f2e99ccf57adea3942de5f67a35558be962b4524ca&'></img>
+                    <SeparateShort />
+
+
+                    <div>
+                        <div className='sidebar-profile'>
+
+
+
+                            <h1>{sidebarContent.name}</h1>
+                            <p>{sidebarContent.user}</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>} />
         </div>
     );
 };

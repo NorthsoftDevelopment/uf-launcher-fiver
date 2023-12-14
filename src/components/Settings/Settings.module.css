@@ -5,15 +5,38 @@
 .settingsList {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 2em;
 }
 
-.item {}
+.itemTitle {
+  display: flex;
+  align-items: center;
+}
+
+.disableconfig {
+  background-color: red;
+  margin-left: 15px;
+  padding-inline: 10px;
+  padding-block: 2px;
+  border-radius: 10px;
+  font-size: 15px;
+
+}
+
+.perfomanceconfig {
+  background-color: rgb(2, 153, 2);
+  margin-left: 15px;
+  padding-inline: 10px;
+  padding-block: 2px;
+  border-radius: 10px;
+  font-size: 15px;
+}
 
 .itemRow {
   display: flex;
   flex-direction: row;
   align-items: center;
+
 }
 
 .itemColumn {
@@ -120,7 +143,7 @@
   background: #2D3036;
   color: white;
   border: none;
-  padding-block: 16px;
+  padding-block: 13px;
   border-radius: 10px;
   margin-top: 10px;
   font-size: 17px;

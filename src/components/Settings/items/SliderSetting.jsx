@@ -28,27 +28,29 @@ export default function SliderSetting({ name, title, description, options, value
     updateBgGradient(progress);
 
     return () => {
-      
+
     };
   }, []);
 
   return (
-    <div className={ [classes.item, classes.itemColumn].join(" ") }>
-      <div className={ classes.itemText }>
-      <h3 className='title-general-bold'>{ title }</h3>
-        <p>{ description }</p>
+    <div className={[classes.item, classes.itemColumn].join(" ")}>
+      <div className={classes.itemText}>
+        <div className={classes.itemTitle}>
+          <h3 className='title-general-bold'>{title}</h3> <h4 className={classes.disableconfig}>Desabilitado</h4>
+        </div>
+        <p>{description}</p>
       </div>
-      <div className={ classes.sliderContainer }>
+      <div className={classes.sliderContainer}>
         <input
-          ref={ sliderEl }
-          className={ classes.slider }
+          ref={sliderEl}
+          className={classes.slider}
           type="range"
-          min={ 0 }
-          max={ options.length - 1 }
-          value={ options.findIndex((v) => v == value) }
-          onChange={ (e) => onValueChange(name, options[e.target.value]) }
+          min={0}
+          max={options.length - 1}
+          value={options.findIndex((v) => v == value)}
+          onChange={(e) => onValueChange(name, options[e.target.value])}
         />
-        <div className={ classes.sliderValue }>{ value } GB</div>
+        <div className={classes.sliderValue}>{value} GB</div>
       </div>
     </div>
   );

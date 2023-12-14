@@ -35,7 +35,7 @@ export const CompleteLogin = () => {
 
                 const data = {
                     user: email,
-                    name: user.name,
+                    name: user.nickname,
                     img: user.picture
                 }
 

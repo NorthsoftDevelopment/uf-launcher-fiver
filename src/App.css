@@ -5,11 +5,12 @@
 /* Open Sans Font */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
-
 html {
   font-family: 'Open Sans', sans-serif;
   background: #1A1B1E;
   color: white;
+  overflow:overlay;
+  
 }
 
 .saveOld{

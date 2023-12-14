@@ -11,6 +11,7 @@ export default function DirectorySetting({ name, title, description, value, onVa
       </div>
 
       <p className={classes.itemDescription}>{description}</p>
+      <p>Directorio actual: <pre>{value}</pre></p>
     </div>
   );
 }

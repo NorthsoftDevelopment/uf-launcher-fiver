@@ -19,7 +19,7 @@ export const Search = () => {
             doc: doc
         }
         try {
-            const api = 'http://localhost:3000/search/information';
+            const api = 'https://inhonia-launcher-api.vercel.app/search/information';
             const response = await axios.post(api, datasend);
             const data = response.data;
             console.log(data);

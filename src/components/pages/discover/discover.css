@@ -7,6 +7,7 @@ img {
     flex-wrap: wrap;
     gap: 20px;
     overflow: hidden;
+    margin-top: 15px;
 }
 
 .card-discover {
@@ -131,16 +132,25 @@ img {
     width: 30px;
     height: 30px;
     margin-left: auto;
-    border-radius: 5rem;
+    border-radius: 5px;
     overflow: hidden;
     display: flex;
-    transition: 0.3s ease width;
     gap: 5px;
+    transition: 0.3s ease width,0.3s ease box-shadow;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: #7a7a7a4a;
     flex-direction: column;
     position: relative;
+    box-shadow: 0px 0px 0px 2px #b5b3b34d;
+}
+
+.card-discover-play-button:hover {
+    box-shadow: 0px 0px 0px 2px #c1c1c1a1;
+}
+
+.card-discover-play-button:hover svg {
+    fill: #f1f1f1ad;
 }
 
 .card-discover:hover .card-discover-play-button{
@@ -153,17 +163,86 @@ img {
 
 
 .card-discover-play-button p {
-    color: black;
+    color: rgb(181, 181, 181);
     font-size: 15px;
     font-weight: 700;
     position: absolute;
     transition: 0.3s ease transform;
-    transform: translateX(32px);
+    transform: translateX(40px);
 }
 
 .card-discover-play-button svg {
     width: 30px;
     height: 20px;
     position: absolute;
+    transition: 0.3s ease transform,0.3s ease fill;
     left: 0;
+    fill: #f1f1f157;
+}
+
+/* Min */
+
+.card-discover-min {
+    width: 250px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: default;
+    transition: 0.3s ease box-shadow;
+    justify-content: flex-start;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(90deg, #37e0f11f,#5656564a);
+}
+
+.card-discover-min:hover {
+    box-shadow: inset 0px 0px 0px 3px rgb(255 255 255 / 15%);
+}
+
+.card-discover-min::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateZ(0);
+    background: linear-gradient(180deg, transparent, #000000ae);
+    box-shadow: inset 0px 0px 0px 3px rgb(255 255 255 / 15%);
+    border-radius: 10px;
+    z-index: -99;
+    position: absolute;
+}
+
+
+img.card-discover-min-icon {
+    width: 60px;
+    object-fit: contain;
+}
+
+
+.card-discover-min:hover img.card-discover-min-bg {
+    transform: scale(1.1);
+}
+
+img.card-discover-min-bg {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -99;
+    opacity: 50%;
+    transform: translateZ(0);
+    transition: 0.3s ease transform;
+    object-fit: cover;
+    position: absolute;
+}
+
+.card-discover-min-content{
+
 }

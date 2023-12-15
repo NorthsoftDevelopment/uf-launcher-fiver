@@ -3,6 +3,7 @@ import axios from 'axios';
 import { CardUser } from '../ExtraComponents/global/CardUser';
 import { SeparateShort } from '../ExtraComponents/Separate/Separate';
 import Sidebar from '../Profile/ProfileBar';
+import { FollowingHook } from '../../hooks/Users/FollowingUser';
 
 export const Search = () => {
     const [users, setUsers] = useState([]);
@@ -85,7 +86,7 @@ export const Search = () => {
                 {Array.isArray(filteredUsers) &&
                     filteredUsers.map((user, index) => (
                         <div key={index} >
-                            <button  onClick={() => toggleSidebar(user.user)} className='button-free'>
+                            <button  onClick={FollowingHook} className='button-free'>
 
                                 <CardUser name={user.name} img={user.img} />
                             </button>

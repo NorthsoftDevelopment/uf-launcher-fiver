@@ -13,6 +13,7 @@ import menuIcon from '../../../assets/icon/Extra/menu-icon.png'
 import settingsIcon from '../../../assets/icon/Extra/settings-icon.png'
 import Sidebar from "../../Profile/ProfileBar";
 import { SeparateShort } from "../../ExtraComponents/Separate/Separate";
+import { RecentPlayName } from "../../global/Cards/RecentPlay";
 
 const testData = [
   {
@@ -147,7 +148,11 @@ export const Navbar = () => {
           </div> */}
 
             {isAuthenticated ? (
+
               <div className="right-navbar">
+
+                <RecentPlayName />
+
                 <Link to='/search'>
                   <img src={searchIcon} className={location.pathname.startsWith('/search') ? 'search-icon-active' : 'search-icon'} ></img>
                 </Link>
@@ -155,7 +160,7 @@ export const Navbar = () => {
                   <img src={settingsIcon} className={location.pathname.startsWith('/settings') ? 'search-icon-active' : 'search-icon'}></img>
                 </Link>
                 <button onClick={toggleSidebar} className="nav-user-profile">
-                  <h3 className="title-little no-decoration">{user.name}</h3>
+                  <h3 className="title-little no-decoration">{user.nickname}</h3>
                   <img className="usericon" src={user.picture} />
                 </button>
               </div>

@@ -5,7 +5,7 @@ export const InfoCard = ({ banner, background, title, notes, autor, id }) => {
     return (
         <div className='infocard-container'>
             <div className='infocard-data'>
-                <img src={banner}></img>
+                <img src={banner} className='infocard-data-img '></img>
                 <div className='infocard-data-text'>
                     <h2>{title}</h2>
                     <h4>{autor}</h4>

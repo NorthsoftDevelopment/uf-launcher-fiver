@@ -1,0 +1,48 @@
+.following-content {
+    gap: 50px;
+}
+
+.following-card {
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    height: 45px;
+    overflow: auto;
+    font-size: 14px;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.following-card h1 {
+    background-color: rgb(36, 117, 139);
+    padding-inline: 10px;
+    font-size: 22px;
+    border-radius: 10px;
+
+}
+
+.following-card-left {
+    display: flex;
+    align-items: center;
+    height: 45px;
+    overflow: auto;
+    font-size: 14px;
+    gap: 15px;
+}
+
+
+
+.following-card img {
+    height: 100%;
+    border-radius: 10px;
+}
+
+.following-card-content h2 {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.following-card-content p {
+    color: rgb(155, 155, 155);
+}

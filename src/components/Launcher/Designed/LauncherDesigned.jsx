@@ -126,6 +126,9 @@ export const LauncherDesigned = ({ otherOpts }) => {
         if (setting.launcherType === 'sk') {
 
             const child = execFile('C:/InhoniaLauncher/launchers/sk.exe', ['--workDir', LaunchInstance.root], (error, stdout, stderr) => {
+
+                    Cookies.set('recentPlayedID', InfoInstance.id, { expires: 365, sameSite: 'strict' });
+
                 if (error) {
                     Swal.fire({
                         icon: 'error',
@@ -145,7 +148,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
                         }
                     });
                 } else {
-                    Cookies.set('recentPlayedID', InfoInstance.id, { expires: 365, sameSite: 'strict' });
+
                 }
                 console.log(stdout);
             });

@@ -179,25 +179,27 @@ export const Navbar = () => {
                       <img src={user.picture}></img>
                     </div>
                   </div>
-                  <img src='https://cdn.discordapp.com/attachments/910002249651077150/1178107004745682944/Merry-Christmas6_6838525_lrg.jpg?ex=6574f0a6&is=65627ba6&hm=c437a99f08f83a7840cfe7f2e99ccf57adea3942de5f67a35558be962b4524ca&'></img>
+                  <img className='sidebar-background' src='https://cdn.discordapp.com/attachments/910002249651077150/1178107004745682944/Merry-Christmas6_6838525_lrg.jpg?ex=6574f0a6&is=65627ba6&hm=c437a99f08f83a7840cfe7f2e99ccf57adea3942de5f67a35558be962b4524ca&'></img>
                   <SeparateShort />
 
 
                   <div>
                     <div className='sidebar-profile'>
 
+                      <div>
+                        <h1>{user.name}</h1>
+                        <p>{user.email}</p>
+                        <button
+                          className="button-little"
+                          onClick={() =>
+                            logout({ logoutParams: { returnTo: window.location.origin } })
+                          }
+                        >
+                          Cerrar Sesion
+                        </button>
+                      </div>
 
 
-                      <h1>{user.name}</h1>
-                      <p>{user.email}</p>
-                      <button
-                        className="button-little"
-                        onClick={() =>
-                          logout({ logoutParams: { returnTo: window.location.origin } })
-                        }
-                      >
-                        Cerrar Sesion
-                      </button>
                     </div>
 
                   </div>

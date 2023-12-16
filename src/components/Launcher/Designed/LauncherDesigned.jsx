@@ -13,6 +13,7 @@ import { Loader } from '../../loader/Loader';
 import { Skeleton } from '../../loader/Skeleton';
 import useDownloadLauncher from '../../../hooks/useDownloadLauncher';
 import toast from 'react-hot-toast';
+import { reloadScreen } from '../../ExtraComponents/ReloadScreen';
 
 
 
@@ -524,6 +525,8 @@ export const LauncherDesigned = ({ otherOpts }) => {
                     console.log('Archivo creado en:', filePath);
 
                     setInstalling(false)
+
+                    reloadScreen()
 
                 }
             }, [progress]);

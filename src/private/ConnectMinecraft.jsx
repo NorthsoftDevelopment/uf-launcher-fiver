@@ -121,6 +121,13 @@ const saltarLogin = () => {
             if (progress === 100.0) {
                 toast.success("Descarga finalizada!", { id: t.id });
 
+                const settingsDefault = {
+                  launcherType: 'minecraft',
+                  allocatedMemory: '4'
+                }
+
+                Cookies.set('launcher_settings', JSON.stringify(settingsDefault), { expires: 365, sameSite: 'strict' });
+
                 Cookies.set('basicInstallationComplete', true, { expires: 365, sameSite: 'strict' });
 
                 window.location.href = '/'
@@ -181,18 +188,18 @@ const saltarLogin = () => {
       <div className='displayAdvertence'>
         <div className='content-advertence'>
           <div>
-            <h1>Autorizar Instalacion</h1>
+            <h1>Instalacion Requerida</h1>
             <img src={authorizationimg} alt='Minecraft' ></img>
           </div>
           <div>
-            <h2>Hola {user.name}, necesitamos instalar algunos archivos necesarios</h2>
+            <p>Hola {user.nickname}, necesitamos instalar algunos archivos necesarios para asegurarte una buena experiencia dentro de la aplicacion.</p>
             <ul>
-              <li>- No cambiaremos ninguno de los datos de tu cuenta.</li>
-              <li>- Accederemos a una red de instalacion</li>
-              <li>- Accederemos a tu archivos personales</li>
+              <li>+ No cambiaremos a tus archivos personales.</li>
+              <li>+ Accederemos a una red de instalacion privada.</li>
+              <li>+ Instalaremos archivos dentro de tu equipo.</li>
             </ul>
           </div>
-          <button onClick={downloadInstance} className='button-general'>Instalar Archivos</button>
+          <button onClick={downloadInstance} className='button-general-install'>Instalar Archivos</button>
         </div>
   
       </div>

@@ -21,7 +21,10 @@ import { Following } from "../global/Friends/Following";
 register();
 
 export const HomePage = () => {
-  useEffect(() => { }, []);
+  useEffect(() => { 
+
+
+  }, []);
 
   //Auth AND INSTANCES STATE, imports and loader
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -50,7 +53,7 @@ export const HomePage = () => {
     );
 
     // Llama a react-hot-toast con la notificación
-    toast(notificationContent, {
+    toast.success(notificationContent, {
       duration: 40000000, // Duración en milisegundos (opcional)
     });
   };
@@ -121,7 +124,7 @@ export const HomePage = () => {
               <h3 className="title-general-bold">ACTUALIZACIONES RECIENTES</h3>
               <div className="cards-50">
                 <CardLarge
-                  img="https://www.dropbox.com/scl/fi/fqzt1axo7tcgujbon3myi/notice-slide4.png?rlkey=pubah96fkyczhgxoq4cev2ar3&dl=1"
+              img='https://www.dropbox.com/scl/fi/fqzt1axo7tcgujbon3myi/notice-slide4.png?rlkey=pubah96fkyczhgxoq4cev2ar3&dl=1'
                   title="Nuevo Menu 2.0"
                   autor="Inhonia Studios"
                   desc="Presentamos el Home 2.0 para diciembre del Inhonia Launcher"
@@ -131,6 +134,18 @@ export const HomePage = () => {
                   autor="Team Eladina"
                   title="Lalalandia Servidor"
                   desc="Todo listo para la nueva temporada de diamante en el servidor de Lalandia"
+                />
+                <CardLarge
+                  img="https://www.dropbox.com/scl/fi/fqzt1axo7tcgujbon3myi/notice-slide4.png?rlkey=pubah96fkyczhgxoq4cev2ar3&dl=1"
+                  title="Nuevo Menu 2.0"
+                  autor="Inhonia Studios"
+                  desc="Presentamos el Home 2.0 para diciembre del Inhonia Launcher"
+                />
+                <CardLarge
+                  img="https://www.dropbox.com/scl/fi/fqzt1axo7tcgujbon3myi/notice-slide4.png?rlkey=pubah96fkyczhgxoq4cev2ar3&dl=1"
+                  title="Nuevo Menu 2.0"
+                  autor="Inhonia Studios"
+                  desc="Presentamos el Home 2.0 para diciembre del Inhonia Launcher"
                 />
                 <CardLarge
                   img="https://www.dropbox.com/scl/fi/fqzt1axo7tcgujbon3myi/notice-slide4.png?rlkey=pubah96fkyczhgxoq4cev2ar3&dl=1"

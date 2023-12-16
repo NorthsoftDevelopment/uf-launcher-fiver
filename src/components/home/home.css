@@ -78,6 +78,7 @@ img {
 }
 
 .cards {
+    width: 100%;
     display: flex;
     margin-top: 15px;
     gap: 12px;

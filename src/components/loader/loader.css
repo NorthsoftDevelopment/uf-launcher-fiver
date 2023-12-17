@@ -9,7 +9,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #1A1B1E;
+    background-color: black;
     color: white;
     font-size: 7px;
 
@@ -36,7 +36,7 @@
   }
 
 .skeleton-container {
-  background-color: #1A1B1E;
+  background-color: black;
   position: fixed;
   top: 0;
   left: 0;

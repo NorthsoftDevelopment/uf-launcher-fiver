@@ -11,6 +11,16 @@ html {
   color: white;
 }
 
+
+.drag{
+  -webkit-app-region: drag;
+}
+
+.nodrag {
+  -webkit-app-region: no-drag;
+}
+
+
 .saveOld{
   background: #1A1B1E;
 }

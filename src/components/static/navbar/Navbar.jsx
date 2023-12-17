@@ -1,5 +1,5 @@
 import { useState } from "react";
-import '../css/layout.css'
+import "../css/layout.css";
 import logo from "../../../assets/launcherweb.png";
 import test from "../../../assets/icon/icon.png";
 import usericon from "../../../assets/icon/usericon.png";
@@ -8,9 +8,9 @@ import { useEffect } from "react";
 import AOS from "aos";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import searchIcon from '../../../assets/icon/Extra/search-white.png'
-import menuIcon from '../../../assets/icon/Extra/menu-icon.png'
-import settingsIcon from '../../../assets/icon/Extra/settings-icon.png'
+import searchIcon from "../../../assets/icon/Extra/search-white.png";
+import menuIcon from "../../../assets/icon/Extra/menu-icon.png";
+import settingsIcon from "../../../assets/icon/Extra/settings-icon.png";
 import Sidebar from "../../Profile/ProfileBar";
 import { SeparateShort } from "../../ExtraComponents/Separate/Separate";
 
@@ -21,7 +21,6 @@ const testData = [
     desc: "Mi cuenta",
     link: "/login",
   },
-
 ];
 
 export const Navbar = () => {
@@ -78,17 +77,49 @@ export const Navbar = () => {
     };
   }, []);
 
+
+  function action(btn) {
+    var attr = btn.currentTarget.attributes.op.value
+    attr == "min" ? "" : attr=="max" ? window : attr == "close" ? window.close() : ""
+    
+  }
+
   return (
     <header>
-      <div className="menu-top-options">
-      <button className="nav-close-app">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-                </button>
+      <div className="menu-top-options drag">
+        <button onClick={(e) => action(e)} className="nav-close-app nodrag" op="min">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="white"
+          >
+            <path d="M5.25 12a.75.75 0 01.75-.75h12a.75.75 0 010 1.5H6a.75.75 0 01-.75-.75z" />
+          </svg>
+        </button>
+        <button onClick={(e) => action(e)} className="nav-close-app nodrag" op="max">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              stroke="white"
+              fill="white"
+              strokeWidth={0}
+              d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z"
+            />
+          </svg>
+        </button>
+        <button onClick={(e) => action(e)} className="nav-close-app nodrag" op="close">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            strokeWidth={3}
+            viewBox="0 0 24 24"
+          >
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </button>
       </div>
       <div className="navbar">
         <nav>
           <a>
-
             <Link to={window.location.origin}>
               <img src={logo} className="logo" alt="logo" />{" "}
             </Link>
@@ -97,24 +128,53 @@ export const Navbar = () => {
             <div className="interactive-bar">
               <div className="interactive-bar-left">
                 <img src={menuIcon}></img>
-
               </div>
 
-              <Link className="no-decoration" to='/'>
-                <h1 className={location.pathname === '/' ? 'active' : 'title-interactivebar'}>INICIO</h1>
+              <Link className="no-decoration" to="/">
+                <h1
+                  className={
+                    location.pathname === "/"
+                      ? "active"
+                      : "title-interactivebar"
+                  }
+                >
+                  INICIO
+                </h1>
               </Link>
-              <Link className="no-decoration" to='/library'>
-                <h1 className={location.pathname === '/library' ? 'active' : 'title-interactivebar'}>BIBLIOTECA</h1>
+              <Link className="no-decoration" to="/library">
+                <h1
+                  className={
+                    location.pathname === "/library"
+                      ? "active"
+                      : "title-interactivebar"
+                  }
+                >
+                  BIBLIOTECA
+                </h1>
               </Link>
 
-              <Link className="no-decoration" to={location.pathname.startsWith('/instance/') ? '/discover' : '/discover'}>
-                <h1 className={location.pathname.startsWith('/instance/') || location.pathname == "/discover" ? 'active' : 'title-interactivebar'}>EXPLORA</h1>
+              <Link
+                className="no-decoration"
+                to={
+                  location.pathname.startsWith("/instance/")
+                    ? "/discover"
+                    : "/discover"
+                }
+              >
+                <h1
+                  className={
+                    location.pathname.startsWith("/instance/") ||
+                    location.pathname == "/discover"
+                      ? "active"
+                      : "title-interactivebar"
+                  }
+                >
+                  EXPLORA
+                </h1>
               </Link>
-
             </div>
           </nav>
         </nav>
-
 
         <nav>
           <div className="profile-navbar">
@@ -154,11 +214,25 @@ export const Navbar = () => {
 
             {isAuthenticated ? (
               <div className="right-navbar">
-                <Link to='/search'>
-                  <img src={searchIcon} className={location.pathname.startsWith('/search') ? 'search-icon-active' : 'search-icon'} ></img>
+                <Link to="/search">
+                  <img
+                    src={searchIcon}
+                    className={
+                      location.pathname.startsWith("/search")
+                        ? "search-icon-active"
+                        : "search-icon"
+                    }
+                  ></img>
                 </Link>
-                <Link to='/settings'>
-                  <img src={settingsIcon} className={location.pathname.startsWith('/settings') ? 'search-icon-active' : 'search-icon'}></img>
+                <Link to="/settings">
+                  <img
+                    src={settingsIcon}
+                    className={
+                      location.pathname.startsWith("/settings")
+                        ? "search-icon-active"
+                        : "search-icon"
+                    }
+                  ></img>
                 </Link>
                 <button onClick={toggleSidebar} className="nav-user-profile">
                   <h3 className="title-little no-decoration">{user.name}</h3>
@@ -171,41 +245,44 @@ export const Navbar = () => {
               </Link>
             )}
           </div>
-          <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} content={<div>
-            {
-              isAuthenticated && (
-                <div>
-                  <div className='sidebar-zone1'>
-                    <div className='sidebar-picture'>
-                      <img src={user.picture}></img>
-                    </div>
-                  </div>
-                  <img src='https://cdn.discordapp.com/attachments/910002249651077150/1178107004745682944/Merry-Christmas6_6838525_lrg.jpg?ex=6574f0a6&is=65627ba6&hm=c437a99f08f83a7840cfe7f2e99ccf57adea3942de5f67a35558be962b4524ca&'></img>
-                  <SeparateShort />
-
-
+          <Sidebar
+            isOpen={isSidebarOpen}
+            onClose={toggleSidebar}
+            content={
+              <div>
+                {isAuthenticated && (
                   <div>
-                    <div className='sidebar-profile'>
-
-
-
-                      <h1>{user.name}</h1>
-                      <p>{user.email}</p>
-                      <button
-                        className="button-little"
-                        onClick={() =>
-                          logout({ logoutParams: { returnTo: window.location.origin } })
-                        }
-                      >
-                        Cerrar Sesion
-                      </button>
+                    <div className="sidebar-zone1">
+                      <div className="sidebar-picture">
+                        <img src={user.picture}></img>
+                      </div>
                     </div>
+                    <img src="https://cdn.discordapp.com/attachments/910002249651077150/1178107004745682944/Merry-Christmas6_6838525_lrg.jpg?ex=6574f0a6&is=65627ba6&hm=c437a99f08f83a7840cfe7f2e99ccf57adea3942de5f67a35558be962b4524ca&"></img>
+                    <SeparateShort />
 
+                    <div>
+                      <div className="sidebar-profile">
+                        <h1>{user.name}</h1>
+                        <p>{user.email}</p>
+                        <button
+                          className="button-little"
+                          onClick={() =>
+                            logout({
+                              logoutParams: {
+                                returnTo: window.location.origin,
+                              },
+                            })
+                          }
+                        >
+                          Cerrar Sesion
+                        </button>
+                      </div>
+                    </div>
                   </div>
-
-                </div>
-              )}
-          </div>} />
+                )}
+              </div>
+            }
+          />
         </nav>
       </div>
     </header>

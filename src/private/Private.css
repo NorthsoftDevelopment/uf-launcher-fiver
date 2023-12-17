@@ -20,9 +20,8 @@
 .content-advertence {
     max-width: 600px;
     text-align: center;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 50px;
-    border: 1px solid rgb(83, 83, 83);
     background: #1A1B1E;
     
 }
@@ -30,7 +29,7 @@
 .content-advertence ul {
     text-align: left;
     margin-top: 20px;
-    font-size: 19px;
+    font-size: 18px;
     list-style: none;
     margin-bottom: 20px;
 }
@@ -42,23 +41,22 @@
 .displayAdvertence h1 {
     font-size: 25px;
     margin-bottom: 20px;
+    font-weight: 900;
     color: #AAD0FF;
 
 }
 
 .displayAdvertence img {
     width: 300px;
-    margin-bottom: 20px;
 }
 
 .displayAdvertence p {
-    font-size: 18px;
-    margin-top: 20px;
-}
-.displayAdvertence h2 {
+    text-align: left;
     font-weight: 100;
-    font-size: 23px;
+    font-size: 19px;
+    margin-top: 10px;
 }
+
 
 .title-loader {
     color: white;
@@ -67,4 +65,21 @@
 
 .container-loader {
     color: white;
+}
+
+.button-general-install {
+    margin-top: 10px;
+    font-family: 'Inter' sans-serif;
+    padding-inline: 30px;
+    font-size: 16px;
+    padding-block: 10px;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    background-color: rgb(81, 165, 70) ;
+    transition: all 0.2s;
+}
+
+.button-general-install:hover {
+    background-color:rgb(51, 105, 44) ;
 }

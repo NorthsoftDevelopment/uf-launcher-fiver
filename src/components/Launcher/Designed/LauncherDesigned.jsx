@@ -96,9 +96,9 @@ export const LauncherDesigned = ({ otherOpts }) => {
         const fs = require('fs');
         const path = require('path');
 
-        if (LaunchInstance && LaunchInstance.root && LaunchInstance.version) {
+        if (LaunchInstance && LaunchInstance.root && LaunchInstance.versionInstance) {
 
-            const filePath = path.join(LaunchInstance.root, `${LaunchInstance.version}.txt`);
+            const filePath = path.join(LaunchInstance.root, `${LaunchInstance.versionInstance}.txt`);
 
             fs.access(filePath, fs.constants.F_OK, (err) => {
                 if (err) {
@@ -512,7 +512,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
                     const fs = require('fs');
                     const path = require('path');
-                    const filePath = path.join(LaunchInstance.root, `${LaunchInstance.version}.txt`);
+                    const filePath = path.join(LaunchInstance.root, `${LaunchInstance.versionInstance}.txt`);
 
                     const fileContent = '¡Descarga finalizada!';
 
@@ -551,7 +551,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
                         <div className="title-launch-zone">
                             <img src={InfoInstance.img} className='background-all'></img>
                             <div className="texto">
-                                <img src={InfoInstance.banner}></img>
+                                <img src={InfoInstance.img} className='img-banner'></img>
                                 <div>
                                     <h3 className="titulo">{InfoInstance.title}</h3>
                                     <h6 className="autor">{InfoInstance.autor}</h6>
@@ -581,7 +581,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
                                     <h6 className="warning-instance">Verifica que la instancia este verificada antes de instalarla o toma el riesgo</h6>
                                     <div className='line'></div>
                                     <div className='copy'>
-                                        <img src={teen}></img>
+                                        <img src={teen} className='teen'></img>
                                         <div className='copy-text'>
                                             <h3>TEEN</h3>
                                             <h6>Fantasy Violence</h6>
@@ -636,9 +636,21 @@ export const LauncherDesigned = ({ otherOpts }) => {
                     </div>
 
                     <div className='zone-general-instance'>
-                        <h3 className='titulo-config'>Novedades Mas Recientes</h3>
+                        <h3 className='titulo-config'>Novedades Recientes</h3>
                         <p className='p-general-short'>
                             {InfoInstance.notes}
+                        </p>
+                    </div>
+
+                    <div className='zone-general-instance'>
+                        <h3 className='titulo-config'>Datos de la Instancia</h3>
+                        <p className='p-general-short'>
+                            <div className='p-general-short-div'>                
+                                <p>Version de Instancia: {LaunchInstance.versionInstance}</p>
+                                <p>Version de juego: {LaunchInstance.version.number}</p>
+                                <p>Tipo de juego: {LaunchInstance.type}</p>
+                                <p>Memoria Recomendada: {LaunchInstance.memory.max}</p>
+                            </div>
                         </p>
                     </div>
 
@@ -664,7 +676,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
 
                     <section className="zona3">
-                        <h3 className="titledesc">Descripcion</h3>
+                        <h3 className="titledesc">Informacion de la instancia</h3>
                         <div className="text3">
                             <img src={InfoInstance.banner} alt="Image 1"></img>
                             <div className="desc5">
@@ -682,12 +694,6 @@ export const LauncherDesigned = ({ otherOpts }) => {
                             <div className="desc5">
                                 <p>Instancia publicada por:</p>
                                 <p>{InfoInstance.autor}</p>
-                            </div>
-                        </div>
-
-                        <div className='configs'>
-                            <div className='config'>
-                                <input id='username' className='input-general' placeholder='Usuario (SOLO INSTANCIAS ESPECIFICAS)'></input>
                             </div>
                         </div>
 

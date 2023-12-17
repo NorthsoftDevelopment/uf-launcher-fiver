@@ -12,6 +12,8 @@
     width: 35%;
     gap: 30px;
     display: flex;
+    overflow: auto;
+    font-size: auto;
 }
 
 
@@ -25,12 +27,13 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    height: 20px;
     display: flex;
     gap: 40px;
 }
 
 .center-login img {
-width: 170px;
+width: 100px;
 }
 
 .bottom-login {
@@ -73,7 +76,7 @@ width: 170px;
     color: rgba(255, 255, 255, 0.548);
     font-family: 'Inter', sans-serif;
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 100;
     padding-block: 20px;
   }

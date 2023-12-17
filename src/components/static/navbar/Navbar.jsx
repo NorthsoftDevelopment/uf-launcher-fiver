@@ -11,8 +11,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import searchIcon from '../../../assets/icon/Extra/search-white.png'
 import menuIcon from '../../../assets/icon/Extra/menu-icon.png'
 import settingsIcon from '../../../assets/icon/Extra/settings-icon.png'
+import closeIcon from '../../../assets/icon/electron/close-icon.png'
 import Sidebar from "../../Profile/ProfileBar";
 import { SeparateShort } from "../../ExtraComponents/Separate/Separate";
+import { RecentPlayName } from "../../global/Cards/RecentPlay";
 
 const testData = [
   {
@@ -78,6 +80,11 @@ export const Navbar = () => {
     };
   }, []);
 
+  function closeApp() {
+    const { ipcRenderer } = require('electron');
+    ipcRenderer.send('cerrar-app');
+  }
+  
   return (
     <header>
       <div className="navbar">
@@ -105,7 +112,6 @@ export const Navbar = () => {
               <Link className="no-decoration" to={location.pathname.startsWith('/instance/') ? '/discover' : '/discover'}>
                 <h1 className={location.pathname.startsWith('/instance/') || location.pathname == "/discover" ? 'active' : 'title-interactivebar'}>EXPLORA</h1>
               </Link>
-
             </div>
           </nav>
         </nav>
@@ -148,7 +154,11 @@ export const Navbar = () => {
           </div> */}
 
             {isAuthenticated ? (
+
               <div className="right-navbar">
+
+                <RecentPlayName />
+
                 <Link to='/search'>
                   <img src={searchIcon} className={location.pathname.startsWith('/search') ? 'search-icon-active' : 'search-icon'} ></img>
                 </Link>
@@ -156,9 +166,10 @@ export const Navbar = () => {
                   <img src={settingsIcon} className={location.pathname.startsWith('/settings') ? 'search-icon-active' : 'search-icon'}></img>
                 </Link>
                 <button onClick={toggleSidebar} className="nav-user-profile">
-                  <h3 className="title-little no-decoration">{user.name}</h3>
+                  <h3 className="title-little no-decoration">{user.nickname}</h3>
                   <img className="usericon" src={user.picture} />
                 </button>
+
               </div>
             ) : (
               <Link to="/login">
@@ -175,32 +186,39 @@ export const Navbar = () => {
                       <img src={user.picture}></img>
                     </div>
                   </div>
-                  <img src='https://cdn.discordapp.com/attachments/910002249651077150/1178107004745682944/Merry-Christmas6_6838525_lrg.jpg?ex=6574f0a6&is=65627ba6&hm=c437a99f08f83a7840cfe7f2e99ccf57adea3942de5f67a35558be962b4524ca&'></img>
+                  <img className='sidebar-background' src='https://cdn.discordapp.com/attachments/910002249651077150/1178107004745682944/Merry-Christmas6_6838525_lrg.jpg?ex=6574f0a6&is=65627ba6&hm=c437a99f08f83a7840cfe7f2e99ccf57adea3942de5f67a35558be962b4524ca&'></img>
                   <SeparateShort />
 
 
                   <div>
                     <div className='sidebar-profile'>
 
+                      <div>
+                        <h1>{user.name}</h1>
+                        <p>{user.email}</p>
+                        <button
+                          className="button-little"
+                          onClick={() =>
+                            logout({ logoutParams: { returnTo: window.location.origin } })
+                          }
+                        >
+                          Cerrar Sesion
+                        </button>
+                      </div>
 
 
-                      <h1>{user.name}</h1>
-                      <p>{user.email}</p>
-                      <button
-                        className="button-little"
-                        onClick={() =>
-                          logout({ logoutParams: { returnTo: window.location.origin } })
-                        }
-                      >
-                        Cerrar Sesion
-                      </button>
                     </div>
 
                   </div>
 
                 </div>
+                
               )}
-          </div>} />
+              
+          </div>
+        } 
+        />
+        
         </nav>
       </div>
     </header>

@@ -1,7 +1,7 @@
 .card-user {
-    background-color: #2D3036;
+    background-color: #141414;
     padding: 20px;
-    width: 250px;
+    width: 245px;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -9,7 +9,7 @@
 }
 
 .card-user:hover {
-    background-color: #595c61;
+    background-color: #1b1b1bcb;
 }
 
 .card-user img {
@@ -25,5 +25,7 @@
 .card-user-text h1 {
     font-size: 25px;
     max-height: 40px;
-    overflow: auto;
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

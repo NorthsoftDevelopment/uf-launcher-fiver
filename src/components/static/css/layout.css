@@ -6,8 +6,10 @@ header {
     justify-content: space-between;
     transition: 0.7s;
     z-index: 5;
-    background: #1A1B1E;
+    background: #000000;
     align-items: center;
+    margin-bottom: 20px;
+    -webkit-app-region: drag;
 
 }
 
@@ -23,9 +25,6 @@ header-test.abajo {
     background: #1A1B1E;
 }
 
-header.abajo {
-    background: #1A1B1E;
-}
 
 .navbar .logo {
     width: 200px;
@@ -43,11 +42,12 @@ nav {
     display: flex;
     justify-content: right;
     align-items: center;
+    -webkit-app-region: no-drag;
 
 }
 
 .interactive-bar {
-    background-color: #2D3036;
+    background-color: #141414;
     border-radius: 10px;
     margin-left: 40px;
     align-items: center;
@@ -69,7 +69,7 @@ padding-right: 10px;
 
 .title-interactivebar {
 font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    width: 90px;
+    min-width: 90px;
     text-align: center;
     font-size: 17px;
     color: white;
@@ -90,7 +90,7 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
 .active {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    width: 90px;
+    min-width: 90px;
     text-align: center;
     font-size: 17px;
     color: white;
@@ -146,7 +146,7 @@ header nav a.activo {
     border-style: none;
     padding-inline: 15px;
     border-radius: 10px;
-    background-color: #2D3036;
+    background-color: #141414;
     display: flex;
     align-items: center;
     gap: 10px;

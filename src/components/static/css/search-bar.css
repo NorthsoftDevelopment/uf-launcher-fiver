@@ -45,7 +45,7 @@
 }
 
 .search-icon {
-  background-color: #2D3036;
+  background-color: #141414;
   border-radius: 10px;
   padding: 10px;
     display: flex;
@@ -73,6 +73,9 @@
   align-items: center;
   display: flex;
   gap: 10px;
+  height: 46px;
+
+  overflow: auto;
 }
 
 .dropdown {

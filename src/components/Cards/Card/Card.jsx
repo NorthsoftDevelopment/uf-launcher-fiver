@@ -6,11 +6,10 @@ export const Card = ({ title, image, link }) => {
 
     return (
 
-        <Link to={link}>
-            <div className='card'>
-                <img className='img-card' src={image}></img>
-                <p className='text-card'>{title}</p>
-            </div>
+        <Link to={link} className='card'>
+
+            <img className='img-card' src={image}></img>
+            <p className='text-card'>{title}</p>
         </Link>
     )
 }

@@ -120,12 +120,12 @@ html::-webkit-scrollbar {
 }
 
 html::-webkit-scrollbar-track {
-  background: #1A1B1E;
+  background: transparent;
   /* color of the tracking area */
 }
 
 html::-webkit-scrollbar-thumb {
-  background-color: rgb(255, 255, 255);
+  background-color: #2D3036;
   /* color of the scroll thumb */
   border-radius: 20px;
   /* roundness of the scroll thumb */

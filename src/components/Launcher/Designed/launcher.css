@@ -164,7 +164,8 @@ padding-block: 9px;
 
 .zone-general-instance {
   font-size: 17px;
-  padding: 50px;
+  padding-inline: 50px;
+  padding-top: 50px;
 }
 
 .p-general {
@@ -174,11 +175,17 @@ padding-block: 9px;
 .p-general-short {
   margin-top: 10px;
   font-size: 17px;
-  max-width: 1000px;
+  max-width: 40%;
   background-color:#2D3036;
   padding: 15px;
   line-height: 1.3em;
   border-radius: 10px;
+}
+
+.p-general-short-div {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 .zone-general-instance ul {
   margin-top: 5px;

@@ -1,8 +1,12 @@
+
+
 .card {
-    width: 200px;
+    width: 183px;
+    height: 250px;
+    display: flex;
     position: relative;
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: 5px;
 }
 
 .img-card {
@@ -33,6 +37,7 @@
     width: auto;
     height: 350px;
     display: flex;
+    margin-top: 10px;
 }
 
 .infocard-data-img {

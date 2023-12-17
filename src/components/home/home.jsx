@@ -17,12 +17,14 @@ import toast from "react-hot-toast";
 import useDownloadLauncher from "../../hooks/useDownloadLauncher";
 import { register } from "swiper/element/bundle";
 import { Following } from "../global/Friends/Following";
+import { RpcState } from "../../hooks/Electron/RpcState";
 
 register();
 
 export const HomePage = () => {
-  useEffect(() => { 
+  useEffect(() => {
 
+    RpcState('Explorando el menu principal')
 
   }, []);
 
@@ -124,7 +126,7 @@ export const HomePage = () => {
               <h3 className="title-general-bold">ACTUALIZACIONES RECIENTES</h3>
               <div className="cards-50">
                 <CardLarge
-              img='https://www.dropbox.com/scl/fi/fqzt1axo7tcgujbon3myi/notice-slide4.png?rlkey=pubah96fkyczhgxoq4cev2ar3&dl=1'
+                  img='https://www.dropbox.com/scl/fi/fqzt1axo7tcgujbon3myi/notice-slide4.png?rlkey=pubah96fkyczhgxoq4cev2ar3&dl=1'
                   title="Nuevo Menu 2.0"
                   autor="Inhonia Studios"
                   desc="Presentamos el Home 2.0 para diciembre del Inhonia Launcher"

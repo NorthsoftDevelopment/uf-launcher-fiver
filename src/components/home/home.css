@@ -81,8 +81,9 @@ img {
     width: 100%;
     display: flex;
     margin-top: 15px;
-    gap: 12px;
+    gap: 22px;
     flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .cards-big {

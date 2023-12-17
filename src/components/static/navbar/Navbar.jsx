@@ -11,6 +11,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import searchIcon from '../../../assets/icon/Extra/search-white.png'
 import menuIcon from '../../../assets/icon/Extra/menu-icon.png'
 import settingsIcon from '../../../assets/icon/Extra/settings-icon.png'
+import closeIcon from '../../../assets/icon/electron/close-icon.png'
 import Sidebar from "../../Profile/ProfileBar";
 import { SeparateShort } from "../../ExtraComponents/Separate/Separate";
 import { RecentPlayName } from "../../global/Cards/RecentPlay";
@@ -79,6 +80,11 @@ export const Navbar = () => {
     };
   }, []);
 
+  function closeApp() {
+    const { ipcRenderer } = require('electron');
+    ipcRenderer.send('cerrar-app');
+  }
+  
   return (
     <header>
       <div className="navbar">
@@ -105,7 +111,6 @@ export const Navbar = () => {
               <Link className="no-decoration" to={location.pathname.startsWith('/instance/') ? '/discover' : '/discover'}>
                 <h1 className={location.pathname.startsWith('/instance/') ? 'active' : 'title-interactivebar'}>EXPLORA</h1>
               </Link>
-
             </div>
           </nav>
         </nav>
@@ -163,6 +168,9 @@ export const Navbar = () => {
                   <h3 className="title-little no-decoration">{user.nickname}</h3>
                   <img className="usericon" src={user.picture} />
                 </button>
+                <button onClick={closeApp} className="button-free">
+                  <img src={closeIcon} className={location.pathname.startsWith('/search') ? 'search-icon-active' : 'search-icon'} ></img>
+                </button>
               </div>
             ) : (
               <Link to="/login">
@@ -205,8 +213,13 @@ export const Navbar = () => {
                   </div>
 
                 </div>
+                
               )}
-          </div>} />
+              
+          </div>
+        } 
+        />
+        
         </nav>
       </div>
     </header>

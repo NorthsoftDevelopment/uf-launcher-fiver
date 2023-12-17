@@ -21,6 +21,7 @@ import { RpcState } from "../../hooks/Electron/RpcState";
 
 register();
 
+
 export const HomePage = () => {
   useEffect(() => {
 
@@ -66,7 +67,9 @@ export const HomePage = () => {
 
 
 
-        <div className="content-height">
+
+
+     <div className="content-height">
 
           <h3 className="title-general-bold">INSTANCIAS POPULARES</h3>
           <swiper-container

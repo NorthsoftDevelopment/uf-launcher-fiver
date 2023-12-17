@@ -152,7 +152,9 @@ padding-block: 9px;
 
 }
 
-
+.img-banner {
+  object-fit: cover;
+}
 
 
 .zona3 {
@@ -176,7 +178,7 @@ padding-block: 9px;
   margin-top: 10px;
   font-size: 17px;
   max-width: 40%;
-  background-color:#2D3036;
+  background-color:#141414;
   padding: 15px;
   line-height: 1.3em;
   border-radius: 10px;
@@ -198,7 +200,7 @@ padding-block: 9px;
 
 .text3 {
   display: flex;
-  background-color: #2D3036;
+  background-color: #141414;
   color: white;
   border-radius: 10px;
   

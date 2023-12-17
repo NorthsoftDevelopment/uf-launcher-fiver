@@ -136,12 +136,13 @@
 }
 
 .card-large-text h1 {
-    font-size: 23px;
+    font-size: 19px;
 }
 
 .card-large-text h3 {
     font-weight: 500;
     color: #83b8df;
+    font-size: 16px;
 }
 
 .card-large-text p {

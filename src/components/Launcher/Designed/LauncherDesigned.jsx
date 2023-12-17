@@ -13,7 +13,6 @@ import { Loader } from '../../loader/Loader';
 import { Skeleton } from '../../loader/Skeleton';
 import useDownloadLauncher from '../../../hooks/useDownloadLauncher';
 import toast from 'react-hot-toast';
-import { reloadScreen } from '../../ExtraComponents/ReloadScreen';
 
 
 
@@ -97,9 +96,9 @@ export const LauncherDesigned = ({ otherOpts }) => {
         const fs = require('fs');
         const path = require('path');
 
-        if (LaunchInstance && LaunchInstance.root && LaunchInstance.versionInstance) {
+        if (LaunchInstance && LaunchInstance.root && LaunchInstance.version) {
 
-            const filePath = path.join(LaunchInstance.root, `${LaunchInstance.versionInstance}.txt`);
+            const filePath = path.join(LaunchInstance.root, `${LaunchInstance.version}.txt`);
 
             fs.access(filePath, fs.constants.F_OK, (err) => {
                 if (err) {
@@ -110,7 +109,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
                 }
             });
         } else {
-            console.log('Server Error')
+            console.log('no date yet')
         }
     }
 
@@ -127,9 +126,6 @@ export const LauncherDesigned = ({ otherOpts }) => {
         if (setting.launcherType === 'sk') {
 
             const child = execFile('C:/InhoniaLauncher/launchers/sk.exe', ['--workDir', LaunchInstance.root], (error, stdout, stderr) => {
-
-                Cookies.set('recentPlayedID', InfoInstance.id, { expires: 365, sameSite: 'strict' });
-
                 if (error) {
                     Swal.fire({
                         icon: 'error',
@@ -149,7 +145,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
                         }
                     });
                 } else {
-
+                    Cookies.set('recentPlayedID', InfoInstance.id, { expires: 365, sameSite: 'strict' });
                 }
                 console.log(stdout);
             });
@@ -516,7 +512,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
                     const fs = require('fs');
                     const path = require('path');
-                    const filePath = path.join(LaunchInstance.root, `${LaunchInstance.versionInstance}.txt`);
+                    const filePath = path.join(LaunchInstance.root, `${LaunchInstance.version}.txt`);
 
                     const fileContent = '¡Descarga finalizada!';
 
@@ -525,8 +521,6 @@ export const LauncherDesigned = ({ otherOpts }) => {
                     console.log('Archivo creado en:', filePath);
 
                     setInstalling(false)
-
-                    reloadScreen()
 
                 }
             }, [progress]);
@@ -557,7 +551,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
                         <div className="title-launch-zone">
                             <img src={InfoInstance.img} className='background-all'></img>
                             <div className="texto">
-                                <img src={InfoInstance.banner}></img>
+                                <img src={InfoInstance.img} className='img-banner'></img>
                                 <div>
                                     <h3 className="titulo">{InfoInstance.title}</h3>
                                     <h6 className="autor">{InfoInstance.autor}</h6>
@@ -584,7 +578,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
 
                                     </div>
-                                    <h6 className="warning-instance">Comprueba que la instancia este verificada antes de instalarla o toma el riesgo.</h6>
+                                    <h6 className="warning-instance">Verifica que la instancia este verificada antes de instalarla o toma el riesgo</h6>
                                     <div className='line'></div>
                                     <div className='copy'>
                                         <img src={teen}></img>
@@ -642,21 +636,9 @@ export const LauncherDesigned = ({ otherOpts }) => {
                     </div>
 
                     <div className='zone-general-instance'>
-                        <h3 className='titulo-config'>Novedades Recientes</h3>
+                        <h3 className='titulo-config'>Novedades Mas Recientes</h3>
                         <p className='p-general-short'>
                             {InfoInstance.notes}
-                        </p>
-                    </div>
-
-                    <div className='zone-general-instance'>
-                        <h3 className='titulo-config'>Datos de la Instancia</h3>
-                        <p className='p-general-short'>
-                            <div className='p-general-short-div'>                
-                                <p>Version de Instancia: {LaunchInstance.versionInstance}</p>
-                                <p>Version de juego: {LaunchInstance.version.number}</p>
-                                <p>Tipo de juego: {LaunchInstance.type}</p>
-                                <p>Memoria Recomendada: {LaunchInstance.memory.max}</p>
-                            </div>
                         </p>
                     </div>
 
@@ -682,7 +664,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
 
                     <section className="zona3">
-                        <h3 className="titledesc">Informacion de la Instancia</h3>
+                        <h3 className="titledesc">Descripcion</h3>
                         <div className="text3">
                             <img src={InfoInstance.banner} alt="Image 1"></img>
                             <div className="desc5">
@@ -702,8 +684,6 @@ export const LauncherDesigned = ({ otherOpts }) => {
                                 <p>{InfoInstance.autor}</p>
                             </div>
                         </div>
-
-
 
                     </section>
 

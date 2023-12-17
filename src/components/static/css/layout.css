@@ -8,6 +8,8 @@ header {
     z-index: 5;
     background: #1A1B1E;
     align-items: center;
+    margin-bottom: 20px;
+    -webkit-app-region: drag;
 
 }
 
@@ -43,6 +45,7 @@ nav {
     display: flex;
     justify-content: right;
     align-items: center;
+    -webkit-app-region: no-drag;
 
 }
 

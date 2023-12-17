@@ -168,9 +168,7 @@ export const Navbar = () => {
                   <h3 className="title-little no-decoration">{user.nickname}</h3>
                   <img className="usericon" src={user.picture} />
                 </button>
-                <button onClick={closeApp} className="button-free">
-                  <img src={closeIcon} className={location.pathname.startsWith('/search') ? 'search-icon-active' : 'search-icon'} ></img>
-                </button>
+
               </div>
             ) : (
               <Link to="/login">

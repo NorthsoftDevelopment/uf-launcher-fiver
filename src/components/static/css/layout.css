@@ -6,7 +6,7 @@ header {
     justify-content: space-between;
     transition: 0.7s;
     z-index: 5;
-    background: #1A1B1E;
+    background: #000000;
     align-items: center;
     margin-bottom: 20px;
     -webkit-app-region: drag;
@@ -25,9 +25,6 @@ header-test.abajo {
     background: #1A1B1E;
 }
 
-header.abajo {
-    background: #1A1B1E;
-}
 
 .navbar .logo {
     width: 200px;
@@ -50,7 +47,7 @@ nav {
 }
 
 .interactive-bar {
-    background-color: #2D3036;
+    background-color: #141414;
     border-radius: 10px;
     margin-left: 40px;
     align-items: center;
@@ -149,7 +146,7 @@ header nav a.activo {
     border-style: none;
     padding-inline: 15px;
     border-radius: 10px;
-    background-color: #2D3036;
+    background-color: #141414;
     display: flex;
     align-items: center;
     gap: 10px;

@@ -9,8 +9,21 @@ html {
   font-family: 'Open Sans', sans-serif;
   background: #000000;
   color: white;
-  overflow: overlay;
 
+}
+
+
+.drag{
+  -webkit-app-region: drag;
+}
+
+.nodrag {
+  -webkit-app-region: no-drag;
+}
+
+
+.saveOld{
+  overflow: overlay;
 }
 
 .saveOld {

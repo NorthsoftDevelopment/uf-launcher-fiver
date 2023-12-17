@@ -80,6 +80,7 @@ export const Navbar = () => {
 
   return (
     <header>
+      <div className="menu-top-options"></div>
       <div className="navbar">
         <nav>
           <a>
@@ -158,6 +159,9 @@ export const Navbar = () => {
                 <button onClick={toggleSidebar} className="nav-user-profile">
                   <h3 className="title-little no-decoration">{user.name}</h3>
                   <img className="usericon" src={user.picture} />
+                </button>
+                <button className="nav-close-app">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
                 </button>
               </div>
             ) : (

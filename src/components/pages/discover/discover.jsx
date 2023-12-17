@@ -71,6 +71,7 @@ export const DiscoverPage = () => {
           <swiper-slide>
             <CardDiscoverMin
               title="Hypixel"
+              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
               status="offline"
               icon="https://i.imgur.com/DtiViFO.png"
               id="oEFiPXiavEfQlfHQ0mgC"
@@ -79,6 +80,7 @@ export const DiscoverPage = () => {
           <swiper-slide>
             <CardDiscoverMin
               title="Gamership Network"
+              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
               status="online"
               icon="https://i.imgur.com/DtiViFO.png"
               id="oEFiPXiavEfQlfHQ0mgC"
@@ -87,6 +89,7 @@ export const DiscoverPage = () => {
           <swiper-slide>
             <CardDiscoverMin
               title="Gamership Network"
+              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
               icon="https://i.imgur.com/DtiViFO.png"
               id="oEFiPXiavEfQlfHQ0mgC"
             />
@@ -94,6 +97,7 @@ export const DiscoverPage = () => {
           <swiper-slide>
             <CardDiscoverMin
               title="Gamership Network"
+              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
               icon="https://i.imgur.com/DtiViFO.png"
               id="oEFiPXiavEfQlfHQ0mgC"
             />
@@ -101,6 +105,7 @@ export const DiscoverPage = () => {
           <swiper-slide>
             <CardDiscoverMin
               title="Gamership Network"
+              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
               icon="https://i.imgur.com/DtiViFO.png"
               id="oEFiPXiavEfQlfHQ0mgC"
             />
@@ -108,6 +113,7 @@ export const DiscoverPage = () => {
           <swiper-slide>
             <CardDiscoverMin
               title="Gamership Network"
+              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
               icon="https://i.imgur.com/DtiViFO.png"
               id="oEFiPXiavEfQlfHQ0mgC"
             />
@@ -115,6 +121,7 @@ export const DiscoverPage = () => {
           <swiper-slide>
             <CardDiscoverMin
               title="Gamership Network"
+              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
               icon="https://i.imgur.com/DtiViFO.png"
               id="oEFiPXiavEfQlfHQ0mgC"
             />
@@ -122,6 +129,7 @@ export const DiscoverPage = () => {
           <swiper-slide>
             <CardDiscoverMin
               title="Gamership Network"
+              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
               icon="https://i.imgur.com/DtiViFO.png"
               id="oEFiPXiavEfQlfHQ0mgC"
             />
@@ -152,7 +160,6 @@ export const DiscoverPage = () => {
             <CardDiscoverMods
               img="https://i.imgur.com/yIvQPjX.jpg"
               title="Hypixel"
-              status="offline"
               icon="https://i.imgur.com/DtiViFO.png"
               desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
               id="oEFiPXiavEfQlfHQ0mgC"
@@ -162,7 +169,6 @@ export const DiscoverPage = () => {
             <CardDiscoverMods
               img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
               title="Gamership Network"
-              status="online"
               icon="https://i.imgur.com/DtiViFO.png"
               desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
               id="oEFiPXiavEfQlfHQ0mgC"

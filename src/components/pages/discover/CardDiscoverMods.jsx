@@ -1,7 +1,7 @@
 import "./discover.css";
 import { Link } from "react-router-dom";
 
-export const CardDiscoverMods = ({ img, title, status, desc, icon, id }) => {
+export const CardDiscoverMods = ({ img, title, desc, id }) => {
   return (
     <div className="card-discover-mods">
       <div className="card-discover-mods-image">

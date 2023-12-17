@@ -15,9 +15,6 @@ import { RecentPlay } from "../global/Cards/RecentPlay";
 import { Skeleton } from "../loader/Skeleton";
 import toast from "react-hot-toast";
 import useDownloadLauncher from "../../hooks/useDownloadLauncher";
-import { register } from "swiper/element/bundle";
-
-register();
 
 export const HomePage = () => {
   useEffect(() => {}, []);
@@ -65,7 +62,7 @@ export const HomePage = () => {
             />
             <div className="zone-1">
               <div className="sub-zone1">
-              <h3 className="title-general-bold">ULTIMAS INSTANCIAS</h3>
+                <h3 className="title-general-bold">ULTIMAS INSTANCIAS</h3>
                 <swiper-container
                   centeredSlides="true"
                   speed="500"
@@ -77,41 +74,41 @@ export const HomePage = () => {
                   autoplay-delay="5000"
                 >
                   <swiper-slide>
-                  <CardBig
-                    img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
-                    title="Gamership Network"
-                    desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
-                    id="oEFiPXiavEfQlfHQ0mgC"
-                  />
-</swiper-slide>
-<swiper-slide>
-                  <CardBig
-                    img="https://www.dropbox.com/scl/fi/qc7fyk8cj6x4pmhf897bt/notice-home-slider1.png?rlkey=rau5ktexs3y5m1wca7enhmn4n&dl=1"
-                    title="Fakeland"
-                    desc="1.18.2 Forge | Participa en el nuevo servidor de creadores de contenido de Gamership"
-                  />
-</swiper-slide>
-<swiper-slide>
-                  <CardBig
-                    img="https://cdn.discordapp.com/attachments/1075189121783443588/1166925811929059349/image.png?ex=6567f2d9&is=65557dd9&hm=64439ecf7a98d7d57ad9cf374dbae2a1555a463deeda9c38fc55be4cdfbe4fa0&"
-                    title="Minecraft Vanilla"
-                    desc="Cerrado por ahora."
-                  />
+                    <CardBig
+                      img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
+                      title="Gamership Network"
+                      desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
+                      id="oEFiPXiavEfQlfHQ0mgC"
+                    />
                   </swiper-slide>
                   <swiper-slide>
-                   <CardBig
-                    img="https://cdn.discordapp.com/attachments/1075189121783443588/1166925811929059349/image.png?ex=6567f2d9&is=65557dd9&hm=64439ecf7a98d7d57ad9cf374dbae2a1555a463deeda9c38fc55be4cdfbe4fa0&"
-                    title="AMinecraft Vanilla"
-                    desc="Cerrado por ahora."
-                  />
+                    <CardBig
+                      img="https://www.dropbox.com/scl/fi/qc7fyk8cj6x4pmhf897bt/notice-home-slider1.png?rlkey=rau5ktexs3y5m1wca7enhmn4n&dl=1"
+                      title="Fakeland"
+                      desc="1.18.2 Forge | Participa en el nuevo servidor de creadores de contenido de Gamership"
+                    />
                   </swiper-slide>
                   <swiper-slide>
-                   <CardBig
-                    img="https://cdn.discordapp.com/attachments/1075189121783443588/1166925811929059349/image.png?ex=6567f2d9&is=65557dd9&hm=64439ecf7a98d7d57ad9cf374dbae2a1555a463deeda9c38fc55be4cdfbe4fa0&"
-                    title="AMinecraft Vanilla"
-                    desc="Cerrado por ahora."
-                  />
-                     </swiper-slide>
+                    <CardBig
+                      img="https://cdn.discordapp.com/attachments/1075189121783443588/1166925811929059349/image.png?ex=6567f2d9&is=65557dd9&hm=64439ecf7a98d7d57ad9cf374dbae2a1555a463deeda9c38fc55be4cdfbe4fa0&"
+                      title="Minecraft Vanilla"
+                      desc="Cerrado por ahora."
+                    />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <CardBig
+                      img="https://cdn.discordapp.com/attachments/1075189121783443588/1166925811929059349/image.png?ex=6567f2d9&is=65557dd9&hm=64439ecf7a98d7d57ad9cf374dbae2a1555a463deeda9c38fc55be4cdfbe4fa0&"
+                      title="AMinecraft Vanilla"
+                      desc="Cerrado por ahora."
+                    />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <CardBig
+                      img="https://cdn.discordapp.com/attachments/1075189121783443588/1166925811929059349/image.png?ex=6567f2d9&is=65557dd9&hm=64439ecf7a98d7d57ad9cf374dbae2a1555a463deeda9c38fc55be4cdfbe4fa0&"
+                      title="AMinecraft Vanilla"
+                      desc="Cerrado por ahora."
+                    />
+                  </swiper-slide>
                 </swiper-container>
 
                 <SeparateShort />

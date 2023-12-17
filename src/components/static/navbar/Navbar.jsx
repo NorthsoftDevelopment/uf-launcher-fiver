@@ -79,9 +79,9 @@ export const Navbar = () => {
 
 
   function action(btn) {
-    const {ipcRender} = require("electron");
+    const {ipcRenderer} = require("electron");
     var attr = btn.currentTarget.attributes.op.value
-    attr == "min" ? ipcRender.send("minimize-app") : attr=="max" ? ipcRender.send("fullscreen-app") : attr == "close" ? ipcRender.send("cerrar-app") : ""
+    attr == "min" ? ipcRenderer.send("minimize-app") : attr=="max" ? ipcRenderer.send("fullscreen-app") : attr == "close" ? ipcRenderer.send("cerrar-app") : ""
     
   }
 

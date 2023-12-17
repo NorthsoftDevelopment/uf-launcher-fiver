@@ -12,7 +12,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       authorizationParams={{
         redirect_uri: 'http://localhost:5173/auth/complete',
       }}
-    >
       <App />
     </Auth0Provider>
   </React.StrictMode>

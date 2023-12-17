@@ -8,6 +8,7 @@ export const AllInstances = () => {
 
     const { user, isAuthenticated, isLoading } = useAuth0();
     const [instances, setInstances] = useState([]);
+    const [loading2, setLoading2] = useState(true)
 
     if (isLoading) {
         return <Loader reason='Recuperando perfil' />;
@@ -56,21 +57,22 @@ export const AllInstances = () => {
 
             {instances.length > 0 ? (
                 instances.map((instance, index) => (
-                    <div key={index}>
-                        <Card
-                            title={instance.datos.title}
-                            link={`/instance/${instance.datos.id}`}
-                            image={instance.datos.banner}
-                        />
-                    </div>
+
+                    <Card key={index}
+                        title={instance.datos.title}
+                        link={`/instance/${instance.datos.id}`}
+                        image={instance.datos.banner}
+                    />
+
                 ))
             ) : (
                 <div>
-                     <h4 className="title-general">Crea, diseña y construye</h4>
-                <p>Lamentamos informarte que por ahora no tienes instancias en tu cuenta, explora para descubrir mas.</p>
+                    <h4 className="title-general">Crea, diseña y construye</h4>
+                    <p>Lamentamos informarte que por ahora no tienes instancias en tu cuenta, explora para descubrir mas.</p>
                 </div>
-               
+
             )}
+
         </div>
     )
 }

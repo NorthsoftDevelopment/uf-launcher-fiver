@@ -172,12 +172,20 @@ header nav a.activo {
 .menu-top-options {
     width: -webkit-fill-available;
     height: 28px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px 10px;
     -webkit-app-region: drag;
     background-color: #2D3036;
 }
 
 .nav-close-app {
-    width: 25px;
-    height: 25px;
-    border-radius: 5PX;
+    width: 28px;
+    padding: 3px;
+    border: none;
+    background-color: transparent;
+}
+
+.nav-close-app svg{
+    stroke: white;
 }

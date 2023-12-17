@@ -8,201 +8,209 @@ export const DiscoverPage = () => {
   return (
     <div className="content">
       <h3 className="title-general-bold">INSTANCIAS MAS POPULARES</h3>
-      <div className="discover-warp">
-        <swiper-container
-          centeredSlides="true"
-          speed="500"
-          loop="true"
-          slides-per-view="3"
-          space-between="5"
-          width="1540"
-        >
-          <swiper-slide>
-            <CardDiscover
-              img="https://i.imgur.com/yIvQPjX.jpg"
-              title="Hypixel"
-              status="offline"
-              icon="https://i.imgur.com/DtiViFO.png"
-              desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
-              id="oEFiPXiavEfQlfHQ0mgC"
-            />
-          </swiper-slide>
-          <swiper-slide>
-            <CardDiscover
-              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
-              title="Gamership Network"
-              status="online"
-              icon="https://i.imgur.com/DtiViFO.png"
-              desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
-              id="oEFiPXiavEfQlfHQ0mgC"
-            />
-          </swiper-slide>
-          <swiper-slide>
-            <CardDiscover
-              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
-              title="Gamership Network"
-              icon="https://i.imgur.com/DtiViFO.png"
-              desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
-              id="oEFiPXiavEfQlfHQ0mgC"
-            />
-          </swiper-slide>
-          <swiper-slide>
-            <CardDiscover
-              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
-              title="Gamership Network"
-              icon="https://i.imgur.com/DtiViFO.png"
-              desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
-              id="oEFiPXiavEfQlfHQ0mgC"
-            />
-          </swiper-slide>
-        </swiper-container>
-      </div>
-      <SeparateShort/>
-      <h3 className="title-general-bold">INSTANCIAS SERVIDORES</h3>
-      <div className="discover-warp">
-        <swiper-container
-          centeredSlides="true"
-          speed="500"
-          loop="true"
-          slides-per-view="5"
-          space-between="10"
-          width="1350"
-        >
-          <swiper-slide>
-            <CardDiscoverMin
-              title="Hypixel"
-              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
-              status="offline"
-              icon="https://i.imgur.com/DtiViFO.png"
-              id="oEFiPXiavEfQlfHQ0mgC"
-            />
-          </swiper-slide>
-          <swiper-slide>
-            <CardDiscoverMin
-              title="Gamership Network"
-              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
-              status="online"
-              icon="https://i.imgur.com/DtiViFO.png"
-              id="oEFiPXiavEfQlfHQ0mgC"
-            />
-          </swiper-slide>
-          <swiper-slide>
-            <CardDiscoverMin
-              title="Gamership Network"
-              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
-              icon="https://i.imgur.com/DtiViFO.png"
-              id="oEFiPXiavEfQlfHQ0mgC"
-            />
-          </swiper-slide>
-          <swiper-slide>
-            <CardDiscoverMin
-              title="Gamership Network"
-              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
-              icon="https://i.imgur.com/DtiViFO.png"
-              id="oEFiPXiavEfQlfHQ0mgC"
-            />
-          </swiper-slide>
-          <swiper-slide>
-            <CardDiscoverMin
-              title="Gamership Network"
-              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
-              icon="https://i.imgur.com/DtiViFO.png"
-              id="oEFiPXiavEfQlfHQ0mgC"
-            />
-          </swiper-slide>
-          <swiper-slide>
-            <CardDiscoverMin
-              title="Gamership Network"
-              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
-              icon="https://i.imgur.com/DtiViFO.png"
-              id="oEFiPXiavEfQlfHQ0mgC"
-            />
-          </swiper-slide>
-          <swiper-slide>
-            <CardDiscoverMin
-              title="Gamership Network"
-              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
-              icon="https://i.imgur.com/DtiViFO.png"
-              id="oEFiPXiavEfQlfHQ0mgC"
-            />
-          </swiper-slide>
-          <swiper-slide>
-            <CardDiscoverMin
-              title="Gamership Network"
-              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
-              icon="https://i.imgur.com/DtiViFO.png"
-              id="oEFiPXiavEfQlfHQ0mgC"
-            />
-          </swiper-slide>
 
-          <swiper-slide>
-            <CardDiscoverMin
-              title="Gamership Network"
-              icon="https://i.imgur.com/DtiViFO.png"
-              id="oEFiPXiavEfQlfHQ0mgC"
-            />
-          </swiper-slide>
-          
-        </swiper-container>
-      </div>
-      <SeparateShort/>
-      <h3 className="title-general-bold">INSTANCIAS MODS</h3>
-      <div className="discover-warp">
-        <swiper-container
-          centeredSlides="true"
-          speed="500"
-          loop="true"
-          slides-per-view="4"
-          space-between="5"
-          width="1400"
-        >
-          <swiper-slide>
-            <CardDiscoverMods
-              img="https://i.imgur.com/yIvQPjX.jpg"
-              title="Hypixel"
-              icon="https://i.imgur.com/DtiViFO.png"
-              desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
-              id="oEFiPXiavEfQlfHQ0mgC"
-            />
-          </swiper-slide>
-          <swiper-slide>
-            <CardDiscoverMods
-              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
-              title="Gamership Network"
-              icon="https://i.imgur.com/DtiViFO.png"
-              desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
-              id="oEFiPXiavEfQlfHQ0mgC"
-            />
-          </swiper-slide>
-          <swiper-slide>
-            <CardDiscoverMods
-              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
-              title="Gamership Network"
-              icon="https://i.imgur.com/DtiViFO.png"
-              desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
-              id="oEFiPXiavEfQlfHQ0mgC"
-            />
-          </swiper-slide>
-          <swiper-slide>
-            <CardDiscoverMods
-              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
-              title="Gamership Network"
-              icon="https://i.imgur.com/DtiViFO.png"
-              desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
-              id="oEFiPXiavEfQlfHQ0mgC"
-            />
-          </swiper-slide>
-          <swiper-slide>
-            <CardDiscoverMods
-              img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
-              title="Gamership Network"
-              icon="https://i.imgur.com/DtiViFO.png"
-              desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
-              id="oEFiPXiavEfQlfHQ0mgC"
-            />
-          </swiper-slide>
-        </swiper-container>
-      </div>
+      <swiper-container
+        enteredSlides="true"
+        speed="500"
+        loop="true"
+        autoplay="true"
+        slides-per-view="4"
+        space-between="15"
+        autoplay-delay="5000"
+
+      >
+        <swiper-slide>
+          <CardDiscover
+            img="https://i.imgur.com/yIvQPjX.jpg"
+            title="Hypixel"
+            status="offline"
+            icon="https://lh3.googleusercontent.com/a/ACg8ocKOrNqDUXCDFAjoleTgYQEcpoXImk5KSGOa95fuZzfSLHk=s96-c"
+            desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
+            id="oEFiPXiavEfQlfHQ0mgC"
+          />
+        </swiper-slide>
+        <swiper-slide>
+          <CardDiscover
+            img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
+            title="Gamership Network"
+            status="online"
+            icon="https://i.imgur.com/DtiViFO.png"
+            desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
+            id="oEFiPXiavEfQlfHQ0mgC"
+          />
+        </swiper-slide>
+        <swiper-slide>
+          <CardDiscover
+            img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
+            title="Gamership Network"
+            icon="https://i.imgur.com/DtiViFO.png"
+            desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
+            id="oEFiPXiavEfQlfHQ0mgC"
+          />
+        </swiper-slide>
+        <swiper-slide>
+          <CardDiscover
+            img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
+            title="Gamership Network"
+            icon="https://i.imgur.com/DtiViFO.png"
+            desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
+            id="oEFiPXiavEfQlfHQ0mgC"
+          />
+        </swiper-slide>
+        <swiper-slide>
+          <CardDiscover
+            img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
+            title="Gamership Network"
+            icon="https://i.imgur.com/DtiViFO.png"
+            desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
+            id="oEFiPXiavEfQlfHQ0mgC"
+          />
+        </swiper-slide>
+      </swiper-container>
+
+      <SeparateShort />
+      <h3 className="title-general-bold">JUEGA SERVIDORES</h3>
+
+      <swiper-container
+        enteredSlides="true"
+        loop="true"
+        autoplay="false"
+        slides-per-view="7"
+        space-between="15"
+      >
+        <swiper-slide>
+          <CardDiscoverMin
+            title="Hypixel"
+            img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
+            status="offline"
+            icon="https://i.imgur.com/DtiViFO.png"
+            id="oEFiPXiavEfQlfHQ0mgC"
+          />
+        </swiper-slide>
+        <swiper-slide>
+          <CardDiscoverMin
+            title="Gamership Network"
+            img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
+            status="online"
+            icon="https://i.imgur.com/DtiViFO.png"
+            id="oEFiPXiavEfQlfHQ0mgC"
+          />
+        </swiper-slide>
+        <swiper-slide>
+          <CardDiscoverMin
+            title="Gamership Network"
+            img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
+            icon="https://i.imgur.com/DtiViFO.png"
+            id="oEFiPXiavEfQlfHQ0mgC"
+          />
+        </swiper-slide>
+        <swiper-slide>
+          <CardDiscoverMin
+            title="Gamership Network"
+            img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
+            icon="https://i.imgur.com/DtiViFO.png"
+            id="oEFiPXiavEfQlfHQ0mgC"
+          />
+        </swiper-slide>
+        <swiper-slide>
+          <CardDiscoverMin
+            title="Gamership Network"
+            img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
+            icon="https://i.imgur.com/DtiViFO.png"
+            id="oEFiPXiavEfQlfHQ0mgC"
+          />
+        </swiper-slide>
+        <swiper-slide>
+          <CardDiscoverMin
+            title="Gamership Network"
+            img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
+            icon="https://i.imgur.com/DtiViFO.png"
+            id="oEFiPXiavEfQlfHQ0mgC"
+          />
+        </swiper-slide>
+        <swiper-slide>
+          <CardDiscoverMin
+            title="Gamership Network"
+            img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
+            icon="https://i.imgur.com/DtiViFO.png"
+            id="oEFiPXiavEfQlfHQ0mgC"
+          />
+        </swiper-slide>
+        <swiper-slide>
+          <CardDiscoverMin
+            title="Gamership Network"
+            img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
+            icon="https://i.imgur.com/DtiViFO.png"
+            id="oEFiPXiavEfQlfHQ0mgC"
+          />
+        </swiper-slide>
+
+        <swiper-slide>
+          <CardDiscoverMin
+            title="Gamership Network"
+            icon="https://i.imgur.com/DtiViFO.png"
+            id="oEFiPXiavEfQlfHQ0mgC"
+          />
+        </swiper-slide>
+
+      </swiper-container>
+
+      <SeparateShort />
+      <h3 className="title-general-bold">MODPACKS INCLUIDOS</h3>
+      <swiper-container
+         enteredSlides="true"
+         loop="true"
+         autoplay="false"
+         slides-per-view="4"
+         space-between="15"
+      >
+        <swiper-slide>
+          <CardDiscoverMods
+            img="https://i.imgur.com/yIvQPjX.jpg"
+            title="Hypixel"
+            icon="https://i.imgur.com/DtiViFO.png"
+            desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
+            id="oEFiPXiavEfQlfHQ0mgC"
+          />
+        </swiper-slide>
+        <swiper-slide>
+          <CardDiscoverMods
+            img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
+            title="Gamership Network"
+            icon="https://i.imgur.com/DtiViFO.png"
+            desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
+            id="oEFiPXiavEfQlfHQ0mgC"
+          />
+        </swiper-slide>
+        <swiper-slide>
+          <CardDiscoverMods
+            img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
+            title="Gamership Network"
+            icon="https://i.imgur.com/DtiViFO.png"
+            desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
+            id="oEFiPXiavEfQlfHQ0mgC"
+          />
+        </swiper-slide>
+        <swiper-slide>
+          <CardDiscoverMods
+            img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
+            title="Gamership Network"
+            icon="https://i.imgur.com/DtiViFO.png"
+            desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
+            id="oEFiPXiavEfQlfHQ0mgC"
+          />
+        </swiper-slide>
+        <swiper-slide>
+          <CardDiscoverMods
+            img="https://cdn.discordapp.com/attachments/1075189121783443588/1136772108769312839/image.png"
+            title="Gamership Network"
+            icon="https://i.imgur.com/DtiViFO.png"
+            desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
+            id="oEFiPXiavEfQlfHQ0mgC"
+          />
+        </swiper-slide>
+      </swiper-container>
+
     </div>
   );
 };

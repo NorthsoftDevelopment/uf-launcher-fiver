@@ -82,6 +82,11 @@ export default function Settings() {
   };
 
 
+  function closeApp() {
+    const { ipcRenderer } = require('electron');
+    ipcRenderer.send('cerrar-app');
+  }
+
 
   return (
     <div className="content-70">
@@ -121,7 +126,7 @@ export default function Settings() {
           <div className={ classes.resources }>
 
             <button onClick={ () => openURL('https://beta.inhonia.com') }>Politica de privacidad</button>
-            <button>Uso de terceros</button>
+            <button onClick={closeApp}>Uso de terceros</button>
             <button onClick={ () => openURL('https://www.minecraft.net/en-us/msaprofile/mygames/editskin') }>Soporte y dudas</button>
 
           </div>

@@ -1,10 +1,13 @@
 import React from 'react'
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import Cookies from 'js-cookie';
 
 export const FollowingHook = async (follow) => {
+    
+    
 
-    const email1 = 'koraook@gmail.com'
+    const email1 = Cookies.get('email')
     const email2 = follow
 
 

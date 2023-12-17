@@ -26,7 +26,7 @@ export const CardDiscover = ({ img, title, status, icon, desc, id }) => {
           </div>
         </div>
         <div className="card-discover-play">
-          <img src={icon} />
+          <img src={icon} className="card-discover-icon"/>
           <div className="card-discover-server-info">
             <span>{title}</span>
             <p>{desc}</p>

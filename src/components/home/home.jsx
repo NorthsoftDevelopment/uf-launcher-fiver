@@ -71,7 +71,7 @@ export const HomePage = () => {
 
      <div className="content-height">
 
-          <h3 className="title-general-bold">INSTANCIAS POPULARES</h3>
+          <h3 className="title-general-bold">NOSOTROS RECOMENDAMOS</h3>
           <swiper-container
             centeredSlides="true"
             speed="500"
@@ -88,6 +88,8 @@ export const HomePage = () => {
                 title="Gamership Network"
                 desc="1.20 Vanilla | Conoce a tus creadores de contenido favoritos y participa en sus torneos dentro de Gamership Network"
                 id="oEFiPXiavEfQlfHQ0mgC"
+                buttonName='Jugar'
+                icon='https://th.bing.com/th/id/OIP.LCbdnJVNxdPMiwni1muecgHaHa?w=181&h=181&c=7&r=0&o=5&pid=1.7'
               />
             </swiper-slide>
             <swiper-slide>
@@ -95,6 +97,8 @@ export const HomePage = () => {
                 img="https://www.dropbox.com/scl/fi/qc7fyk8cj6x4pmhf897bt/notice-home-slider1.png?rlkey=rau5ktexs3y5m1wca7enhmn4n&dl=1"
                 title="Fakeland"
                 desc="1.18.2 Forge | Participa en el nuevo servidor de creadores de contenido de Gamership"
+                buttonName='Ver'
+                icon='https://lh3.googleusercontent.com/a/ACg8ocJgBE-JaOPnkzHgy247fqwQ7PKVZlZdNNSdkcrQOY5rnwk=s96-c'
               />
             </swiper-slide>
             <swiper-slide>
@@ -102,6 +106,8 @@ export const HomePage = () => {
                 img="https://cdn.discordapp.com/attachments/1075189121783443588/1166925811929059349/image.png?ex=6567f2d9&is=65557dd9&hm=64439ecf7a98d7d57ad9cf374dbae2a1555a463deeda9c38fc55be4cdfbe4fa0&"
                 title="Minecraft Vanilla"
                 desc="Cerrado por ahora."
+                buttonName='Ver'
+                icon='https://lh3.googleusercontent.com/a/ACg8ocJgBE-JaOPnkzHgy247fqwQ7PKVZlZdNNSdkcrQOY5rnwk=s96-c'
               />
             </swiper-slide>
             <swiper-slide>
@@ -109,6 +115,8 @@ export const HomePage = () => {
                 img="https://cdn.discordapp.com/attachments/1075189121783443588/1166925811929059349/image.png?ex=6567f2d9&is=65557dd9&hm=64439ecf7a98d7d57ad9cf374dbae2a1555a463deeda9c38fc55be4cdfbe4fa0&"
                 title="AMinecraft Vanilla"
                 desc="Cerrado por ahora."
+                buttonName='Jugar'
+                icon='https://lh3.googleusercontent.com/a/ACg8ocKo2wqkJeP3PNWj_IDF74DhouG6SmFPbdX1FLFljaJeLfw=s96-c'
               />
             </swiper-slide>
             <swiper-slide>
@@ -116,6 +124,8 @@ export const HomePage = () => {
                 img="https://cdn.discordapp.com/attachments/1075189121783443588/1166925811929059349/image.png?ex=6567f2d9&is=65557dd9&hm=64439ecf7a98d7d57ad9cf374dbae2a1555a463deeda9c38fc55be4cdfbe4fa0&"
                 title="AMinecraft Vanilla"
                 desc="Cerrado por ahora."
+                buttonName='Ver'
+                icon='https://lh3.googleusercontent.com/a/ACg8ocKOrNqDUXCDFAjoleTgYQEcpoXImk5KSGOa95fuZzfSLHk=s96-c'
               />
             </swiper-slide>
           </swiper-container>

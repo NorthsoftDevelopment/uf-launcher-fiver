@@ -26,7 +26,7 @@ import Settings from "./components/Settings/Settings";
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
 
-  if (isLoading) return <Skeleton />;
+  if (isLoading) return <Loader reason='Espera un momento...' />;
 
   return (
     <Router>

@@ -171,18 +171,26 @@ header nav a.activo {
 
 .menu-top-options {
     width: -webkit-fill-available;
-    height: 28px;
+    height: 25px;
     display: flex;
     gap:5px;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: 0px 10px;
-    background-color: #2D3036;
+    background-color: #141414;
     position: relative;
+    align-items: center;
+}
+
+.menu-top-options-p {
+    position: relative;
+    align-items: center;
+    font-size: 14px;
+    color: #6a6a6a;
 }
 
 .nav-close-app {
-    width: 28px;
-    height: 28px;
+    width: 25px;
+    height: 25px;
     padding: 3px;
     border: none;
     position: relative;

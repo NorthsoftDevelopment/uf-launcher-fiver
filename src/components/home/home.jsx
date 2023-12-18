@@ -76,9 +76,9 @@ export const HomePage = () => {
             centeredSlides="true"
             speed="500"
             loop="true"
-            autoplay="true"
+            autoplay="true" 
             slides-per-view="3"
-            space-between="5"
+            space-between="0"
             autoplay-delay="5000"
 
           >

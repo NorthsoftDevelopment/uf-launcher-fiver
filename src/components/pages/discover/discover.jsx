@@ -2,12 +2,26 @@ import { CardDiscover } from "./CardDiscover";
 import { SeparateShort } from "../../ExtraComponents/Separate/Separate";
 import { CardDiscoverMin } from "./CardDiscoverMin";
 import { CardDiscoverMods } from "./CardDiscoverMods";
+import Modal from "../../global/Modal/Modal";
+import { useState } from "react";
 
 
 export const DiscoverPage = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   return (
     <div className="content">
       <h3 className="title-general-bold">INSTANCIAS MAS POPULARES</h3>
+      <button onClick={openModal}>Abrir Modal</button>
+      <Modal isOpen={modalOpen} onClose={closeModal} />
 
       <swiper-container
         enteredSlides="true"
@@ -15,7 +29,7 @@ export const DiscoverPage = () => {
         loop="true"
         autoplay="true"
         slides-per-view="4"
-        space-between="15"
+        space-between="10"
         autoplay-delay="5000"
 
       >
@@ -75,7 +89,7 @@ export const DiscoverPage = () => {
         enteredSlides="true"
         loop="true"
         autoplay="false"
-        slides-per-view="7"
+        slides-per-view="5"
         space-between="15"
       >
         <swiper-slide>
@@ -156,6 +170,8 @@ export const DiscoverPage = () => {
       </swiper-container>
 
       <SeparateShort />
+
+
       <h3 className="title-general-bold">MODPACKS INCLUIDOS</h3>
       <swiper-container
          enteredSlides="true"

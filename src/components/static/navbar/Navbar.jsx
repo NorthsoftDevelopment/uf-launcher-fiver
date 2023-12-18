@@ -13,6 +13,7 @@ import menuIcon from "../../../assets/icon/Extra/menu-icon.png";
 import settingsIcon from "../../../assets/icon/Extra/settings-icon.png";
 import Sidebar from "../../Profile/ProfileBar";
 import { SeparateShort } from "../../ExtraComponents/Separate/Separate";
+import { RecentPlayName } from "../../global/Cards/RecentPlay";
 
 const testData = [
   {
@@ -89,36 +90,40 @@ export const Navbar = () => {
   return (
     <header>
       <div className="menu-top-options drag">
-        <button onClick={(e) => action(e)} className="nav-close-app nodrag" op="min">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="white"
-          >
-            <path d="M5.25 12a.75.75 0 01.75-.75h12a.75.75 0 010 1.5H6a.75.75 0 01-.75-.75z" />
-          </svg>
-        </button>
-        <button onClick={(e) => action(e)} className="nav-close-app nodrag" op="max">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path
-              stroke="white"
+        <div className="menu-top-options-p"><p>Inhonia</p></div>
+        <div>
+          <button onClick={(e) => action(e)} className="nav-close-app nodrag" op="min">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
               fill="white"
-              strokeWidth={0}
-              d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z"
-            />
-          </svg>
-        </button>
-        <button onClick={(e) => action(e)} className="nav-close-app nodrag" op="close">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            strokeWidth={3}
-            viewBox="0 0 24 24"
-          >
-            <path d="M18 6 6 18" />
-            <path d="m6 6 12 12" />
-          </svg>
-        </button>
+            >
+              <path d="M5.25 12a.75.75 0 01.75-.75h12a.75.75 0 010 1.5H6a.75.75 0 01-.75-.75z" />
+            </svg>
+          </button>
+          <button onClick={(e) => action(e)} className="nav-close-app nodrag" op="max">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path
+                stroke="white"
+                fill="white"
+                strokeWidth={0}
+                d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z"
+              />
+            </svg>
+          </button>
+          <button onClick={(e) => action(e)} className="nav-close-app nodrag" op="close">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              strokeWidth={3}
+              viewBox="0 0 24 24"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+        </div>
       </div>
+
       <div className="navbar">
         <nav>
           <a>
@@ -216,6 +221,7 @@ export const Navbar = () => {
 
             {isAuthenticated ? (
               <div className="right-navbar">
+                <RecentPlayName />
                 <Link to="/search">
                   <img
                     src={searchIcon}
@@ -270,20 +276,20 @@ export const Navbar = () => {
                           <h1>{user.nickname}</h1>
                           <p>{user.email}</p>
                           <button
-                          className="button-little"
-                          onClick={() =>
-                            logout({
-                              logoutParams: {
-                                returnTo: window.location.origin,
-                              },
-                            })
-                          }
-                        >
-                          Cerrar Sesion
-                        </button>
+                            className="button-little"
+                            onClick={() =>
+                              logout({
+                                logoutParams: {
+                                  returnTo: window.location.origin,
+                                },
+                              })
+                            }
+                          >
+                            Cerrar Sesion
+                          </button>
                         </div>
 
-                       
+
                       </div>
                     </div>
                   </div>

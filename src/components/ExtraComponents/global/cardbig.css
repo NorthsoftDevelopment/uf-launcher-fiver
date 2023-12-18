@@ -108,11 +108,11 @@
 
 
 .card-big-text h1 {
-    font-size: 21px;
+    font-size: 100%;
 }
 
 .card-big-text p {
-    font-size: 15px;
+    font-size: 14px;
     margin-top: 5px;
     font-weight: 500;
     max-width: 1200px;
@@ -169,7 +169,6 @@
 
 swiper-slide {
     display: flex;
-    justify-content: center;
-    align-items: center;
+
 
 }

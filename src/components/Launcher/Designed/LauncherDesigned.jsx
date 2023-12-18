@@ -539,7 +539,7 @@ export const LauncherDesigned = ({ otherOpts }) => {
 
 
     return (
-        <div>
+        <div className='content-no-padding'>
             {loading ? (
                 <Skeleton />
             ) : (

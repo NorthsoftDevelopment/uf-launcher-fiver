@@ -1,0 +1,23 @@
+.tooltip-container {
+    transition: all 1.0s;
+}
+  
+  .tooltip {
+    padding-bottom: 5px;
+    color: #aad0ff;
+    font-size: 17px;
+    transition: all 1.0s;
+  }
+  
+  .tooltip-text {
+    display: none;
+    position: absolute;
+    bottom: 30px; 
+    background: #565b69;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    transition: all 1.0s;
+    width: 200px;
+  }
+  

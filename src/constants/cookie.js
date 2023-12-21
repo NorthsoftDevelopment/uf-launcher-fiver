@@ -1,0 +1,1 @@
+export const NEVER_EXPIRES = 2147483647;

@@ -1,0 +1,67 @@
+.following-content {
+    gap: 50px;
+}
+
+.friends-div-home-text::-webkit-scrollbar {
+    width: 14px;
+    /* width of the entire scrollbar */
+}
+
+.friends-div-home-text:-webkit-scrollbar-track {
+    background: transparent;
+    /* color of the tracking area */
+}
+
+.friends-div-home-text::-webkit-scrollbar-thumb {
+    background-color: #2D3036;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 3px solid #1A1B1E;
+    /* creates padding around scroll thumb */
+}
+
+.following-card {
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    height: 45px;
+    overflow: auto;
+    font-size: 14px;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.following-card h1 {
+    background-color: rgb(36, 117, 139);
+    padding-inline: 10px;
+    font-size: 22px;
+    border-radius: 10px;
+
+}
+
+.following-card-left {
+    display: flex;
+    align-items: center;
+    height: 45px;
+    overflow: auto;
+    font-size: 14px;
+    gap: 15px;
+}
+
+
+
+.following-card img {
+    height: 100%;
+    border-radius: 10px;
+}
+
+.following-card-content h2 {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.following-card-content p {
+    color: rgb(155, 155, 155);
+}

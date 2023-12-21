@@ -1,0 +1,174 @@
+.card-big {
+    width: 100%;
+    height: 100%;
+    margin: 0px 5px;
+    overflow: hidden;
+    transition: 0.3s ease box-shadow;
+    border-radius: 5px;
+    position: relative;
+}
+
+
+
+
+
+.card-big::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(170deg, transparent, #000000e2);
+    box-shadow: inset 0px 0px 0px 3px rgb(255 255 255 / 15%);
+    border-radius: 10px;
+    position: absolute;
+}
+
+.card-big-background {
+    width: 100%;
+    height: 100%;
+    transition: 0.3s ease transform;
+    object-fit: cover;
+}
+
+.card-big:hover>.card-big-background {
+
+    transform: scale(1.1);
+
+}
+
+.card-big-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 20%;
+    margin-right: 10px;
+
+}
+
+.card-big-content {
+    justify-content: space-between;
+    display: flex;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: absolute;
+    align-items: flex-end;
+    z-index: 99;
+    padding: 15px;
+}
+
+.button-play-cards img {
+    width: 20px;
+    height: 20px;
+}
+
+.button-play-cards {
+    padding: 0;
+    margin: 0;
+    height: max-content;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: rgb(81, 165, 70);
+    padding-inline: 20px;
+    padding-block: 10px;
+    border-radius: 10px;
+    color: white;
+    font-size: 8px;
+    gap: 10px;
+    transition: all 0.3s;
+}
+
+.button-play-cards:hover {
+    background-color: rgb(49, 99, 42);
+
+}
+
+.button-play-cards h1 {
+    font-weight: 900;
+}
+
+.card-big-text {
+    display: flex;
+    width: 70%;
+    color: white;
+    transition: 0.3s ease transform;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    cursor: default;
+    position: relative;
+    align-items: center;
+
+}
+
+
+
+
+.card-big-text h1 {
+    font-size: 100%;
+}
+
+.card-big-text p {
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: 500;
+    max-width: 1200px;
+
+}
+
+
+.card-large {
+    width: 100%;
+    height: 160px;
+    position: relative;
+    background-color: #141414;
+    border-radius: 5px;
+
+}
+
+
+
+.card-large-img {
+    border-radius: 5px;
+    width: 100%;
+    height: 160px;
+    transition: 0.2s ease filter;
+    object-fit: cover;
+    filter: brightness(0.6);
+
+}
+
+.card-large-text {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    padding: 20px;
+    width: 100%;
+    color: white;
+}
+
+.card-large-text h1 {
+    font-size: 19px;
+}
+
+.card-large-text h3 {
+    font-weight: 500;
+    color: #83b8df;
+    font-size: 16px;
+}
+
+.card-large-text p {
+    margin-top: 7px;
+    font-size: 16px;
+}
+
+/* Swiper */
+
+swiper-slide {
+    display: flex;
+
+
+}

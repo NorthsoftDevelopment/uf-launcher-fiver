@@ -1,0 +1,331 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
+
+
+
+/* Open Sans Font */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+html {
+  font-family: 'Inter', sans-serif;
+  background: #000000;
+  color: white;
+  height: 70vh;
+}
+
+
+.drag{
+  -webkit-app-region: drag;
+}
+
+.nodrag {
+  -webkit-app-region: no-drag;
+}
+
+
+.saveOld{
+  overflow: overlay;
+}
+
+.saveOld {
+  background: #1A1B1E;
+}
+
+.zone-full {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+
+
+.background-effect {
+  width: 100%;
+  height: 50vh;
+  background-size: cover;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+
+
+.titles {
+  display: flex;
+  justify-content: space-between;
+}
+
+.x-button {
+  background-color: transparent;
+  border-style: none;
+  color: white;
+  margin-right: 10px;
+}
+
+.button-free {
+  font-family: 'Open Sans', sans-serif;
+  border: none;
+  border-radius: 15px;
+  color: white;
+}
+
+
+
+
+.full {
+  height: 100vh;
+}
+
+
+.button-general {
+  font-family: 'Open Sans', sans-serif;
+  background: #2D3036;
+  color: white;
+  border: none;
+  font-weight: 900;
+  font-size: 15px;
+  border-radius: 5px;
+  transition: all 0.4s;
+  padding-inline: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.button-follow {
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #2D3036;
+  transition: all 0.2s;
+}
+
+.button-follow p {
+  position: absolute;
+  display: none;
+  color: white;
+  background-color: #2D3036;
+  border-radius: 5px;
+  padding-inline: 20px;
+  padding-block: 5px;
+
+}
+
+.button-follow:hover p {
+  display: flex;
+
+}
+
+.button-follow:hover {
+  background-color: rgb(81, 165, 70);
+
+}
+
+.button-follow img {
+  position: relative;
+  width: 100%;
+}
+
+
+
+html::-webkit-scrollbar {
+  width: 14px;
+  /* width of the entire scrollbar */
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+  /* color of the tracking area */
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #2D3036;
+  /* color of the scroll thumb */
+  border-radius: 20px;
+  /* roundness of the scroll thumb */
+  border: 3px solid #1A1B1E;
+  /* creates padding around scroll thumb */
+}
+
+.content::-webkit-scrollbar {
+  width: 14px;
+  /* width of the entire scrollbar */
+}
+
+.content::-webkit-scrollbar-track {
+  background: transparent;
+  /* color of the tracking area */
+}
+
+.content::-webkit-scrollbar-thumb {
+  background-color: #2D3036;
+  /* color of the scroll thumb */
+  border-radius: 20px;
+  /* roundness of the scroll thumb */
+  border: 3px solid #1A1B1E;
+  /* creates padding around scroll thumb */
+}
+
+.content-no-padding::-webkit-scrollbar {
+  width: 14px;
+  /* width of the entire scrollbar */
+}
+
+.content-no-padding::-webkit-scrollbar-track {
+  background: transparent;
+  /* color of the tracking area */
+}
+
+.content-no-padding::-webkit-scrollbar-thumb {
+  background-color: #2D3036;
+  /* color of the scroll thumb */
+  border-radius: 20px;
+  /* roundness of the scroll thumb */
+  border: 3px solid #1A1B1E;
+  /* creates padding around scroll thumb */
+}
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:focus {
+  outline: none;
+}
+
+.no-list {
+  list-style: none;
+  margin-top: 5px;
+}
+
+
+.button-little {
+  background-color: transparent;
+  padding: 0;
+  color: white;
+  border: none;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.flex {
+  display: flex;
+  gap: 60px;
+}
+
+.column-gap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.content-no-padding {
+  width: 100%;
+  height: 100vh;
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.content {
+  width: 100%;
+  height: 100vh;
+  max-width: 100vw;
+  box-sizing: border-box;
+  padding-top: 100px;
+  padding-bottom: 50px;
+  padding-inline: 45px;
+  gap: 20px;
+  overflow: auto;
+}
+
+.content-flex {
+  display: flex;
+}
+
+.content-70 {
+  justify-content: space-between;
+  display: flex;
+  gap: 60px;
+  overflow: auto;
+  height: 100vh;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  padding-inline: 40px;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+.content-70-part-large {
+  width: 100%;
+
+}
+
+.content-70-short-part {
+  min-width: 25%;
+}
+
+.transparent {
+  color: white;
+  background: transparent;
+}
+
+.title-little {
+  font-weight: 100;
+  color: white;
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+.title-notification {
+  margin-bottom: 10px;
+}
+
+.notification {
+  font-family: 'Inter', sans-serif;
+  border-radius: 0;
+  justify-content: left;
+  align-items: left;
+  text-align: left;
+}
+
+
+.button-play img {
+  width: 20px;
+  height: 20px;
+}
+
+.button-play {
+  font-family: 'Open Sans', sans-serif;
+  padding: 0;
+  height: 45px;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: rgb(81, 165, 70);
+  padding-inline: 15px;
+  color: white;
+  font-size: 10px;
+  gap: 10px;
+  transition: all 0.3s;
+  border-radius: 10px;
+  text-overflow: ellipsis;
+
+}
+
+.button-play:hover {
+  background-color: rgb(49, 99, 42);
+
+}
+
+.button-play h1 {
+  max-width: 150px;
+  white-space: nowrap;
+  min-width: 100px;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

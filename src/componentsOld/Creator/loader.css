@@ -1,0 +1,36 @@
+.loading-creator {
+    font-family: 'Inter', sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #202020;
+    color: white;
+    font-size: 7px;
+
+}
+
+.loader-creator {
+    border: 4px solid #f3f3f3; /* color del borde */
+    border-top: 4px solid #000000; /* color del borde en la parte superior */
+    border-radius: 50%; /* para hacerlo circular */
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite; /* animación para hacerlo girar */
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }

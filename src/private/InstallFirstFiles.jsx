@@ -8,11 +8,10 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 //Component to identify if the user has a good minecraft account
 
-export const ConnectMinecraft = ({ children }) => {
+export const InstallFirstFiles = ({ children }) => {
 
   //take tokenmc from cookies and set loading screen
   const connectMinecraft = Cookies.get('basicInstallationComplete');
-  const { user, isAuthenticated } = useAuth0();
   const [isLoading, setIsLoading] = useState(false);
 
 
@@ -81,7 +80,6 @@ export const ConnectMinecraft = ({ children }) => {
   };
 
   function downloadInstance() {
-
     const fs = require('fs');
     const path = require('path');
 
@@ -118,17 +116,15 @@ export const ConnectMinecraft = ({ children }) => {
       }, []);
       useEffect(() => {
         if (progress === 100.0) {
-          toast.success("Descarga finalizada!", { id: t.id });
-
+          toast.success("Archivos Descargados Correctamente", {
+            id: t.id,
+          });
           const settingsDefault = {
             launcherType: 'minecraft',
             allocatedMemory: '4'
           }
-
           Cookies.set('launcher_settings', JSON.stringify(settingsDefault), { expires: 365, sameSite: 'strict' });
-
           Cookies.set('basicInstallationComplete', true, { expires: 365, sameSite: 'strict' });
-
           window.location.href = '/'
         }
       }, [progress]);
@@ -136,11 +132,10 @@ export const ConnectMinecraft = ({ children }) => {
 
       return (
         <div>
-          <h3 className='title-notification'>Menu de Instalaciones</h3>
+         <h3>Instalando Contenido</h3>
+        <p>Progreso: {formattedProgress}%</p>
 
-          <h4>Descargando archivos necesarios</h4>
-          <p>Progreso de descarga: {formattedProgress}%</p>
-        </div>
+      </div>
       );
     });
   }
@@ -182,22 +177,50 @@ export const ConnectMinecraft = ({ children }) => {
     });
   };
 
+  const handleButtonClick = () => {
+    // Configura el contenido de la notificación
+
+    console.log('wpw')
+
+    const notificationContent = (
+      <div>
+        <h3>Instalando Contenido</h3>
+        <p>Progreso: 10%</p>
+
+      </div>
+    );
+
+    // Llama a react-hot-toast con la notificación
+    toast.loading(notificationContent, {
+      duration: 40000000, // Duración en milisegundos (opcional)
+    });
+
+    console.log('wpw')
+  };
+
+
   if (!connectMinecraft) {
     return (
       <div className='displayAdvertence'>
+        
         <div className='content-advertence'>
-          <div>
-            <h1>Instalacion Requerida</h1>
+          
+          <div className='content-advertence-text'>
+  
+            <div>
+              <h1>INSTALACION REQUERIDA</h1>
+            </div>
+            <div>
+              <p>Hola, Bienvenido a UF Launcher, el launcher oficial de UF Launcher, antes de continuar necesitamos instalar algunos archivos.</p>
+              <ul>
+                <li>+ No cambiaremos a tus archivos personales.</li>
+                <li>+ Accederemos a una red de instalacion privada.</li>
+                <li>+ Instalaremos archivos dentro de tu equipo.</li>
+              </ul>
+            </div>
+            <p>Ruta de instalacion: C:/UFLauncher/data</p>
+            <button onClick={downloadInstance} className='button-general-install'>Iniciar Instalacion</button>
           </div>
-          <div>
-            <p>Hola {user.nickname}, necesitamos instalar algunos archivos necesarios para asegurarte una buena experiencia dentro de la aplicacion.</p>
-            <ul>
-              <li>+ No cambiaremos a tus archivos personales.</li>
-              <li>+ Accederemos a una red de instalacion privada.</li>
-              <li>+ Instalaremos archivos dentro de tu equipo.</li>
-            </ul>
-          </div>
-          <button onClick={downloadInstance} className='button-general-install'>Instalar Archivos</button>
         </div>
 
       </div>

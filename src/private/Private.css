@@ -5,25 +5,47 @@
 .displayAdvertence {
     display: flex;
     flex-direction: column;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('https://64.media.tumblr.com/5466c7a9b54fd34c55f3a876f22adf45/c119efe1e6b61576-a6/s1280x1920/1388c4b6938bde412c1d8ec6adc071a33b369109.png');
-    justify-content: center;
-    align-items: center;
-    background-size: cover;
+    background: url('https://cdn.discordapp.com/attachments/927380284964499557/1187298036108501034/wallpapersden.com_minecraft-dungeons-4k_2048x1152.jpg?ex=65966076&is=6583eb76&hm=26e415fbb594b110cb63989d7b52b765306ca21c7802ba8956fc0bac1831385d&');
     gap: 30px;
+    width: 100%;
     
 }
 .content-advertence {
-    max-width: 600px;
-    text-align: center;
-    border-radius: 10px;
-    padding: 50px;
-    background: #1A1B1E;
-    
+    position: absolute;
+    bottom: 0;
+    width: max-content;
+    background: #141414;
+    border-top-right-radius: 40px;
+    border-top-left-radius: 40px;
+}
+
+.content-advertence::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0px 0px 0px 3px rgb(255 255 255 / 15%);
+    border-top-right-radius: 40px;
+    border-top-left-radius: 40px;
+    position: absolute;
+}
+
+.content-advertence-text {
+    display: flex;
+    flex-direction: column;
+    padding-inline: 50px;
+}
+
+.content-advertence-text { 
+    padding-block: 30px;
 }
 
 .content-advertence ul {
@@ -39,10 +61,11 @@
 }
 
 .displayAdvertence h1 {
-    font-size: 25px;
-    margin-bottom: 20px;
+    font-size: 29px;
+    margin-bottom: 10px;
     font-weight: 900;
-    color: #AAD0FF;
+    color: #C70039;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
 }
 
@@ -68,18 +91,20 @@
 }
 
 .button-general-install {
-    margin-top: 10px;
+    width: 30%;
+    margin-top: 20px;
     font-family: 'Inter' sans-serif;
     padding-inline: 30px;
-    font-size: 16px;
-    padding-block: 10px;
+    font-size: 17px;
+    padding-block: 12px;
     border: none;
-    border-radius: 15px;
+    border-radius: 10px;
     color: white;
-    background-color: rgb(81, 165, 70) ;
+    background-color: #FF6969;
     transition: all 0.2s;
+    z-index: 999999;
 }
 
 .button-general-install:hover {
-    background-color:rgb(51, 105, 44) ;
+    background-color: #ff4747;;
 }

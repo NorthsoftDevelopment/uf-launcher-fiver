@@ -1,0 +1,401 @@
+img {
+    -webkit-user-drag: none;
+}
+
+.discover-warp {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+
+
+}
+
+.card-discover {
+    width: 100%;
+    height: 250px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: default;
+    
+}
+
+.card-discover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s ease transform;
+}
+
+.card-discover-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s ease transform;
+    border-radius: 20%;
+}
+
+
+.card-discover:hover > img {
+    transform: scale(1.1);
+}
+
+.card-discover::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(170deg, transparent, #000000e2);
+    box-shadow: inset 0px 0px 0px 3px rgb(255 255 255 / 15%);
+    border-radius: 10px;
+    position: absolute;
+}
+
+.card-discover-content {
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding: 15px;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    display: flex;
+    z-index: 99;
+}
+
+.card-discover-info {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+
+.card-status-server {
+    width: 15px;
+    height: 15px;
+    background-color: gray;
+    border-radius: 5rem;
+    box-shadow: 0px 0px 4px 0px rgba(128, 128, 128, 0.641);
+}
+
+.card-discover-info > p{
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.card-status-server[data-status="offline"] {
+    background-color: #b12d2d;
+    box-shadow: 0px 0px 7px 0px rgb(235 32 32);
+}
+
+.card-status-server[data-status="online"] {
+    background-color: #57ac2f;
+    box-shadow: 0px 0px 6px 0px rgb(95 227 77 / 77%);
+}
+
+.card-discover-play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-discover-play img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    margin-right: 10px;
+}
+
+.card-discover-server-info {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.card-discover-server-info span {
+    font-size: 16px;
+    font-weight: 600;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+
+.card-discover-server-info p {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+
+.card-discover-warp {
+    display: flex;
+    margin-left: auto;
+    gap: 8px;
+    background: #4a4a4ac7;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 3px 15px;
+    margin: 10px;
+    border-radius: 5rem;
+    box-shadow: inset 0px 0px 0px 1px #8f8f8f4d;
+}
+
+.card-discover-play-button {
+    width: 30px;
+    height: 30px;
+    margin-left: auto;
+    overflow: hidden;
+    display: flex;
+    gap: 5px;
+    transition: 0.3s ease width,0.3s ease box-shadow;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.card-discover-play-button:hover {
+    box-shadow: 0px 1px 0px 0px #c1c1c1a1;
+}
+
+.card-discover-play-button:hover svg {
+    fill: #f1f1f1ad;
+}
+
+.card-discover:hover .card-discover-play-button{
+    width: 80px;
+}
+.card-discover:hover .card-discover-play-button p{
+    transform: translateX(11px);
+}
+
+
+.card-discover-play-button p {
+    color: rgb(181, 181, 181);
+    font-size: 15px;
+    font-weight: 700;
+    position: absolute;
+    transition: 0.3s ease transform;
+    transform: translateX(40px);
+}
+
+.card-discover-play-button svg {
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    transition: 0.3s ease transform,0.3s ease fill;
+    left: 0;
+    fill: #f1f1f157;
+}
+
+.card-discover-more {
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    display: flex;
+    gap: 5px;
+    transition: 0.3s ease width,0.3s ease box-shadow;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.card-discover-more:hover {
+    box-shadow: 0px 1px 0px 0px #c1c1c1a1;
+}
+
+.card-discover-more:hover svg {
+    fill: #f1f1f182;
+    stroke: #f1f1f182;
+}
+
+.card-discover-more svg{
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    transition: 0.3s ease transform,0.3s ease fill;
+    left: 0;
+    fill: #f1f1f157;
+    stroke: #f1f1f157;
+}
+
+
+/* Min */
+
+.card-discover-min {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: default;
+    transition: 0.3s ease box-shadow;
+    justify-content: flex-start;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(90deg, #37e0f11f,#5656564a);
+}
+
+.card-discover-min:hover {
+    box-shadow: inset 0px 0px 0px 3px rgb(255 255 255 / 15%);
+}
+
+.card-discover-min::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateZ(0);
+    background: linear-gradient(180deg, transparent, #000000ae);
+    box-shadow: inset 0px 0px 0px 3px rgb(255 255 255 / 15%);
+    border-radius: 10px;
+    z-index: -99;
+    position: absolute;
+}
+
+
+img.card-discover-min-icon {
+    width: 60px;
+    object-fit: contain;
+}
+
+
+.card-discover-min:hover img.card-discover-min-bg {
+    transform: scale(1.1);
+}
+
+img.card-discover-min-bg {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -99;
+    opacity: 50%;
+    transform: translateZ(0);
+    transition: 0.3s ease transform;
+    object-fit: cover;
+    position: absolute;
+}
+
+.card-discover-mods {
+    width: 100%;
+    height: 400px;
+    border-radius: 10px;
+    padding: 10px;
+
+    transition: 0.3s ease box-shadow;
+    background: linear-gradient(180deg, #101010a8, #0000005e);
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0px 0px 0px 3px rgb(255 255 255 / 15%);
+}
+
+.card-discover-mods:hover {
+    box-shadow: inset 0px 0px 0px 3px rgb(255 255 255 / 35%);
+}
+
+.card-discover-mods:hover .card-discover-mods-image img {
+    transform: scale(1.03);
+}
+
+
+.card-discover-mods-image {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    position: absolute;
+    z-index: -99;
+}
+
+.card-discover-mods-image img {
+    width: 100%;
+    height: 100%;
+    transition: 0.3s ease transform;
+    object-fit: cover;
+}
+
+.card-discover-mods-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+    margin-top: 40px;
+}
+
+
+.card-discover-mods-content span {
+    font-size: 16px;
+    font-weight: 600;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+
+.card-discover-mods-content p {
+    font-size: 14px;
+    font-weight: 500;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-align: center;
+}
+
+
+.card-discover-mods-play {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.3s ease transform, 0.3s ease background-color;
+    justify-content: center;
+    background-color: #ffffff30;
+    border-radius: 5rem;
+    margin-top: 30px;
+    margin-bottom: 80px;
+}
+
+.card-discover-mods-play:hover {
+    transform: scale(1.1);
+    background-color: #ffffff7d;
+}
+
+.card-discover-mods-play:hover svg {
+    fill: rgb(87, 87, 87);
+}
+
+.card-discover-mods-play svg{
+    width: 30px;
+    height: 30px;
+    transform: translateX(1px);
+    fill: rgb(147 147 147);
+}

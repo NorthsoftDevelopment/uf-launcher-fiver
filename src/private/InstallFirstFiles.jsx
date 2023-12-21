@@ -4,7 +4,6 @@ import toast from 'react-hot-toast';
 import Cookies from 'js-cookie';
 import './Private.css';
 import Swal from 'sweetalert2';
-import { useAuth0 } from '@auth0/auth0-react';
 
 //Component to identify if the user has a good minecraft account
 
@@ -132,10 +131,10 @@ export const InstallFirstFiles = ({ children }) => {
 
       return (
         <div>
-         <h3>Instalando Contenido</h3>
-        <p>Progreso: {formattedProgress}%</p>
+          <h4>Instalando Contenido</h4>
+          <p>Progreso: {formattedProgress}%</p>
 
-      </div>
+        </div>
       );
     });
   }
@@ -202,17 +201,18 @@ export const InstallFirstFiles = ({ children }) => {
   if (!connectMinecraft) {
     return (
       <div className='displayAdvertence'>
-        
+
         <div className='content-advertence'>
-          
+
           <div className='content-advertence-text'>
-  
+
             <div>
-              <h1>INSTALACION REQUERIDA</h1>
+              <h1>INSTALACION DE UF LAUNCHER</h1>
             </div>
             <div>
               <p>Hola, Bienvenido a UF Launcher, el launcher oficial de UF Launcher, antes de continuar necesitamos instalar algunos archivos.</p>
               <ul>
+                <li>+ La instalacion tiene un peso de 8MB.</li>
                 <li>+ No cambiaremos a tus archivos personales.</li>
                 <li>+ Accederemos a una red de instalacion privada.</li>
                 <li>+ Instalaremos archivos dentro de tu equipo.</li>

@@ -6,10 +6,14 @@ import { Soon } from "./componentsOld/global/404/Soon";
 import { Toaster } from "react-hot-toast";
 import { Home } from "./components/pages/home";
 import { InstallFirstFiles } from "./private/InstallFirstFiles";
+import Cookies from "js-cookie";
+import { LoginPage } from "./components/pages/login";
 
 function App() {
 
   //if (isLoading) return <Loader reason='Espera un momento...' />;
+
+  const user = Cookies.get('user')
 
   return (
 
@@ -20,13 +24,15 @@ function App() {
           <Route
             path="/"
             element={
-              <ProtectedRoute isAuthenticated={'nothing'}>
+              <ProtectedRoute isAuthenticated={user}>
                 <Home></Home>
               </ProtectedRoute>
             }
           />
 
           <Route path="*" element={<Soon />} />
+
+          <Route path="/login" element={<LoginPage />} />
 
         </Routes>
       </InstallFirstFiles>

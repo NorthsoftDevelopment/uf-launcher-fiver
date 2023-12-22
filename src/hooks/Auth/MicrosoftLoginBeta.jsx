@@ -40,7 +40,7 @@ export default function MicrosoftLogin() {
 
 
 
-                        //window.location.href = '/'
+                        window.location.href = '/'
                         Swal.close();
 
                     } else {

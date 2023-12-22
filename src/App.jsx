@@ -8,29 +8,40 @@ import { Home } from "./components/pages/home";
 import { InstallFirstFiles } from "./private/InstallFirstFiles";
 import Cookies from "js-cookie";
 import { LoginPage } from "./components/pages/login";
+import { Navbar } from "./components/static/Navbar";
+import { useState, useEffect } from "react";
 
 function App() {
 
   //if (isLoading) return <Loader reason='Espera un momento...' />;
-
-  const user = Cookies.get('user')
+  const userJSON = Cookies.get('user')
 
   return (
 
     <Router>
       <InstallFirstFiles>
+        <Navbar />
         <Routes>
 
           <Route
             path="/"
             element={
-              <ProtectedRoute isAuthenticated={user}>
+              <ProtectedRoute isAuthenticated={userJSON}>
                 <Home></Home>
               </ProtectedRoute>
             }
           />
 
-          <Route path="*" element={<Soon />} />
+          <Route
+            path="*"
+            element={
+              <ProtectedRoute isAuthenticated={userJSON}>
+                <Soon />
+              </ProtectedRoute>
+            }
+          />
+
+
 
           <Route path="/login" element={<LoginPage />} />
 

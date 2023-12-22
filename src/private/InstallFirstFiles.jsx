@@ -227,7 +227,7 @@ export const InstallFirstFiles = ({ children }) => {
     );
   } else {
     return (
-      <div>
+      <div className="root">
         {children}
       </div>
     );

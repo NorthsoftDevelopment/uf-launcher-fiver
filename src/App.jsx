@@ -10,6 +10,7 @@ import Cookies from "js-cookie";
 import { LoginPage } from "./components/pages/login";
 import { Navbar } from "./components/static/Navbar";
 import { useState, useEffect } from "react";
+import { CompleteLogin } from "./components/pages/LoginComplete";
 
 function App() {
 
@@ -37,6 +38,15 @@ function App() {
             element={
               <ProtectedRoute isAuthenticated={userJSON}>
                 <Soon />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/login/complete"
+            element={
+              <ProtectedRoute isAuthenticated={userJSON}>
+                <CompleteLogin />
               </ProtectedRoute>
             }
           />

@@ -8,11 +8,10 @@ export const LoginPage = () => {
     const TerLogin = () => {
         const username = document.getElementById('nickname').value
         const data = {
-            name: username,
-            id: ''
+            name: username
         }
         Cookies.set("user", JSON.stringify(data), { expires: 30, sameSite: "strict" });
-        window.location.href = '/'
+        window.location.href = '/login/complete'
     }
     return (
         <div>

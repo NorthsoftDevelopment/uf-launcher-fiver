@@ -14,11 +14,17 @@ export const LoginPage = () => {
         window.location.href = '/login/complete'
     }
     return (
-        <div>
-            <h1>Logeate</h1>
-            <button onClick={MicrosoftLogin}>Login with Microsoft</button>
-            <button onClick={TerLogin}>Login de terceros</button>
-            <input placeholder="Tu usuario" id='nickname'></input>
+        <div className="content-center">
+            <h2>Iniciar Sesion</h2>
+            <div className="login-content">
+                <button onClick={MicrosoftLogin} className="button-general">Login with Microsoft</button>
+
+                <div>
+
+                    <input placeholder="Tu usuario" id='nickname' className="general-input"></input>
+                    <button onClick={TerLogin} className="button-general">Login de terceros</button>
+                </div>
+            </div>
         </div>
     )
 }

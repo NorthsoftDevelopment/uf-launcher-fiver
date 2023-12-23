@@ -11,6 +11,7 @@ import { LoginPage } from "./components/pages/login";
 import { Navbar } from "./components/static/Navbar";
 import { useState, useEffect } from "react";
 import { CompleteLogin } from "./components/pages/LoginComplete";
+import { Title } from "./components/static/Title";
 
 function App() {
 
@@ -20,8 +21,9 @@ function App() {
   return (
 
     <Router>
+      <Navbar />
+      <Title />
       <InstallFirstFiles>
-        <Navbar />
         <Routes>
 
           <Route

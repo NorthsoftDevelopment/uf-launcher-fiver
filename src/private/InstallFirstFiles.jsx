@@ -79,64 +79,59 @@ export const InstallFirstFiles = ({ children }) => {
   };
 
   function downloadInstance() {
+    const { ipcRenderer } = require('electron');
+    const { app } = require('electron');
     const fs = require('fs');
     const path = require('path');
 
-    const folderPath = 'C:/InhoniaLauncher/launchers';
+    ipcRenderer.on('createFolderResult', (event, result) => {
+      if (result.success) {
 
-    fs.mkdirSync(path.dirname(folderPath), { recursive: true });
-
-    try {
-      fs.mkdirSync(folderPath);
-      console.log(`Carpeta creada con éxito en: ${folderPath}`);
-    } catch (err) {
-
-      if (err.code === 'EEXIST') {
-        console.log(`La carpeta ya existe en: ${folderPath}`);
-      } else {
-        console.error('Error al crear la carpeta:', err);
-      }
-    }
-
-    const Skip = {
-      data: 'null'
-    }
-
-    const SkipJSON = JSON.stringify(Skip)
-
-    toast.loading((t) => {
-      const DEFAULT_URL = 'https://assets.inhonia.com/inhonia-launcher/launchers.zip';
-      const DEFAULT_PATH = 'C:/InhoniaLauncher/launchers/launchers.zip';
-      const root = 'C:/InhoniaLauncher/launchers'
-      const { download, progress } = useDownloadLauncher(DEFAULT_URL, DEFAULT_PATH, root);
-
-      useEffect(() => {
-        download();
-      }, []);
-      useEffect(() => {
-        if (progress === 100.0) {
-          toast.success("Archivos Descargados Correctamente", {
-            id: t.id,
-          });
-          const settingsDefault = {
-            launcherType: 'minecraft',
-            allocatedMemory: '4'
-          }
-          Cookies.set('launcher_settings', JSON.stringify(settingsDefault), { expires: 365, sameSite: 'strict' });
-          Cookies.set('basicInstallationComplete', true, { expires: 365, sameSite: 'strict' });
-          window.location.href = '/'
+        const Skip = {
+          data: 'null'
         }
-      }, [progress]);
-      const formattedProgress = Math.floor(progress);
 
-      return (
-        <div>
-          <h4>Instalando Contenido</h4>
-          <p>Progreso: {formattedProgress}%</p>
+        const SkipJSON = JSON.stringify(Skip)
 
-        </div>
-      );
+        const folderPath = result.folderPath;
+
+        toast.loading((t) => {
+          const DEFAULT_URL = 'https://assets.inhonia.com/inhonia-launcher/launchers.zip';
+          const DEFAULT_PATH = folderPath + '/launchers.zip';
+          const root = folderPath
+          const { download, progress } = useDownloadLauncher(DEFAULT_URL, DEFAULT_PATH, root);
+
+          useEffect(() => {
+            download();
+          }, []);
+          useEffect(() => {
+            if (progress === 100.0) {
+              toast.success("Descarga finalizada!", { id: t.id });
+              const settingsDefault = {
+                launcherType: 'minecraft',
+                allocatedMemory: '4'
+              }
+              Cookies.set('launcher_settings', JSON.stringify(settingsDefault), { expires: 365, sameSite: 'strict' });
+              Cookies.set('basicInstallationComplete', true, { expires: 365, sameSite: 'strict' });
+              window.location.href = '/'
+            }
+          }, [progress]);
+          const formattedProgress = Math.floor(progress);
+
+          return (
+            <div>
+              <h4>Instalando Contenido</h4>
+              <p>Progreso: {formattedProgress}%</p>
+
+            </div>
+          );
+        });
+      } else {
+
+        toast.error(`Error al crear la carpeta: ${result.message}`);
+      }
     });
+    ipcRenderer.send('createFolder');
   }
 
 
@@ -218,7 +213,7 @@ export const InstallFirstFiles = ({ children }) => {
                 <li>+ Instalaremos archivos dentro de tu equipo.</li>
               </ul>
             </div>
-            <p>Ruta de instalacion: C:/UFLauncher/data</p>
+            <p>Ruta de instalacion: C:/UFLauncher/launchers</p>
             <button onClick={downloadInstance} className='button-general-install'>Iniciar Instalacion</button>
           </div>
         </div>

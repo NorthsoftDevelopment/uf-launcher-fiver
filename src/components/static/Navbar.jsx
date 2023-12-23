@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Logout } from "../../hooks/Auth/Logout";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import { Tooltip } from "react-tooltip";
 
 export const Navbar = () => {
   const [user, setUser] = useState();
@@ -24,6 +25,7 @@ export const Navbar = () => {
   }
   return (
     <div className="navbar drag">
+      <Tooltip id="1"/>
       <div className="navbar-list">
       <Link to="/" >
         <div className="navbar-item nodrag" active="1">
@@ -37,7 +39,7 @@ export const Navbar = () => {
             <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
             <polyline points="9 22 9 12 15 12 15 22" />
           </svg>
-          Home
+          Jugar
         </div>
         </Link>
         <Link to="/instances">
@@ -78,10 +80,13 @@ export const Navbar = () => {
 
         
       </div>
+      
+      <div className="nav-options">
       {user ? (
           <div className="nodrag user">
             <div className="user-info">
-              <span title={user.name}>{user.name}</span>
+              
+              <span data-tooltip-id="my-tooltip" data-tooltip-content={user.name}>{user.name}</span>
               <img
                 src={`https://api.mineatar.io/face/${
                   user.id ? user.id : "e59da3ac-76ef-4c66-9d36-54d221baa439"
@@ -106,13 +111,14 @@ export const Navbar = () => {
           </div>
         ) : (
           <div className="nodrag user">
-            <h3>Inicia Sesion</h3>
+             <div className="user-info">
+             <span>Logueate</span>
             <img
               src={`https://api.mineatar.io/face/4e4f1367-fab1-4239-8665-d7f4d8aea219`}
             ></img>
+            </div>
           </div>
         )}
-      <div className="nav-options">
         <button onClick={(e) => action(e)} className="nav-close-app nodrag" op="min">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M5.25 12a.75.75 0 01.75-.75h12a.75.75 0 010 1.5H6a.75.75 0 01-.75-.75z" />

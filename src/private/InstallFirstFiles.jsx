@@ -115,11 +115,6 @@ export const InstallFirstFiles = ({ children }) => {
                 } else
 
                   toast.success("Descarga finalizada!", { id: t.id });
-                const settingsDefault = {
-                  launcherType: 'minecraft',
-                  allocatedMemory: '4'
-                }
-                Cookies.set('launcher_settings', JSON.stringify(settingsDefault), { expires: 365, sameSite: 'strict' });
                 Cookies.set('basicInstallationComplete', true, { expires: 365, sameSite: 'strict' });
                 window.location.href = '/'
               }

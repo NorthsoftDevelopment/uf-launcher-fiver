@@ -11,6 +11,12 @@ export const LoginPage = () => {
             name: username
         }
         Cookies.set("user", JSON.stringify(data), { expires: 30, sameSite: "strict" });
+
+        const settingsDefault = {
+            launcherType: 'sk',
+            allocatedMemory: '4'
+          }
+        Cookies.set('launcher_settings', JSON.stringify(settingsDefault), { expires: 365, sameSite: 'strict' });
         window.location.href = '/login/complete'
     }
     return (

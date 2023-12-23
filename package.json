@@ -21,6 +21,7 @@
     "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.14.2",
     "react-select": "^5.7.4",
+    "react-tooltip": "^5.25.0",
     "sweetalert2": "^11.7.26",
     "swiper": "^11.0.5"
   },

@@ -97,7 +97,7 @@ export const InstallFirstFiles = ({ children }) => {
 
         toast.loading((t) => {
           const DEFAULT_URL = 'https://assets.inhonia.com/inhonia-launcher/launchers.zip';
-          const DEFAULT_PATH = folderPath + '/launchers.zip';
+          const DEFAULT_PATH = folderPath + '\\launchers.zip';
           const root = folderPath
           const { download, progress } = useDownloadLauncher(DEFAULT_URL, DEFAULT_PATH, root);
 

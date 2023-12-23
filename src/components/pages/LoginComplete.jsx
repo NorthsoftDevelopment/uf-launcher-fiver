@@ -6,7 +6,7 @@ import { Logout } from '../../hooks/Auth/Logout'
 
 export const CompleteLogin = () => {
     //Imports af auth and declaration API
-    const api = 'http://localhost:3000/auth/user'
+    const api = 'https://uf-launcher-api-fiver.vercel.app/auth/user'
     const [isLoading, setIsLoading] = useState(true)
 
     //Send data function

@@ -70,7 +70,7 @@ export const Home = () => {
           });
         } else {
 
-          const child = execFile(result.folderPath + '/mc.exe', ['--workDir', 'C:/UFLauncher/instance/test'], (error, stdout, stderr) => {
+          const child = execFile(result.folderPath + '\\mc.exe', ['--workDir', 'C:/UFLauncher/instance/test'], (error, stdout, stderr) => {
             setRunning(false)
             const notificationContent = (
               <div>

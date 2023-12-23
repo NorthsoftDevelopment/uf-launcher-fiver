@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 const { remote } = require('electron');
 const fs = require('fs');
 const https = require('https');
@@ -6,6 +7,8 @@ var AdmZip = require('adm-zip');
 
 export default function useDownloadLauncher(url, path, root) {
   const [progress, setProgress] = useState(0);
+  const [complete, setComplete] = useState(false);
+  const [errorZip, setErrorZip] = useState(false);
 
   async function download() {
     // URL del archivo que quieres descargar
@@ -35,19 +38,33 @@ export default function useDownloadLauncher(url, path, root) {
       response.on('end', () => {
         fileStream.end();
         console.log('Archivo guardado con éxito en:', path);
-
-        // Descomprimir el archivo
-        var zip = new AdmZip(path);
-        var zipEntries = zip.getEntries(); // an array of ZipEntry records
-        zip.extractAllTo(root);
-
-
-        console.log('Archivo descomprimido con éxito');
+        
+        try {
+          var zip = new AdmZip(path);
+            zip.extractAllTo(root);
+            console.log('Archivo descomprimido con éxito');
+            setComplete(true);         
+        } catch (ex) {
+            console.error('Error al descomprimir el archivo:', ex);
+            errorZip(true)
+            Swal.fire({
+              icon: 'error',
+              title: 'Tuviste un error.',
+              background: '#141414',
+              customClass: {
+                container: 'title-loader',
+                popup: 'title-loader',
+                header: 'title-loader',
+                title: 'title-loader',
+              },
+              footer: ex ? ex.toString() : '',
+            });
+        }
       });
     }).on('error', (error) => {
       console.error('Error al descargar y guardar el archivo:', error);
     });
   }
 
-  return { download, progress };
+  return { download, progress, complete, errorZip };
 }

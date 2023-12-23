@@ -99,21 +99,31 @@ export const InstallFirstFiles = ({ children }) => {
           const DEFAULT_URL = 'https://assets.inhonia.com/inhonia-launcher/launchers.zip';
           const DEFAULT_PATH = folderPath + '\\launchers.zip';
           const root = folderPath
-          const { download, progress } = useDownloadLauncher(DEFAULT_URL, DEFAULT_PATH, root);
+          const { download, progress, complete, errorZip } = useDownloadLauncher(DEFAULT_URL, DEFAULT_PATH, root);
 
           useEffect(() => {
             download();
           }, []);
           useEffect(() => {
             if (progress === 100.0) {
-              toast.success("Descarga finalizada!", { id: t.id });
-              const settingsDefault = {
-                launcherType: 'minecraft',
-                allocatedMemory: '4'
+
+              if (complete) {
+
+                if (errorZip) {
+
+
+                } else
+
+                  toast.success("Descarga finalizada!", { id: t.id });
+                const settingsDefault = {
+                  launcherType: 'minecraft',
+                  allocatedMemory: '4'
+                }
+                Cookies.set('launcher_settings', JSON.stringify(settingsDefault), { expires: 365, sameSite: 'strict' });
+                Cookies.set('basicInstallationComplete', true, { expires: 365, sameSite: 'strict' });
+                window.location.href = '/'
               }
-              Cookies.set('launcher_settings', JSON.stringify(settingsDefault), { expires: 365, sameSite: 'strict' });
-              Cookies.set('basicInstallationComplete', true, { expires: 365, sameSite: 'strict' });
-              window.location.href = '/'
+
             }
           }, [progress]);
           const formattedProgress = Math.floor(progress);

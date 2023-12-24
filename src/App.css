@@ -717,9 +717,14 @@ html::-webkit-scrollbar-thumb {
   font-size: 19px;
 }
 
+.button-launch p {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+}
+
 .button-remove {
   height: max-content;
-  padding-block: 13px;
+  padding-block: 22px;
   padding-inline: 20px;
   color: white;
   border-top-right-radius: 30px;
@@ -727,7 +732,7 @@ html::-webkit-scrollbar-thumb {
   border: none;
   background: linear-gradient(to right, #62626263, #6a6a6a2e);
   box-shadow: 0px 0px 0px 1px #ffffff4d;
-  font-size: 18px;
+  font-size: 17px;
   text-shadow: 0 0 10px #fff;
   transition: transform 0.5s ease;
 }

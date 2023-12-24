@@ -13,6 +13,7 @@ export const Home = () => {
   const [installing, setInstalling] = useState(false);
   const [update, setUpdate] = useState(false);
   const [InfoInstance, setInfoInstance] = useState({})
+  const [news, setNews] = useState([])
   const [loading, setLoading] = useState(true);
   const instance = Cookies.get('instance')
   const route = Cookies.get('root')
@@ -61,6 +62,34 @@ export const Home = () => {
       const instances = response.data;
 
       setInfoInstance(instances);
+
+      takeNews()
+
+    } catch (error) {
+
+      console.log('error', error);
+
+    }
+
+  };
+
+  const takeNews = async () => {
+    try {
+      const api = 'https://uf-launcher-api-fiver.vercel.app/instance/data';
+
+      const data = {
+        location: 'news'
+      };
+
+      const response = await axios.post(api, data);
+      const instances = response.data;
+
+      setNews(instances.noticias)
+
+      const background = instances.fondoPrincipal
+      Cookies.set('background', background, { expires: 365, sameSite: 'strict' });
+      
+      console.log(instances.noticias)
       setLoading(false)
 
     } catch (error) {
@@ -256,7 +285,7 @@ export const Home = () => {
 
               const fs = require('fs');
               const path = require('path');
-              const filePath = path.join(route, InfoInstance.title,`${InfoInstance.versionInstance}.txt`);
+              const filePath = path.join(route, InfoInstance.title, `${InfoInstance.versionInstance}.txt`);
 
               const fileContent = '¡Descarga finalizada!';
 
@@ -346,8 +375,14 @@ export const Home = () => {
                   <button className="button-remove" data-tooltip-id="my-tooltip" data-tooltip-content="Elimina los archivos de la instancia selecciona. Esta opcion es irreversible.">X</button>
                 </div>
               </div>
-
               <h3>Ultimas Actualizaciones</h3>
+              {news.map((news, index) => (
+                <div key={index}>
+                  <h3>{news.title}</h3>
+                  <p>{news.desc}</p>
+                  <img src={news.img}></img>
+                </div>
+              ))}
             </div>
           </div>
         </div>

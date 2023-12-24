@@ -12,6 +12,8 @@ import { Navbar } from "./components/static/Navbar";
 import { useState, useEffect } from "react";
 import { CompleteLogin } from "./components/pages/LoginComplete";
 import { Title } from "./components/static/Title";
+import Settings from "./components/settings/Settings";
+import { InstancesPage } from "./components/pages/instances";
 
 function App() {
 
@@ -31,6 +33,24 @@ function App() {
             element={
               <ProtectedRoute isAuthenticated={userJSON}>
                 <Home></Home>
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute isAuthenticated={userJSON}>
+                <Settings></Settings>
+              </ProtectedRoute>
+            }
+          />
+
+<Route
+            path="/instances"
+            element={
+              <ProtectedRoute isAuthenticated={userJSON}>
+                <InstancesPage />
               </ProtectedRoute>
             }
           />

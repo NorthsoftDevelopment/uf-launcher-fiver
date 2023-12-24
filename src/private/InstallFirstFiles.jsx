@@ -117,7 +117,7 @@ export const InstallFirstFiles = ({ children }) => {
                   toast.success("Descarga finalizada!", { id: t.id });
                 Cookies.set('basicInstallationComplete', true, { expires: 365, sameSite: 'strict' });
                 Cookies.set('instance', '1', { expires: 365, sameSite: 'strict' });
-                Cookies.set('root', 'C:/UFLauncher', { expires: 365, sameSite: 'strict' });
+                Cookies.set('root', 'C:/UFLauncher/instances', { expires: 365, sameSite: 'strict' });
                 window.location.href = '/'
               }
 

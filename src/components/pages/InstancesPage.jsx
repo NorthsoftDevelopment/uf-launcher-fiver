@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-export const InstancesPage = () => {
+export const InstancesPageOLD = () => {
   return (
     <div className="welcome-content content">
     <div className="list-instances">

@@ -376,13 +376,17 @@ export const Home = () => {
                 </div>
               </div>
               <h3>Ultimas Actualizaciones</h3>
+              <div className="news-container">
+
+            
               {news.map((news, index) => (
-                <div key={index}>
+                <div className="news-item" key={index}>
                   <h3>{news.title}</h3>
                   <p>{news.desc}</p>
                   <img src={news.img}></img>
                 </div>
               ))}
+                </div>
             </div>
           </div>
         </div>

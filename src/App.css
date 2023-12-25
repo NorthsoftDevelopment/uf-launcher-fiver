@@ -770,3 +770,14 @@ html::-webkit-scrollbar-thumb {
   flex-direction: column;
   gap: 30px;
 }
+
+
+.news-container {
+  display: flex;
+  align-items: center;
+}
+
+.news-item {
+  width: 200px;
+  height: 400px;
+}

@@ -375,17 +375,29 @@ export const Home = () => {
                   <button className="button-remove" data-tooltip-id="my-tooltip" data-tooltip-content="Elimina los archivos de la instancia selecciona. Esta opcion es irreversible.">X</button>
                 </div>
               </div>
-              <h3>Ultimas Actualizaciones</h3>
+              <h3 className="title">Ultimas Actualizaciones</h3>
               <div className="news-container">
 
-            
+              <swiper-container
+                  centeredSlides="true"
+                  speed="500"
+                  loop="true"
+                  autoplay="true"
+                  slides-per-view="3"
+                  space-between="5"
+                  width="1350"
+                  autoplay-delay="5000"
+                >
               {news.map((news, index) => (
-                <div className="news-item" key={index}>
+                <swiper-slide key={index}>
+                <div className="news-item" >
                   <h3>{news.title}</h3>
                   <p>{news.desc}</p>
                   <img src={news.img}></img>
                 </div>
+                </swiper-slide>
               ))}
+              </swiper-container>
                 </div>
             </div>
           </div>

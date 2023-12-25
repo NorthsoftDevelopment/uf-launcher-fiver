@@ -54,7 +54,7 @@ export const Navbar = () => {
       <Tooltip id="1" />
       <div className="navbar-list">
         <Link to="/">
-          <div  onClick={changeLocation} className="navbar-item nodrag" active="0">
+          <div onClick={changeLocation} className="navbar-item nodrag" active="0">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -129,8 +129,9 @@ export const Navbar = () => {
                 }`}
               ></img>
             </div>
-            <button onClick={Logout}>
-              {" "}
+            <button data-tooltip-id="my-tooltip"
+                data-tooltip-content="cerrar session" onClick={Logout}>
+              
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

@@ -4,7 +4,6 @@ import SelectSetting from "./items/SelectSetting";
 import DirectorySetting from "./items/FileSetting";
 import Cookies from "js-cookie";
 import SliderSetting from "./items/SliderSetting";
-import { SeparateShort } from "../ExtraComponents/Separate/Separate";
 import toast from "react-hot-toast";
 
 const OPTIONS = {
@@ -93,7 +92,6 @@ export default function Settings() {
       <div className="content-70-part-large">
         <h1 className='title-general-bold-big'>PREFERENCIAS</h1>
         <p>Importante: El modo lanzador de Inhonia Launcher esta desabilitado por lo que las opciones de memoria reservada estan desabilitadas.</p>
-        <SeparateShort />
         <div className={ classes.settingsList }>
           <SelectSetting
             name="launcherType"
@@ -122,24 +120,12 @@ export default function Settings() {
       </div>
       <div className="content-70-short-part">
         <div>
-          <h1 className="title-general-bold">RECURSOS</h1>
-          <div className={ classes.resources }>
-
-            <button onClick={ () => openURL('https://beta.inhonia.com') }>Politica de privacidad</button>
-            <button onClick={closeApp}>Uso de terceros</button>
-            <button onClick={ () => openURL('https://www.minecraft.net/en-us/msaprofile/mygames/editskin') }>Soporte y dudas</button>
-
-          </div>
-        </div>
-        <SeparateShort />
-        <div>
           <h1 className="title-general-bold">ZONA ROJA</h1>
           <div className={ classes.redzone } >
             <p>En caso de presentar errores con la instalacion, presiona este boton para reiniciarla</p>
             <button onClick={ installationTry } className="button-general">Reiniciar Instalacion</button>
           </div>
         </div>
-        <SeparateShort />
         <div>
           <h1 className="title-general-bold">INFO</h1>
           <div className={ classes.infoapp } >

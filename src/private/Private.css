@@ -11,6 +11,8 @@
     right: 0;
     bottom: 0;
     background: url('https://cdn.discordapp.com/attachments/927380284964499557/1187298036108501034/wallpapersden.com_minecraft-dungeons-4k_2048x1152.jpg?ex=65966076&is=6583eb76&hm=26e415fbb594b110cb63989d7b52b765306ca21c7802ba8956fc0bac1831385d&');
+    background-size: cover;
+    background-repeat: no-repeat;
     gap: 30px;
     width: 100%;
     height: 100vh;
@@ -19,44 +21,40 @@
     z-index: 1;
 }
 
-.content-advertence {
-    width: 500px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    height: max-content;
-    background: #141414;
-    text-align: left;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    
-}
-
-.content-advertence::after {
+.displayAdvertence::after{
     content: "";
     width: 100%;
     height: 100%;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
-    box-shadow: inset 0px 0px 0px 3px rgb(255 255 255 / 15%);
-    ;
+    left: 0;
+    z-index: -99;
+    background: linear-gradient(to top,black,transparent);
     position: absolute;
+}
+
+.content-advertence {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    text-align: left;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
 }
+
 
 .content-advertence-text {
     display: flex;
     flex-direction: column;
     padding-inline: 50px;
-
+    padding-block: 50px;
 }
 
-.content-advertence-text {
-    padding-block: 50px;
+.content-advertence-text div:last-child p {
+    max-width: 500px;
 }
 
 .content-advertence ul {
@@ -72,9 +70,12 @@
 }
 
 .displayAdvertence h1 {
+    width: fit-content;
+    padding: 5px 20px;
     font-size: 23px;
     margin-bottom: 10px;
     font-weight: 900;
+    background-color: #FF6969;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
 }
@@ -100,9 +101,9 @@
 }
 
 .button-general-install {
-    width: max-content;
-    margin-top: 20px;
-    font-family: 'Inter' sans-serif;
+    width: fit-content;
+    height: 40px;
+    font-family: 'Inter', sans-serif;
     padding-inline: 30px;
     font-size: 15px;
     padding-block: 7px;
@@ -112,9 +113,56 @@
     background-color: #FF6969;
     transition: all 0.2s;
     z-index: 999999;
+    margin-bottom: 40px;
 }
 
 .button-general-install:hover {
     background-color: #ff4747;
-    ;
+}
+
+.install-section {
+    display: flex;
+    gap: 20px;
+    bottom: 0;
+    position: absolute;
+}
+
+.select_folder{
+    border: none;
+    padding: 5px 25px;
+    background-color: #d35050;
+    border-top-left-radius: 500px;
+    border-bottom-left-radius: 50px;
+    height: 100%;
+}
+
+.select_folder p{
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    font-size: 13px;
+    color: #cdcdcd;
+    font-family: 'Inter',sans-serif;
+    letter-spacing: 0.2px;
+}
+
+.input-folder {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: rgba(32, 32, 32, 0.758);
+}
+
+.input-folder input[type="text"]{
+    width: 300px;
+    height: 100%;
+    border-radius: 10px;
+    padding: 5px 10px;
+    border: none;
+    color: #898989;
+    outline: none;
+    background: transparent;
 }

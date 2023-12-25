@@ -1,48 +1,59 @@
-import React, { useState, useEffect } from 'react';
-import useDownloadLauncher from '../hooks/useDownloadLauncher';
-import toast from 'react-hot-toast';
-import Cookies from 'js-cookie';
-import './Private.css';
-import Swal from 'sweetalert2';
+import React, { useState, useEffect } from "react";
+import useDownloadLauncher from "../hooks/useDownloadLauncher";
+import toast from "react-hot-toast";
+import Cookies from "js-cookie";
+import "./Private.css";
+import Swal from "sweetalert2";
 
 //Component to identify if the user has a good minecraft account
 
-export const InstallFirstFiles = ({ children }) => {
 
+export const InstallFirstFiles = ({ children }) => {
   //take tokenmc from cookies and set loading screen
-  const connectMinecraft = Cookies.get('basicInstallationComplete');
+  const connectMinecraft = Cookies.get("basicInstallationComplete");
   const [isLoading, setIsLoading] = useState(false);
 
+  // Error control
 
-  //When button action login take login and bugs 
+  const error = {
+    "continue_folder":{
+      "msg":"Selecciona una carpeta para continuar la instalación"
+    },
+    "folder_exist": {
+      "msg":"Error la carpeta seleccionada no existe"
+    },
+    "error_install":{
+      "msg":"Error al intentar instalar los recursos"
+    }
+  }
+
+  //When button action login take login and bugs
 
   const saltarLogin = () => {
-
     const Skip = {
-      data: 'null'
-    }
+      data: "null",
+    };
 
-    const SkipJSON = JSON.stringify(Skip)
+    const SkipJSON = JSON.stringify(Skip);
 
     Cookies.set("tokenMC", SkipJSON, { expires: 30, sameSite: "strict" });
 
-    window.location.href = '/'
-
-  }
+    window.location.href = "/";
+  };
   const login = async () => {
     setIsLoading(true);
 
     Swal.fire({
-      text: 'Intentando conexion',
+      text: "Intentando conexion",
       showConfirmButton: false,
       allowOutsideClick: false,
       timerProgressBar: false,
-      background: '#141414',
+      background: "#141414",
       customClass: {
-        container: 'title-loader',
-        popup: 'title-loader',
-        header: 'title-loader',
-        title: 'title-loader',
+        container: "title-loader",
+        popup: "title-loader",
+        header: "title-loader",
+        title: "title-loader",
       },
       didOpen: async () => {
         Swal.showLoading();
@@ -57,137 +68,142 @@ export const InstallFirstFiles = ({ children }) => {
             const token = await xboxManager.getMinecraft();
 
             if (token) {
-              console.log('todo bien');
+              console.log("todo bien");
               setIsLoading(false);
               Swal.close();
               //window.location.href = '/'
-              const mcprofile = JSON.stringify(token.profile)
+              const mcprofile = JSON.stringify(token.profile);
 
-              Cookies.set("tokenMC", mcprofile, { expires: 30, sameSite: "strict" });
-
+              Cookies.set("tokenMC", mcprofile, {
+                expires: 30,
+                sameSite: "strict",
+              });
             } else {
-              showError('Ocurrió un error');
+              showError("Ocurrió un error");
             }
           } catch (error) {
-            showError('Error al obtener el token de Minecraft', error);
+            showError("Error al obtener el token de Minecraft", error);
           }
         } catch (error) {
-          showError('Error al iniciar la conexión', error);
+          showError("Error al iniciar la conexión", error);
         }
-      }
+      },
     });
   };
 
   function downloadInstance() {
-    const { ipcRenderer } = require('electron');
-    const { app } = require('electron');
-    const fs = require('fs');
-    const path = require('path');
+    const { ipcRenderer } = require("electron");
+    const { app } = require("electron");
+    const fs = require("fs");
+    const path = require("path");
+    const path_sel = document.querySelector(".input-folder input");
 
-    ipcRenderer.on('createFolderResult', (event, result) => {
-      if (result.success) {
+    if (path_sel.value.length && fs.existsSync(path_sel.value)) {
+      ipcRenderer.on("createFolderResult", (event, result) => {
+        if (result.success) {
+          const Skip = {
+            data: "null",
+          };
 
-        const Skip = {
-          data: 'null'
-        }
+          const SkipJSON = JSON.stringify(Skip);
 
-        const SkipJSON = JSON.stringify(Skip)
+          const folderPath = result.folderPath;
 
-        const folderPath = result.folderPath;
+          toast.loading((t) => {
+            const DEFAULT_URL =
+              "https://assets.inhonia.com/inhonia-launcher/launchers.zip";
+            const DEFAULT_PATH = folderPath + "\\launchers.zip";
+            const root = folderPath;
+            const { download, progress, complete, errorZip } =
+              useDownloadLauncher(DEFAULT_URL, DEFAULT_PATH, root);
 
-        toast.loading((t) => {
-          const DEFAULT_URL = 'https://assets.inhonia.com/inhonia-launcher/launchers.zip';
-          const DEFAULT_PATH = folderPath + '\\launchers.zip';
-          const root = folderPath
-          const { download, progress, complete, errorZip } = useDownloadLauncher(DEFAULT_URL, DEFAULT_PATH, root);
-
-          useEffect(() => {
-            download();
-          }, []);
-          useEffect(() => {
-            if (progress === 100.0) {
-
-              if (complete) {
-
-                if (errorZip) {
-
-
-                } else
-
-                  toast.success("Descarga finalizada!", { id: t.id });
-                Cookies.set('basicInstallationComplete', true, { expires: 365, sameSite: 'strict' });
-                Cookies.set('instance', '1', { expires: 365, sameSite: 'strict' });
-                Cookies.set('root', 'C:/UFLauncher/instances', { expires: 365, sameSite: 'strict' });
-                window.location.href = '/'
+            useEffect(() => {
+              download();
+            }, []);
+            useEffect(() => {
+              if (progress === 100.0) {
+                if (complete) {
+                  if (errorZip) {
+                  } else toast.success("Descarga finalizada!", { id: t.id });
+                  Cookies.set("basicInstallationComplete", true, {
+                    expires: 365,
+                    sameSite: "strict",
+                  });
+                  Cookies.set('instance', '1', { expires: 365, sameSite: 'strict' });
+                  Cookies.set('root', 'C:/UFLauncher/instances', { expires: 365, sameSite: 'strict' });
+                  window.location.href = "/";
+                }
               }
+            }, [progress]);
+            const formattedProgress = Math.floor(progress);
 
-            }
-          }, [progress]);
-          const formattedProgress = Math.floor(progress);
+            return (
+              <div>
+                <h4>Instalando Contenido</h4>
+                <p>Progreso: {formattedProgress}%</p>
+              </div>
+            );
+          });
+        } else {
+          toast.error(`Error al crear la carpeta: ${result.message}`);
+        }
+      });
+      ipcRenderer.send("createFolder");
+    }else {
 
-          return (
-            <div>
-              <h4>Instalando Contenido</h4>
-              <p>Progreso: {formattedProgress}%</p>
-
-            </div>
-          );
-        });
-      } else {
-
-        toast.error(`Error al crear la carpeta: ${result.message}`);
-      }
-    });
-    ipcRenderer.send('createFolder');
+      toast.error(!path_sel.value.length ? error.continue_folder.msg : !fs.existsSync(path_sel.value) ? error.folder_exist : error.error_install.msg);
+  
+    }
   }
-
-
 
   //In case to errors
   const showError = (message, error) => {
     setIsLoading(false);
     Swal.fire({
-      icon: 'error',
-      title: 'Error al intentar conexion',
-      background: '#141414',
+      icon: "error",
+      title: "Error al intentar conexion",
+      background: "#141414",
       customClass: {
-        container: 'title-loader',
-        popup: 'title-loader',
-        header: 'title-loader',
-        title: 'title-loader',
+        container: "title-loader",
+        popup: "title-loader",
+        header: "title-loader",
+        title: "title-loader",
       },
       text: message,
-      footer: error ? error.toString() : '',
+      footer: error ? error.toString() : "",
 
       didClose: () => {
-
         Swal.fire({
-          title: 'Porfavor visita este sitio y crea un perfil de Minecraft',
-          text: 'https://www.minecraft.net/en-us/msaprofile/mygames/editprofile',
-          background: '#141414',
+          title: "Porfavor visita este sitio y crea un perfil de Minecraft",
+          text: "https://www.minecraft.net/en-us/msaprofile/mygames/editprofile",
+          background: "#141414",
           customClass: {
-            container: 'title-loader',
-            popup: 'title-loader',
-            header: 'title-loader',
-            title: 'title-loader',
+            container: "title-loader",
+            popup: "title-loader",
+            header: "title-loader",
+            title: "title-loader",
           },
-        })
-
-
-      }
+        });
+      },
     });
   };
+
+  function ChangeRoute() {
+    const { ipcRenderer } = require("electron");
+    ipcRenderer.invoke("window_select_folder").then((e) => {
+      document.querySelector(".input-folder input").value = e[0];
+    });
+  }
 
   const handleButtonClick = () => {
     // Configura el contenido de la notificación
 
-    console.log('wpw')
+    console.log("wpw");
 
     const notificationContent = (
       <div>
         <h3>Instalando Contenido</h3>
         <p>Progreso: 10%</p>
-
       </div>
     );
 
@@ -196,42 +212,47 @@ export const InstallFirstFiles = ({ children }) => {
       duration: 40000000, // Duración en milisegundos (opcional)
     });
 
-    console.log('wpw')
+    console.log("wpw");
   };
-
 
   if (!connectMinecraft) {
     return (
-      <div className='displayAdvertence'>
-
-        <div className='content-advertence'>
-
-          <div className='content-advertence-text'>
-
+      <div className="displayAdvertence">
+        <div className="content-advertence">
+          <div className="content-advertence-text">
             <div>
               <h1>INSTALACION DE UF LAUNCHER</h1>
             </div>
             <div>
-              <p>Hola, Bienvenido a UF Launcher, el launcher oficial de UF Launcher, antes de continuar necesitamos instalar algunos archivos.</p>
+              <p>
+                Hola, Bienvenido a UF Launcher, el launcher oficial de Unity
+                Force, antes de continuar necesitamos instalar algunos archivos.
+              </p>
               <ul>
                 <li>+ La instalacion tiene un peso de 8MB.</li>
-                <li>+ No cambiaremos a tus archivos personales.</li>
-                <li>+ Accederemos a una red de instalacion privada.</li>
-                <li>+ Instalaremos archivos dentro de tu equipo.</li>
               </ul>
             </div>
-            <p>Ruta de instalacion: C:/UFLauncher/launchers</p>
-            <button onClick={downloadInstance} className='button-general-install'>Iniciar Instalacion</button>
           </div>
         </div>
-
+        <div className="install-section">
+          <div className="input-folder">
+            <input
+              type="text"
+              readOnly
+              placeholder="Seleccione una ruta para la instalación"
+              required
+            />
+            <button onClick={ChangeRoute} className="select_folder">
+              <p>Cambiar Ruta</p>
+            </button>
+          </div>
+          <button onClick={downloadInstance} className="button-general-install">
+            Iniciar Instalacion
+          </button>
+        </div>
       </div>
     );
   } else {
-    return (
-      <div className="root">
-        {children}
-      </div>
-    );
+    return <div className="root">{children}</div>;
   }
 };

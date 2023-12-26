@@ -46,7 +46,7 @@ export default function useDownloadLauncher(url, path, root) {
             setComplete(true);         
         } catch (ex) {
             console.error('Error al descomprimir el archivo:', ex);
-            errorZip(true)
+            setErrorZip(true)
             Swal.fire({
               icon: 'error',
               title: 'Tuviste un error.',

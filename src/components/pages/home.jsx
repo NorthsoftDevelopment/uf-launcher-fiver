@@ -385,7 +385,7 @@ export const Home = () => {
                   autoplay="true"
                   slides-per-view="3"
                   space-between="5"
-                  width="1350"
+                  width="1200"
                   autoplay-delay="5000"
                 >
               {news.map((news, index) => (

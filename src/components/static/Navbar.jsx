@@ -130,7 +130,7 @@ export const Navbar = () => {
               ></img>
             </div>
             <button data-tooltip-id="my-tooltip"
-                data-tooltip-content="cerrar session" onClick={Logout}>
+                data-tooltip-content="Cerrar Sesion" onClick={Logout}>
               
               <svg
                 xmlns="http://www.w3.org/2000/svg"

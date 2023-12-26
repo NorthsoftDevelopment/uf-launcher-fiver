@@ -12,18 +12,19 @@ export const InstallFirstFiles = ({ children }) => {
   //take tokenmc from cookies and set loading screen
   const connectMinecraft = Cookies.get("basicInstallationComplete");
   const [isLoading, setIsLoading] = useState(false);
+  const [rootUser, setRootUser] = useState();
 
   // Error control
 
   const error = {
-    "continue_folder":{
-      "msg":"Selecciona una carpeta para continuar la instalación"
+    "continue_folder": {
+      "msg": "Selecciona una carpeta para continuar la instalación"
     },
     "folder_exist": {
-      "msg":"Error la carpeta seleccionada no existe"
+      "msg": "Error la carpeta seleccionada no existe"
     },
-    "error_install":{
-      "msg":"Error al intentar instalar los recursos"
+    "error_install": {
+      "msg": "Error al intentar instalar los recursos"
     }
   }
 
@@ -130,7 +131,7 @@ export const InstallFirstFiles = ({ children }) => {
                     sameSite: "strict",
                   });
                   Cookies.set('instance', '1', { expires: 365, sameSite: 'strict' });
-                  Cookies.set('root', 'C:/UFLauncher/instances', { expires: 365, sameSite: 'strict' });
+                  Cookies.set('root', rootUser, { expires: 365, sameSite: 'strict' });
                   window.location.href = "/";
                 }
               }
@@ -149,10 +150,10 @@ export const InstallFirstFiles = ({ children }) => {
         }
       });
       ipcRenderer.send("createFolder");
-    }else {
+    } else {
 
       toast.error(!path_sel.value.length ? error.continue_folder.msg : !fs.existsSync(path_sel.value) ? error.folder_exist : error.error_install.msg);
-  
+
     }
   }
 
@@ -191,7 +192,9 @@ export const InstallFirstFiles = ({ children }) => {
   function ChangeRoute() {
     const { ipcRenderer } = require("electron");
     ipcRenderer.invoke("window_select_folder").then((e) => {
+      setRootUser(e[0])
       document.querySelector(".input-folder input").value = e[0];
+
     });
   }
 

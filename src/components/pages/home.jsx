@@ -88,7 +88,7 @@ export const Home = () => {
 
       const background = instances.fondoPrincipal
       Cookies.set('background', background, { expires: 365, sameSite: 'strict' });
-      
+
       console.log(instances.noticias)
       setLoading(false)
 
@@ -278,6 +278,21 @@ export const Home = () => {
 
             if (errorZip) {
 
+              toast.error("Descarga con errores", { id: t.id });
+
+              const fs = require('fs');
+              const path = require('path');
+              const filePath = path.join(route, InfoInstance.title, `${InfoInstance.versionInstance}.txt`);
+
+              const fileContent = '¡Descarga finalizada!';
+
+              fs.writeFileSync(filePath, fileContent);
+
+              console.log('Archivo creado en:', filePath);
+
+              setInstalling(false)
+
+              window.location.reload()
 
             } else {
 
@@ -375,30 +390,34 @@ export const Home = () => {
                   <button className="button-remove" data-tooltip-id="my-tooltip" data-tooltip-content="Elimina los archivos de la instancia selecciona. Esta opcion es irreversible.">X</button>
                 </div>
               </div>
+
+            </div>
+            <div className="news-div">
+
+
               <h3 className="title">Ultimas Actualizaciones</h3>
               <div className="news-container">
 
-              <swiper-container
-                  centeredSlides="true"
+                <swiper-container
+                  enteredSlides="true"
                   speed="500"
                   loop="true"
                   autoplay="true"
-                  slides-per-view="3"
-                  space-between="5"
-                  width="1350"
+                  slides-per-view="2"
+                  space-between="10"
                   autoplay-delay="5000"
                 >
-              {news.map((news, index) => (
-                <swiper-slide key={index}>
-                <div className="news-item" >
-                  <h3>{news.title}</h3>
-                  <p>{news.desc}</p>
-                  <img src={news.img}></img>
-                </div>
-                </swiper-slide>
-              ))}
-              </swiper-container>
-                </div>
+                  {news.map((news, index) => (
+                    <swiper-slide key={index}>
+                      <div className="news-item" >
+                        <h3>{news.title}</h3>
+                        <p>{news.desc}</p>
+                        <img src={news.img}></img>
+                      </div>
+                    </swiper-slide>
+                  ))}
+                </swiper-container>
+              </div>
             </div>
           </div>
         </div>

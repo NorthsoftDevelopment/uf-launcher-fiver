@@ -1,50 +1,52 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import Cookies from 'js-cookie'
+import React from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 export const InstancesPage = () => {
-    useEffect(() => {
+  const [instances, setInstances] = useState([]);
+  useEffect(() => {
+    takeInstances();
+  }, []);
 
-        takeInstances()
+  const background = Cookies.get("background");
 
-    }, [])
+  const takeInstances = async () => {
+    try {
+      const api = "https://uf-launcher-api-fiver.vercel.app/instances";
 
-    const background = Cookies.get('background')
+      const profileJSON = Cookies.get("user");
+      const profile = JSON.parse(profileJSON);
 
-    const takeInstances = async () => {
-        try {
-            const api = 'https://uf-launcher-api-fiver.vercel.app/instances';
+      const data = {
+        id: profile.id,
+      };
 
-            const profileJSON = Cookies.get('user')
-            const profile = JSON.parse(profileJSON)
+      const response = await axios.post(api, data);
+      const instances = response.data;
+      setInstances(instances.instances);
+      console.log(instances);
 
-            const data = {
+      setLoading(false);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
 
-                id: profile.id
-            }
-
-            const response = await axios.post(api, data);;
-            const instances = response.data;
-
-            console.log(instances)
-
-            setLoading(false)
-
-        } catch (error) {
-
-            console.log('error', error);
-
-        }
-
-    };
-
-    return (
-        <div className="welcome">
-            <div className="bg-img">
-                <img src={background} alt="" />
+  return (
+    <div className="welcome scroll">
+      <div className="bg-img">
+        <img src={background} alt="" />
+      </div>
+      <div className="instances-container">
+        {instances.map((instance, index) => (
+            <div key={index} className="instance-item">
+              <h3>{instance.title}</h3>
+              <p>{instance.desc}</p>
+              <img src={instance.img}></img>
             </div>
-
-        </div>
-    )
-}
+        ))}
+      </div>
+    </div>
+  );
+};

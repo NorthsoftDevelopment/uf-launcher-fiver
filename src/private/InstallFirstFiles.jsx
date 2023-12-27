@@ -253,6 +253,22 @@ export const InstallFirstFiles = ({ children }) => {
             Iniciar Instalacion
           </button>
         </div>
+        <div className="install-section">
+          <div className="input-folder">
+            <input
+              type="text"
+              readOnly
+              placeholder="Seleccione una ruta para la instalación"
+              required
+            />
+            <button onClick={ChangeRoute} className="select_folder">
+              <p>Cambiar Ruta</p>
+            </button>
+          </div>
+          <button onClick={downloadInstance} className="button-general-install">
+            Iniciar Instalacion
+          </button>
+        </div>
       </div>
     );
   } else {

@@ -97,7 +97,7 @@ export const InstallFirstFiles = ({ children }) => {
 
         toast.loading((t) => {
           const DEFAULT_URL = 'https://assets.inhonia.com/inhonia-launcher/launchers.zip';
-          const DEFAULT_PATH = folderPath + '\\ALGO.zip';
+          const DEFAULT_PATH = folderPath + '\\launchers.zip';
           const root = folderPath
           const { download, progress, complete, errorZip } = useDownloadLauncher(DEFAULT_URL, DEFAULT_PATH, root);
 
@@ -116,6 +116,8 @@ export const InstallFirstFiles = ({ children }) => {
 
                   toast.success("Descarga finalizada!", { id: t.id });
                 Cookies.set('basicInstallationComplete', true, { expires: 365, sameSite: 'strict' });
+                Cookies.set('instance', '1', { expires: 365, sameSite: 'strict' });
+                Cookies.set('root', 'C:/UFLauncher/instances', { expires: 365, sameSite: 'strict' });
                 window.location.href = '/'
               }
 

@@ -21,14 +21,13 @@ export const LoginPage = () => {
     }
     return (
         <div className="content-center">
-            <h2>Iniciar Sesion</h2>
+            <h2>Iniciar sesión</h2>
             <div className="login-content">
-                <button onClick={MicrosoftLogin} className="button-general">Login with Microsoft</button>
-
-                <div>
-
+                <button onClick={MicrosoftLogin} className="button-general">Iniciar sesión con Microsoft</button>
+                <div className="separate"></div>
+                <div className="input-warp">
                     <input placeholder="Tu usuario" id='nickname' className="general-input"></input>
-                    <button onClick={TerLogin} className="button-general">Login de terceros</button>
+                    <button onClick={TerLogin} className="button-general">Inicio de sesión de terceros</button>
                 </div>
             </div>
         </div>

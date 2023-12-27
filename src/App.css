@@ -814,6 +814,12 @@ html::-webkit-scrollbar-thumb {
 }
 
 
+.scroll {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
 
 .instance-item {
   width:390px;

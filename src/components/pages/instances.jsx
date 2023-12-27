@@ -34,7 +34,7 @@ export const InstancesPage = () => {
   };
 
   return (
-    <div className="welcome">
+    <div className="welcome scroll">
       <div className="bg-img">
         <img src={background} alt="" />
       </div>

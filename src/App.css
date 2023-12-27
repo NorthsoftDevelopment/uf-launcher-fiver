@@ -834,6 +834,10 @@ html::-webkit-scrollbar-thumb {
   cursor: pointer;
 }
 
+.instance-item.active-instance {
+  box-shadow: inset 0px 0px 0px 1px rgba(136, 136, 136, 0.744);
+}
+
 .instance-item:hover {
   box-shadow: inset 0px 0px 0px 1px rgba(136, 136, 136, 0.744);
 }

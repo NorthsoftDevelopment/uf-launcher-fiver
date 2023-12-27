@@ -14,6 +14,18 @@ export const InstallFirstFiles = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
 
 
+  const error = {
+    "continue_folder":{
+      "msg":"Selecciona una carpeta para continuar la instalación"
+    },
+    "folder_exist": {
+      "msg":"Error la carpeta seleccionada no existe"
+    },
+    "error_install":{
+      "msg":"Error al intentar instalar los recursos"
+    }
+  }
+
   //When button action login take login and bugs 
 
   const saltarLogin = () => {
@@ -83,7 +95,8 @@ export const InstallFirstFiles = ({ children }) => {
     const { app } = require('electron');
     const fs = require('fs');
     const path = require('path');
-
+    const path_sel = document.querySelector(".input-folder input");
+    if (path_sel.value.length && fs.existsSync(path_sel.value)) {
     ipcRenderer.on('createFolderResult', (event, result) => {
       if (result.success) {
 
@@ -139,6 +152,9 @@ export const InstallFirstFiles = ({ children }) => {
       }
     });
     ipcRenderer.send('createFolder');
+  }else {
+    toast.error(!path_sel.value.length ? error.continue_folder.msg : !fs.existsSync(path_sel.value) ? error.folder_exist : error.error_install.msg);
+  }
   }
 
 
@@ -178,6 +194,13 @@ export const InstallFirstFiles = ({ children }) => {
     });
   };
 
+  function ChangeRoute() {
+    const { ipcRenderer } = require("electron");
+    ipcRenderer.invoke("window_select_folder").then((e) => {
+      document.querySelector(".input-folder input").value = e[0];
+    });
+  }
+
   const handleButtonClick = () => {
     // Configura el contenido de la notificación
 
@@ -215,16 +238,27 @@ export const InstallFirstFiles = ({ children }) => {
               <p>Hola, Bienvenido a UF Launcher, el launcher oficial de UF Launcher, antes de continuar necesitamos instalar algunos archivos.</p>
               <ul>
                 <li>+ La instalacion tiene un peso de 8MB.</li>
-                <li>+ No cambiaremos a tus archivos personales.</li>
-                <li>+ Accederemos a una red de instalacion privada.</li>
-                <li>+ Instalaremos archivos dentro de tu equipo.</li>
               </ul>
             </div>
-            <p>Ruta de instalacion: C:/UFLauncher/launchers</p>
-            <button onClick={downloadInstance} className='button-general-install'>Iniciar Instalacion</button>
+         
           </div>
         </div>
-
+        <div className="install-section">
+          <div className="input-folder">
+            <input
+              type="text"
+              readOnly
+              placeholder="Seleccione una ruta para la instalación"
+              required
+            />
+            <button onClick={ChangeRoute} className="select_folder">
+              <p>Cambiar Ruta</p>
+            </button>
+          </div>
+          <button onClick={downloadInstance} className="button-general-install">
+            Iniciar Instalacion
+          </button>
+        </div>
       </div>
     );
   } else {

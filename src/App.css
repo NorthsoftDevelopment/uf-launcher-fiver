@@ -805,6 +805,60 @@ html::-webkit-scrollbar-thumb {
   gap: 30px;
 }
 
+.instances-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px;
+}
+
+
+
+.instance-item {
+  width:390px;
+  height: 235px;
+  transition: 0.3s ease box-shadow;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  background: #4240406e;
+  padding-top: 5px;
+  cursor: pointer;
+}
+
+.instance-item:hover {
+  box-shadow: inset 0px 0px 0px 1px rgba(136, 136, 136, 0.744);
+}
+
+.instance-item:hover img {
+  box-shadow: 0px 0px 0px 1px rgb(251, 251, 251);
+}
+
+
+.instance-item img{
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.3s ease transform;
+}
+
+.instance-item:hover img {
+  transform: translateY(5px);
+}
+
+.instance-item h3 {
+  padding: 0px 11px;
+}
+
+.instance-item p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  padding: 0px 11px;
+}
 
 .news-container {
   display: flex;
@@ -836,7 +890,9 @@ html::-webkit-scrollbar-thumb {
 
 .news-item img{
   border-radius: 15px;
-
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: 0.3s ease transform;
 }
 

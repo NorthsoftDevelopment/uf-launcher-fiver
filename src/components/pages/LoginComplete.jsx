@@ -20,35 +20,30 @@ export const CompleteLogin = () => {
         try {
 
             const profileJSON = Cookies.get('user')
-            
-            if (profileJSON) {
-                const profile = JSON.parse(profileJSON)
 
-                const data = {
-                    user: profile.name,
-                    id: profile.id,
-                }
+            const profile = JSON.parse(profileJSON)
 
-                const response = await axios.post(api, data);
+            const data = {
+                user: profile.name,
+                id: profile.id,
+            }
 
-                console.log(response)
+            const response = await axios.post(api, data);
 
+            console.log(response)
 
 
-                if (!response) {
 
-                } else {
-
-                    setIsLoading(false)
-
-                    window.location.href = '/'
-                }
+            if (!response) {
 
             } else {
 
-                Logout()
-                window.location.href = '/login'
+                setIsLoading(false)
+
+                window.location.href = '/'
             }
+
+
 
         } catch (error) {
 
@@ -69,5 +64,5 @@ export const CompleteLogin = () => {
 
 
 
-    
+
 }

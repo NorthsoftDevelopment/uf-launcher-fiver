@@ -827,6 +827,21 @@ html::-webkit-scrollbar-thumb {
 }
 
 
+.instances-container {
+  width: -webkit-fill-available;
+  height: 100%;
+  margin-left: 30px;
+  margin-right: 15px;
+  padding: 15px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.603);
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+
 .instance-item {
   width:390px;
   height: 235px;
@@ -837,6 +852,41 @@ html::-webkit-scrollbar-thumb {
   background: #4240406e;
   padding-top: 5px;
   cursor: pointer;
+}
+
+.instance-play {
+  height: 20px;
+  bottom: 0;
+  left: 0;
+  gap: 5px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease transform;
+  transform: translateY(45px);
+  background-color: white;
+  position: absolute;
+  z-index: 99;
+  padding: 5px 10px;
+  border-radius: 5rem;
+}
+
+.instance-play p {
+  color:black;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0;
+}
+
+.instance-play svg{
+  width: 20px;
+  
+  fill: black;
+}
+
+.instance-item:hover .instance-play {
+  transform: translateY(0px);
 }
 
 .instance-item.active-instance {
@@ -853,7 +903,6 @@ html::-webkit-scrollbar-thumb {
 
 
 .instance-item img{
-  border-radius: 15px;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -868,7 +917,7 @@ html::-webkit-scrollbar-thumb {
   padding: 0px 11px;
 }
 
-.instance-item p {
+.instance-item > p {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;

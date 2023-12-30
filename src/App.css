@@ -839,6 +839,23 @@ html::-webkit-scrollbar-thumb {
   cursor: pointer;
 }
 
+.instance-item button {
+  margin-left: 10px;
+  background-color: red;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding-inline: 20px;
+  padding-block: 5px;
+  margin-block: 10px;
+  transition: all 0.2s;
+}
+
+.instance-item button:hover {
+  background-color: rgb(107, 31, 31);
+}
+
+
 .instance-item.active-instance {
   box-shadow: inset 0px 0px 0px 1px rgba(136, 136, 136, 0.744);
 }
@@ -877,23 +894,32 @@ html::-webkit-scrollbar-thumb {
 }
 
 .news-div {
-  width: 90%;
+  width: 95%;
   background-color: rgba(0, 0, 0, 0.603);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
   margin-top: 20px;
-  padding: 30px;
+  padding-block: 25px;
+
 }
 
 .news-container {
-  width: 100%;
+  width: 95%;
   display: flex;
+  padding-inline: 10px;
 }
 
 swiper-container {
-  width: 100%;
+  max-width: 100%;
+}
+
+.container-idk {
+  width:  100%;
+  height: 100%;
+  padding-inline: 30px;
 }
 
 .news-item {
@@ -941,7 +967,7 @@ swiper-container {
 }
 
 .title {
-margin-bottom: 20px;
+margin-bottom: 10px;
 }
 
 
@@ -951,3 +977,14 @@ margin-bottom: 20px;
   flex-direction: column;
   align-items: flex-end;
 }
+
+
+.instances-container {
+
+  display: flex;
+  flex-wrap:  wrap;
+  gap: 20px;
+}
+
+
+

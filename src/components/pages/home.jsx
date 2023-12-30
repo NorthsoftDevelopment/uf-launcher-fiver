@@ -330,6 +330,9 @@ export const Home = () => {
   }
 
 
+  const background = Cookies.get('background')
+
+
 
   return (
     <div className="welcome">
@@ -337,7 +340,7 @@ export const Home = () => {
 
         <div>
           <div className="bg-img">
-            <img src="https://cdn.discordapp.com/attachments/1187901689412472882/1187901787546587236/Background_1920x1080.png?ex=659892c0&is=65861dc0&hm=f21e3c924fdfc1ff482517a1e874f547cae44f166f346f051630c44aecb5d7b4&" alt="" />
+            <img src={background} alt="" />
           </div>
 
 

@@ -37,7 +37,7 @@ export const InstancesPage = () => {
   const seleccionar = (id) => {
     console.log(id)
     Cookies.set('instance', id, { expires: 365, sameSite: 'strict' });
-
+    window.location.href = "/"
     // Llama a react-hot-toast con la notificación
     toast.success('Instancia Seleccionada', {
       duration: 4000, // Duración en milisegundos (opcional)

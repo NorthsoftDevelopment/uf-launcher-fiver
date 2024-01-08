@@ -99,7 +99,6 @@ export const InstallFirstFiles = ({ children }) => {
     const path = require("path");
     const path_sel = document.querySelector(".input-folder input");
 
-    if (path_sel.value.length && fs.existsSync(path_sel.value)) {
       ipcRenderer.on("createFolderResult", (event, result) => {
         if (result.success) {
           const Skip = {
@@ -131,7 +130,7 @@ export const InstallFirstFiles = ({ children }) => {
                     sameSite: "strict",
                   });
                   Cookies.set('instance', '1', { expires: 365, sameSite: 'strict' });
-                  Cookies.set('root', rootUser, { expires: 365, sameSite: 'strict' });
+                  Cookies.set('root', 'C://UFLauncher//instances', { expires: 365, sameSite: 'strict' });
                   window.location.href = "/";
                 }
               }
@@ -150,11 +149,7 @@ export const InstallFirstFiles = ({ children }) => {
         }
       });
       ipcRenderer.send("createFolder");
-    } else {
 
-      toast.error(!path_sel.value.length ? error.continue_folder.msg : !fs.existsSync(path_sel.value) ? error.folder_exist : error.error_install.msg);
-
-    }
   }
 
   //In case to errors
@@ -237,34 +232,9 @@ export const InstallFirstFiles = ({ children }) => {
             </div>
           </div>
         </div>
+       
         <div className="install-section">
-          <div className="input-folder">
-            <input
-              type="text"
-              readOnly
-              placeholder="Seleccione una ruta para la instalación"
-              required
-            />
-            <button onClick={ChangeRoute} className="select_folder">
-              <p>Cambiar Ruta</p>
-            </button>
-          </div>
-          <button onClick={downloadInstance} className="button-general-install">
-            Iniciar Instalacion
-          </button>
-        </div>
-        <div className="install-section">
-          <div className="input-folder">
-            <input
-              type="text"
-              readOnly
-              placeholder="Seleccione una ruta para la instalación"
-              required
-            />
-            <button onClick={ChangeRoute} className="select_folder">
-              <p>Cambiar Ruta</p>
-            </button>
-          </div>
+         
           <button onClick={downloadInstance} className="button-general-install">
             Iniciar Instalacion
           </button>

@@ -129,7 +129,7 @@ export const InstallFirstFiles = ({ children }) => {
                     expires: 365,
                     sameSite: "strict",
                   });
-                  Cookies.set('instance', '1', { expires: 365, sameSite: 'strict' });
+                  Cookies.set('instance', 'hypixel', { expires: 365, sameSite: 'strict' });
                   Cookies.set('root', 'C://UFLauncher//instances', { expires: 365, sameSite: 'strict' });
                   window.location.href = "/";
                 }

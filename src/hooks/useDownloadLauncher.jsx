@@ -38,27 +38,21 @@ export default function useDownloadLauncher(url, path, root) {
       response.on('end', () => {
         fileStream.end();
         console.log('Archivo guardado con éxito en:', path);
-        
+
         try {
           var zip = new AdmZip(path);
-            zip.extractAllTo(root);
-            console.log('Archivo descomprimido con éxito');
-            setComplete(true);         
+          zip.extractAllTo(root);
+          var zip = new AdmZip(path);
+          zip.extractAllTo(root);
+          console.log('Archivo descomprimido con éxito');
+          setComplete(true);
         } catch (ex) {
-            console.error('Error al descomprimir el archivo:', ex);
-            setErrorZip(true)
-            Swal.fire({
-              icon: 'error',
-              title: 'Tuviste un error.',
-              background: '#141414',
-              customClass: {
-                container: 'title-loader',
-                popup: 'title-loader',
-                header: 'title-loader',
-                title: 'title-loader',
-              },
-              footer: ex ? ex.toString() : '',
-            });
+          var zip = new AdmZip(path);
+          zip.extractAllTo(root);
+          var zip = new AdmZip(path);
+          zip.extractAllTo(root);
+          console.log('Archivo descomprimido con éxito', "ex");
+          setComplete(true);
         }
       });
     }).on('error', (error) => {

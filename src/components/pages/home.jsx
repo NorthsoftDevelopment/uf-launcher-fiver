@@ -29,6 +29,47 @@ export const Home = () => {
     }
   }, [InfoInstance.title]);
 
+  const removeInstance = () => {
+
+    console.log('Preparing to delete:', route + '/' + InfoInstance.title);
+
+
+    Swal.fire({
+        text: "Esta accion es permanente",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Si, eliminar',
+        cancelButtonText: 'Cancelar',
+      
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            const folderPath = route + '/' + InfoInstance.title;
+
+            const fs = require('fs');
+            const path = require('path');
+
+            fs.rmdir(folderPath, { recursive: true }, (err) => {
+                if (err) {
+                    console.error('Error al eliminar la carpeta:', err);
+                    Swal.fire(
+                        'Error',
+                        'Hubo un error al eliminar la carpeta.',
+                        'error'
+                    );
+                } else {
+                    console.log('Carpeta eliminada correctamente.');
+                    Swal.fire(
+                        'Eliminado!',
+                        'La instanncia ha sido eliminada correctamente.',
+                        'success'
+                    );
+                }
+            });
+        }
+    });
+};
+
   function checkInstallation() {
     const fs = require('fs');
     const path = require('path');
@@ -390,7 +431,7 @@ export const Home = () => {
                   )
                   }
 
-                  <button className="button-remove" data-tooltip-id="my-tooltip" data-tooltip-content="Elimina los archivos de la instancia selecciona. Esta opcion es irreversible.">X</button>
+                  <button className="button-remove" data-tooltip-id="my-tooltip" data-tooltip-content="Elimina los archivos de la instancia selecciona. Esta opcion es irreversible." onClick={removeInstance}>X</button>
                 </div>
               </div>
 

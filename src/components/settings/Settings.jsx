@@ -129,14 +129,7 @@ export default function Settings() {
                             value={root}
                             onValueChange={changeRoot}
                         />
-                        <div>
-                            <h3>Perfil</h3>
-                            <div className={classes.redzone} >
-                                <p>En caso de presentar errores con la instalacion, presiona este boton para reiniciarla</p>
-                                <button onClick={installationTry} className="button-general">Reiniciar Instalacion</button>
-                                <button onClick={Logout} className="button-general">Cerrar Sesion</button>
-                            </div>
-                        </div>
+                       
                         <div>
                             <h3>Informacion</h3>
                             <div className={classes.infoapp} >
@@ -152,15 +145,15 @@ export default function Settings() {
                 </div>
                 <div className="content-70-short-part">
                     <div className={classes.settingsList}>
-                        <SliderSetting
-                            name="allocatedMemory"
-                            title="Memoria asignada"
-                            description="Memoria RAM que sera reservada para lanzar."
-                            options={OPTIONS.allocatedMemory}
-                            value={values.allocatedMemory}
-                            onValueChange={handleValueChange}
-                        />
-
+                       
+                    <div>
+                            <h3>Perfil</h3>
+                            <div className={classes.redzone} >
+                                <p>En caso de presentar errores con la instalacion, presiona este boton para reiniciarla</p>
+                                <button onClick={installationTry} className="button-general">Reiniciar Instalacion</button>
+                                <button onClick={Logout} className="button-general">Cerrar Sesion</button>
+                            </div>
+                        </div>
                     </div>
 
 

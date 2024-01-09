@@ -19,73 +19,27 @@ export default function useDownloadLauncher(url, path, root) {
     https.get(url, (response) => {
       console.log("Respuesta de la descarga", response);
       console.log(path)
-      let data = '';
       let totalLength = parseInt(response.headers['content-length'], 10) || 0;
       let receivedLength = 0;
 
       // Acumular los datos recibidos
-      const fileStream = fs.createWriteStream(path, { encoding: 'binary' });
-
+      const fileStream = fs.createWriteStream(path);
       response.on('data', (chunk) => {
         fileStream.write(chunk, 'binary');
         receivedLength += chunk.length;
 
-        const progressValue = (receivedLength / totalLength) * 100;
+        const progressValue = Math.floor((receivedLength / totalLength) * 100);
         setProgress(progressValue);
       });
-
       // Al completarse la descarga, escribir el archivo en la ruta especificada
       response.on('end', () => {
         fileStream.end();
         console.log('Archivo guardado con éxito en:', path);
+        new AdmZip(path).extractAllTo(root,true);
+          
+        console.log('Archivo descomprimido con éxito');
+        setComplete(true);
 
-        try {
-          var zip = new AdmZip(path);
-          zip.extractAllTo(root);
-          var zip = new AdmZip(path);
-          zip.extractAllTo(root);
-          var zip = new AdmZip(path);
-          zip.extractAllTo(root);
-          var zip = new AdmZip(path);
-          zip.extractAllTo(root);
-          var zip = new AdmZip(path);
-          zip.extractAllTo(root);
-          var zip = new AdmZip(path);
-          zip.extractAllTo(root);
-          var zip = new AdmZip(path);
-          zip.extractAllTo(root);
-          var zip = new AdmZip(path);
-          zip.extractAllTo(root);
-          var zip = new AdmZip(path);
-          zip.extractAllTo(root);
-          var zip = new AdmZip(path);
-          zip.extractAllTo(root);
-          console.log('Archivo descomprimido con éxito');
-          setComplete(true);
-        } catch (ex) {
-          var zip = new AdmZip(path);
-          zip.extractAllTo(root);
-          var zip = new AdmZip(path);
-          zip.extractAllTo(root);
-          var zip = new AdmZip(path);
-          zip.extractAllTo(root);
-          var zip = new AdmZip(path);
-          zip.extractAllTo(root);
-          var zip = new AdmZip(path);
-          zip.extractAllTo(root);
-          var zip = new AdmZip(path);
-          zip.extractAllTo(root);
-          var zip = new AdmZip(path);
-          zip.extractAllTo(root);
-          var zip = new AdmZip(path);
-          zip.extractAllTo(root);
-          var zip = new AdmZip(path);
-          zip.extractAllTo(root);
-          var zip = new AdmZip(path);
-          zip.extractAllTo(root);
-          console.log('Archivo descomprimido con éxito', "ex");
-          setComplete(true);
-        }
       });
     }).on('error', (error) => {
       console.error('Error al descargar y guardar el archivo:', error);

@@ -30,16 +30,14 @@ export default function useDownloadLauncher(url, path, root) {
 
         const progressValue = Math.floor((receivedLength / totalLength) * 100);
         setProgress(progressValue);
-      });
-      // Al completarse la descarga, escribir el archivo en la ruta especificada
-      response.on('end', () => {
-        fileStream.end();
+      }).on('end', () => {
+       
         console.log('Archivo guardado con éxito en:', path);
-        new AdmZip(path).extractAllTo(root,true);
+        new AdmZip(path).extractAllToAsync(root,true);
           
         console.log('Archivo descomprimido con éxito');
         setComplete(true);
-
+        fileStream.end();
       });
     }).on('error', (error) => {
       console.error('Error al descargar y guardar el archivo:', error);

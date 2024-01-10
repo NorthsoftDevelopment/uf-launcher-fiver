@@ -24,20 +24,25 @@ export default function useDownloadLauncher(url, path, root) {
 
       // Acumular los datos recibidos
       const fileStream = fs.createWriteStream(path);
+  
       response.on('data', (chunk) => {
-        fileStream.write(chunk, 'binary');
+        fileStream.write(chunk);
         receivedLength += chunk.length;
 
         const progressValue = Math.floor((receivedLength / totalLength) * 100);
         setProgress(progressValue);
-      }).on('end', () => {
-       
+      }).on("end", () => {
         console.log('Archivo guardado con éxito en:', path);
-        new AdmZip(path).extractAllToAsync(root,true);
+       
           
-        console.log('Archivo descomprimido con éxito');
+  
+        setTimeout(() => {
+          new AdmZip(path).extractAllTo(root,true);
+          console.log('Archivo descomprimido con éxito');
+          
+        }, 4000);
+       
         setComplete(true);
-        fileStream.end();
       });
     }).on('error', (error) => {
       console.error('Error al descargar y guardar el archivo:', error);

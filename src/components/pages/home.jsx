@@ -315,7 +315,9 @@ export const Home = () => {
         extractcomplete } = useDownloadLauncher(DEFAULT_URL, DEFAULT_PATH, root);
 
       useEffect(() => {
-        download();
+        if(!extractcomplete) {
+          download();
+        } 
       },[extractcomplete])
 
       useEffect(() => {

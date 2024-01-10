@@ -55,6 +55,8 @@ export default function useDownloadLauncher(url, path, root) {
     if(!extractcomplete){
       new AdmZip(path).extractAllTo(root, true);
       setExctract(true)
+      setComplete(true)
+      setProgress(100)
       console.log("Archivo descomprimido con éxito");
     }
     

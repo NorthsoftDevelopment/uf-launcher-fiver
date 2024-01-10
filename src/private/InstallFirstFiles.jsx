@@ -7,7 +7,6 @@ import Swal from "sweetalert2";
 
 //Component to identify if the user has a good minecraft account
 
-
 export const InstallFirstFiles = ({ children }) => {
   //take tokenmc from cookies and set loading screen
   const connectMinecraft = Cookies.get("basicInstallationComplete");
@@ -17,16 +16,16 @@ export const InstallFirstFiles = ({ children }) => {
   // Error control
 
   const error = {
-    "continue_folder": {
-      "msg": "Selecciona una carpeta para continuar la instalación"
+    continue_folder: {
+      msg: "Selecciona una carpeta para continuar la instalación",
     },
-    "folder_exist": {
-      "msg": "Error la carpeta seleccionada no existe"
+    folder_exist: {
+      msg: "Error la carpeta seleccionada no existe",
     },
-    "error_install": {
-      "msg": "Error al intentar instalar los recursos"
-    }
-  }
+    error_install: {
+      msg: "Error al intentar instalar los recursos",
+    },
+  };
 
   //When button action login take login and bugs
 
@@ -99,57 +98,71 @@ export const InstallFirstFiles = ({ children }) => {
     const path = require("path");
     const path_sel = document.querySelector(".input-folder input");
 
-      ipcRenderer.on("createFolderResult", (event, result) => {
-        if (result.success) {
-          const Skip = {
-            data: "null",
-          };
+    ipcRenderer.on("createFolderResult", (event, result) => {
+      if (result.success) {
+        const Skip = {
+          data: "null",
+        };
 
-          const SkipJSON = JSON.stringify(Skip);
+        const SkipJSON = JSON.stringify(Skip);
 
-          const folderPath = result.folderPath;
+        const folderPath = result.folderPath;
 
-          toast.loading((t) => {
-            const DEFAULT_URL =
-              "https://assets.inhonia.com/inhonia-launcher/launchers.zip";
-            const DEFAULT_PATH = folderPath + "\\launchers.zip";
-            const root = folderPath;
-            const { download, progress, complete, errorZip } =
-              useDownloadLauncher(DEFAULT_URL, DEFAULT_PATH, root);
+        toast.loading((t) => {
+          const DEFAULT_URL =
+            "https://assets.inhonia.com/inhonia-launcher/launchers.zip";
+          const DEFAULT_PATH = folderPath + "\\launchers.zip";
+          const root = folderPath;
+          const {
+            download,
+            progress,
+            complete,
+            errorZip,
+            extract,
+            extractcomplete
+          } = useDownloadLauncher(DEFAULT_URL, DEFAULT_PATH, root);
 
-            useEffect(() => {
-              download();
-            }, []);
-            useEffect(() => {
-              if (progress === 100.0) {
-                if (complete) {
-                  if (errorZip) {
-                  } else toast.success("Descarga finalizada!", { id: t.id });
-                  Cookies.set("basicInstallationComplete", true, {
-                    expires: 365,
-                    sameSite: "strict",
-                  });
-                  Cookies.set('instance', 'hypixel', { expires: 365, sameSite: 'strict' });
-                  Cookies.set('root', 'C://UFLauncher//instances', { expires: 365, sameSite: 'strict' });
-                  window.location.href = "/";
-                }
-              }
-            }, [progress]);
-            const formattedProgress = Math.floor(progress);
+          const formattedProgress = progress;
 
-            return (
-              <div>
-                <h4>Instalando Contenido</h4>
-                <p>Progreso: {formattedProgress}%</p>
-              </div>
-            );
-          });
-        } else {
-          toast.error(`Error al crear la carpeta: ${result.message}`);
-        }
-      });
-      ipcRenderer.send("createFolder");
+          useEffect(() => {
+            download();
+          },[extractcomplete])
+          
+         
+          useEffect(() => {
 
+            console.log(DEFAULT_PATH, root)
+            console.log(progress, complete);
+            if (progress === 100 && complete && extractcomplete) {
+              toast.success("Descarga finalizada!", { id: t.id });
+              Cookies.set("basicInstallationComplete", true, {
+                expires: 365,
+                sameSite: "strict",
+              });
+              Cookies.set("instance", "hypixel", {
+                expires: 365,
+                sameSite: "strict",
+              });
+              Cookies.set("root", "C://UFLauncher//instances", {
+                expires: 365,
+                sameSite: "strict",
+              });
+              window.location.href = "/";
+            }
+          }, [extractcomplete]);
+
+          return (
+            <div>
+              <h4>Instalando Contenido</h4>
+              <p>Progreso: {formattedProgress}%</p>
+            </div>
+          );
+        });
+      } else {
+        toast.error(`Error al crear la carpeta: ${result.message}`);
+      }
+    });
+    ipcRenderer.send("createFolder");
   }
 
   //In case to errors
@@ -187,9 +200,8 @@ export const InstallFirstFiles = ({ children }) => {
   function ChangeRoute() {
     const { ipcRenderer } = require("electron");
     ipcRenderer.invoke("window_select_folder").then((e) => {
-      setRootUser(e[0])
+      setRootUser(e[0]);
       document.querySelector(".input-folder input").value = e[0];
-
     });
   }
 
@@ -232,9 +244,8 @@ export const InstallFirstFiles = ({ children }) => {
             </div>
           </div>
         </div>
-       
+
         <div className="install-section">
-         
           <button onClick={downloadInstance} className="button-general-install">
             Iniciar Instalacion
           </button>

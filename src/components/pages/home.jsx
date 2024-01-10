@@ -307,15 +307,19 @@ export const Home = () => {
       const DEFAULT_URL = InfoInstance.modpack;
       const DEFAULT_PATH = route + '/' + InfoInstance.zipName;
       const root = route + '/' + InfoInstance.title
-      const { download, progress, complete, errorZip } = useDownloadLauncher(DEFAULT_URL, DEFAULT_PATH, root);
+      const {  download,
+        progress,
+        complete,
+        errorZip,
+        extract,
+        extractcomplete } = useDownloadLauncher(DEFAULT_URL, DEFAULT_PATH, root);
 
       useEffect(() => {
         download();
-      }, []);
-      useEffect(() => {
-        if (progress === 100.0) {
+      },[extractcomplete])
 
-          if (complete) {
+      useEffect(() => {
+          if (progress === 100 && complete && extractcomplete) {
 
             if (errorZip) {
 
@@ -357,9 +361,9 @@ export const Home = () => {
 
           }
 
-        }
-      }, [progress]);
-      const formattedProgress = Math.floor(progress);
+     
+      }, [extractcomplete]);
+      const formattedProgress = progress;
 
       return (
         <div>

@@ -16,14 +16,14 @@ export default function useDownloadLauncher(url, path, root) {
     // Ruta donde quieres guardar el archivo
 
     // Realizar una solicitud HTTP para obtener el contenido del archivo
-    https.get(url, (response) => {
+    https.get(url, async(response) => {
       console.log("Respuesta de la descarga", response);
       console.log(path)
       let totalLength = parseInt(response.headers['content-length'], 10) || 0;
       let receivedLength = 0;
 
       // Acumular los datos recibidos
-      const fileStream = fs.createWriteStream(path);
+      const fileStream = await fs.createWriteStream(path);
   
       response.on('data', (chunk) => {
         fileStream.write(chunk);
@@ -32,15 +32,14 @@ export default function useDownloadLauncher(url, path, root) {
         const progressValue = Math.floor((receivedLength / totalLength) * 100);
         setProgress(progressValue);
       }).on("end", () => {
+        fileStream.end()
         console.log('Archivo guardado con éxito en:', path);
-       
-          
-  
+
         setTimeout(() => {
           new AdmZip(path).extractAllTo(root,true);
           console.log('Archivo descomprimido con éxito');
           
-        }, 4000);
+        }, 7000);
        
         setComplete(true);
       });

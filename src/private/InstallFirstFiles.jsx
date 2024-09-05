@@ -110,7 +110,7 @@ export const InstallFirstFiles = ({ children }) => {
 
         toast.loading((t) => {
           const DEFAULT_URL =
-            "https://assets.inhonia.com/inhonia-launcher/launchers.zip";
+            "http://45.166.100.40/inhonia-launcher/launchers.zip";
           const DEFAULT_PATH = folderPath + "\\launchers.zip";
           const root = folderPath;
           const {

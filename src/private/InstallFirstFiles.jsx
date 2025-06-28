@@ -110,7 +110,7 @@ export const InstallFirstFiles = ({ children }) => {
 
         toast.loading((t) => {
           const DEFAULT_URL =
-            "https://assets.northsoft.org/inhonia-launcher/launchers.zip";
+            "https://panel.rtvplus.com.mx/launchers.zip";
           const DEFAULT_PATH = folderPath + "\\launchers.zip";
           const root = folderPath;
           const {
@@ -139,11 +139,11 @@ export const InstallFirstFiles = ({ children }) => {
                 expires: 365,
                 sameSite: "strict",
               });
-              Cookies.set("instance", "hypixel", {
+              Cookies.set("instance", "lobby", {
                 expires: 365,
                 sameSite: "strict",
               });
-              Cookies.set("root", "C://UFLauncher//instances", {
+              Cookies.set("root", "C://KokoritoLauncher//instances", {
                 expires: 365,
                 sameSite: "strict",
               });
@@ -231,12 +231,12 @@ export const InstallFirstFiles = ({ children }) => {
         <div className="content-advertence">
           <div className="content-advertence-text">
             <div>
-              <h1>INSTALACION DE UF LAUNCHER</h1>
+              <h1>INSTALACION DE KOKORITO LAUNCHER</h1>
             </div>
             <div>
               <p>
-                Hola, Bienvenido a UF Launcher, el launcher oficial de Unity
-                Force, antes de continuar necesitamos instalar algunos archivos.
+                Hola, Bienvenido a Kokorito Launcher, el launcher oficial de Kokorito Studios
+                , antes de continuar necesitamos instalar algunos archivos.
               </p>
               <ul>
                 <li>+ La instalacion tiene un peso de 8MB.</li>

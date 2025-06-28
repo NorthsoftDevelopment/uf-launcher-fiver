@@ -471,7 +471,7 @@ html::-webkit-scrollbar-thumb {
   bottom: 0;
   border-radius: 5rem;
   position: absolute;
-  background-color: #801616;
+  background-color: #f4956d;
 }
 
 .launcher-title {
@@ -565,7 +565,7 @@ html::-webkit-scrollbar-thumb {
 
 
 .user button:hover svg{
-  stroke: rgb(240, 98, 98);
+  stroke: #f4956d;
 }
 
 .user button svg {
@@ -573,7 +573,7 @@ html::-webkit-scrollbar-thumb {
   
   stroke-width: 2px;
   transition: 0.3s ease stroke;
-  stroke: rgb(216, 94, 94);
+  stroke: #f4956d;
 }
 
 .bg-img {
@@ -842,7 +842,7 @@ html::-webkit-scrollbar-thumb {
 
 .instance-item button {
   margin-left: 10px;
-  background-color: red;
+  background-color: #f4956d;
   border: none;
   color: white;
   border-radius: 5px;
@@ -986,5 +986,10 @@ margin-bottom: 10px;
   gap: 20px;
 }
 
+.logo {
+  width: 140px;
+}
 
-
+.mid-screen-img {
+  width: 1200px;
+}

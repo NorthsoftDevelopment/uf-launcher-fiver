@@ -75,7 +75,7 @@
     font-size: 23px;
     margin-bottom: 10px;
     font-weight: 900;
-    background-color: #FF6969;
+    background-color: #f4956d;;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
 }
@@ -110,14 +110,14 @@
     border: none;
     border-radius: 5px;
     color: white;
-    background-color: #FF6969;
+    background-color: #f4956d;;
     transition: all 0.2s;
     z-index: 999999;
     margin-bottom: 40px;
 }
 
 .button-general-install:hover {
-    background-color: #ff4747;
+    background-color: #aa684b;;
 }
 
 .install-section {
@@ -130,7 +130,7 @@
 .select_folder{
     border: none;
     padding: 5px 25px;
-    background-color: #d35050;
+    background-color: #f4956d;;
     border-top-left-radius: 500px;
     border-bottom-left-radius: 50px;
     height: 100%;

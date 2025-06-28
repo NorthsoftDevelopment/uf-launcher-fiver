@@ -53,6 +53,7 @@ export const Navbar = () => {
     <div className="navbar drag">
       <Tooltip id="1" />
       <div className="navbar-list">
+        <img className="logo" src="https://media.discordapp.net/attachments/1384427550171988061/1387905449751216378/logo_final_kokorito_studios.png?ex=685f0b2d&is=685db9ad&hm=11f03cc1a432f17d236eddfac85672c6341d66b5b05e48e43d25b9fd1b222155&=&format=webp&quality=lossless&width=1318&height=498"></img>
         <Link to="/">
           <div onClick={changeLocation} className="navbar-item nodrag" active="0">
             <svg
@@ -87,6 +88,36 @@ export const Navbar = () => {
               <path d="M15 12h-5" />
             </svg>
             Instancias
+          </div>
+        </Link>
+        <Link to="/timeline">
+          <div onClick={changeLocation} className="navbar-item nodrag" active="0">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+            Eventos
+          </div>
+        </Link>
+        <Link to="/colab">
+          <div onClick={changeLocation} className="navbar-item nodrag" active="0">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+            Colaboradores
           </div>
         </Link>
         <Link to="/settings">

@@ -134,10 +134,10 @@ export default function Settings() {
                             <h3>Informacion</h3>
                             <div className={classes.infoapp} >
                                 <div>
-                                    <h3>Desarrollado por</h3> <h4>Inhonia Studios</h4>
+                                    <h3>Desarrollado por</h3> <h4>Northsoft</h4>
                                 </div>
                                 <div>
-                                    <h3>Distrubiudo por</h3> <h4>Unity Force Studios</h4>
+                                    <h3>Distrubiudo por</h3> <h4>Kokorito Studios</h4>
                                 </div>
                             </div>
                         </div>

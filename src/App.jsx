@@ -14,6 +14,8 @@ import { CompleteLogin } from "./components/pages/LoginComplete";
 import { Title } from "./components/static/Title";
 import Settings from "./components/settings/Settings";
 import { InstancesPage } from "./components/pages/instances";
+import { TimelinePage } from "./components/pages/timeline";
+import { CollabPage } from "./components/pages/collabs";
 
 function App() {
 
@@ -33,6 +35,24 @@ function App() {
             element={
               <ProtectedRoute isAuthenticated={userJSON}>
                 <Home></Home>
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/timeline"
+            element={
+              <ProtectedRoute isAuthenticated={userJSON}>
+                <TimelinePage></TimelinePage>
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/colab"
+            element={
+              <ProtectedRoute isAuthenticated={userJSON}>
+                <CollabPage></CollabPage>
               </ProtectedRoute>
             }
           />

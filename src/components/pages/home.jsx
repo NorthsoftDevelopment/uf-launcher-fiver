@@ -178,7 +178,7 @@ export const Home = () => {
 
         if (setting.launcherType === 'sk') {
 
-          const child = execFile(result.folderPath + '\\sk.exe', ['--workDir', route + '/' + InfoInstance.title], (error, stdout, stderr) => {
+          const child = execFile(result.folderPath + "\\launchers" + '\\sk.exe', ['--workDir', route + '/' + InfoInstance.title], (error, stdout, stderr) => {
             const notificationContent = (
               <div>
                 <h4>Juego lanzado correctamente</h4>
@@ -216,7 +216,7 @@ export const Home = () => {
           });
         } else {
 
-          const child = execFile(result.folderPath + '\\mc.exe', ['--workDir', route + '/' + InfoInstance.title], (error, stdout, stderr) => {
+          const child = execFile(result.folderPath + "\\launchers" + '\\mc.exe', ['--workDir', route + '/' + InfoInstance.title], (error, stdout, stderr) => {
             setRunning(false)
             const notificationContent = (
               <div>

@@ -53,7 +53,7 @@ export const Navbar = () => {
     <div className="navbar drag">
       <Tooltip id="1" />
       <div className="navbar-list">
-        <img className="logo" src="https://github.com/NorthsoftDevelopment/uf-launcher-fiver/releases/download/launchers/logo.final.kokorito.studios.png"></img>
+        <img className="logo" src="https://www.dropbox.com/scl/fi/aptytvmgrvwj45kplv5ne/home.png?rlkey=yh9yzr290jssoj7lyw0mqt8d1&st=vugaok8u&dl=1"></img>
         <Link to="/">
           <div onClick={changeLocation} className="navbar-item nodrag" active="0">
             <svg

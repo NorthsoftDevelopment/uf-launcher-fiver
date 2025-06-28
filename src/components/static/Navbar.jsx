@@ -53,7 +53,7 @@ export const Navbar = () => {
     <div className="navbar drag">
       <Tooltip id="1" />
       <div className="navbar-list">
-        <img className="logo" src="https://www.dropbox.com/scl/fi/aptytvmgrvwj45kplv5ne/home.png?rlkey=yh9yzr290jssoj7lyw0mqt8d1&st=vugaok8u&dl=1"></img>
+        <img className="logo" src="https://www.dropbox.com/scl/fi/a8ydqrrpoo2puub0fvyie/logo-final-kokorito-studios.png?rlkey=bpjl1oml6yu68yvbrm3c7sbhx&st=6mx9nie9&dl=1"></img>
         <Link to="/">
           <div onClick={changeLocation} className="navbar-item nodrag" active="0">
             <svg

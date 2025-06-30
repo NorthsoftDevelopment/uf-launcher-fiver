@@ -18,22 +18,22 @@ export const Navbar = () => {
   }, []);
 
   function changeLocation(e) {
-    document.querySelector(".navbar-item[active='1']").setAttribute("active","0")
-     e.currentTarget.attributes[1].value = 1  
+    document.querySelector(".navbar-item[active='1']").setAttribute("active", "0")
+    e.currentTarget.attributes[1].value = 1
   }
 
   useEffect(() => {
     async function ChangeLoad() {
       const path = window.location.pathname
 
-      if (path === "/"){
-        document.querySelector("a[href='/'] .navbar-item").setAttribute("active","1")
-      }else if(path === "/instances"){
-        document.querySelector("a[href='/instances'] .navbar-item").setAttribute("active","1")
-      }else if (path == "/settings") {
-        document.querySelector("a[href='/settings'] .navbar-item").setAttribute("active","1")
+      if (path === "/") {
+        document.querySelector("a[href='/'] .navbar-item").setAttribute("active", "1")
+      } else if (path === "/instances") {
+        document.querySelector("a[href='/instances'] .navbar-item").setAttribute("active", "1")
+      } else if (path == "/settings") {
+        document.querySelector("a[href='/settings'] .navbar-item").setAttribute("active", "1")
       }
-      
+
     }
     ChangeLoad();
   }, []);
@@ -44,16 +44,30 @@ export const Navbar = () => {
     attr == "min"
       ? ipcRenderer.send("window_minimize")
       : attr == "max"
-      ? ipcRenderer.send("window_maximize")
-      : attr == "close"
-      ? ipcRenderer.send("window_close")
-      : "";
+        ? ipcRenderer.send("window_maximize")
+        : attr == "close"
+          ? ipcRenderer.send("window_close")
+          : "";
   }
   return (
     <div className="navbar drag">
       <Tooltip id="1" />
       <div className="navbar-list">
-        <img className="logo" src="https://www.dropbox.com/scl/fi/a8ydqrrpoo2puub0fvyie/logo-final-kokorito-studios.png?rlkey=bpjl1oml6yu68yvbrm3c7sbhx&st=6mx9nie9&dl=1"></img>
+        <a
+        className="logo-a nodrag"
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            const { shell } = window.require("electron");
+            shell.openExternal("https://kokoritostudios.carrd.co/");
+          }}
+        >
+          <img
+            className="logo"
+            src="https://www.dropbox.com/scl/fi/a8ydqrrpoo2puub0fvyie/logo-final-kokorito-studios.png?rlkey=bpjl1oml6yu68yvbrm3c7sbhx&st=6mx9nie9&dl=1"
+            alt="Kokorito Studios"
+          />
+        </a>
         <Link to="/">
           <div onClick={changeLocation} className="navbar-item nodrag" active="0">
             <svg
@@ -155,14 +169,13 @@ export const Navbar = () => {
                 {user.name}
               </span>
               <img
-                src={`https://api.mineatar.io/face/${
-                  user.id ? user.id : "e59da3ac-76ef-4c66-9d36-54d221baa439"
-                }`}
+                src={`https://api.mineatar.io/face/${user.id ? user.id : "e59da3ac-76ef-4c66-9d36-54d221baa439"
+                  }`}
               ></img>
             </div>
             <button data-tooltip-id="my-tooltip"
-                data-tooltip-content="Cerrar Sesion" onClick={Logout}>
-              
+              data-tooltip-content="Cerrar Sesion" onClick={Logout}>
+
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

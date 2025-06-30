@@ -35,40 +35,40 @@ export const Home = () => {
 
 
     Swal.fire({
-        text: "Esta accion es permanente",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Si, eliminar',
-        cancelButtonText: 'Cancelar',
-      
+      text: "Esta accion es permanente",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, eliminar',
+      cancelButtonText: 'Cancelar',
+
     }).then((result) => {
-        if (result.isConfirmed) {
+      if (result.isConfirmed) {
 
-            const folderPath = route + '/' + InfoInstance.title;
+        const folderPath = route + '/' + InfoInstance.title;
 
-            const fs = require('fs');
-            const path = require('path');
+        const fs = require('fs');
+        const path = require('path');
 
-            fs.rmdir(folderPath, { recursive: true }, (err) => {
-                if (err) {
-                    console.error('Error al eliminar la carpeta:', err);
-                    Swal.fire(
-                        'Error',
-                        'Hubo un error al eliminar la carpeta.',
-                        'error'
-                    );
-                } else {
-                    console.log('Carpeta eliminada correctamente.');
-                    Swal.fire(
-                        'Eliminado!',
-                        'La instanncia ha sido eliminada correctamente.',
-                        'success'
-                    );
-                }
-            });
-        }
+        fs.rmdir(folderPath, { recursive: true }, (err) => {
+          if (err) {
+            console.error('Error al eliminar la carpeta:', err);
+            Swal.fire(
+              'Error',
+              'Hubo un error al eliminar la carpeta.',
+              'error'
+            );
+          } else {
+            console.log('Carpeta eliminada correctamente.');
+            Swal.fire(
+              'Eliminado!',
+              'La instanncia ha sido eliminada correctamente.',
+              'success'
+            );
+          }
+        });
+      }
     });
-};
+  };
 
   function checkInstallation() {
     const fs = require('fs');
@@ -178,16 +178,20 @@ export const Home = () => {
 
         if (setting.launcherType === 'sk') {
 
-          const child = execFile(result.folderPath + "\\launchers" + '\\sk.jar', ['--workDir', route + '/' + InfoInstance.title], (error, stdout, stderr) => {
+          const javaPath = 'C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin\\javaw.exe'; 
+
+          const jarPath = result.folderPath + "\\launchers\\sk.jar";
+          const workDirArg = '--workDir=' + route + '/' + InfoInstance.title;
+
+          const child = execFile(javaPath, ['-jar', jarPath, workDirArg], (error, stdout, stderr) => {
             const notificationContent = (
               <div>
                 <h4>Juego lanzado correctamente</h4>
               </div>
             );
-            toast.success(notificationContent, {
-              duration: 5000,
-            });
-            setRunning(false)
+            toast.success(notificationContent, { duration: 5000 });
+            setRunning(false);
+
             if (error) {
               Swal.fire({
                 icon: 'error',
@@ -199,19 +203,12 @@ export const Home = () => {
                   header: 'title-loader',
                   title: 'title-loader',
                 },
-                text: 'Tienes un error con la instalacion, porfavor reinstala',
-                footer: error ? error.toString() : '',
-
-                didClose: () => {
-
-                  setRunning(false)
-
-                }
+                text: 'Tienes un error con la instalación, por favor reinstala',
+                footer: error.toString(),
+                didClose: () => setRunning(false)
               });
-            } else {
-              //Cookies.set('recentPlayedID', InfoInstance.id, { expires: 365, sameSite: 'strict' });
-
             }
+
             console.log(stdout);
           });
         } else {
@@ -307,7 +304,7 @@ export const Home = () => {
       const DEFAULT_URL = InfoInstance.modpack;
       const DEFAULT_PATH = route + '/' + InfoInstance.zipName;
       const root = route + '/' + InfoInstance.title
-      const {  download,
+      const { download,
         progress,
         complete,
         errorZip,
@@ -315,55 +312,55 @@ export const Home = () => {
         extractcomplete } = useDownloadLauncher(DEFAULT_URL, DEFAULT_PATH, root);
 
       useEffect(() => {
-        if(!extractcomplete) {
+        if (!extractcomplete) {
           download();
-        } 
-      },[extractcomplete])
+        }
+      }, [extractcomplete])
 
       useEffect(() => {
-          if (progress === 100 && complete && extractcomplete) {
+        if (progress === 100 && complete && extractcomplete) {
 
-            if (errorZip) {
+          if (errorZip) {
 
-              toast.error("Descarga con errores", { id: t.id });
+            toast.error("Descarga con errores", { id: t.id });
 
-              const fs = require('fs');
-              const path = require('path');
-              const filePath = path.join(route, InfoInstance.title, `${InfoInstance.versionInstance}.txt`);
+            const fs = require('fs');
+            const path = require('path');
+            const filePath = path.join(route, InfoInstance.title, `${InfoInstance.versionInstance}.txt`);
 
-              const fileContent = '¡Descarga finalizada!';
+            const fileContent = '¡Descarga finalizada!';
 
-              fs.writeFileSync(filePath, fileContent);
+            fs.writeFileSync(filePath, fileContent);
 
-              console.log('Archivo creado en:', filePath);
+            console.log('Archivo creado en:', filePath);
 
-              setInstalling(false)
+            setInstalling(false)
 
-              window.location.reload()
+            window.location.reload()
 
-            } else {
+          } else {
 
-              toast.success("Descarga finalizada!", { id: t.id });
+            toast.success("Descarga finalizada!", { id: t.id });
 
-              const fs = require('fs');
-              const path = require('path');
-              const filePath = path.join(route, InfoInstance.title, `${InfoInstance.versionInstance}.txt`);
+            const fs = require('fs');
+            const path = require('path');
+            const filePath = path.join(route, InfoInstance.title, `${InfoInstance.versionInstance}.txt`);
 
-              const fileContent = '¡Descarga finalizada!';
+            const fileContent = '¡Descarga finalizada!';
 
-              fs.writeFileSync(filePath, fileContent);
+            fs.writeFileSync(filePath, fileContent);
 
-              console.log('Archivo creado en:', filePath);
+            console.log('Archivo creado en:', filePath);
 
-              setInstalling(false)
+            setInstalling(false)
 
-              window.location.reload()
-            }
-
-
+            window.location.reload()
           }
 
-     
+
+        }
+
+
       }, [extractcomplete]);
       const formattedProgress = progress;
 

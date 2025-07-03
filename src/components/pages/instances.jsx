@@ -47,16 +47,11 @@ export const InstancesPage = () => {
   
 
   return (
-    <div className="welcome scroll content">
+    <div className="welcome">
       <div className="container-idk">
-
-
-
         <div className="bg-img">
           <img src={background} alt="" />
         </div>
-
-
         <div className="instances-container">
           {instances.map((instance, index) => (
             <div key={index} className="instance-item">

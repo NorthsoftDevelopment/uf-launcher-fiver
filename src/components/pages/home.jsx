@@ -178,7 +178,7 @@ export const Home = () => {
 
         if (setting.launcherType === 'sk') {
 
-          const javaPath = 'C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin\\javaw.exe'; 
+          const javaPath = 'C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin\\javaw.exe';
 
           const jarPath = result.folderPath + "\\launchers\\sk.jar";
           const workDirArg = '--workDir=' + route + '/' + InfoInstance.title;
@@ -379,13 +379,11 @@ export const Home = () => {
 
 
   return (
-    <div className="welcome">
+    <div className="welcome_home">
       {!loading ? (
 
         <div>
-          <div className="bg-img">
-            <img src={background} alt="" />
-          </div>
+      
 
 
           <div className="launch-div">
@@ -393,7 +391,7 @@ export const Home = () => {
             <div className="launch-content">
 
               <div className="launcher-div ">
-                <img src={InfoInstance.img}></img>
+                <img className='launch-div-img' src={InfoInstance.img}></img>
                 <Tooltip id="my-tooltip" />
                 <div className="launcher-buttons">
                   {running ? (
@@ -437,11 +435,28 @@ export const Home = () => {
                   <button className="button-remove" data-tooltip-id="my-tooltip" data-tooltip-content="Elimina los archivos de la instancia selecciona. Esta opcion es irreversible." onClick={removeInstance}>X</button>
                 </div>
               </div>
-
             </div>
+            <div className="version-notes-section">
+              <div className="version-title">
+                <h4>Notas de versión</h4>
+                <p>{InfoInstance.notes}</p>
+              </div>
+              <div className="version-images">
+                {InfoInstance.images && InfoInstance.images.length > 0 ? (
+                  <div
+                    className={`images-grid columns-${InfoInstance.images.length}`}
+                  >
+                    {InfoInstance.images.map((imgUrl, index) => (
+                      <img key={index} src={imgUrl} alt={`Versión ${index}`} />
+                    ))}
+                  </div>
+                ) : (
+                  <p>No hay imágenes disponibles.</p>
+                )}
+              </div>
+            </div>
+
             <div className="news-div">
-
-
               <h3 className="title">Ultimas Actualizaciones</h3>
               <div className="news-container">
 

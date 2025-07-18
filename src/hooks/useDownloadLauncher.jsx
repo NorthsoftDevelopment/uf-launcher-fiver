@@ -1,66 +1,67 @@
 import { useState } from "react";
-import Swal from "sweetalert2";
-const { remote } = require("electron");
-const fs = require("fs");
-const https = require("https");
-var AdmZip = require("adm-zip");
+const fs = window.require("fs");
+const AdmZip = window.require("adm-zip");
 
-export default function useDownloadLauncher(url, path, root) {
+export default function useDownloadLauncher(url, path, extractTo) {
   const [progress, setProgress] = useState(0);
   const [complete, setComplete] = useState(false);
   const [errorZip, setErrorZip] = useState(false);
-  const [extractcomplete,setExctract] = useState(false);
- function download() {
-    // URL del archivo que quieres descargar
+  const [extractcomplete, setExtractComplete] = useState(false);
 
-    // Ruta donde quieres guardar el archivo
+  async function download() {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
 
-    // Realizar una solicitud HTTP para obtener el contenido del archivo
-    https.get(url, (response) => {
-        console.log("Respuesta de la descarga", response);
-        console.log(path);
-        let totalLength = parseInt(response.headers["content-length"], 10) || 0;
-        let receivedLength = 0;
+      const contentLength = response.headers.get("content-length");
+      const totalBytes = parseInt(contentLength, 10) || 0;
+      const reader = response.body.getReader();
 
-        // Acumular los datos recibidos
-        const fileStream = fs.createWriteStream(path);
+      let receivedBytes = 0;
+      const chunks = [];
 
-        response
-          .on("data", (chunk) => {
-            fileStream.write(chunk);
-            receivedLength += chunk.length;
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        chunks.push(value);
+        receivedBytes += value.length;
 
-            const progressValue = Math.floor(
-              (receivedLength / totalLength) * 100
-            );
-          
-            setProgress(progressValue);
-          })
-          .on("end", () => {
-            console.log("Archivo guardado con éxito en:", path);
-            fileStream.end();
-            setTimeout(() => {
-              extract()
-            }, 2300);
-            setComplete(true);
-           
-          });
-      })
-      .on("error", (error) => {
-        console.error("Error al descargar y guardar el archivo:", error);
-      });
-  }
+        if (totalBytes) {
+          const percent = Math.floor((receivedBytes / totalBytes) * 100);
+          setProgress(percent);
+        }
+      }
 
-  function extract(){
-    if(!extractcomplete){
-      new AdmZip(path).extractAllTo(root, true);
-      setExctract(true)
-      setComplete(true)
-      setProgress(100)
-      console.log("Archivo descomprimido con éxito");
+      const blob = new Uint8Array(receivedBytes);
+      let offset = 0;
+      for (const chunk of chunks) {
+        blob.set(chunk, offset);
+        offset += chunk.length;
+      }
+
+      const buffer = Buffer.from(blob);
+      fs.writeFileSync(path, buffer);
+
+      console.log("Archivo guardado en:", path);
+      setComplete(true);
+
+      const zip = new AdmZip(path);
+      zip.extractAllTo(extractTo, true);
+
+      console.log("Archivo descomprimido en:", extractTo);
+      setExtractComplete(true);
+    } catch (error) {
+      console.error("Error en descarga:", error);
+      setErrorZip(true);
     }
-    
   }
 
-  return { download, progress, complete, errorZip, extract, extractcomplete};
+  return {
+    download,
+    progress,
+    complete,
+    errorZip,
+    extract: null,
+    extractcomplete,
+  };
 }

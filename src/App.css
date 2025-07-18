@@ -836,7 +836,7 @@ html::-webkit-scrollbar-thumb {
 
 .instance-item {
   width:390px;
-  height: 235px;
+  height: 310px;
   transition: 0.3s ease box-shadow;
   border-radius: 15px;
   overflow: hidden;
@@ -877,9 +877,10 @@ html::-webkit-scrollbar-thumb {
 
 
 .instance-item img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+width: 100%;
+  background-size: auto;
+  background-size: cover;
+ object-fit: cover;
   transition: 0.3s ease transform;
 }
 
